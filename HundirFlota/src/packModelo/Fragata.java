@@ -1,5 +1,8 @@
 package packModelo;
 
-public class Fragata {
-
+public class Fragata extends Barco{
+	private final int longitud=1;
+	
+	
+	
 }

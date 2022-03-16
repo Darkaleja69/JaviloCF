@@ -1,6 +1,6 @@
 package packModelo;
 
-public class Barco {
+public abstract class Barco {
 	private int longitud;
 	private String[] coordenadas;
 	private boolean[] tocado;
