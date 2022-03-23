@@ -13,4 +13,6 @@ public class FactoryBarcos {
 		return miFactoryBarcos;
 	}
 	
+	// public Barco crearBarco(String pTipo) {
+		//}
 }
