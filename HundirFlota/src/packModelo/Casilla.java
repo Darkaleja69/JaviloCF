@@ -2,16 +2,16 @@ package packModelo;
 
 public class Casilla {
 	private boolean tieneBomba;
-	private char fila;
+	private int fila;
 	private int columna;
 	private Barco barco;
 	
-	public Casilla(char pFila,int pColumna) {
+	public Casilla(int pFila,int pColumna) {
 		fila=pFila;
 		columna=pColumna;
 	}
 	
-	public char getFila() {
+	public int getFila() {
 		return fila;
 	}
 	public int getColumna() 

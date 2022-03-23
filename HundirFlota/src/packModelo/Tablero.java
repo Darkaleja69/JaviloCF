@@ -23,14 +23,16 @@ public class Tablero {
 		return(miTablero);
 	}
 	
-	//Métodos
-	public void bombardearCasilla(int pFil, int pCol)
-	{
+	//Mï¿½todos
+	public void bombardearCasilla(int pFil, int pCol,boolean esJugador)
+	{	if(esJugador) {
+		
+	}
 		
 	}
 	
-	public boolean valido()
-	{
+	public boolean valido(int pFila,int pCol)
+	{	if()
 		return true;
 	}
 	
