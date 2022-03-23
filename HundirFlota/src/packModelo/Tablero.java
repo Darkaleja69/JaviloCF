@@ -1,11 +1,27 @@
 package packModelo;
 
 public class Tablero {
-	private int[][] tableroCPU;
-	private int[][] tableroJugador;
-	private Barco[] barcosCPU;
-	private Barco[] barcosJugador;
 	
-	//JAA
+	//Atributos
+	
+	private static Tablero miTablero;
+	private Casilla[][] tableroJugador;
+	private Casilla[][] tableroCPU;
+	
+	//Constructora MAE
+	private Tablero() 
+	{
+		
+	}
+	public static Tablero getTablero()
+	{
+		if(miTablero == null)
+		{
+			miTablero = new Tablero();
+		}
+		return(miTablero);
+	}
+	
+	
 	
 }
