@@ -31,9 +31,19 @@ public class Tablero {
 		
 	}
 	
-	public boolean valido(int pFila,int pCol)
-	{	if()
-		return true;
+	public boolean valido(int pFila,int pCol,boolean esJugador)
+	{	boolean valido=true;
+		if(esJugador) {
+			if(!(tableroJugador[pFila-1][pCol].getBarco()==null && tableroJugador[pFila][pCol-1].getBarco()==null && tableroJugador[pFila][pCol+1].getBarco()==null && tableroJugador[pFila+1][pCol].getBarco()==null)) {
+					valido=false;
+			}
+		}else {
+			if(!(tableroCPU[pFila-1][pCol].getBarco()==null && tableroCPU[pFila][pCol-1].getBarco()==null && tableroCPU[pFila][pCol+1].getBarco()==null && tableroCPU[pFila+1][pCol].getBarco()==null)) {
+				valido=false;
+			}
+		}
+	
+		return valido;
 	}
 	
 }
