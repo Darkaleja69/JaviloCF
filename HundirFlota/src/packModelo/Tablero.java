@@ -24,7 +24,7 @@ public class Tablero {
 	}
 	
 	//M�todos
-	public void bombardearCasilla(int pFil, int pCol,boolean esJugador)
+	public void bombardearCasilla(Casilla pCasilla,boolean esJugador)
 	{	if(esJugador) {
 		
 	}
@@ -44,6 +44,11 @@ public class Tablero {
 		}
 	
 		return valido;
+	
+	}
+	
+	public void colocarBarco(Barco pBarco,int pFila,int pCol) {
+		
 	}
 	
 }
