@@ -23,6 +23,15 @@ public class Tablero {
 		return(miTablero);
 	}
 	
+	//Métodos
+	public void bombardearCasilla(int pFil, int pCol)
+	{
+		
+	}
 	
+	public boolean valido()
+	{
+		return true;
+	}
 	
 }
