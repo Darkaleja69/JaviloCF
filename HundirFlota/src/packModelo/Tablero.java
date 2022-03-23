@@ -3,13 +3,10 @@ package packModelo;
 public class Tablero {
 	
 	//Atributos
-	private int[][] tableroCPU;
-	private int[][] tableroJugador;
-	private Barco[] barcosCPU;
-	private Barco[] barcosJugador;
 	
 	private static Tablero miTablero;
-	private Casilla[][] matriz;
+	private Casilla[][] tableroJugador;
+	private Casilla[][] tableroCPU;
 	
 	//Constructora MAE
 	private Tablero() 
