@@ -9,15 +9,16 @@ public class Tablero {
 	private Casilla[][] tableroCPU;
 	
 	//Constructora MAE
-	private Tablero() 
+	private Tablero(int pFil, int pCol) 
 	{
-		
+		this.tableroJugador = new Casilla[pFil][pCol];
+		this.tableroCPU = new Casilla[pFil][pCol];
 	}
-	public static Tablero getTablero()
+	public static Tablero getTablero(int pFil, int pCol)
 	{
 		if(miTablero == null)
 		{
-			miTablero = new Tablero();
+			miTablero = new Tablero(pFil, pCol);
 		}
 		return(miTablero);
 	}
