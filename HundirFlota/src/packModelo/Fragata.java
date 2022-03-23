@@ -3,13 +3,13 @@ package packModelo;
 public class Fragata extends Barco{
 	
 	//Atributos
-	private final int longitud=1;
+	private final int longitud = 1;
 	private int x;
 	
 	//Constructora
-	public Fragata(int longitud)
+	public Fragata(int pLongitud)
 	{
-		super(longitud);
+		super(pLongitud);
 	}
 	
 }

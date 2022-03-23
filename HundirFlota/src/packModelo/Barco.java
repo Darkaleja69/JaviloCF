@@ -6,7 +6,7 @@ public abstract class Barco {
 	private boolean[] tocado;
 	
 	public Barco(int pLongitud) {
-		longitud=pLongitud;
+		longitud = pLongitud;
 		//pedir coordenadas
 	}
 }
