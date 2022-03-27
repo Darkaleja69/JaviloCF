@@ -2,7 +2,7 @@ package packModelo;
 
 import java.util.Observer;
 
-public class Tablero implements Observer {
+public class Tablero {
 	
 	//Atributos
 	

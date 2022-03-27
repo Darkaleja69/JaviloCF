@@ -217,8 +217,8 @@ public class InterfazJuego extends JFrame {
 	private class Controler implements ActionListener  {
 		
 		public void actionPerformed (ActionEvent e){
-			JLabel labelClicado = (JLabel) e.getComponent();
-			labelClicado.setVisible(false);
+			//JLabel labelClicado = (JLabel) e.getComponent();
+			//labelClicado.setVisible(false);
 		}
 	}
 
