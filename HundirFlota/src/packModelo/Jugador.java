@@ -21,7 +21,8 @@ public class Jugador {
 		return(miJugador);
 	}
 	
-	//Métodos
+	//Mï¿½todos
+	public void colocarBarcos() {}
 	
-
+	
 }
