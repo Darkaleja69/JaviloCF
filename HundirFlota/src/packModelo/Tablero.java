@@ -1,6 +1,8 @@
 package packModelo;
 
-public class Tablero {
+import java.util.Observer;
+
+public class Tablero implements Observer {
 	
 	//Atributos
 	
