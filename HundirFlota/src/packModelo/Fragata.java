@@ -4,7 +4,7 @@ public class Fragata extends Barco{
 	
 	//Atributos
 	private final int longitud = 1;
-	private int x;
+	private int vidas;
 	
 	//Constructora
 	public Fragata(int pLongitud)
