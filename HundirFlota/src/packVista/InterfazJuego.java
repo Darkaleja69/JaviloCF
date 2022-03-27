@@ -127,7 +127,7 @@ public class InterfazJuego extends JFrame {
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
             }
         }
-    }
+    }//xxx
 	
     private JLabel clb()
     {
@@ -196,7 +196,7 @@ public class InterfazJuego extends JFrame {
 	}
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("¿Qué quieres hacer?");
+			lblNewLabel = new JLabel("ï¿½Quï¿½ quieres hacer?");
 		}
 		return lblNewLabel;
 	}
