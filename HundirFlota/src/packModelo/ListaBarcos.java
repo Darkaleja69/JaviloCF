@@ -9,11 +9,7 @@ public class ListaBarcos {
 		this.lista=new ArrayList<Barco>();
 	}
 	
-	public void generarBarcos() {
-		
+	public void anadirBarco(Barco pBarco) {
+		this.lista.add(pBarco);
 	}
-	
-//	private Barco generarBarco(String pTipo) {
-//		FactoryBarcos.getMiFactoryBarcos().crearBarco(pTipo);
-//	}
 }

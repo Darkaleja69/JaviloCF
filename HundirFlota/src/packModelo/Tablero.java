@@ -14,11 +14,11 @@ public class Tablero {
 		this.tableroJugador = new Casilla[pFil][pCol];
 		this.tableroCPU = new Casilla[pFil][pCol];
 	}
-	public static Tablero getTablero(int pFil, int pCol)
+	public static Tablero getTablero()
 	{
 		if(miTablero == null)
 		{
-			miTablero = new Tablero(pFil, pCol);
+			miTablero = new Tablero(10, 10);
 		}
 		return(miTablero);
 	}
