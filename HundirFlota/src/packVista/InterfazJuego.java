@@ -214,9 +214,11 @@ public class InterfazJuego extends JFrame {
 		return controler;
 	}
 	
-	private class Controler implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+	private class Controler implements ActionListener  {
+		
+		public void actionPerformed (ActionEvent e){
 			JLabel labelClicado = (JLabel) e.getComponent();
+			labelClicado.setVisible(false);
 		}
 	}
 
