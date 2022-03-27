@@ -98,6 +98,4 @@ public class InterfazJuego extends JFrame {
         return btnNewButton;
     }
     
-    
-	
 }
