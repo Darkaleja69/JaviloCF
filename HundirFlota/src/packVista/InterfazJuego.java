@@ -116,6 +116,10 @@ public class InterfazJuego extends JFrame {
 		return Acciones;
 	}
 	
+	private Iterator<JLabel> getItr(){
+		return this.listaLJug.iterator();
+	}
+	
 	private void crearJLabels(JPanel p1, JPanel p2)
     {	
         for(int i = 0; i < 10; i++)
@@ -220,7 +224,7 @@ public class InterfazJuego extends JFrame {
 		
 		public void actionPerformed (ActionEvent e){
 			JLabel labelClicado = (JLabel) e.getSource();
-			//labelClicado.
+			
 		}
 	}
 
