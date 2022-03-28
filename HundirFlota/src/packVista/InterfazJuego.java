@@ -62,6 +62,8 @@ public class InterfazJuego extends JFrame {
 	 * Create the frame.
 	 */
 	public InterfazJuego() {
+		listaLJug=new ArrayList<JLabel>();
+		listaLPC=new ArrayList<JLabel>();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -196,7 +198,7 @@ public class InterfazJuego extends JFrame {
 	}
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("�Qu� quieres hacer?");
+			lblNewLabel = new JLabel("Que quieres hacer?");
 		}
 		return lblNewLabel;
 	}
@@ -217,8 +219,8 @@ public class InterfazJuego extends JFrame {
 	private class Controler implements ActionListener  {
 		
 		public void actionPerformed (ActionEvent e){
-			//JLabel labelClicado = (JLabel) e.getComponent();
-			//labelClicado.setVisible(false);
+			JLabel labelClicado = (JLabel) e.getSource();
+			//labelClicado.
 		}
 	}
 
