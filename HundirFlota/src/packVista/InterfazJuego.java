@@ -16,11 +16,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class InterfazJuego extends JFrame {
+public class InterfazJuego extends JFrame implements Observer {
 	
 	private static InterfazJuego miInterfaz;
 	private JPanel contentPane;
@@ -123,10 +125,23 @@ public class InterfazJuego extends JFrame {
 		return Acciones;
 	}
 	
-	public Iterator<JLabel> getItr(){
+	private Iterator<JLabel> getItr(){
 		return (this.listaLJug.iterator());
 	}
 	
+	private int buscarJLabel(JLabel pLabel) {
+		int cont=0;
+		Iterator<JLabel> itr=this.getItr();
+		boolean enc=false;
+		while(itr.hasNext() && !enc) {
+			JLabel x=itr.next();
+			if(x.equals(pLabel)) {
+				enc=true;
+			}
+			cont++;
+		}
+		return cont;
+	}
 	private void crearJLabels(JPanel p1, JPanel p2)
     {	
         for(int i = 0; i < 10; i++)
@@ -227,13 +242,24 @@ public class InterfazJuego extends JFrame {
 		return controler;
 	}
 	
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	private class Controler implements ActionListener  {
 		
 		public void actionPerformed (ActionEvent e){
 			JLabel labelClicado = (JLabel) e.getSource();
-			Iterator<JLabel> itr=InterfazJuego.;
+			int coord =InterfazJuego.getMiInterfazJuego().buscarJLabel(labelClicado);
+			int x=coord/10;
+			int y=coord % 10;
+			System.out.println(x+y);
+			
 		}
 	}
+
+	
 
    
 }
