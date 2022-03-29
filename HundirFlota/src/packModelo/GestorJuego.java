@@ -16,10 +16,10 @@ public class GestorJuego extends Observable {
 	//Metodos
 	public void colocarBarcos()
 	{
-		
+		int[] casillas = new int[4]; //4 es provisional
 		//actualizar vista
 		setChanged();
-		notifyObservers();
+		notifyObservers(casillas);
 	}
 	
 }

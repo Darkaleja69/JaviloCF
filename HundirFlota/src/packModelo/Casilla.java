@@ -9,6 +9,8 @@ public class Casilla {
 	public Casilla(int pFila,int pColumna) {
 		fila=pFila;
 		columna=pColumna;
+		barco = null;
+		tieneBomba = false;
 	}
 	
 	public int getFila() {
