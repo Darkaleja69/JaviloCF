@@ -241,6 +241,18 @@ public class InterfazJuego extends JFrame implements Observer {
 		return Disparar;
 	}
 	
+	private JLabel obtJLabel(int pPos, boolean pJug)
+	{
+		if(pJug)
+		{
+			return this.listaLJug.get(pPos);
+		}
+		else
+		{
+			return this.listaLPC.get(pPos);
+		}
+	}
+	
 	private Controler getControler() {
 		if (controler == null) {
 			controler = new Controler();
@@ -251,6 +263,10 @@ public class InterfazJuego extends JFrame implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		Casilla c = (Casilla) arg1;
 		int pos = (c.getFila() * 10) + c.getColumna();
+		boolean esJ = c.esJugador();
+		
+		JLabel lbl = this.obtJLabel(pos, esJ);
+		
 		if(c.tieneBarco())
 		{
 			if(c.estaTocada())

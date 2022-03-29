@@ -5,12 +5,14 @@ public class Casilla {
 	private int fila;
 	private int columna;
 	private Barco barco;
+	private boolean esDelJugador;
 	
-	public Casilla(int pFila,int pColumna) {
+	public Casilla(int pFila,int pColumna, boolean pEsDelJugador) {
 		fila=pFila;
 		columna=pColumna;
 		barco = null;
 		tieneBomba = false;
+		esDelJugador = pEsDelJugador;
 	}
 	
 	public int getFila() {
@@ -39,5 +41,10 @@ public class Casilla {
 	public boolean tieneBarco()
 	{
 		return !this.barco.equals(null);
+	}
+	
+	public boolean esJugador()
+	{
+		return this.esDelJugador;
 	}
 }
