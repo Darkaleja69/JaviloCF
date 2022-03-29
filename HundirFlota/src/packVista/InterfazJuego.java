@@ -167,7 +167,7 @@ public class InterfazJuego extends JFrame implements Observer {
         JLabel lblNewLabel = new JLabel();
         lblNewLabel.setBorder(BorderFactory.createLineBorder(Color.white));
         lblNewLabel.setOpaque(true);
-        lblNewLabel.setBackground(Color.blue);
+        lblNewLabel.setBackground(Color.cyan);
         lblNewLabel.addActionListener(getControler());
         return lblNewLabel;
     }
@@ -271,22 +271,22 @@ public class InterfazJuego extends JFrame implements Observer {
 		{
 			if(c.estaTocada())
 			{
-				
+				lblNewLabel.setBackground(Color.red);
 			}
 			else
 			{
-				
+				lblNewLabel.setBackground(Color.gray);
 			}
 		}
 		else
 		{
 			if(c.estaTocada())
 			{
-				
+				lblNewLabel.setBackground(Color.blue);
 			}
 			else
 			{
-				
+				lblNewLabel.setBackground(Color.cyan);
 			}
 		}
 	}
