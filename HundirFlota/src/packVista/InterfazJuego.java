@@ -250,7 +250,28 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		Casilla c = (Casilla) arg1;
-		
+		if(c.tieneBarco())
+		{
+			if(c.estaTocada())
+			{
+				
+			}
+			else
+			{
+				
+			}
+		}
+		else
+		{
+			if(c.estaTocada())
+			{
+				
+			}
+			else
+			{
+				
+			}
+		}
 	}
 	
 	private class Controler implements ActionListener  {
