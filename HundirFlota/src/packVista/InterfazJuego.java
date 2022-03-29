@@ -250,6 +250,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		Casilla c = (Casilla) arg1;
+		int pos = (c.getFila() * 10) + c.getColumna();
 		if(c.tieneBarco())
 		{
 			if(c.estaTocada())
