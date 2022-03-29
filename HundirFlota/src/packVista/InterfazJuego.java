@@ -15,12 +15,14 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class InterfazJuego extends JFrame {
-
+	
+	private static InterfazJuego miInterfaz;
 	private JPanel contentPane;
 	private JPanel TableroPC;
 	private JPanel TableroJugador;
@@ -82,7 +84,12 @@ public class InterfazJuego extends JFrame {
 		g2.add(Portaviones);
 		g2.add(Destructor);
 	}
-
+	
+	public static InterfazJuego getMiInterfazJuego() {
+		if(miInterfaz==null) {
+			miInterfaz=new InterfazJuego();
+		}return miInterfaz;
+	}
 	private JPanel getTableroPC() {
 		if (TableroPC == null) {
 			TableroPC = new JPanel();
@@ -116,8 +123,8 @@ public class InterfazJuego extends JFrame {
 		return Acciones;
 	}
 	
-	private Iterator<JLabel> getItr(){
-		return this.listaLJug.iterator();
+	public Iterator<JLabel> getItr(){
+		return (this.listaLJug.iterator());
 	}
 	
 	private void crearJLabels(JPanel p1, JPanel p2)
@@ -224,7 +231,7 @@ public class InterfazJuego extends JFrame {
 		
 		public void actionPerformed (ActionEvent e){
 			JLabel labelClicado = (JLabel) e.getSource();
-			
+			Iterator<JLabel> itr=InterfazJuego.;
 		}
 	}
 
