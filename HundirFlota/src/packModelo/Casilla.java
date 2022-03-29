@@ -35,4 +35,9 @@ public class Casilla {
 	public Barco getBarco() {
 		return barco;
 	}
+	
+	public boolean tieneBarco()
+	{
+		return !this.barco.equals(null);
+	}
 }
