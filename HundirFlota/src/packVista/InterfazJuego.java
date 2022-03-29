@@ -14,6 +14,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Observable;
@@ -158,11 +160,12 @@ public class InterfazJuego extends JFrame implements Observer {
     }
 	
     private JLabel clb()
-    {
+    {	
         JLabel lblNewLabel = new JLabel();
         lblNewLabel.setBorder(BorderFactory.createLineBorder(Color.white));
         lblNewLabel.setOpaque(true);
         lblNewLabel.setBackground(Color.blue);
+        lblNewLabel.addActionListener(getControler());
         return lblNewLabel;
     }
 
@@ -250,10 +253,14 @@ public class InterfazJuego extends JFrame implements Observer {
 	private class Controler implements ActionListener  {
 		
 		public void actionPerformed (ActionEvent e){
-			JLabel labelClicado = (JLabel) e.getSource();
-			int coord =InterfazJuego.getMiInterfazJuego().buscarJLabel(labelClicado);
-			int x=coord/10;
-			int y=coord % 10;
+			Object control=e.getSource();
+			if(control instanceof JLabel){
+				System.out.println("Se ha pulsado un botón");
+			}
+			//JLabel labelClicado = (JLabel) e.getSource();
+			//int coord =InterfazJuego.getMiInterfazJuego().buscarJLabel(labelClicado);
+			//int x=coord/10;
+			//int y=coord % 10;
 			
 			
 		}
