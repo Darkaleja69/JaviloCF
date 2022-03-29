@@ -13,5 +13,13 @@ public class GestorJuego extends Observable {
 		}return miGestor;
 	}
 	
+	//Metodos
+	public void colocarBarcos()
+	{
+		
+		//actualizar vista
+		setChanged();
+		notifyObservers();
+	}
 	
 }
