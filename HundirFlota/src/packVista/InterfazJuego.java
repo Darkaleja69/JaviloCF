@@ -168,7 +168,7 @@ public class InterfazJuego extends JFrame implements Observer {
         lblNewLabel.setBorder(BorderFactory.createLineBorder(Color.white));
         lblNewLabel.setOpaque(true);
         lblNewLabel.setBackground(Color.cyan);
-        lblNewLabel.addActionListener(getControler());
+        //lblNewLabel.addActionListener(getControler());
         return lblNewLabel;
     }
 
