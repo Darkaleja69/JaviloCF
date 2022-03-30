@@ -317,7 +317,10 @@ public class InterfazJuego extends JFrame implements Observer {
 			}
 			if(Horizontal.isSelected())
 			{
-				//TODO
+				if(Fragata.isSelected()) 
+				{
+					
+				}
 			}
 			
 		}
