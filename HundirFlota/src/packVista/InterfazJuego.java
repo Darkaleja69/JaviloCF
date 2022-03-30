@@ -282,13 +282,14 @@ public class InterfazJuego extends JFrame implements Observer {
 	private class Controler implements MouseListener  {
 		
 		public void actionPerformed (ActionEvent e){
-			JRadioButton boton=(JRadioButton)e.getSource();
+			JRadioButton boton=(JRadioButton)g.getSelection();
 			
 			if(boton.equals(Horizontal)) {
 				
 			}else if(boton.equals(Vertical)) 
 			{
 				//Vertical
+				
 			}else if(boton.equals(Destructor)) {
 				
 				//Barco a elegir Destructor
