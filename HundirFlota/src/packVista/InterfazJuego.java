@@ -310,7 +310,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			int coord =InterfazJuego.getMiInterfazJuego().buscarJLabel(labelClicado);
 			int x=coord/10;
 			int y=coord % 10;
-			
+			System.out.println(x + " " + y);
 		}
 
 		@Override
