@@ -310,6 +310,16 @@ public class InterfazJuego extends JFrame implements Observer {
 			//int x = coord/10;
 			//int y = coord % 10;
 			System.out.println(coord);
+			
+			if(Vertical.isSelected())
+			{
+				//TODO
+			}
+			if(Horizontal.isSelected())
+			{
+				//TODO
+			}
+			
 		}
 
 		@Override
