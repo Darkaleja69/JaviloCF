@@ -14,12 +14,14 @@ public class GestorJuego extends Observable {
 	}
 	
 	//Metodos
-	public void colocarBarcos(boolean pHorizontal, int pX, int pY)
+	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud, boolean pEsJugador)
 	{
 		Casilla[] casillas = new Casilla[4];
-		
-		Tablero.getTablero()GestorJuego.todoValido();
-		
+		boolean esjugador;
+		if(Tablero.getTablero().todoValido(pX, pY, pLongitud, pEsJugador, pHorizontal))
+		{
+			
+		}
 		
 		//actualizar vista
 		setChanged();
