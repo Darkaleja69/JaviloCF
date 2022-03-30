@@ -148,7 +148,6 @@ public class InterfazJuego extends JFrame implements Observer {
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
             }
         }
-        System.out.println("hola");
     }
 	
     private JLabel clb()
