@@ -14,9 +14,13 @@ public class GestorJuego extends Observable {
 	}
 	
 	//Metodos
-	public void colocarBarcos()
+	public void colocarBarcos(boolean pHorizontal, int pX, int pY)
 	{
-		Casilla[] casillas = new Casilla[4]; //4 es provisional
+		Casilla[] casillas = new Casilla[4];
+		
+		Tablero.getTablero()GestorJuego.todoValido();
+		
+		
 		//actualizar vista
 		setChanged();
 		notifyObservers(casillas);

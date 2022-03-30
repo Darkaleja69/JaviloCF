@@ -7,14 +7,15 @@ public class Label extends JLabel{
 	private int y;
 	
 	public Label(int pX,int pY) {
+		super();
 		x=pX;
 		y=pY;
 	}
-	public int getX() {
+	public int getCoordX() {
 		return x;
 	}
 	
-	public int getY() {
+	public int getCoordY() {
 		return y;
 	}
 }

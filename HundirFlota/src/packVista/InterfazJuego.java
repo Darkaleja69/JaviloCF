@@ -6,13 +6,13 @@ import java.awt.EventQueue;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import packModelo.Casilla;
+import packModelo.GestorJuego;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -26,7 +26,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 public class InterfazJuego extends JFrame implements Observer {
 	
@@ -129,10 +128,6 @@ public class InterfazJuego extends JFrame implements Observer {
 			Acciones.add(getDisparar());
 		}
 		return Acciones;
-	}
-	
-	private Iterator<Label> getItr(){
-		return (this.listaLJug.iterator());
 	}
 	
 	private void crearJLabels(JPanel p1, JPanel p2)
@@ -280,47 +275,14 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	
 	private class Controler implements MouseListener  {
-		
-		public void actionPerformed (ActionEvent e){
-			JRadioButton boton=(JRadioButton)g.getSelection();
-			
-			if(boton.equals(Horizontal)) {
-				
-			}else if(boton.equals(Vertical)) 
-			{
-				//Vertical
-				
-			}else if(boton.equals(Destructor)) {
-				
-				//Barco a elegir Destructor
-			}else if(boton.equals(Submarino)) {
-				
-			}else if(boton.equals(Fragata)) {
-				System.out.println("Fragata");
-			}else if(boton.equals(Portaviones)) {
-				
-				
-			}
-
-		}
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			Label l = (Label) e.getSource();
-			int x = l.getX();
-			int y = l.getY();
+			int x = l.getCoordX();
+			int y = l.getCoordY();
 			
-			if(Vertical.isSelected())
-			{
-				//TODO
-			}
-			if(Horizontal.isSelected())
-			{
-				if(Fragata.isSelected()) 
-				{
-					
-				}
-			}
+			GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y);
 			
 		}
 
