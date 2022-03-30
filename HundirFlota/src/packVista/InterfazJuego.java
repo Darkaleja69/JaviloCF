@@ -142,10 +142,12 @@ public class InterfazJuego extends JFrame implements Observer {
             for(int j = 0; j < 10; j++)
             {	JLabel label1=clb();
             	JLabel label2=clb();
-            	listaLJug.add(label1);
-            	listaLPC.add(label2);
+            	System.out.println(label1);
                 p1.add(label1, BorderLayout.CENTER,i*10+j);
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
+                System.out.println();
+                listaLJug.add(label1);
+            	listaLPC.add(label2);
             }
         }
     }
@@ -306,9 +308,11 @@ public class InterfazJuego extends JFrame implements Observer {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			int coord = InterfazJuego.getMiInterfazJuego().listaLJug.indexOf(e.getSource());
+			int coord = InterfazJuego.getMiInterfazJuego().listaLJug.indexOf((JLabel) e.getSource());
 			//int x = coord/10;
 			//int y = coord % 10;
+			System.out.println(e.getSource());
+			System.out.println(InterfazJuego.getMiInterfazJuego().listaLJug.get(0));
 			System.out.println(coord);
 			
 			if(Vertical.isSelected())
