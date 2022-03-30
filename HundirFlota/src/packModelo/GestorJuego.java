@@ -14,7 +14,7 @@ public class GestorJuego extends Observable {
 	}
 	
 	//Metodos
-	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud, boolean pEsJugador)
+	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
 		Casilla[] casillas = new Casilla[4];
 		boolean esjugador;

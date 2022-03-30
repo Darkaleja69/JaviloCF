@@ -135,8 +135,8 @@ public class InterfazJuego extends JFrame implements Observer {
         for(int i = 0; i < 10; i++)
         {
             for(int j = 0; j < 10; j++)
-            {	Label label1=clb(i, j);
-            	Label label2=clb(i, j);
+            {	Label label1=clb(i, j, true);
+            	Label label2=clb(i, j, false);
                 p1.add(label1, BorderLayout.CENTER,i*10+j);
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
                 listaLJug.add(label1);
@@ -145,9 +145,9 @@ public class InterfazJuego extends JFrame implements Observer {
         }
     }
 	
-    private Label clb(int pX, int pY)
+    private Label clb(int pX, int pY, boolean pEsJugador)
     {	
-        Label lbl = new Label(pX, pY);
+        Label lbl = new Label(pX, pY, pEsJugador);
         lbl.setBorder(BorderFactory.createLineBorder(Color.white));
         lbl.setOpaque(true);
         lbl.setBackground(Color.cyan);
@@ -279,15 +279,30 @@ public class InterfazJuego extends JFrame implements Observer {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			Label l = (Label) e.getSource();
+			
+			
 			int x = l.getCoordX();
 			int y = l.getCoordY();
+			int longitud;
 			
 			if(Fragata.isSelected())
 			{
-				
+				longitud = 1;
+			}
+			if(Destructor.isSelected())
+			{
+				longitud = 2;
+			}
+			if(Submarino.isSelected())
+			{
+				longitud = 3;
+			}
+			else
+			{
+				longitud = 4;
 			}
 			
-			GestorJuego.getMiGestorJuego().colocarBarcos(x, y, longitud, Horizontal.isSelected());
+			GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
 			
 		}
 
