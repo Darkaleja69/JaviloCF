@@ -140,26 +140,24 @@ public class InterfazJuego extends JFrame implements Observer {
         for(int i = 0; i < 10; i++)
         {
             for(int j = 0; j < 10; j++)
-            {	JLabel label1=clb();
-            	JLabel label2=clb();
-            	System.out.println(label1);
+            {	JLabel label1=clb(i, j);
+            	JLabel label2=clb(i, j);
                 p1.add(label1, BorderLayout.CENTER,i*10+j);
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
-                System.out.println();
                 listaLJug.add(label1);
             	listaLPC.add(label2);
             }
         }
     }
 	
-    private JLabel clb()
+    private Label clb(int pX, int pY)
     {	
-        JLabel lblNewLabel = new JLabel();
-        lblNewLabel.setBorder(BorderFactory.createLineBorder(Color.white));
-        lblNewLabel.setOpaque(true);
-        lblNewLabel.setBackground(Color.cyan);
-        lblNewLabel.addMouseListener(getControler());
-        return lblNewLabel;
+        Label lbl = new Label(pX, pY);
+        lbl.setBorder(BorderFactory.createLineBorder(Color.white));
+        lbl.setOpaque(true);
+        lbl.setBackground(Color.cyan);
+        lbl.addMouseListener(getControler());
+        return lbl;
     }
 
 	private JPanel getSelecBarco() {
@@ -308,12 +306,7 @@ public class InterfazJuego extends JFrame implements Observer {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			int coord = InterfazJuego.getMiInterfazJuego().listaLJug.indexOf((JLabel) e.getSource());
-			//int x = coord/10;
-			//int y = coord % 10;
-			System.out.println(e.getSource());
-			System.out.println(InterfazJuego.getMiInterfazJuego().listaLJug.get(0));
-			System.out.println(coord);
+			int x = (Label) e.getSource().getX();
 			
 			if(Vertical.isSelected())
 			{
