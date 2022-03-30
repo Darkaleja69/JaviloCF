@@ -8,7 +8,7 @@ public class Tablero {
 	
 	private static Tablero miTablero;
 	private Casilla[][] tableroJugador;
-	private Casilla[][] tableroCPU;
+	private Casilla[][] tableroC
 	
 	//Constructora MAE
 	private Tablero(int pFil, int pCol) 
@@ -47,6 +47,28 @@ public class Tablero {
 	
 		return valido;
 	
+	}
+	
+	public boolean todoValido(int pFila, int pCol, int pTam, boolean esJugador, boolean pHorizontal)
+	{
+		boolean valido=true;
+		if(pHorizontal)
+		{
+			while(pCol<=pCol+pTam && valido)
+			{
+				valido=this.valido(pFila, pCol, esJugador);
+				pCol++;
+			}
+		}
+		else
+		{
+			while(pFila<=pFila+pTam && valido)
+			{
+				valido=this.valido(pFila, pCol, esJugador);
+				pCol++;
+			}
+		}
+		return valido;
 	}
 	
 	public void colocarBarco(Barco pBarco,int pFila,int pCol) {
