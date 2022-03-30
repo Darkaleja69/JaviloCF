@@ -135,21 +135,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		return (this.listaLJug.iterator());
 	}
 	
-	private int buscarJLabel(JLabel pLabel) {
-		int cont=0;
-		Iterator<JLabel> itr=this.getItr();
-		boolean enc=false;
-		while(itr.hasNext() && !enc) 
-		{
-			JLabel x=itr.next();
-			if(x == pLabel) 
-			{
-				enc=true;
-			}
-			cont++;
-		}
-		return cont;
-	}
 	private void crearJLabels(JPanel p1, JPanel p2)
     {	
         for(int i = 0; i < 10; i++)
@@ -163,6 +148,7 @@ public class InterfazJuego extends JFrame implements Observer {
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
             }
         }
+        System.out.println("hola");
     }
 	
     private JLabel clb()
@@ -309,7 +295,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			JLabel labelClicado = (JLabel) e.getSource();
-			int coord =InterfazJuego.getMiInterfazJuego().buscarJLabel(labelClicado);
+			int coord = InterfazJuego.getMiInterfazJuego().listaLJug.indexOf(labelClicado);
 			//int x = coord/10;
 			//int y = coord % 10;
 			System.out.println(coord);
