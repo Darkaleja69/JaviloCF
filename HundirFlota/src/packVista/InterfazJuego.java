@@ -293,8 +293,7 @@ public class InterfazJuego extends JFrame implements Observer {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			JLabel labelClicado = (JLabel) e.getSource();
-			int coord = InterfazJuego.getMiInterfazJuego().listaLJug.indexOf(labelClicado);
+			int coord = InterfazJuego.getMiInterfazJuego().listaLJug.indexOf(e.getSource());
 			//int x = coord/10;
 			//int y = coord % 10;
 			System.out.println(coord);
