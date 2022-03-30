@@ -48,8 +48,8 @@ public class InterfazJuego extends JFrame implements Observer {
 	private ButtonGroup g2 =new ButtonGroup();
 	private JLabel lblNewLabel;
 	private JRadioButton Disparar;
-	private ArrayList<JLabel> listaLJug;
-	private ArrayList<JLabel> listaLPC;
+	private ArrayList<Label> listaLJug;
+	private ArrayList<Label> listaLPC;
 	private Controler controler = null;
 
 	/**
@@ -72,8 +72,8 @@ public class InterfazJuego extends JFrame implements Observer {
 	 * Create the frame.
 	 */
 	public InterfazJuego() {
-		listaLJug=new ArrayList<JLabel>();
-		listaLPC=new ArrayList<JLabel>();
+		listaLJug=new ArrayList<Label>();
+		listaLPC=new ArrayList<Label>();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -131,7 +131,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		return Acciones;
 	}
 	
-	private Iterator<JLabel> getItr(){
+	private Iterator<Label> getItr(){
 		return (this.listaLJug.iterator());
 	}
 	
@@ -140,8 +140,8 @@ public class InterfazJuego extends JFrame implements Observer {
         for(int i = 0; i < 10; i++)
         {
             for(int j = 0; j < 10; j++)
-            {	JLabel label1=clb(i, j);
-            	JLabel label2=clb(i, j);
+            {	Label label1=clb(i, j);
+            	Label label2=clb(i, j);
                 p1.add(label1, BorderLayout.CENTER,i*10+j);
                 p2.add(label2, BorderLayout.CENTER,i*10+j);
                 listaLJug.add(label1);
@@ -306,7 +306,9 @@ public class InterfazJuego extends JFrame implements Observer {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			int x = (Label) e.getSource().getX();
+			Label l = (Label) e.getSource();
+			int x = l.getX();
+			int y = l.getY();
 			
 			if(Vertical.isSelected())
 			{
