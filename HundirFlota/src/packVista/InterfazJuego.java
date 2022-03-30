@@ -282,7 +282,12 @@ public class InterfazJuego extends JFrame implements Observer {
 			int x = l.getCoordX();
 			int y = l.getCoordY();
 			
-			GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y);
+			if(Fragata.isSelected())
+			{
+				
+			}
+			
+			GestorJuego.getMiGestorJuego().colocarBarcos(x, y, longitud, Horizontal.isSelected());
 			
 		}
 

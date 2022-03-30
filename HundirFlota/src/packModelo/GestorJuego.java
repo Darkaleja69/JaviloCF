@@ -18,7 +18,7 @@ public class GestorJuego extends Observable {
 	{
 		Casilla[] casillas = new Casilla[4];
 		boolean esjugador;
-		if(Tablero.getTablero().todoValido(pX, pY, pLongitud, pEsJugador, pHorizontal))
+		if(Tablero.getTablero().todoValido(pX, pY, pLongitud, true, pHorizontal))
 		{
 			
 		}
