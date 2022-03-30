@@ -139,9 +139,11 @@ public class InterfazJuego extends JFrame implements Observer {
 		int cont=0;
 		Iterator<JLabel> itr=this.getItr();
 		boolean enc=false;
-		while(itr.hasNext() && !enc) {
+		while(itr.hasNext() && !enc) 
+		{
 			JLabel x=itr.next();
-			if(x.equals(pLabel)) {
+			if(x == pLabel) 
+			{
 				enc=true;
 			}
 			cont++;
