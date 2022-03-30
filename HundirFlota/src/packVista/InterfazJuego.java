@@ -292,6 +292,13 @@ public class InterfazJuego extends JFrame implements Observer {
 			}else if(boton.equals(Destructor)) {
 				
 				//Barco a elegir Destructor
+			}else if(boton.equals(Submarino)) {
+				
+			}else if(boton.equals(Fragata)) {
+				System.out.println("Fragata");
+			}else if(boton.equals(Portaviones)) {
+				
+				
 			}
 
 		}
