@@ -8,7 +8,7 @@ public class Tablero {
 	
 	private static Tablero miTablero;
 	private Casilla[][] tableroJugador;
-	private Casilla[][] tableroC
+	private Casilla[][] tableroCPU;
 	
 	//Constructora MAE
 	private Tablero(int pFil, int pCol) 
@@ -32,6 +32,7 @@ public class Tablero {
 	}
 		
 	}
+	
 	
 	public boolean valido(int pFila,int pCol,boolean esJugador)
 	{	boolean valido=true;
@@ -72,6 +73,27 @@ public class Tablero {
 	}
 	
 	public void colocarBarco(Barco pBarco,int pFila,int pCol) {
+		Casilla pCasilla = getCasilla(pFila, pCol);
+		pCasilla.colocarBarco(pBarco);
+		
+	}
+	
+	public Casilla getCasilla(int pFila, int pCol) {
+		
+		return(this.tableroJugador[pFila][pCol]);
+	}
+	
+	public void bombardear(int fila, int col) {
+		Casilla pCasilla = getCasilla(fila, col);
+		pCasilla.bombardear();
+		
+		if (pCasilla.tieneBarco()) {
+			Barco pBarco = pCasilla.getBarco();
+			
+		}
+		
+		
+		
 		
 	}
 	

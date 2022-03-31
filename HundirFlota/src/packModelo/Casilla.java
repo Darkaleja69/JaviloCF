@@ -27,7 +27,9 @@ public class Casilla {
 		return tieneBomba;
 	}
 	
-	// public void bombardear()
+	public void bombardear() {
+		tieneBomba = true;
+	}
 	
 	public void colocarBarco(Barco pBarco) {
 		
