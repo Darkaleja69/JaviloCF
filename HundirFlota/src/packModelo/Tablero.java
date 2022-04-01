@@ -15,6 +15,7 @@ public class Tablero {
 	{
 		this.tableroJugador = new Casilla[pFil][pCol];
 		this.tableroCPU = new Casilla[pFil][pCol];
+		this.crearCasillas();
 	}
 	public static Tablero getTablero()
 	{
@@ -26,8 +27,23 @@ public class Tablero {
 	}
 	
 	//M�todos
+	private void crearCasillas()
+	{
+		for(int i = 0; i < 10; i++)
+		{
+			for(int j = 0; j < 10; j++)
+			{
+				Casilla c = new Casilla(i, j, true);
+				this.tableroJugador[i][j] = c;
+				c = new Casilla(i, j, false);
+				this.tableroCPU[i][j] = c;
+			}
+		}
+	}
+	
 	public void bombardearCasilla(Casilla pCasilla,boolean esJugador)
-	{	if(esJugador) {
+	{	
+		if(esJugador) {
 		
 	}
 		
@@ -35,7 +51,8 @@ public class Tablero {
 	
 	
 	public boolean valido(int pFila,int pCol,boolean esJugador)
-	{	boolean valido=true;
+	{	
+		boolean valido=true;
 		if(esJugador) {
 			if(!(tableroJugador[pFila-1][pCol].getBarco()==null && tableroJugador[pFila][pCol-1].getBarco()==null && tableroJugador[pFila][pCol+1].getBarco()==null && tableroJugador[pFila+1][pCol].getBarco()==null)) {
 					valido=false;
@@ -45,28 +62,38 @@ public class Tablero {
 				valido=false;
 			}
 		}
-	
+		System.out.println(valido);
 		return valido;
-	
 	}
 	
 	public boolean todoValido(int pFila, int pCol, int pTam, boolean esJugador, boolean pHorizontal)
 	{
-		boolean valido=true;
+		boolean valido = true;
+		int i;
 		if(pHorizontal)
 		{
-			while(pCol<=pCol+pTam && valido)
+			i = pCol;
+			while(i <= pCol + pTam - 1 && valido)
 			{
-				valido=this.valido(pFila, pCol, esJugador);
-				pCol++;
+				valido = this.valido(pFila, i, esJugador);
+				i++;
+				if(i > 10)
+				{
+					valido = false;
+				}
 			}
 		}
 		else
 		{
-			while(pFila<=pFila+pTam && valido)
+			i = pFila;
+			while(i <= pFila + pTam -1 && valido)
 			{
-				valido=this.valido(pFila, pCol, esJugador);
-				pCol++;
+				valido = this.valido(i, pCol, esJugador);
+				i++;
+				if(i > 10)
+				{
+					valido = false;
+				}
 			}
 		}
 		return valido;

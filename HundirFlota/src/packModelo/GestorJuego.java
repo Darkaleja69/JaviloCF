@@ -16,8 +16,9 @@ public class GestorJuego extends Observable {
 	//Metodos
 	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
-		Casilla[] casillas = new Casilla[4];
+		Casilla[] casillas = new Casilla[pLongitud];
 		boolean esjugador;
+		System.out.println(pLongitud);
 		if(Tablero.getTablero().todoValido(pX, pY, pLongitud, true, pHorizontal))
 		{
 			
@@ -25,7 +26,7 @@ public class GestorJuego extends Observable {
 		
 		//actualizar vista
 		setChanged();
-		notifyObservers(casillas);
+		notifyObservers();
 	}
 	
 }

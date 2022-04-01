@@ -289,11 +289,11 @@ public class InterfazJuego extends JFrame implements Observer {
 			{
 				longitud = 1;
 			}
-			if(Destructor.isSelected())
+			else if(Destructor.isSelected())
 			{
 				longitud = 2;
 			}
-			if(Submarino.isSelected())
+			else if(Submarino.isSelected())
 			{
 				longitud = 3;
 			}
