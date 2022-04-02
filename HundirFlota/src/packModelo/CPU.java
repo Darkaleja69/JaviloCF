@@ -52,8 +52,8 @@ public class CPU {
 		int y = 0;
 		Random num = new Random();
 		while(!posible) {
-			x=num.nextInt();
-			y=num.nextInt();
+			x=num.nextInt(9);
+			y=num.nextInt(9);
 			posible=!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 
 		}
