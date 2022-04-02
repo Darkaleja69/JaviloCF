@@ -20,7 +20,6 @@ public class Juego {
 	}
 	
 	private void inicializarPartida() {
-		CPU.getMiCPU().colocarBarcos();
 		Jugador.getJugador().colocarBarcos();
 	}
 	
