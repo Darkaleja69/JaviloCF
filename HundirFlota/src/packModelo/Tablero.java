@@ -169,18 +169,14 @@ public class Tablero {
 		
 	}
 	
-	public void bombardear(int fila, int col) {
-		//Casilla pCasilla = getCasilla(fila, col);
-		//pCasilla.bombardear();
+	public ArrayList<Casilla> bombardear(int fila, int col,boolean pJug) {
+		ArrayList<Casilla> array = new ArrayList<Casilla>();
+		Casilla pCasilla = getCasilla(fila, col,pJug);
+		pCasilla.bombardear();
 		
-	//	if (pCasilla.tieneBarco()) {
-		//	 = pCasilla.getBarco();
-			
-		}
-		
-		
-		
-		
+		array.add(pCasilla);
+		return array;
 	}
 	
 
+}

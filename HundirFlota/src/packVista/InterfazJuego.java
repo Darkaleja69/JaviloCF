@@ -288,38 +288,56 @@ public class InterfazJuego extends JFrame implements Observer {
 			}
 		}
 		
+		
+	}
+	private JRadioButton getEsperar() {
+		if (Esperar == null) {
+			Esperar = new JRadioButton("Esperar");
+		}
+		return Esperar;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+		}
+		return panel;
 	}
 	
 	private class Controler implements MouseListener  {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			Label l = (Label) e.getSource();
-			
-			
-			int x = l.getCoordX();
-			int y = l.getCoordY();
-			int longitud;
-			
-			if(Fragata.isSelected())
-			{
-				longitud = 1;
+			if(!(GestorJuego.getMiGestorJuego().barcosColocados())) {
+				Label l = (Label) e.getSource();
+				int x = l.getCoordX();
+				int y = l.getCoordY();
+				int longitud;
+				
+				if(Fragata.isSelected())
+				{
+					longitud = 1;
+				}
+				else if(Destructor.isSelected())
+				{
+					longitud = 2;
+				}
+				else if(Submarino.isSelected())
+				{
+					longitud = 3;
+				}
+				else
+				{
+					longitud = 4;
+				}
+				
+				GestorJuego.getMiGestorJuego().colocarBarcosJug(Horizontal.isSelected(), x, y, longitud);
+				
+			}else {
+				Label l = (Label) e.getSource();
+				int x = l.getCoordX();
+				int y = l.getCoordY();
+				GestorJuego.getMiGestorJuego().disparar(x, y);
 			}
-			else if(Destructor.isSelected())
-			{
-				longitud = 2;
-			}
-			else if(Submarino.isSelected())
-			{
-				longitud = 3;
-			}
-			else
-			{
-				longitud = 4;
-			}
-			
-			GestorJuego.getMiGestorJuego().colocarBarcosJug(Horizontal.isSelected(), x, y, longitud);
-			
 			
 		}
 
@@ -351,16 +369,5 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 
    
-	private JRadioButton getEsperar() {
-		if (Esperar == null) {
-			Esperar = new JRadioButton("Esperar");
-		}
-		return Esperar;
-	}
-	private JPanel getPanel() {
-		if (panel == null) {
-			panel = new JPanel();
-		}
-		return panel;
-	}
+	
 }

@@ -54,11 +54,10 @@ public class CPU {
 		while(!posible) {
 			x=num.nextInt();
 			y=num.nextInt();
-			if(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
-			
-			
+			posible=!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
+
 		}
-		
+		return (Tablero.getTablero().bombardear(x, y,true));
 		
 		
 	}

@@ -25,4 +25,19 @@ public class ListaBarcos {
 		}
 		return (5 == pLong + cont);
 	}
+	
+	public boolean comprobarFin() {
+		boolean fin=true;
+		for(Barco b: lista) {
+			if(!(b.estaHundido())) {
+				fin=false;
+				break;
+			}
+		}
+		return fin;
+	}
+	
+	public boolean lleno() {
+		return(this.lista.size()==10);
+	}
 }
