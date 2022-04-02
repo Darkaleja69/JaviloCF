@@ -42,7 +42,7 @@ public class Casilla {
 	
 	public boolean tieneBarco()
 	{
-		return !this.barco.equals(null);
+		return (!(this.barco==null));
 	}
 	
 	public boolean esJugador()
