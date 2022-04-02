@@ -54,7 +54,7 @@ public class CPU {
 		while(!posible) {
 			x=num.nextInt();
 			y=num.nextInt();
-			if(Tablero.getTablero().getCasilla(x, y, true)casillas.);
+			if(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 			
 			
 		}
