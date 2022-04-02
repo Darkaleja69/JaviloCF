@@ -47,11 +47,17 @@ public class CPU {
 	
 	public ArrayList<Casilla> disparar(){
 		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
-		
+		boolean posible=false;
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
-		
+		while(!posible) {
+			x=num.nextInt();
+			y=num.nextInt();
+			if(Tablero.getTablero().getCasilla(x, y, true)casillas.);
+			
+			
+		}
 		
 		
 		
