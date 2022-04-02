@@ -31,12 +31,21 @@ public class GestorJuego extends Observable {
 				Barco b = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
 				lBarcJugador.anadirBarco(b);
 				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal,true);
-				casillas.addAll(CPU.getMiCPU().colocarBarco(pLongitud));
+				CPU.getMiCPU().colocarBarco(pLongitud);
 			}
 			//actualizar vista
 			setChanged();
 			notifyObservers(casillas);
 		}
+	}
+	
+	public void disparar(int pX,int pY) {
+		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
+		
+		
+		
+		setChanged();
+		notifyObservers(casillas);
 	}
 	
 	

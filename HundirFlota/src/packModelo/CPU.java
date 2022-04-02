@@ -44,4 +44,16 @@ public class CPU {
 			return casillas;
 		
 	}
+	
+	public ArrayList<Casilla> disparar(){
+		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
+		
+		int x = 0;
+		int y = 0;
+		Random num = new Random();
+		
+		
+		
+		
+	}
 }

@@ -45,11 +45,14 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JRadioButton Horizontal;
 	private ButtonGroup g =new ButtonGroup();
 	private ButtonGroup g2 =new ButtonGroup();
+	private ButtonGroup g3=new ButtonGroup();
 	private JLabel lblNewLabel;
 	private JRadioButton Disparar;
 	private ArrayList<Label> listaLJug;
 	private ArrayList<Label> listaLPC;
 	private Controler controler = null;
+	private JRadioButton Esperar;
+	private JPanel panel;
 
 	/**
 	 * Launch the application.
@@ -90,6 +93,8 @@ public class InterfazJuego extends JFrame implements Observer {
 		g2.add(Submarino);
 		g2.add(Portaviones);
 		g2.add(Destructor);
+		g3.add(Esperar);
+		g3.add(Disparar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 	}
 	
@@ -126,7 +131,9 @@ public class InterfazJuego extends JFrame implements Observer {
 			Acciones = new JPanel();
 			Acciones.setLayout(new GridLayout(2, 1, 0, 0));
 			Acciones.add(getLblNewLabel());
+			Acciones.add(getPanel());
 			Acciones.add(getDisparar());
+			Acciones.add(getEsperar());
 		}
 		return Acciones;
 	}
@@ -344,4 +351,16 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 
    
+	private JRadioButton getEsperar() {
+		if (Esperar == null) {
+			Esperar = new JRadioButton("Esperar");
+		}
+		return Esperar;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+		}
+		return panel;
+	}
 }
