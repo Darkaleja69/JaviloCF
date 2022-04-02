@@ -1,5 +1,6 @@
 package packModelo;
 
+import java.util.ArrayList;
 import java.util.Observer;
 
 public class Tablero {
@@ -50,19 +51,52 @@ public class Tablero {
 	}
 	
 	
-	public boolean valido(int pFila,int pCol,boolean esJugador)
+	private boolean valido(int pFila, int pCol, boolean esJugador, int pCont)
 	{	
-		boolean valido=true;
-		if(esJugador) {
-			if(!(tableroJugador[pFila-1][pCol].getBarco()==null && tableroJugador[pFila][pCol-1].getBarco()==null && tableroJugador[pFila][pCol+1].getBarco()==null && tableroJugador[pFila+1][pCol].getBarco()==null)) {
-					valido=false;
-			}
-		}else {
-			if(!(tableroCPU[pFila-1][pCol].getBarco()==null && tableroCPU[pFila][pCol-1].getBarco()==null && tableroCPU[pFila][pCol+1].getBarco()==null && tableroCPU[pFila+1][pCol].getBarco()==null)) {
-				valido=false;
-			}
+		boolean valido = true;
+		
+		if(esJugador)
+		{
+			for(int i = pFila -1; i <= pFila + 1; i++)
+			{
+				for(int j = pCol - 1; j <= pCol + 1; j++)
+				{
+					if(i > 9 || j > 9 || i < 0 || j < 0)
+					{
+						
+					}
+					else
+					{
+						if(this.tableroJugador[i][j].getBarco() != null) 
+						{
+							valido = false;
+						}
+					}
+				}
+			}	
 		}
-		System.out.println(valido);
+		
+		else
+		{
+			for(int i = pFila -1; i <= pFila + 1; i++)
+			{
+				for(int j = pCol - 1; j <= pCol + 1; j++)
+				{
+					if(i > 9 || j > 9 || i < 0 || j < 0)
+					{
+						
+					}
+					else
+					{
+						if(this.tableroCPU[i][j].getBarco() != null) 
+						{
+							valido = false;
+						}
+					}
+				}
+			}	
+		}
+		
 		return valido;
 	}
 	
@@ -73,36 +107,57 @@ public class Tablero {
 		if(pHorizontal)
 		{
 			i = pCol;
+			if(i + pTam -1 > 9)
+			{
+				valido = false;
+			}
+			
+			//Si válido es false, no se alcanza al while
 			while(i <= pCol + pTam - 1 && valido)
 			{
-				valido = this.valido(pFila, i, esJugador);
+				valido = this.valido(pFila, i, esJugador, 0);
 				i++;
-				if(i > 10)
-				{
-					valido = false;
-				}
 			}
 		}
 		else
 		{
 			i = pFila;
+			if(i + pTam -1 > 9)
+			{
+				valido = false;
+			}
+			
 			while(i <= pFila + pTam -1 && valido)
 			{
-				valido = this.valido(i, pCol, esJugador);
+				valido = this.valido(i, pCol, esJugador, 0);
 				i++;
-				if(i > 10)
-				{
-					valido = false;
-				}
 			}
 		}
 		return valido;
 	}
 	
-	public void colocarBarco(Barco pBarco,int pFila,int pCol) {
-		Casilla pCasilla = getCasilla(pFila, pCol);
-		pCasilla.colocarBarco(pBarco);
-		
+	public ArrayList<Casilla> colocarBarco(Barco pBarco,int pFila,int pCol, int pLongitud, boolean pHorizontal) 
+	{
+		ArrayList<Casilla> array = new ArrayList<Casilla>();
+		if(pHorizontal)
+		{
+			for(int i = pCol; i < pLongitud + pCol; i++)
+			{
+				Casilla c = getCasilla(pFila, i);
+				c.colocarBarco(pBarco);
+				array.add(c);
+			}
+		}
+		else
+		{
+			for(int i = pFila; i < pLongitud + pFila; i++)
+			{
+				Casilla c = getCasilla(i, pCol);
+				c.colocarBarco(pBarco);
+				array.add(c);
+			}
+		}
+		return array;
 	}
 	
 	public Casilla getCasilla(int pFila, int pCol) {

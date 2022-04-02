@@ -90,6 +90,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g2.add(Submarino);
 		g2.add(Portaviones);
 		g2.add(Destructor);
+		GestorJuego.getMiGestorJuego().addObserver(this);
 	}
 	
 	public static InterfazJuego getMiInterfazJuego() {
@@ -224,7 +225,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		return Disparar;
 	}
 	
-	private JLabel obtJLabel(int pPos, boolean pJug)
+	private Label obtJLabel(int pPos, boolean pJug)
 	{
 		if(pJug)
 		{
@@ -244,34 +245,42 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	
 	public void update(Observable arg0, Object arg1) {
-		Casilla c = (Casilla) arg1;
-		int pos = (c.getFila() * 10) + c.getColumna();
-		boolean esJ = c.esJugador();
 		
-		JLabel lbl = this.obtJLabel(pos, esJ);
-		
-		if(c.tieneBarco())
+		//si se trata de GestorJuego
+		if(arg0 instanceof GestorJuego)
 		{
-			if(c.estaTocada())
+			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
+			for(int i = 0; i < casillas.size(); i++)
 			{
-				lblNewLabel.setBackground(Color.red);
-			}
-			else
-			{
-				lblNewLabel.setBackground(Color.gray);
+				Casilla c = casillas.get(i);
+				int pos = (c.getFila() * 10) + c.getColumna();
+				boolean esJ = c.esJugador();
+				Label lbl = this.obtJLabel(pos, esJ);
+				if(c.tieneBarco())
+				{
+					if(c.estaTocada())
+					{
+						lbl.setBackground(Color.red);
+					}
+					else
+					{
+						lbl.setBackground(Color.gray);
+					}
+				}
+				else
+				{
+					if(c.estaTocada())
+					{
+						lbl.setBackground(Color.blue);
+					}
+					else
+					{
+						lbl.setBackground(Color.cyan);
+					}
+				}
 			}
 		}
-		else
-		{
-			if(c.estaTocada())
-			{
-				lblNewLabel.setBackground(Color.blue);
-			}
-			else
-			{
-				lblNewLabel.setBackground(Color.cyan);
-			}
-		}
+		
 	}
 	
 	private class Controler implements MouseListener  {

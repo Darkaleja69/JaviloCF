@@ -10,7 +10,8 @@ public abstract class Barco {
 	public Barco(int pLongitud) {
 		longitud = pLongitud;
 		vidas = pLongitud;
-		for(int i = 0; i<longitud -1 ;i++){
+		tocado = new boolean[pLongitud];
+		for(int i = 0; i < longitud; i++){
 			tocado[i] = false;
 		}
 		//pedir coordenadas
@@ -57,9 +58,11 @@ public abstract class Barco {
 		
 		this.tocado[pos] = true;
 		
-	}
-		
-		
+	}	
 	
+	public int getLongitud()
+	{
+		return this.longitud;
+	}
 	
 }

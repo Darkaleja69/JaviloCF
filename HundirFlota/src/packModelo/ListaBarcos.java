@@ -12,4 +12,17 @@ public class ListaBarcos {
 	public void anadirBarco(Barco pBarco) {
 		this.lista.add(pBarco);
 	}
+	
+	public boolean hayDemasiados(int pLong)
+	{
+		int cont = 0;
+		for(Barco b : lista)
+		{
+			if(b.getLongitud() == pLong)
+			{
+				cont++;
+			}
+		}
+		return (5 == pLong + cont);
+	}
 }
