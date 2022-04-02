@@ -1,5 +1,6 @@
 package packModelo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class CPU {
@@ -23,63 +24,24 @@ public class CPU {
 	/*
 	 * ESTO SE DEBE REVISAR
 	 */
-	public void colocarBarcos() 
-	{
+	public ArrayList<Casilla> colocarBarco(int pLongitud) 
+	{	ArrayList<Casilla> casillas=new ArrayList<Casilla>();
+		boolean horizontal=false;
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
 		boolean posible = false;
-		for(int i = 0; i <= 3; i++) 
-		{
-			Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(1);
+			Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
 			listaB.anadirBarco(bar);
 			while(!posible) 
 			{
 				x = num.nextInt(9);
 				y = num.nextInt(9);
-				posible = Tablero.getTablero().todoValido(x, y, 1, false, true);
+				horizontal=num.nextBoolean();
+				posible = Tablero.getTablero().todoValido(x, y, pLongitud, false, horizontal);
 			}
-			
-			posible=false;
-			//Tablero.getTablero().colocarBarco(bar, x, y);
-		}
+			casillas=Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
+			return casillas;
 		
-		for(int i=0;i<=2;i++) 
-		{
-			Barco bar=FactoryBarcos.getMiFactoryBarcos().crearBarco(2);
-			listaB.anadirBarco(bar);
-			while(!posible) {
-				x = num.nextInt(9);
-				y = num.nextInt(9);
-				//posible=Tablero.getTablero().valido(x, y, false);
-			}
-			posible=false;
-			//Tablero.getTablero().colocarBarco(bar, x, y);
-		}
-		
-		for(int i=0; i<=1; i++) {
-			Barco bar=FactoryBarcos.getMiFactoryBarcos().crearBarco(3);
-			listaB.anadirBarco(bar);
-			while(!posible) 
-			{
-				x = num.nextInt(9);
-				y = num.nextInt(9);
-				//posible=Tablero.getTablero().valido(x, y, false);
-			}
-			posible = false;
-			//Tablero.getTablero().colocarBarco(bar, x, y);
-		}
-		
-		Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(4);
-		listaB.anadirBarco(bar);
-		while(!posible) 
-		{
-			x=num.nextInt(9);
-			y=num.nextInt(9);
-			//posible=Tablero.getTablero().valido(x, y, false);
-		}
-		posible=false;
-		//STablero.getTablero().colocarBarco(bar, x, y);
 	}
-
 }

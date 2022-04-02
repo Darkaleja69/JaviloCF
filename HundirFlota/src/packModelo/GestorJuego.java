@@ -6,10 +6,12 @@ import java.util.Observable;
 public class GestorJuego extends Observable {
 	private static GestorJuego miGestor;
 	private ListaBarcos lBarcJugador;
+	private ListaBarcos lBarcCPU;
 	
 	private GestorJuego() 
 	{
 		lBarcJugador = new ListaBarcos();
+		lBarcCPU= new ListaBarcos();
 	}
 	public static GestorJuego getMiGestorJuego() {
 		if (miGestor==null) {
@@ -18,20 +20,27 @@ public class GestorJuego extends Observable {
 	}
 	
 	//Metodos
-	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud)
+	public void colocarBarcosJug(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
 		if(!lBarcJugador.hayDemasiados(pLongitud))
 		{
 			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+			
 			if(Tablero.getTablero().todoValido(pX, pY, pLongitud, true, pHorizontal))
 			{
 				Barco b = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
 				lBarcJugador.anadirBarco(b);
-				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal);
+				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal,true);
+				casillas.addAll(CPU.getMiCPU().colocarBarco(pLongitud));
 			}
 			//actualizar vista
 			setChanged();
 			notifyObservers(casillas);
 		}
 	}
+	
+	
+	
+	
+	
 }

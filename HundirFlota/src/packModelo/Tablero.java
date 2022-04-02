@@ -112,7 +112,7 @@ public class Tablero {
 				valido = false;
 			}
 			
-			//Si válido es false, no se alcanza al while
+			//Si valido es false, no se alcanza al while
 			while(i <= pCol + pTam - 1 && valido)
 			{
 				valido = this.valido(pFila, i, esJugador, 0);
@@ -136,14 +136,14 @@ public class Tablero {
 		return valido;
 	}
 	
-	public ArrayList<Casilla> colocarBarco(Barco pBarco,int pFila,int pCol, int pLongitud, boolean pHorizontal) 
+	public ArrayList<Casilla> colocarBarco(Barco pBarco,int pFila,int pCol, int pLongitud, boolean pHorizontal,boolean pJug) 
 	{
 		ArrayList<Casilla> array = new ArrayList<Casilla>();
 		if(pHorizontal)
 		{
 			for(int i = pCol; i < pLongitud + pCol; i++)
 			{
-				Casilla c = getCasilla(pFila, i);
+				Casilla c = getCasilla(pFila, i,pJug);
 				c.colocarBarco(pBarco);
 				array.add(c);
 			}
@@ -152,7 +152,7 @@ public class Tablero {
 		{
 			for(int i = pFila; i < pLongitud + pFila; i++)
 			{
-				Casilla c = getCasilla(i, pCol);
+				Casilla c = getCasilla(i, pCol,pJug);
 				c.colocarBarco(pBarco);
 				array.add(c);
 			}
@@ -160,17 +160,21 @@ public class Tablero {
 		return array;
 	}
 	
-	public Casilla getCasilla(int pFila, int pCol) {
+	public Casilla getCasilla(int pFila, int pCol,boolean esJug) {
+		if(esJug) {
+			return(this.tableroJugador[pFila][pCol]);
+		}else {
+			return this.tableroCPU[pFila][pCol];
+		}
 		
-		return(this.tableroJugador[pFila][pCol]);
 	}
 	
 	public void bombardear(int fila, int col) {
-		Casilla pCasilla = getCasilla(fila, col);
-		pCasilla.bombardear();
+		//Casilla pCasilla = getCasilla(fila, col);
+		//pCasilla.bombardear();
 		
-		if (pCasilla.tieneBarco()) {
-			Barco pBarco = pCasilla.getBarco();
+	//	if (pCasilla.tieneBarco()) {
+		//	 = pCasilla.getBarco();
 			
 		}
 		
@@ -179,4 +183,4 @@ public class Tablero {
 		
 	}
 	
-}
+
