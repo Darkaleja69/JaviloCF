@@ -223,7 +223,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JLabel getLblNewLabel() {
 		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("Que quieres hacer?");
+			lblNewLabel = new JLabel("¿Qué quieres hacer?");
 		}
 		return lblNewLabel;
 	}
