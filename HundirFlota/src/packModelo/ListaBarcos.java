@@ -28,11 +28,9 @@ public class ListaBarcos {
 	
 	public boolean comprobarFin() {
 		boolean fin=true;
-		for(Barco b: lista) {
-			if(!(b.estaHundido())) {
-				fin=false;
-				break;
-			}
+		int i=0;
+		while(fin && i<10) {
+			fin=lista.get(i).estaHundido();
 		}
 		return fin;
 	}

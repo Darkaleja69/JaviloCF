@@ -44,17 +44,17 @@ public class GestorJuego extends Observable {
 		Casilla x=Tablero.getTablero().getCasilla(pX, pY, false);
 		casillas.add(x);
 		Tablero.getTablero().bombardear(pX, pY, false);
-		if(comprobarFin(false)) {
-			Casilla c=new Casilla(-1,-1,true);
-			casillas.add(c);
-		}else {
+		//if(comprobarFin(false)) {
+			//Casilla c=new Casilla(-1,-1,true);
+			//casillas.add(c);
+		//}else {
 			//Disparo CPU
-			casillas.addAll(CPU.getMiCPU().disparar());
-			if(comprobarFin(true)) {
-				Casilla c=new Casilla(-1,-1,false);
-				casillas.add(c);
-			}
-		}
+		casillas.addAll(CPU.getMiCPU().disparar());
+			//if(comprobarFin(true)) {
+				//Casilla c=new Casilla(-1,-1,false);
+				//casillas.add(c);
+			//}
+		
 		setChanged();
 		notifyObservers(casillas);
 	}

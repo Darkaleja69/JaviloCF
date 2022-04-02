@@ -53,6 +53,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private Controler controler = null;
 	private JRadioButton Esperar;
 	private JPanel panel;
+	private JLabel Finn;
 
 	/**
 	 * Launch the application.
@@ -96,6 +97,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Esperar);
 		g3.add(Disparar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
+		Finn.setVisible(false);
 	}
 	
 	public static InterfazJuego getMiInterfazJuego() {
@@ -262,31 +264,36 @@ public class InterfazJuego extends JFrame implements Observer {
 				Casilla c = casillas.get(i);
 				int pos = (c.getFila() * 10) + c.getColumna();
 				boolean esJ = c.esJugador();
-				Label lbl = this.obtJLabel(pos, esJ);
-				if(c.tieneBarco())
-				{
-					if(c.estaTocada())
+				if(!(c.getFila()==-1)){
+					Label lbl = this.obtJLabel(pos, esJ);
+					if(c.tieneBarco())
 					{
-						lbl.setBackground(Color.red);
+						if(c.estaTocada())
+						{
+							lbl.setBackground(Color.red);
+						}
+						else
+						{
+							lbl.setBackground(Color.gray);
+						}
 					}
 					else
 					{
-						lbl.setBackground(Color.gray);
+						if(c.estaTocada())
+						{
+							lbl.setBackground(Color.blue);
+						}
+						else
+						{
+							lbl.setBackground(Color.cyan);
+						}
 					}
-				}
-				else
-				{
-					if(c.estaTocada())
-					{
-						lbl.setBackground(Color.blue);
-					}
-					else
-					{
-						lbl.setBackground(Color.cyan);
-					}
+				}else {
+					Finn.setVisible(true);
 				}
 			}
 		}
+				
 		
 		
 	}
@@ -299,6 +306,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JPanel getPanel() {
 		if (panel == null) {
 			panel = new JPanel();
+			panel.add(getFinn());
 		}
 		return panel;
 	}
@@ -370,4 +378,10 @@ public class InterfazJuego extends JFrame implements Observer {
 
    
 	
+	private JLabel getFinn() {
+		if (Finn == null) {
+			Finn = new JLabel("FIN DEL JUEGO :)");
+		}
+		return Finn;
+	}
 }
