@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class ListaBarcos {
 	private ArrayList<Barco> lista;
 	
-	public ListaBarcos() {
+	public ListaBarcos() 
+	{
 		this.lista=new ArrayList<Barco>();
 	}
 	
-	public void anadirBarco(Barco pBarco) {
+	public void anadirBarco(Barco pBarco) 
+	{
 		this.lista.add(pBarco);
 	}
 	
@@ -29,14 +31,16 @@ public class ListaBarcos {
 	public boolean comprobarFin() {
 		boolean fin=true;
 		int i=0;
-		while(fin && i<10) {
+		while(fin && i<10) 
+		{
 			fin=lista.get(i).estaHundido();
 			i++;
 		}
 		return fin;
 	}
 	
-	public boolean lleno() {
+	public boolean lleno() 
+	{
 		return(this.lista.size()==10);
 	}
 }

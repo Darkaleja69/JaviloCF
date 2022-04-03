@@ -257,20 +257,22 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		
-		if((arg1 instanceof Boolean) && !(Boolean)arg1) {
+		if((arg1 instanceof Boolean) && !(Boolean)arg1) 
+		{
 		//si se trata de GestorJuego
 			Finn.setVisible(true);
 			fin=true;
-		if(arg0 instanceof GestorJuego && !(arg1 instanceof Boolean))
-		{	ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
-			for(int i = 0; i < casillas.size(); i++)
-			{
-				Casilla c = casillas.get(i);
-				int pos = (c.getFila() * 10) + c.getColumna();
-				boolean esJ = c.esJugador();
-	
-				Label lbl = this.obtJLabel(pos, esJ);
-				if(c.tieneBarco())
+			if(arg0 instanceof GestorJuego && !(arg1 instanceof Boolean))
+			{	
+				ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
+				for(int i = 0; i < casillas.size(); i++)
+				{
+					Casilla c = casillas.get(i);
+					int pos = (c.getFila() * 10) + c.getColumna();
+					boolean esJ = c.esJugador();
+		
+					Label lbl = this.obtJLabel(pos, esJ);
+					if(c.tieneBarco())
 					{
 						if(c.estaTocada())
 						{
@@ -292,10 +294,8 @@ public class InterfazJuego extends JFrame implements Observer {
 							lbl.setBackground(Color.cyan);
 						}
 					}
-			
 				}
-			}
-			
+			}	
 		}
 	}
 				
@@ -319,42 +319,45 @@ public class InterfazJuego extends JFrame implements Observer {
 	private class Controler implements MouseListener  {
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
-			if(!fin) {
-			Label l = (Label) e.getSource();
-			if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) {
-				
-				int x = l.getCoordX();
-				int y = l.getCoordY();
-				int longitud;
-				
-				if(Fragata.isSelected())
+		public void mouseClicked(MouseEvent e) 
+		{
+			if(!fin) 
+			{
+				Label l = (Label) e.getSource();
+				if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) 
 				{
-					longitud = 1;
-				}
-				else if(Destructor.isSelected())
-				{
-					longitud = 2;
-				}
-				else if(Submarino.isSelected())
-				{
-					longitud = 3;
-				}
-				else
-				{
-					longitud = 4;
-				}
-				
-				GestorJuego.getMiGestorJuego().colocarBarcosJug(Horizontal.isSelected(), x, y, longitud);
-				
-			}else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados() ){
+					int x = l.getCoordX();
+					int y = l.getCoordY();
+					int longitud;
 					
-				int x = l.getCoordX();
-				int y = l.getCoordY();
-				if(Disparar.isSelected()) {
-					GestorJuego.getMiGestorJuego().disparar(x, y);
+					if(Fragata.isSelected())
+					{
+						longitud = 1;
+					}
+					else if(Destructor.isSelected())
+					{
+						longitud = 2;
+					}
+					else if(Submarino.isSelected())
+					{
+						longitud = 3;
+					}
+					else
+					{
+						longitud = 4;
+					}
+					
+					GestorJuego.getMiGestorJuego().colocarBarcosJug(Horizontal.isSelected(), x, y, longitud);
 				}
-			}
+				else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados())
+				{	
+					int x = l.getCoordX();
+					int y = l.getCoordY();
+					if(Disparar.isSelected()) 
+					{
+						GestorJuego.getMiGestorJuego().disparar(x, y);
+					}
+				}
 			}	
 		}
 
@@ -388,7 +391,8 @@ public class InterfazJuego extends JFrame implements Observer {
    
 	
 	private JLabel getFinn() {
-		if (Finn == null) {
+		if (Finn == null) 
+		{
 			Finn = new JLabel("FIN DEL JUEGO :)");
 		}
 		return Finn;

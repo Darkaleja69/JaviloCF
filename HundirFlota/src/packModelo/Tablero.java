@@ -42,14 +42,6 @@ public class Tablero {
 		}
 	}
 	
-	public void bombardearCasilla(Casilla pCasilla,boolean esJugador)
-	{	
-		if(esJugador) {
-		
-	}
-		
-	}
-	
 	
 	private boolean valido(int pFila, int pCol, boolean esJugador, int pCont)
 	{	
@@ -84,7 +76,7 @@ public class Tablero {
 				{
 					if(i > 9 || j > 9 || i < 0 || j < 0)
 					{
-						
+						//no ocurre nada
 					}
 					else
 					{
@@ -161,9 +153,11 @@ public class Tablero {
 	}
 	
 	public Casilla getCasilla(int pFila, int pCol,boolean esJug) {
-		if(esJug) {
+		if(esJug) 
+		{
 			return(this.tableroJugador[pFila][pCol]);
-		}else {
+		}else 
+		{
 			return this.tableroCPU[pFila][pCol];
 		}
 		

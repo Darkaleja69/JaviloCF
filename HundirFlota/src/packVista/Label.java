@@ -13,11 +13,13 @@ public class Label extends JLabel{
 		y = pY;
 		esJugador = pEsJugador;
 	}
-	public int getCoordX() {
+	public int getCoordX() 
+	{
 		return x;
 	}
 	
-	public int getCoordY() {
+	public int getCoordY() 
+	{
 		return y;
 	}
 	

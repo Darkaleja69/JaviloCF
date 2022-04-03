@@ -14,9 +14,11 @@ public class GestorJuego extends Observable {
 		lBarcCPU= new ListaBarcos();
 	}
 	public static GestorJuego getMiGestorJuego() {
-		if (miGestor==null) {
+		if (miGestor==null) 
+		{
 			miGestor=new GestorJuego();
-		}return miGestor;
+		}
+		return miGestor;
 	}
 	
 	//Metodos
@@ -71,24 +73,24 @@ public class GestorJuego extends Observable {
 				notifyObservers(fin);
 			}
 		}
-		
 	}
 	
 	private boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
-		if(pJug) {
+		if(pJug) 
+		{
 			fin=this.lBarcJugador.comprobarFin();
-			
-		}else {
+		}
+		else 
+		{
 			fin=this.lBarcCPU.comprobarFin();
 		}
 		return fin;
 	}
 	
-	public boolean barcosColocados() {
+	public boolean barcosColocados()
+	{
 		return lBarcJugador.lleno();
 	}
-	
-	
 	
 }

@@ -31,17 +31,17 @@ public class CPU {
 		int y = 0;
 		Random num = new Random();
 		boolean posible = false;
-			Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
-			listaB.anadirBarco(bar);
-			while(!posible) 
-			{
-				x = num.nextInt(10);
-				y = num.nextInt(10);
-				horizontal=num.nextBoolean();
-				posible = Tablero.getTablero().todoValido(x, y, pLongitud, false, horizontal);
-			}
-			Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
-			return bar;
+		Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
+		listaB.anadirBarco(bar);
+		while(!posible) 
+		{
+			x = num.nextInt(10);
+			y = num.nextInt(10);
+			horizontal=num.nextBoolean();
+			posible = Tablero.getTablero().todoValido(x, y, pLongitud, false, horizontal);
+		}
+		Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
+		return bar;
 		
 	}
 	
@@ -51,14 +51,13 @@ public class CPU {
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
-		while(!posible) {
+		while(!posible) 
+		{
 			x=num.nextInt(10);
 			y=num.nextInt(10);
 			posible=!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
-
 		}
 		return (Tablero.getTablero().bombardear(x, y,true));
-		
-		
 	}
+	
 }
