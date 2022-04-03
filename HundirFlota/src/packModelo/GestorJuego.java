@@ -61,16 +61,17 @@ public class GestorJuego extends Observable {
 					fin=true;
 				}
 			}
-			System.out.println("hola");
+			
 			setChanged();
-			notifyObservers(casillas);	
+			notifyObservers(casillas);
+			if(fin) 
+			{
+				
+				setChanged();
+				notifyObservers(fin);
+			}
 		}
-		if(fin) 
-		{
-			System.out.println("hola+fin");
-			setChanged();
-			notifyObservers(fin);
-		}
+		
 	}
 	
 	private boolean comprobarFin(boolean pJug) {

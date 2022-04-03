@@ -54,6 +54,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JRadioButton Esperar;
 	private JPanel panel;
 	private JLabel Finn;
+	private boolean fin;
 
 	/**
 	 * Launch the application.
@@ -98,6 +99,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Disparar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Finn.setVisible(false);
+		fin=false;
 	}
 	
 	public static InterfazJuego getMiInterfazJuego() {
@@ -255,10 +257,12 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		
+		if((arg1 instanceof Boolean) && !(Boolean)arg1) {
 		//si se trata de GestorJuego
+			Finn.setVisible(true);
+			fin=true;
 		if(arg0 instanceof GestorJuego && !(arg1 instanceof Boolean))
-		{	boolean flag=false;
-			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
+		{	ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
 			for(int i = 0; i < casillas.size(); i++)
 			{
 				Casilla c = casillas.get(i);
@@ -290,9 +294,9 @@ public class InterfazJuego extends JFrame implements Observer {
 					}
 			
 				}
-			}else if((Boolean)arg1){
-				Finn.setVisible(true);
 			}
+			
+		}
 	}
 				
 		
@@ -316,6 +320,7 @@ public class InterfazJuego extends JFrame implements Observer {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
+			if(!fin) {
 			Label l = (Label) e.getSource();
 			if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) {
 				
@@ -350,7 +355,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					GestorJuego.getMiGestorJuego().disparar(x, y);
 				}
 			}
-			
+			}	
 		}
 
 		@Override
