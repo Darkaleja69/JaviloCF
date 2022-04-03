@@ -39,33 +39,40 @@ public class GestorJuego extends Observable {
 		}
 	}
 	
-	public void disparar(int pX,int pY) {
+	public void disparar(int pX,int pY) 
+	{
 		boolean fin=false;
 		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
 		Casilla x=Tablero.getTablero().getCasilla(pX, pY, false);
-		if(!x.estaTocada()) {
+		if(!x.estaTocada()) 
+		{
 			casillas.add(x);
 			Tablero.getTablero().bombardear(pX, pY, false);
-			if(comprobarFin(false)) {
+			if(comprobarFin(false)) 
+			{
 				fin=true;
-			}else {
+			}
+			else 
+			{
 				//Disparo CPU
 				casillas.addAll(CPU.getMiCPU().disparar());
-				if(comprobarFin(true)) {
+				if(comprobarFin(true)) 
+				{
 					fin=true;
 				}
-				
 			}
 			System.out.println("hola");
 			setChanged();
 			notifyObservers(casillas);	
-	}
-		if(fin) {
+		}
+		if(fin) 
+		{
 			System.out.println("hola+fin");
 			setChanged();
 			notifyObservers(fin);
 		}
 	}
+	
 	private boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
 		if(pJug) {
