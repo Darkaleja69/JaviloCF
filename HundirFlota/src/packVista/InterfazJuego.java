@@ -256,17 +256,17 @@ public class InterfazJuego extends JFrame implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		
 		//si se trata de GestorJuego
-		if(arg0 instanceof GestorJuego)
-		{
+		if(arg0 instanceof GestorJuego && !(arg1 instanceof Boolean))
+		{	boolean flag=false;
 			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
 			for(int i = 0; i < casillas.size(); i++)
 			{
 				Casilla c = casillas.get(i);
 				int pos = (c.getFila() * 10) + c.getColumna();
 				boolean esJ = c.esJugador();
-				if(!(c.getFila()==-1)){
-					Label lbl = this.obtJLabel(pos, esJ);
-					if(c.tieneBarco())
+	
+				Label lbl = this.obtJLabel(pos, esJ);
+				if(c.tieneBarco())
 					{
 						if(c.estaTocada())
 						{
@@ -288,15 +288,16 @@ public class InterfazJuego extends JFrame implements Observer {
 							lbl.setBackground(Color.cyan);
 						}
 					}
-				}else {
-					Finn.setVisible(true);
+			
 				}
+			}else if((Boolean)arg1){
+				Finn.setVisible(true);
 			}
-		}
+	}
 				
 		
 		
-	}
+	
 	private JRadioButton getEsperar() {
 		if (Esperar == null) {
 			Esperar = new JRadioButton("Esperar");

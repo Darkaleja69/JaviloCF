@@ -31,6 +31,7 @@ public class ListaBarcos {
 		int i=0;
 		while(fin && i<10) {
 			fin=lista.get(i).estaHundido();
+			i++;
 		}
 		return fin;
 	}
