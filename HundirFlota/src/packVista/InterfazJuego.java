@@ -315,8 +315,9 @@ public class InterfazJuego extends JFrame implements Observer {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			if(!(GestorJuego.getMiGestorJuego().barcosColocados())) {
-				Label l = (Label) e.getSource();
+			Label l = (Label) e.getSource();
+			if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) {
+				
 				int x = l.getCoordX();
 				int y = l.getCoordY();
 				int longitud;
@@ -340,8 +341,8 @@ public class InterfazJuego extends JFrame implements Observer {
 				
 				GestorJuego.getMiGestorJuego().colocarBarcosJug(Horizontal.isSelected(), x, y, longitud);
 				
-			}else {
-				Label l = (Label) e.getSource();
+			}else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados() ){
+					
 				int x = l.getCoordX();
 				int y = l.getCoordY();
 				GestorJuego.getMiGestorJuego().disparar(x, y);
