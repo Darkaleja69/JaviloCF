@@ -24,7 +24,7 @@ public class CPU {
 	/*
 	 * ESTO SE DEBE REVISAR
 	 */
-	public ArrayList<Casilla> colocarBarco(int pLongitud) 
+	public Barco colocarBarco(int pLongitud) 
 	{	ArrayList<Casilla> casillas=new ArrayList<Casilla>();
 		boolean horizontal=false;
 		int x = 0;
@@ -35,13 +35,13 @@ public class CPU {
 			listaB.anadirBarco(bar);
 			while(!posible) 
 			{
-				x = num.nextInt(9);
-				y = num.nextInt(9);
+				x = num.nextInt(10);
+				y = num.nextInt(10);
 				horizontal=num.nextBoolean();
 				posible = Tablero.getTablero().todoValido(x, y, pLongitud, false, horizontal);
 			}
-			casillas=Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
-			return casillas;
+			Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
+			return bar;
 		
 	}
 	
@@ -52,8 +52,8 @@ public class CPU {
 		int y = 0;
 		Random num = new Random();
 		while(!posible) {
-			x=num.nextInt(9);
-			y=num.nextInt(9);
+			x=num.nextInt(10);
+			y=num.nextInt(10);
 			posible=!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 
 		}

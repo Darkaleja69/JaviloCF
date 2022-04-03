@@ -31,7 +31,7 @@ public class GestorJuego extends Observable {
 				Barco b = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
 				lBarcJugador.anadirBarco(b);
 				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal,true);
-				CPU.getMiCPU().colocarBarco(pLongitud);
+				lBarcCPU.anadirBarco(CPU.getMiCPU().colocarBarco(pLongitud));
 			}
 			//actualizar vista
 			setChanged();

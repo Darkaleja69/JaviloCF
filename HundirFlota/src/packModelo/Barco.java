@@ -19,6 +19,7 @@ public abstract class Barco {
 	
 	public void recibirImpacto() {
 		this.vidas --;
+		System.out.println(vidas);
 	}
 	
 	public int getLongitud()

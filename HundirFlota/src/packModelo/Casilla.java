@@ -29,6 +29,9 @@ public class Casilla {
 	
 	public void bombardear() {
 		tieneBomba = true;
+		if(tieneBarco()) {
+			this.barco.recibirImpacto();
+		}
 	}
 	
 	public void colocarBarco(Barco pBarco) {

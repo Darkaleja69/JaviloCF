@@ -345,7 +345,9 @@ public class InterfazJuego extends JFrame implements Observer {
 					
 				int x = l.getCoordX();
 				int y = l.getCoordY();
-				GestorJuego.getMiGestorJuego().disparar(x, y);
+				if(Disparar.isSelected()) {
+					GestorJuego.getMiGestorJuego().disparar(x, y);
+				}
 			}
 			
 		}
