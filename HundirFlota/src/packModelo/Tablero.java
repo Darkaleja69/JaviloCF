@@ -1,7 +1,6 @@
 package packModelo;
 
 import java.util.ArrayList;
-import java.util.Observer;
 
 public class Tablero {
 	

@@ -99,7 +99,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Disparar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Finn.setVisible(false);
-		fin=false;
+		fin = false;
 	}
 	
 	public static InterfazJuego getMiInterfazJuego() {
@@ -257,46 +257,46 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		
-		if((arg1 instanceof Boolean) && !(Boolean)arg1) 
+		if((arg1 instanceof Boolean) && (Boolean)arg1) 
 		{
-		//si se trata de GestorJuego
-			Finn.setVisible(true);
 			fin=true;
-			if(arg0 instanceof GestorJuego && !(arg1 instanceof Boolean))
-			{	
-				ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
-				for(int i = 0; i < casillas.size(); i++)
+			Finn.setVisible(true);
+		}
+		//si se trata de GestorJuego
+		if(arg0 instanceof GestorJuego && !(arg1 instanceof Boolean))
+		{	
+			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
+			for(int i = 0; i < casillas.size(); i++)
+			{
+				Casilla c = casillas.get(i);
+				int pos = (c.getFila() * 10) + c.getColumna();
+				boolean esJ = c.esJugador();
+	
+				Label lbl = this.obtJLabel(pos, esJ);
+				if(c.tieneBarco())
 				{
-					Casilla c = casillas.get(i);
-					int pos = (c.getFila() * 10) + c.getColumna();
-					boolean esJ = c.esJugador();
-		
-					Label lbl = this.obtJLabel(pos, esJ);
-					if(c.tieneBarco())
+					if(c.estaTocada())
 					{
-						if(c.estaTocada())
-						{
-							lbl.setBackground(Color.red);
-						}
-						else
-						{
-							lbl.setBackground(Color.gray);
-						}
+						lbl.setBackground(Color.red);
 					}
 					else
 					{
-						if(c.estaTocada())
-						{
-							lbl.setBackground(Color.blue);
-						}
-						else
-						{
-							lbl.setBackground(Color.cyan);
-						}
+						lbl.setBackground(Color.gray);
 					}
 				}
-			}	
-		}
+				else
+				{
+					if(c.estaTocada())
+					{
+						lbl.setBackground(Color.blue);
+					}
+					else
+					{
+						lbl.setBackground(Color.cyan);
+					}
+				}
+			}
+		}	
 	}
 				
 		
