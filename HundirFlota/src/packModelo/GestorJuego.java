@@ -5,13 +5,9 @@ import java.util.Observable;
 
 public class GestorJuego extends Observable {
 	private static GestorJuego miGestor;
-	private ListaBarcos lBarcJugador;
-	private ListaBarcos lBarcCPU;
 	
 	private GestorJuego() 
 	{
-		lBarcJugador = new ListaBarcos();
-		lBarcCPU= new ListaBarcos();
 	}
 	public static GestorJuego getMiGestorJuego() {
 		if (miGestor==null) 
@@ -24,16 +20,16 @@ public class GestorJuego extends Observable {
 	//Metodos
 	public void colocarBarcosJug(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
-		if(!lBarcJugador.hayDemasiados(pLongitud))
+		if(!Jugador.getJugador().hayDemasiados(pLongitud))
 		{
 			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 			
 			if(Tablero.getTablero().todoValido(pX, pY, pLongitud, true, pHorizontal))
 			{
 				Barco b = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
-				lBarcJugador.anadirBarco(b);
+				Jugador.getJugador().anadirBarco(b);
 				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal,true);
-				lBarcCPU.anadirBarco(CPU.getMiCPU().colocarBarco(pLongitud));
+				CPU.getMiCPU().anadirBarco(CPU.getMiCPU().colocarBarco(pLongitud));
 			}
 			//actualizar vista
 			setChanged();
@@ -42,14 +38,12 @@ public class GestorJuego extends Observable {
 	}
 	
 	public void disparar(int pX,int pY) 
-	{
-		boolean fin=false;
+	{	boolean fin=false;
 		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
-		Casilla x=Tablero.getTablero().getCasilla(pX, pY, false);
-		if(!x.estaTocada()) 
-		{
+		Casilla x=Jugador.getJugador().disparar(pX, pY);
+		if(x!=null) {
 			casillas.add(x);
-			Tablero.getTablero().bombardear(pX, pY, false);
+		
 			if(comprobarFin(false)) 
 			{
 				fin=true;
@@ -64,6 +58,8 @@ public class GestorJuego extends Observable {
 				}
 			}
 			
+		}
+			
 			setChanged();
 			notifyObservers(casillas);
 			if(fin) 
@@ -73,24 +69,24 @@ public class GestorJuego extends Observable {
 				notifyObservers(fin);
 			}
 		}
-	}
+	
 	
 	private boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
 		if(pJug) 
 		{
-			fin=this.lBarcJugador.comprobarFin();
+			fin=Jugador.getJugador().comprobarFin();
 		}
 		else 
 		{
-			fin=this.lBarcCPU.comprobarFin();
+			fin=CPU.getMiCPU().comprobarFin();
 		}
 		return fin;
 	}
 	
 	public boolean barcosColocados()
 	{
-		return lBarcJugador.lleno();
+		return Jugador.getJugador().barcosColocados();
 	}
 	
 }

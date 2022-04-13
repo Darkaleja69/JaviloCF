@@ -60,4 +60,12 @@ public class CPU {
 		return (Tablero.getTablero().bombardear(x, y,true));
 	}
 	
+	public void anadirBarco(Barco pBarco) {
+		this.listaB.anadirBarco(pBarco);
+	}
+	
+	public boolean comprobarFin() {
+		return this.listaB.comprobarFin();
+	}
+	
 }
