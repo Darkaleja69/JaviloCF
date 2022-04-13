@@ -1,9 +1,10 @@
 package packModelo;
 
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Random;
 
-public class CPU {
+public class CPU extends Observable{
 	private static CPU miCPU;
 	private ListaBarcos listaB;
 	
@@ -41,6 +42,9 @@ public class CPU {
 			posible = Tablero.getTablero().todoValido(x, y, pLongitud, false, horizontal);
 		}
 		Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
+		
+		setChanged();
+		notifyObservers(casillas);
 		return bar;
 		
 	}

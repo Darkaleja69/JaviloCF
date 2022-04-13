@@ -18,23 +18,10 @@ public class GestorJuego extends Observable {
 	}
 	
 	//Metodos
-	public void colocarBarcosJug(boolean pHorizontal, int pX, int pY, int pLongitud)
+	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
-		if(!Jugador.getJugador().hayDemasiados(pLongitud))
-		{
-			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-			
-			if(Tablero.getTablero().todoValido(pX, pY, pLongitud, true, pHorizontal))
-			{
-				Barco b = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
-				Jugador.getJugador().anadirBarco(b);
-				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal,true);
-				CPU.getMiCPU().anadirBarco(CPU.getMiCPU().colocarBarco(pLongitud));
-			}
-			//actualizar vista
-			setChanged();
-			notifyObservers(casillas);
-		}
+		Jugador.getJugador().colocarBarcos(pHorizontal, pX, pY, pLongitud);
+		CPU.getMiCPU().colocarBarco(pLongitud);
 	}
 	
 	public void disparar(int pX,int pY) 

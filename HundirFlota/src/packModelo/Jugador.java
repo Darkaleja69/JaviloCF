@@ -1,8 +1,9 @@
 package packModelo;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Jugador {
+public class Jugador extends Observable {
 	private static Jugador miJugador;
 	private ListaBarcos lista;
 	
@@ -26,6 +27,21 @@ public class Jugador {
 			Tablero.getTablero().bombardear(pX, pY, false);
 		}
 		return b;
+	}
+	
+	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		if(!hayDemasiados(pLongitud)) {
+			
+			if(Tablero.getTablero().todoValido(pX, pY, pLongitud, true, pHorizontal))
+			{
+				Barco b = FactoryBarcos.getMiFactoryBarcos().crearBarco(pLongitud);
+				anadirBarco(b);
+				casillas = Tablero.getTablero().colocarBarco(b, pX, pY, pLongitud, pHorizontal,true);
+			}
+		}
+		setChanged();
+		notifyObservers(casillas);
 	}
 	
 	public boolean hayDemasiados(int pLong) {
