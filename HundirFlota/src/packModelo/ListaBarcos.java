@@ -43,4 +43,9 @@ public class ListaBarcos {
 	{
 		return(this.lista.size()==10);
 	}
+	
+	public void imprimirNum()
+	{
+		System.out.println(this.lista.size());
+	}
 }
