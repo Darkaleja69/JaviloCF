@@ -71,4 +71,10 @@ public class CPU extends Observable{
 		return this.listaB.comprobarFin();
 	}
 	
+	public void enviarCasillas(ArrayList<Casilla> pCasillas)
+	{
+		setChanged();
+		notifyObservers(pCasillas);
+	}
+	
 }

@@ -28,8 +28,7 @@ public class Jugador extends Observable {
 			Tablero.getTablero().bombardear(pX, pY, false);
 			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 			casillas.add(b);
-			setChanged();
-			notifyObservers(casillas);
+			CPU.getMiCPU().enviarCasillas(casillas);
 			disparado = true;
 		}
 		return disparado;
