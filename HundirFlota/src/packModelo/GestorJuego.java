@@ -30,11 +30,9 @@ public class GestorJuego extends Observable {
 	{
 		boolean fin = false;
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-		Casilla x = Jugador.getJugador().disparar(pX, pY);
+		boolean disparado = Jugador.getJugador().disparar(pX, pY);
 		
-		if(x != null) {
-			casillas.add(x);
-		
+		if(disparado) {
 			if(comprobarFin(false)) 
 			{
 				fin = true;
@@ -50,7 +48,6 @@ public class GestorJuego extends Observable {
 			}
 			
 		}
-			
 			setChanged();
 			notifyObservers(casillas);
 			if(fin) 

@@ -18,15 +18,21 @@ public class Jugador extends Observable {
 		return miJugador;
 	}
 	
-	public Casilla disparar(int pX,int pY) {
+	public boolean disparar(int pX,int pY) {
+		boolean disparado = false;
 		Casilla b = null;
 		Casilla x = Tablero.getTablero().getCasilla(pX, pY, false);
 		if(!x.estaTocada()) 
 		{
 			b = x;
 			Tablero.getTablero().bombardear(pX, pY, false);
+			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+			casillas.add(b);
+			setChanged();
+			notifyObservers(casillas);
+			disparado = true;
 		}
-		return b;
+		return disparado;
 	}
 	
 	public boolean colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
