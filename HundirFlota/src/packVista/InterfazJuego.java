@@ -323,6 +323,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		@Override
 		public void mouseClicked(MouseEvent e) 
 		{
+			
 			if(!fin) 
 			{
 				Label l = (Label) e.getSource();
