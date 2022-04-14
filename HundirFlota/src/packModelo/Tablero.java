@@ -33,9 +33,9 @@ public class Tablero {
 		{
 			for(int j = 0; j < 10; j++)
 			{
-				Casilla c = new Casilla(i, j, true);
+				Casilla c = new Casilla(i, j);
 				this.tableroJugador[i][j] = c;
-				c = new Casilla(i, j, false);
+				c = new Casilla(i, j);
 				this.tableroCPU[i][j] = c;
 			}
 		}

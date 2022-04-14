@@ -275,7 +275,6 @@ public class InterfazJuego extends JFrame implements Observer {
 			{
 				Casilla c = casillas.get(i);
 				int pos = (c.getFila() * 10) + c.getColumna();
-				boolean esJ = c.esJugador();
 	
 				Label lbl = this.obtJLabel(pos, arg0 instanceof Jugador);
 				if(c.tieneBarco())

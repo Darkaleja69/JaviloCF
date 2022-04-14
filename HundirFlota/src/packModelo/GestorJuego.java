@@ -26,7 +26,7 @@ public class GestorJuego extends Observable {
 		}
 	}
 	
-	public void disparar(int pX,int pY) 
+	public void disparar(int pX, int pY) 
 	{
 		boolean fin = false;
 		boolean disparado = Jugador.getJugador().disparar(pX, pY);
