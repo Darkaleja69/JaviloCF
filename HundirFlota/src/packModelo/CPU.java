@@ -50,16 +50,16 @@ public class CPU extends Observable{
 	}
 	
 	public ArrayList<Casilla> disparar(){
-		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible=false;
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
 		while(!posible) 
 		{
-			x=num.nextInt(10);
-			y=num.nextInt(10);
-			posible=!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
+			x = num.nextInt(10);
+			y = num.nextInt(10);
+			posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 		}
 		return (Tablero.getTablero().bombardear(x, y,true));
 	}

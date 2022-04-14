@@ -25,16 +25,17 @@ public class GestorJuego extends Observable {
 	}
 	
 	public void disparar(int pX,int pY) 
-	{	
-		boolean fin=false;
+	{
+		boolean fin = false;
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		Casilla x = Jugador.getJugador().disparar(pX, pY);
+		
 		if(x != null) {
 			casillas.add(x);
 		
 			if(comprobarFin(false)) 
 			{
-				fin=true;
+				fin = true;
 			}
 			else 
 			{
@@ -42,7 +43,7 @@ public class GestorJuego extends Observable {
 				casillas.addAll(CPU.getMiCPU().disparar());
 				if(comprobarFin(true)) 
 				{
-					fin=true;
+					fin = true;
 				}
 			}
 			
