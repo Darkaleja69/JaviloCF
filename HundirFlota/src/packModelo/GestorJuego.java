@@ -20,8 +20,10 @@ public class GestorJuego extends Observable {
 	//Metodos
 	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
-		Jugador.getJugador().colocarBarcos(pHorizontal, pX, pY, pLongitud);
-		CPU.getMiCPU().colocarBarco(pLongitud);
+		if(Jugador.getJugador().colocarBarcos(pHorizontal, pX, pY, pLongitud))
+		{
+			CPU.getMiCPU().colocarBarco(pLongitud);
+		}
 	}
 	
 	public void disparar(int pX,int pY) 

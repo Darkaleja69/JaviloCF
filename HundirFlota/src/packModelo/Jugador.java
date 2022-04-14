@@ -29,7 +29,7 @@ public class Jugador extends Observable {
 		return b;
 	}
 	
-	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
+	public boolean colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(!hayDemasiados(pLongitud)) {
 			
@@ -42,6 +42,7 @@ public class Jugador extends Observable {
 		}
 		setChanged();
 		notifyObservers(casillas);
+		return !(casillas.size() < 1);
 	}
 	
 	public boolean hayDemasiados(int pLong) {

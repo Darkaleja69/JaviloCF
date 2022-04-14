@@ -25,7 +25,7 @@ public class CPU extends Observable{
 
 	public Barco colocarBarco(int pLongitud) 
 	{	
-		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
+
 		boolean horizontal=false;
 		int x = 0;
 		int y = 0;
@@ -41,10 +41,7 @@ public class CPU extends Observable{
 			posible = Tablero.getTablero().todoValido(x, y, pLongitud, false, horizontal);
 		}
 		Tablero.getTablero().colocarBarco(bar, x, y,pLongitud,horizontal,false);
-		
-		setChanged();
-		notifyObservers(casillas);
-		this.listaB.imprimirNum();
+	
 		return bar;
 		
 	}

@@ -264,7 +264,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		
 		if((arg1 instanceof Boolean) && (Boolean)arg1) 
 		{
-			fin=true;
+			fin = true;
 			Finn.setVisible(true);
 		}
 		//si se trata de Jugador
