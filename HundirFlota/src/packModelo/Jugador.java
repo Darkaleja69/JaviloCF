@@ -66,5 +66,11 @@ public class Jugador extends Observable {
 		return this.lista.lleno();
 	}
 	
+	public void enviarCasillas(ArrayList<Casilla> pCasillas)
+	{
+		setChanged();
+		notifyObservers(pCasillas);
+	}
+	
 	
 }

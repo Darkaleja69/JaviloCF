@@ -59,8 +59,7 @@ public class CPU extends Observable{
 			posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 		}
 		casillas = Tablero.getTablero().bombardear(x, y,true);
-		setChanged();
-		notifyObservers(casillas);
+		Jugador.getJugador().enviarCasillas(casillas);
 	}
 	
 	public void anadirBarco(Barco pBarco) {
