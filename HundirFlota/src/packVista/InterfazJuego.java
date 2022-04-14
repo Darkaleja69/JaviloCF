@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import packModelo.CPU;
 import packModelo.Casilla;
 import packModelo.GestorJuego;
 import packModelo.Jugador;
@@ -100,6 +101,8 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Esperar);
 		g3.add(Disparar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
+		Jugador.getJugador().addObserver(this);
+		CPU.getMiCPU().addObserver(this);
 		Finn.setVisible(false);
 		fin = false;
 	}
