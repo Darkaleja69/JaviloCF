@@ -1,6 +1,7 @@
 package packVista;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 
@@ -13,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import packModelo.Casilla;
 import packModelo.GestorJuego;
+import packModelo.Jugador;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
