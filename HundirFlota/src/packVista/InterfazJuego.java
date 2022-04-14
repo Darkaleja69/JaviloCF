@@ -264,9 +264,9 @@ public class InterfazJuego extends JFrame implements Observer {
 			fin=true;
 			Finn.setVisible(true);
 		}
-		//si se trata de GestorJuego
+		//si se trata de Jugador
 		if(arg0 instanceof Jugador && !(arg1 instanceof Boolean))
-		{	
+		{
 			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
 			for(int i = 0; i < casillas.size(); i++)
 			{
