@@ -46,7 +46,7 @@ public class CPU extends Observable{
 		
 	}
 	
-	public ArrayList<Casilla> disparar(){
+	public void disparar(){
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible=false;
 		int x = 0;
@@ -58,7 +58,9 @@ public class CPU extends Observable{
 			y = num.nextInt(10);
 			posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 		}
-		return (Tablero.getTablero().bombardear(x, y,true));
+		casillas = Tablero.getTablero().bombardear(x, y,true);
+		setChanged();
+		notifyObservers(casillas);
 	}
 	
 	public void anadirBarco(Barco pBarco) {
