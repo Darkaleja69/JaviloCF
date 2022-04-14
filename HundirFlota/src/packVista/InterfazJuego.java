@@ -330,7 +330,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			if(!fin) 
 			{
 				Label l = (Label) e.getSource();
-				if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) 
+				if(!(Jugador.getJugador().barcosColocados()) && l.esJugador()) 
 				{
 					int x = l.getCoordX();
 					int y = l.getCoordY();
@@ -355,7 +355,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					
 					GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
 				}
-				else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados())
+				else if(!(l.esJugador()) && Jugador.getJugador().barcosColocados())
 				{	
 					int x = l.getCoordX();
 					int y = l.getCoordY();

@@ -25,10 +25,11 @@ public class GestorJuego extends Observable {
 	}
 	
 	public void disparar(int pX,int pY) 
-	{	boolean fin=false;
-		ArrayList<Casilla> casillas=new ArrayList<Casilla>();
-		Casilla x=Jugador.getJugador().disparar(pX, pY);
-		if(x!=null) {
+	{	
+		boolean fin=false;
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		Casilla x = Jugador.getJugador().disparar(pX, pY);
+		if(x != null) {
 			casillas.add(x);
 		
 			if(comprobarFin(false)) 
@@ -70,10 +71,4 @@ public class GestorJuego extends Observable {
 		}
 		return fin;
 	}
-	
-	public boolean barcosColocados()
-	{
-		return Jugador.getJugador().barcosColocados();
-	}
-	
 }

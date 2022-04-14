@@ -19,11 +19,11 @@ public class Jugador extends Observable {
 	}
 	
 	public Casilla disparar(int pX,int pY) {
-		Casilla b=null;
-		Casilla x=Tablero.getTablero().getCasilla(pX, pY, false);
+		Casilla b = null;
+		Casilla x = Tablero.getTablero().getCasilla(pX, pY, false);
 		if(!x.estaTocada()) 
 		{
-			b=x;
+			b = x;
 			Tablero.getTablero().bombardear(pX, pY, false);
 		}
 		return b;
