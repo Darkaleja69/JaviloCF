@@ -180,9 +180,9 @@ public class Tablero {
 		Casilla c=null;
 		int i=1;
 		boolean hor=false;
-		boolean noEntrar=false;
 		boolean[][] noMirar=new boolean[10][10];
 		noMirar[fila][col]=true;
+		
 		while(i<bar.getLongitud() && !hor) {
 			if(fila<9) {
 				if(this.getCasilla(fila+1, col, pJug).getBarco()==bar && !noMirar[fila+1][col]) {
