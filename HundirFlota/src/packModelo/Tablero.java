@@ -182,22 +182,23 @@ public class Tablero {
 		boolean hor=false;
 		boolean noEntrar=false;
 		boolean[][] noMirar=new boolean[10][10];
-		
+		noMirar[fila][col]=true;
 		while(i<bar.getLongitud() && !hor) {
 			if(fila<9) {
-				if(this.getCasilla(fila+1, col, pJug).getBarco()==bar) {
+				if(this.getCasilla(fila+1, col, pJug).getBarco()==bar && !noMirar[fila+1][col]) {
 					
 					casillasBarc.add(this.getCasilla(fila+1, col, pJug));
 					i++;
+					noMirar[fila+1][col]=true;
 					fila++;
-					noEntrar=true;
 				}
 			}
-			if(fila>0 && !noEntrar) {
+			if(fila>0) {
 					
-					if(this.getCasilla(fila-1, col, pJug).getBarco()==bar) {
+					if(this.getCasilla(fila-1, col, pJug).getBarco()==bar && !noMirar[fila-1][col]) {
 						casillasBarc.add(this.getCasilla(fila-1, col, pJug));
 						i++;
+						noMirar[fila-1][col]=true;
 						fila--;
 					}
 			}
@@ -206,21 +207,22 @@ public class Tablero {
 			if(i==1) {
 				hor=true;
 			}
-			noEntrar=false;
 		}
 		while(i<bar.getLongitud()) {
 			if(col<9) {
-				if(this.getCasilla(fila, col+1, pJug).getBarco()==bar) {
+				if(this.getCasilla(fila, col+1, pJug).getBarco()==bar && !noMirar[fila][col+1]) {
 					casillasBarc.add(this.getCasilla(fila, col+1, pJug));
 					i++;
+					noMirar[fila][col+1]=true;
 					col++;
-					noEntrar=true;
+					
 				}
 			}
-			if(col>0 && !noEntrar) {
-				if(this.getCasilla(fila, col-1, pJug).getBarco()==bar) {
+			if(col>0) {
+				if(this.getCasilla(fila, col-1, pJug).getBarco()==bar && !noMirar[fila][col-1]) {
 					casillasBarc.add(this.getCasilla(fila, col-1, pJug));
 					i++;
+					noMirar[fila][col-1]=true;
 					col--;
 					
 				}
