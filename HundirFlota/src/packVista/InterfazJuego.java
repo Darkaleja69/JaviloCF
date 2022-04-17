@@ -16,6 +16,7 @@ import packModelo.CPU;
 import packModelo.Casilla;
 import packModelo.GestorJuego;
 import packModelo.Jugador;
+import packModelo.Tablero;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -54,7 +55,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private ArrayList<Label> listaLJug;
 	private ArrayList<Label> listaLPC;
 	private Controler controler = null;
-	private JRadioButton Esperar;
+	private JRadioButton Escudo;
 	private JPanel panel;
 	private JLabel Finn;
 	private boolean fin;
@@ -98,7 +99,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g2.add(Submarino);
 		g2.add(Portaviones);
 		g2.add(Destructor);
-		g3.add(Esperar);
+		g3.add(Escudo);
 		g3.add(Disparar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Jugador.getJugador().addObserver(this);
@@ -142,7 +143,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			Acciones.add(getLblNewLabel());
 			Acciones.add(getPanel());
 			Acciones.add(getDisparar());
-			Acciones.add(getEsperar());
+			Acciones.add(getEscudo());
 		}
 		return Acciones;
 	}
@@ -275,13 +276,27 @@ public class InterfazJuego extends JFrame implements Observer {
 			{
 				Casilla c = casillas.get(i);
 				int pos = (c.getFila() * 10) + c.getColumna();
-	
-				Label lbl = this.obtJLabel(pos, arg0 instanceof Jugador);
+				boolean jug=false;
+				if(arg0 instanceof Jugador) {
+					jug=true;
+				}
+				Label lbl = this.obtJLabel(pos, jug);
+				
 				if(c.tieneBarco())
 				{
 					if(c.estaTocada())
 					{
 						lbl.setBackground(Color.red);
+						if(c.getBarco().estaHundido()) {
+							ArrayList<Casilla> casillasBarco=new ArrayList<Casilla>();
+							casillasBarco=GestorJuego.getMiGestorJuego().marcarBarcoHundido(c, jug);
+							for(int j=0;j<casillasBarco.size();j++) {
+								int posicion=(casillasBarco.get(j).getFila()*10)+casillasBarco.get(j).getColumna();
+								System.out.println(posicion);
+								Label lblBarco= obtJLabel(posicion,jug);
+								lblBarco.setBackground(Color.YELLOW);
+							}
+						}
 					}
 					else
 					{
@@ -306,11 +321,11 @@ public class InterfazJuego extends JFrame implements Observer {
 		
 		
 	
-	private JRadioButton getEsperar() {
-		if (Esperar == null) {
-			Esperar = new JRadioButton("Esperar");
+	private JRadioButton getEscudo() {
+		if (Escudo == null) {
+			Escudo = new JRadioButton("Escudo");
 		}
-		return Esperar;
+		return Escudo;
 	}
 	private JPanel getPanel() {
 		if (panel == null) {
@@ -361,6 +376,8 @@ public class InterfazJuego extends JFrame implements Observer {
 					if(Disparar.isSelected()) 
 					{
 						GestorJuego.getMiGestorJuego().disparar(x, y);
+					}else if(Escudo.isSelected()) {
+			//ESCUDO			GestorJuego.getMiGestorJuego();
 					}
 				}
 			}	

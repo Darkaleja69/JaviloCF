@@ -171,5 +171,67 @@ public class Tablero {
 		return array;
 	}
 	
+	public ArrayList<Casilla> obtenerCasillasBarco(Casilla pCasilla,boolean pJug){
+		Barco bar=pCasilla.getBarco();
+		int fila=pCasilla.getFila();
+		int col=pCasilla.getColumna();
+		ArrayList<Casilla> casillasBarc=new ArrayList<Casilla>();
+		casillasBarc.add(pCasilla);
+		Casilla c=null;
+		int i=1;
+		boolean hor=false;
+		boolean noEntrar=false;
+		boolean[][] noMirar=new boolean[10][10];
+		
+		while(i<bar.getLongitud() && !hor) {
+			if(fila<9) {
+				if(this.getCasilla(fila+1, col, pJug).getBarco()==bar) {
+					
+					casillasBarc.add(this.getCasilla(fila+1, col, pJug));
+					i++;
+					fila++;
+					noEntrar=true;
+				}
+			}
+			if(fila>0 && !noEntrar) {
+					
+					if(this.getCasilla(fila-1, col, pJug).getBarco()==bar) {
+						casillasBarc.add(this.getCasilla(fila-1, col, pJug));
+						i++;
+						fila--;
+					}
+			}
+			System.out.println(i);
+			System.out.println("hola");
+			if(i==1) {
+				hor=true;
+			}
+			noEntrar=false;
+		}
+		while(i<bar.getLongitud()) {
+			if(col<9) {
+				if(this.getCasilla(fila, col+1, pJug).getBarco()==bar) {
+					casillasBarc.add(this.getCasilla(fila, col+1, pJug));
+					i++;
+					col++;
+					noEntrar=true;
+				}
+			}
+			if(col>0 && !noEntrar) {
+				if(this.getCasilla(fila, col-1, pJug).getBarco()==bar) {
+					casillasBarc.add(this.getCasilla(fila, col-1, pJug));
+					i++;
+					col--;
+					
+				}
+			}
+			System.out.println(i);
+			noEntrar=false;
+		}
+		
+		return casillasBarc;
+		
+	}
+	
 
 }
