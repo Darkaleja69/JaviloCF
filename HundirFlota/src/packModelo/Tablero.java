@@ -228,7 +228,6 @@ public class Tablero {
 				}
 			}
 			System.out.println(i);
-			noEntrar=false;
 		}
 		
 		return casillasBarc;
