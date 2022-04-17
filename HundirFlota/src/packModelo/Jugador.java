@@ -71,6 +71,9 @@ public class Jugador extends Observable {
 		setChanged();
 		notifyObservers(pCasillas);
 	}
+	public int barcosPorColocar(int pLong) {
+		return 5-(this.lista.cantidadBarcos(pLong)+pLong);
+	}
 	
 	
 }

@@ -72,4 +72,8 @@ public class GestorJuego extends Observable {
 	public ArrayList<Casilla> marcarBarcoHundido(Casilla pCasilla,boolean pJug) {
 		return Tablero.getTablero().obtenerCasillasBarco(pCasilla, pJug);
 	}
+	
+	public int barcosPorColocar(int pLong) {
+		return Jugador.getJugador().barcosPorColocar(pLong);
+	}
 }

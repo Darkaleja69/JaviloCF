@@ -201,25 +201,25 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getPortaviones() {
 		if (Portaviones == null) {
-			Portaviones = new JRadioButton("Portaviones(4)");
+			Portaviones = new JRadioButton("Portaviones("+GestorJuego.getMiGestorJuego().barcosPorColocar(4)+")");
 		}
 		return Portaviones;
 	}
 	private JRadioButton getSubmarino() {
 		if (Submarino == null) {
-			Submarino = new JRadioButton("Submarino(3)");
+			Submarino = new JRadioButton("Submarino("+GestorJuego.getMiGestorJuego().barcosPorColocar(3)+")");
 		}
 		return Submarino;
 	}
 	private JRadioButton getDestructor() {
 		if (Destructor == null) {
-			Destructor = new JRadioButton("Destructor(2)");
+			Destructor = new JRadioButton("Destructor("+GestorJuego.getMiGestorJuego().barcosPorColocar(2)+")");
 		}
 		return Destructor;
 	}
 	private JRadioButton getFragata() {
 		if (Fragata == null) {
-			Fragata = new JRadioButton("Fragata(1)");
+			Fragata = new JRadioButton("Fragata ("+GestorJuego.getMiGestorJuego().barcosPorColocar(1)+")");
 		}
 		return Fragata;
 	}
@@ -272,6 +272,17 @@ public class InterfazJuego extends JFrame implements Observer {
 		if((arg0 instanceof Jugador || arg0 instanceof GestorJuego || arg0 instanceof CPU) && !(arg1 instanceof Boolean))
 		{
 			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
+			if(casillas.size()>1 || !casillas.get(0).estaTocada()) {
+				if(casillas.size()==1) {
+					Fragata.setText("Fragata("+GestorJuego.getMiGestorJuego().barcosPorColocar(1)+")");
+				}else if(casillas.size()==2) {
+					Destructor.setText("Destructor("+GestorJuego.getMiGestorJuego().barcosPorColocar(2)+")");
+				}else if(casillas.size()==3) {
+					Submarino.setText("Submarino("+GestorJuego.getMiGestorJuego().barcosPorColocar(3)+")");
+				}else {
+					Portaviones.setText("Portaviones("+GestorJuego.getMiGestorJuego().barcosPorColocar(4)+")");
+				}
+			}
 			for(int i = 0; i < casillas.size(); i++)
 			{
 				Casilla c = casillas.get(i);

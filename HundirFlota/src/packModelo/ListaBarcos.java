@@ -43,4 +43,16 @@ public class ListaBarcos {
 	{
 		return(this.lista.size()==10);
 	}
+	
+	public int cantidadBarcos(int pLong) {
+		int cont=0;
+		for(Barco b : lista)
+		{
+			if(b.getLongitud() == pLong)
+			{
+				cont++;
+			}
+		}
+		return cont;
+	}
 }
