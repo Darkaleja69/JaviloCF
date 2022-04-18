@@ -29,12 +29,14 @@ public class GestorJuego extends Observable {
 	public void disparar(int pX, int pY) 
 	{
 		boolean fin = false;
+		int jugadorOCPU=1;
 		boolean disparado = Jugador.getJugador().disparar(pX, pY);
 		
 		if(disparado) {
 			if(comprobarFin(false)) 
 			{
 				fin = true;
+			
 			}
 			else 
 			{
@@ -43,15 +45,17 @@ public class GestorJuego extends Observable {
 				if(comprobarFin(true)) 
 				{
 					fin = true;
+					jugadorOCPU=2;
+					
 				}
 			}
 			
 		}
 			if(fin) 
-			{
+			{	
 				
 				setChanged();
-				notifyObservers(fin);
+				notifyObservers(jugadorOCPU);
 			}
 		}
 	

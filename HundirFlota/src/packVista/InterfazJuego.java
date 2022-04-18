@@ -59,6 +59,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JPanel panel;
 	private JLabel Finn;
 	private boolean fin;
+	FinPartida frame2;
 
 	/**
 	 * Launch the application.
@@ -105,6 +106,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		Jugador.getJugador().addObserver(this);
 		CPU.getMiCPU().addObserver(this);
 		Finn.setVisible(false);
+		
 		fin = false;
 	}
 	
@@ -263,13 +265,19 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		
-		if((arg1 instanceof Boolean) && (Boolean)arg1) 
-		{
+		if(arg1 instanceof Integer) 
+		{	Integer x=(Integer) arg1;
 			fin = true;
-			Finn.setVisible(true);
+			if(x==1) {
+				frame2=new FinPartida("el Jugador");
+				frame2.setVisible(true);
+			}else {
+				frame2=new FinPartida("la IA");
+				frame2.setVisible(true);
+			}
 		}
 		//si se trata de Jugador
-		if((arg0 instanceof Jugador || arg0 instanceof GestorJuego || arg0 instanceof CPU) && !(arg1 instanceof Boolean))
+		if((arg0 instanceof Jugador || arg0 instanceof GestorJuego || arg0 instanceof CPU) && !(arg1 instanceof Integer))
 		{
 			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
 			if(casillas.size()>0) {

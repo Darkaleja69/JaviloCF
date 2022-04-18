@@ -180,6 +180,7 @@ public class Tablero {
 		Casilla c=null;
 		int i=1;
 		boolean hor=false;
+		boolean sumar=false;
 		boolean[][] noMirar=new boolean[10][10];
 		noMirar[fila][col]=true;
 		
@@ -190,7 +191,7 @@ public class Tablero {
 					casillasBarc.add(this.getCasilla(fila+1, col, pJug));
 					i++;
 					noMirar[fila+1][col]=true;
-					fila++;
+					sumar=true;
 				}
 			}
 			if(fila>0) {
@@ -199,22 +200,24 @@ public class Tablero {
 						casillasBarc.add(this.getCasilla(fila-1, col, pJug));
 						i++;
 						noMirar[fila-1][col]=true;
-						fila--;
 					}
 			}
-			System.out.println(i);
-			System.out.println("hola");
 			if(i==1) {
 				hor=true;
+			}else if(sumar) {
+						fila++;
+					}else {
+						fila--;
 			}
 		}
+		
 		while(i<bar.getLongitud()) {
 			if(col<9) {
 				if(this.getCasilla(fila, col+1, pJug).getBarco()==bar && !noMirar[fila][col+1]) {
 					casillasBarc.add(this.getCasilla(fila, col+1, pJug));
 					i++;
 					noMirar[fila][col+1]=true;
-					col++;
+					sumar=true;
 					
 				}
 			}
@@ -223,11 +226,15 @@ public class Tablero {
 					casillasBarc.add(this.getCasilla(fila, col-1, pJug));
 					i++;
 					noMirar[fila][col-1]=true;
-					col--;
+					sumar=false;
 					
 				}
 			}
-			System.out.println(i);
+			if(sumar) {
+				col++;
+			}else {
+				col--;
+			}
 		}
 		
 		return casillasBarc;
