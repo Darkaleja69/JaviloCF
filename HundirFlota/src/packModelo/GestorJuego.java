@@ -41,7 +41,7 @@ public class GestorJuego extends Observable {
 			else 
 			{
 				//Disparo CPU
-				CPU.getMiCPU().disparar();
+				CPU.getMiCPU().dispararInteligente();
 				if(comprobarFin(true)) 
 				{
 					fin = true;
