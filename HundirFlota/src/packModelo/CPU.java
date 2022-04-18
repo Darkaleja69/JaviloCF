@@ -139,14 +139,13 @@ public class CPU extends Observable{
 			{
 				casillaAlerta = Tablero.getTablero().getCasilla(x, y, true);
 			}
-			//Caso 2.3 no se ha dado en un barco
+			//Caso 2.3 se ha dado al agua
 			else
 			{
 				
 			}
 		}
 		
-		casillas = Tablero.getTablero().bombardear(x, y,true);
 		Jugador.getJugador().enviarCasillas(casillas);
 	}
 }
