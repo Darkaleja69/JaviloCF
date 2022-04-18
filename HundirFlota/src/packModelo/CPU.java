@@ -108,6 +108,7 @@ public class CPU extends Observable{
 				casillaAlerta = null;
 			}
 		}
+		
 		//Caso 2: se ha hallado un barco
 		else if(this.casillaAlerta.tieneBarco())
 		{
@@ -127,6 +128,7 @@ public class CPU extends Observable{
 				}
 				posible = (!(Tablero.getTablero().getCasilla(x, y, true).estaTocada())) && (y >= 0 && x >= 0);
 			}
+			
 			casillas = Tablero.getTablero().bombardear(x, y,true);
 			
 			//Caso 2.1 se ha dado en un barco y se ha hundido
