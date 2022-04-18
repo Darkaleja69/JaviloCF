@@ -209,6 +209,7 @@ public class Tablero {
 					}else {
 						fila--;
 			}
+			System.out.println("hola");
 		}
 		
 		while(i<bar.getLongitud()) {
