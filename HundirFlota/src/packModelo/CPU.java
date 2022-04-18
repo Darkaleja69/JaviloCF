@@ -76,4 +76,20 @@ public class CPU extends Observable{
 		notifyObservers(pCasillas);
 	}
 	
+	public void dispararInteligente()
+	{
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		boolean posible = false;
+		int x = 0;
+		int y = 0;
+		Random num = new Random();
+		while(!posible) 
+		{
+			x = num.nextInt(10);
+			y = num.nextInt(10);
+			posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
+		}
+		casillas = Tablero.getTablero().bombardear(x, y,true);
+		Jugador.getJugador().enviarCasillas(casillas);
+	}
 }
