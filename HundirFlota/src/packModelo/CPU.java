@@ -8,13 +8,11 @@ public class CPU extends Observable{
 	private static CPU miCPU;
 	private ListaBarcos listaB;
 	private Casilla casillaAlerta;
-	private Casilla casillaSospecha;
 	
 	private CPU() 
 	{
 		listaB = new ListaBarcos();
 		casillaAlerta = null;
-		casillaSospecha = null;
 	}
 	
 	public static CPU getMiCPU() 
@@ -110,8 +108,8 @@ public class CPU extends Observable{
 				casillaAlerta = null;
 			}
 		}
-		//Caso 2: se ha hallado un barco por primera vez
-		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha == null)
+		//Caso 2: se ha hallado un barco
+		else if(this.casillaAlerta.tieneBarco())
 		{
 			boolean fila;
 			while(!posible)
@@ -139,7 +137,7 @@ public class CPU extends Observable{
 			//Caso 2.2 se ha dado en un barco y no se ha hundido
 			else if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
-				casillaAlerta = null;
+				casillaAlerta = Tablero.getTablero().getCasilla(x, y, true);
 			}
 			//Caso 2.3 no se ha dado en un barco
 			else
@@ -147,7 +145,6 @@ public class CPU extends Observable{
 				
 			}
 		}
-		
 		
 		casillas = Tablero.getTablero().bombardear(x, y,true);
 		Jugador.getJugador().enviarCasillas(casillas);
