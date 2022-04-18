@@ -56,10 +56,9 @@ public class InterfazJuego extends JFrame implements Observer {
 	private ArrayList<Label> listaLPC;
 	private Controler controler = null;
 	private JRadioButton Escudo;
-	private JPanel panel;
-	private JLabel Finn;
 	private boolean fin;
 	FinPartida frame2;
+	private JRadioButton Radar;
 
 	/**
 	 * Launch the application.
@@ -105,7 +104,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Jugador.getJugador().addObserver(this);
 		CPU.getMiCPU().addObserver(this);
-		Finn.setVisible(false);
 		
 		fin = false;
 	}
@@ -143,9 +141,9 @@ public class InterfazJuego extends JFrame implements Observer {
 			Acciones = new JPanel();
 			Acciones.setLayout(new GridLayout(2, 1, 0, 0));
 			Acciones.add(getLblNewLabel());
-			Acciones.add(getPanel());
 			Acciones.add(getDisparar());
 			Acciones.add(getEscudo());
+			Acciones.add(getRadar());
 		}
 		return Acciones;
 	}
@@ -243,6 +241,18 @@ public class InterfazJuego extends JFrame implements Observer {
 		}
 		return Disparar;
 	}
+	private JRadioButton getEscudo() {
+		if (Escudo == null) {
+			Escudo = new JRadioButton("Escudo");
+		}
+		return Escudo;
+	}
+	private JRadioButton getRadar() {
+		if (Radar == null) {
+			Radar = new JRadioButton("Radar");
+		}
+		return Radar;
+	}
 	
 	private Label obtJLabel(int pPos, boolean pJug)
 	{
@@ -339,22 +349,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		}	
 	}
 				
-		
-		
-	
-	private JRadioButton getEscudo() {
-		if (Escudo == null) {
-			Escudo = new JRadioButton("Escudo");
-		}
-		return Escudo;
-	}
-	private JPanel getPanel() {
-		if (panel == null) {
-			panel = new JPanel();
-			panel.add(getFinn());
-		}
-		return panel;
-	}
 	
 	private class Controler implements MouseListener  {
 
@@ -427,17 +421,5 @@ public class InterfazJuego extends JFrame implements Observer {
 			// TODO Auto-generated method stub
 			
 		}
-	}
-
-	
-
-   
-	
-	private JLabel getFinn() {
-		if (Finn == null) 
-		{
-			Finn = new JLabel("FIN DEL JUEGO :)");
-		}
-		return Finn;
 	}
 }
