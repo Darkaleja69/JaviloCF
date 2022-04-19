@@ -8,11 +8,13 @@ public class CPU extends Observable{
 	private static CPU miCPU;
 	private ListaBarcos listaB;
 	private Casilla casillaAlerta;
+	private Casilla casillaSospecha;
 	
 	private CPU() 
 	{
 		listaB = new ListaBarcos();
 		casillaAlerta = null;
+		casillaSospecha = null;
 	}
 	
 	public static CPU getMiCPU() 
@@ -105,12 +107,13 @@ public class CPU extends Observable{
 			}
 			else
 			{
-				casillaAlerta = null;
+				this.casillaAlerta = null;
+				this.casillaSospecha = null;
 			}
 		}
 		
-		//Caso 2: se ha hallado un barco
-		else if(this.casillaAlerta.tieneBarco())
+		//Caso 2: se ha hallado un barco por primera vez
+		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha == null)
 		{
 			boolean fila;
 			while(!posible)
@@ -135,14 +138,22 @@ public class CPU extends Observable{
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
 			{
 				casillaAlerta = null;
+				casillaSospecha = null;
 			}
 			//Caso 2.2 se ha dado en un barco y no se ha hundido
 			else if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
-				casillaAlerta = Tablero.getTablero().getCasilla(x, y, true);
+				casillaSospecha = Tablero.getTablero().getCasilla(x, y, true);
 			}
-			//Caso 2.3 se ha dado al agua
-			else
+			//Caso 2.3 se ha dado al agua (no ocurre nada)
+		}
+		
+		//Caso 3: se ha dado en el barco dos veces y no se ha hundido
+		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha.tieneBarco())
+		{
+			x = this.casillaAlerta.getFila() - this.casillaSospecha.getFila();
+			y = this.casillaAlerta.getColumna() - this.casillaSospecha.getColumna();
+			if(!Tablero.getTablero().getCasilla(x, y, true).estaTocada())
 			{
 				
 			}
