@@ -6,9 +6,11 @@ import java.util.Observable;
 public class Jugador extends Observable {
 	private static Jugador miJugador;
 	private ListaBarcos lista;
+	private int radares;
 	
 	private Jugador() {
 		lista=new ListaBarcos();
+		this.radares = 5;
 	}
 	
 	public static Jugador getJugador() {
@@ -50,6 +52,26 @@ public class Jugador extends Observable {
 		return !(casillas.size() < 1);
 	}
 	
+	public void radar(int pX, int pY) {
+		int fmax = pX +1;
+		int cmax = pY +1;
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		Casilla b = null;
+		
+		for(int i = pX -1;i<=fmax;i++) {
+			
+			for(int j = pY -1;j<=cmax;j++) {
+				
+				b = Tablero.getTablero().getCasilla(i, j, false);
+				casillas.add(b);
+			}
+			
+		}
+		
+		
+		
+	}
+	
 	public boolean hayDemasiados(int pLong) {
 		return lista.hayDemasiados(pLong);
 	}
@@ -73,6 +95,10 @@ public class Jugador extends Observable {
 	}
 	public int barcosPorColocar(int pLong) {
 		return 5-(this.lista.cantidadBarcos(pLong)+pLong);
+	}
+	
+	public boolean quedanRadares() {
+		return(this.radares>0);
 	}
 	
 	
