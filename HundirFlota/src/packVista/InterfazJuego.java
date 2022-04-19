@@ -323,7 +323,6 @@ public class InterfazJuego extends JFrame implements Observer {
 							casillasBarco=GestorJuego.getMiGestorJuego().marcarBarcoHundido(c, jug);
 							for(int j=0;j<casillasBarco.size();j++) {
 								int posicion=(casillasBarco.get(j).getFila()*10)+casillasBarco.get(j).getColumna();
-								System.out.println(posicion);
 								Label lblBarco= obtJLabel(posicion,jug);
 								lblBarco.setBackground(Color.YELLOW);
 							}

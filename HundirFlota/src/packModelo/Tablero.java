@@ -173,8 +173,8 @@ public class Tablero {
 	
 	public ArrayList<Casilla> obtenerCasillasBarco(Casilla pCasilla,boolean pJug){
 		Barco bar=pCasilla.getBarco();
-		int fila=pCasilla.getFila();
-		int col=pCasilla.getColumna();
+		int filaI=pCasilla.getFila();
+		int colI=pCasilla.getColumna();
 		ArrayList<Casilla> casillasBarc=new ArrayList<Casilla>();
 		casillasBarc.add(pCasilla);
 		Casilla c=null;
@@ -182,9 +182,14 @@ public class Tablero {
 		boolean hor=false;
 		boolean sumar=false;
 		boolean[][] noMirar=new boolean[10][10];
-		noMirar[fila][col]=true;
+		noMirar[filaI][colI]=true;
+		int fila=filaI;
+		int col=colI;
+		int x=0;
 		
 		while(i<bar.getLongitud() && !hor) {
+			sumar=false;
+			x=i;
 			if(fila<9) {
 				if(this.getCasilla(fila+1, col, pJug).getBarco()==bar && !noMirar[fila+1][col]) {
 					
@@ -209,10 +214,20 @@ public class Tablero {
 					}else {
 						fila--;
 			}
+			System.out.println(i);
+			if(x==i && !hor) {
+				if(fila>filaI) {
+					fila=filaI-1;
+				}else {
+					fila=filaI+1;
+				}
+			}
 			System.out.println("hola");
 		}
 		
 		while(i<bar.getLongitud()) {
+			x=i;
+			sumar=false;
 			if(col<9) {
 				if(this.getCasilla(fila, col+1, pJug).getBarco()==bar && !noMirar[fila][col+1]) {
 					casillasBarc.add(this.getCasilla(fila, col+1, pJug));
@@ -235,6 +250,14 @@ public class Tablero {
 				col++;
 			}else {
 				col--;
+			}
+
+			if(x==i){
+				if(col>colI) {
+					col=colI-1;
+				}else {
+					col=colI+1;
+				}
 			}
 		}
 		
