@@ -28,7 +28,6 @@ public abstract class Barco {
 	
 	
 	public void recibirImpacto() {
-		System.out.println("recibe impacto");
 		if (escudo == null)
 		{
 			this.vidas --;
@@ -36,7 +35,6 @@ public abstract class Barco {
 		else
 		{
 			escudo.recibirImpacto();
-			System.out.println(escudo.funcional());
 			if (!escudo.funcional())
 			{
 				this.escudo = null;
