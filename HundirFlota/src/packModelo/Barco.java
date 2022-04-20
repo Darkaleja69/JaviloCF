@@ -29,7 +29,7 @@ public abstract class Barco {
 	
 	public void recibirImpacto() {
 		System.out.println("recibe impacto");
-		if (escudo != null)
+		if (escudo == null)
 		{
 			this.vidas --;
 		}
