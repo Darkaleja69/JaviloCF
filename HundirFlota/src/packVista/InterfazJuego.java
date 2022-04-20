@@ -303,6 +303,27 @@ public class InterfazJuego extends JFrame implements Observer {
 					}
 				}
 			}
+			else if(casillas.size()==9){
+				for(int i = 0; i < casillas.size(); i++) {
+					Casilla c = casillas.get(i);
+					int pos = (c.getFila() * 10) + c.getColumna();
+					boolean jug=false;
+					if(arg0 instanceof Jugador) {
+						jug=true;
+					}
+					Label lbl = this.obtJLabel(pos, jug);
+					if(!(c.estaTocada())) { //se podría omitir//
+						if(c.tieneBarco()) {
+							lbl.setBackground(Color.orange);
+						}
+						else {
+							lbl.setBackground(Color.green);
+						}
+						
+					}
+				}
+				
+			}
 			for(int i = 0; i < casillas.size(); i++)
 			{
 				Casilla c = casillas.get(i);
@@ -392,6 +413,9 @@ public class InterfazJuego extends JFrame implements Observer {
 						GestorJuego.getMiGestorJuego().disparar(x, y);
 					}else if(Escudo.isSelected()) {
 			//ESCUDO			GestorJuego.getMiGestorJuego();
+					}
+					else if(Radar.isSelected()) {
+						GestorJuego.getMiGestorJuego().radar();
 					}
 				}
 			}	
