@@ -16,7 +16,7 @@ public class CPU extends Observable{
 		listaB = new ListaBarcos();
 		casillaAlerta = null;
 		casillaSospecha = null;
-		cantEscudos = 1;
+		cantEscudos = 3;
 	}
 	
 	public static CPU getMiCPU() 

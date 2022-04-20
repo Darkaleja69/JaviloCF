@@ -12,7 +12,7 @@ public class Jugador extends Observable {
 	private Jugador() {
 		lista=new ListaBarcos();
 		this.radares = 5;
-		cantEscudos = 1;
+		cantEscudos = 3;
 	}
 	
 	public static Jugador getJugador() {
