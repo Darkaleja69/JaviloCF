@@ -2,6 +2,7 @@ package packModelo;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 
 public class GestorJuego extends Observable {
 	private static GestorJuego miGestor;
@@ -26,6 +27,14 @@ public class GestorJuego extends Observable {
 		}
 	}
 	
+	public void colocarEscudo(int pX, int pY)
+	{
+		if (Jugador.getJugador().escudosSuficientes())
+		{
+			Jugador.getJugador().colocarEscudo(pX, pY);
+		}
+	}
+	
 	public void disparar(int pX, int pY) 
 	{
 		boolean fin = false;
@@ -40,6 +49,12 @@ public class GestorJuego extends Observable {
 			}
 			else 
 			{
+				Random x = new Random();
+				boolean escudo = x.nextBoolean();
+				if (CPU.getMiCPU().escudosSuficientes() && escudo)
+				{
+					CPU.getMiCPU().colocarEscudo();
+				}
 				//Disparo CPU
 				CPU.getMiCPU().dispararInteligente();
 				if(comprobarFin(true)) 

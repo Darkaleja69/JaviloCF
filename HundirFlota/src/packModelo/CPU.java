@@ -9,12 +9,14 @@ public class CPU extends Observable{
 	private ListaBarcos listaB;
 	private Casilla casillaAlerta;
 	private Casilla casillaSospecha;
+	private int cantEscudos;
 	
 	private CPU() 
 	{
 		listaB = new ListaBarcos();
 		casillaAlerta = null;
 		casillaSospecha = null;
+		cantEscudos = 1;
 	}
 	
 	public static CPU getMiCPU() 
@@ -26,6 +28,10 @@ public class CPU extends Observable{
 		return miCPU;
 	}
 	
+	public boolean escudosSuficientes()
+	{
+		return cantEscudos > 0;
+	}
 
 	public Barco colocarBarco(int pLongitud) 
 	{	
@@ -64,6 +70,31 @@ public class CPU extends Observable{
 		}
 		casillas = Tablero.getTablero().bombardear(x, y,true);
 		Jugador.getJugador().enviarCasillas(casillas);
+	}
+	
+	public void colocarEscudo()
+	{
+		cantEscudos--;
+		
+		//Decidir a que barco colocarle el escudo
+		ArrayList<Barco> barcos = this.listaB.barcosSinHundir();
+		
+		Barco barc=null;
+		for (Barco b: barcos)
+		{
+			if (!b.tieneEscudo())
+			{
+				barc = b;
+				break;
+			}
+		}
+		
+		Casilla c = Tablero.getTablero().buscarCasillaBarco(barc);
+		int x = c.getFila();
+		int y = c.getColumna();
+		System.out.println("se esta colocando el escudo de cpu y las coordenadas son " + x + " " + y);
+		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(x, y, false);
+		CPU.getMiCPU().enviarCasillas(casillas);
 	}
 	
 	public void anadirBarco(Barco pBarco) {

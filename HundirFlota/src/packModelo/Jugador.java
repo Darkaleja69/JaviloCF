@@ -7,10 +7,12 @@ public class Jugador extends Observable {
 	private static Jugador miJugador;
 	private ListaBarcos lista;
 	private int radares;
+	private int cantEscudos;
 	
 	private Jugador() {
 		lista=new ListaBarcos();
 		this.radares = 5;
+		cantEscudos = 1;
 	}
 	
 	public static Jugador getJugador() {
@@ -95,6 +97,19 @@ public class Jugador extends Observable {
 	}
 	public int barcosPorColocar(int pLong) {
 		return 5-(this.lista.cantidadBarcos(pLong)+pLong);
+	}
+	
+	public boolean escudosSuficientes()
+	{
+		return cantEscudos > 0;
+	}
+	
+	public void colocarEscudo(int pX, int pY)
+	{
+		cantEscudos--;
+		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(pX, pY, true);
+		Jugador.getJugador().enviarCasillas(casillas);
+		
 	}
 	
 	public boolean quedanRadares() {
