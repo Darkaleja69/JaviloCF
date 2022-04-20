@@ -55,6 +55,8 @@ public class Jugador extends Observable {
 	}
 	
 	public void radar(int pX, int pY) {
+	if(this.quedanRadares()) {
+		this.radares --;
 		int fmax = pX +1;
 		int cmax = pY +1;
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
@@ -69,8 +71,10 @@ public class Jugador extends Observable {
 			}
 			
 		}
+		setChanged();
+		notifyObservers(casillas);
 		
-		
+	}	
 		
 	}
 	
