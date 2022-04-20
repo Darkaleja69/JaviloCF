@@ -92,9 +92,8 @@ public class CPU extends Observable{
 		Casilla c = Tablero.getTablero().buscarCasillaBarco(barc);
 		int x = c.getFila();
 		int y = c.getColumna();
-		System.out.println("se esta colocando el escudo de cpu y las coordenadas son " + x + " " + y);
 		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(x, y, false);
-		CPU.getMiCPU().enviarCasillas(casillas);
+		CPU.getMiCPU().enviarCasillas(casillas); //quitar despues
 	}
 	
 	public void anadirBarco(Barco pBarco) {
