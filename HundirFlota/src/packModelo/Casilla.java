@@ -33,6 +33,10 @@ public class Casilla {
 		}
 		else 
 		{
+			if (!this.barco.tieneEscudo())
+			{
+				tieneBomba = true;
+			}
 			this.barco.recibirImpacto();
 		}
 	}
