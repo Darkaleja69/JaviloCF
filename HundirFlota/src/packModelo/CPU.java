@@ -93,7 +93,7 @@ public class CPU extends Observable{
 		int x = c.getFila();
 		int y = c.getColumna();
 		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(x, y, false);
-		CPU.getMiCPU().enviarCasillas(casillas); //quitar despues
+		//CPU.getMiCPU().enviarCasillas(casillas);
 	}
 	
 	public void anadirBarco(Barco pBarco) {
