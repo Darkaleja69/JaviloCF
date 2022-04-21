@@ -414,7 +414,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					}else if(Escudo.isSelected()) {
 			//ESCUDO			GestorJuego.getMiGestorJuego();
 					}
-					else if(Radar.isSelected()) {
+					else if(Radar.isSelected() && Jugador.getJugador().barcosColocados()) {
 						GestorJuego.getMiGestorJuego().radar();
 					}
 				}

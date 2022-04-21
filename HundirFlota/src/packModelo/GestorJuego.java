@@ -67,6 +67,8 @@ public class GestorJuego extends Observable {
 		int y = num2.nextInt(7)+2;
 		Jugador.getJugador().radar(x, y);
 		
+		
+		
 	}
 	
 	private boolean comprobarFin(boolean pJug) {

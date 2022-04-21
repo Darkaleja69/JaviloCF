@@ -69,8 +69,7 @@ public class Jugador extends Observable {
 			}
 			
 		}
-		setChanged();
-		notifyObservers(casillas);
+		CPU.getMiCPU().enviarCasillas(casillas);
 		
 	}	
 		
@@ -102,7 +101,7 @@ public class Jugador extends Observable {
 	}
 	
 	public boolean quedanRadares() {
-		return(this.radares>0);
+		return(this.radares>=1);
 	}
 	
 	
