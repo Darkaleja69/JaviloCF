@@ -116,6 +116,10 @@ public class Jugador extends Observable {
 		
 	}
 	
+	public int escudosPorColocar() {
+		return this.cantEscudos;
+	}
+	
 	public boolean quedanRadares() {
 		return(this.radares>0);
 	}
