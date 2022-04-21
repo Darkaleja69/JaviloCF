@@ -101,6 +101,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g2.add(Destructor);
 		g3.add(Escudo);
 		g3.add(Disparar);
+		g3.add(Radar);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Jugador.getJugador().addObserver(this);
 		CPU.getMiCPU().addObserver(this);
