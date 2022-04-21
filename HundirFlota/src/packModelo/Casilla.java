@@ -27,9 +27,16 @@ public class Casilla {
 	
 	public void bombardear() 
 	{
-		tieneBomba = true;
-		if(tieneBarco()) 
+		if (!tieneBarco())
 		{
+			tieneBomba = true;
+		}
+		else 
+		{
+			if (!this.barco.tieneEscudo())
+			{
+				tieneBomba = true;
+			}
 			this.barco.recibirImpacto();
 		}
 	}

@@ -336,7 +336,11 @@ public class InterfazJuego extends JFrame implements Observer {
 				
 				if(c.tieneBarco())
 				{
-					if(c.estaTocada())
+					if (c.getBarco().tieneEscudo())
+					{
+						lbl.setBackground(Color.white);
+					}
+					else if(c.estaTocada())
 					{
 						lbl.setBackground(Color.red);
 						if(c.getBarco().estaHundido()) {
@@ -404,6 +408,13 @@ public class InterfazJuego extends JFrame implements Observer {
 					
 					GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
 				}
+				else if((l.esJugador()) && Jugador.getJugador().barcosColocados() && Escudo.isSelected())
+				{
+					int x = l.getCoordX();
+					int y = l.getCoordY();
+					System.out.println("escudo is selected");
+					GestorJuego.getMiGestorJuego().colocarEscudo(x,y);
+				}
 				else if(!(l.esJugador()) && Jugador.getJugador().barcosColocados())
 				{	
 					int x = l.getCoordX();
@@ -411,8 +422,6 @@ public class InterfazJuego extends JFrame implements Observer {
 					if(Disparar.isSelected()) 
 					{
 						GestorJuego.getMiGestorJuego().disparar(x, y);
-					}else if(Escudo.isSelected()) {
-			//ESCUDO			GestorJuego.getMiGestorJuego();
 					}
 					else if(Radar.isSelected() && Jugador.getJugador().barcosColocados()) {
 						GestorJuego.getMiGestorJuego().radar();

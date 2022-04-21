@@ -151,6 +151,34 @@ public class Tablero {
 		return array;
 	}
 	
+	public ArrayList<Casilla> colocarEscudo (int pX, int pY, boolean pJug)
+	{
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		if (pJug)
+		{
+			if (this.tableroJugador[pX][pY].tieneBarco() && !this.tableroJugador[pX][pY].getBarco().estaHundido())
+			{
+				Barco b = this.tableroJugador[pX][pY].getBarco();
+				Escudo esc = new Escudo();
+				b.colocarEscudo(esc);
+				
+				//añadir todas las casillas que ocupe el barco al array
+				casillas = this.obtenerCasillasBarco(this.tableroJugador[pX][pY], true);
+			}
+			
+		}
+		else
+		{
+			Barco b = this.tableroCPU[pX][pY].getBarco();
+			Escudo esc = new Escudo();
+			b.colocarEscudo(esc);
+			//añadir todas las casillas que ocupe el barco al array
+			casillas = this.obtenerCasillasBarco(this.tableroCPU[pX][pY], false);
+		}
+		
+		return casillas;
+	}
+	
 	public Casilla getCasilla(int pFila, int pCol,boolean esJug) {
 		if(esJug) 
 		{
@@ -263,6 +291,29 @@ public class Tablero {
 		
 		return casillasBarc;
 		
+	}
+	
+	public Casilla buscarCasillaBarco(Barco pBarco)
+	{
+		int i = 0;
+		int j = 0;
+		boolean enc = false;
+		Casilla c = null;
+		while (i<10 && !enc)
+		{
+			while (j<10 && !enc)
+			{
+				if (this.tableroCPU[i][j].tieneBarco() && this.tableroCPU[i][j].getBarco().equals(pBarco))
+				{
+					c = this.tableroCPU[i][j];
+					enc = true;
+				}
+				j++;
+			}
+			j = 0;
+			i++;
+		}
+		return c;
 	}
 	
 
