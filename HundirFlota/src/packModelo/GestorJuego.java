@@ -105,4 +105,8 @@ public class GestorJuego extends Observable {
 	public int barcosPorColocar(int pLong) {
 		return Jugador.getJugador().barcosPorColocar(pLong);
 	}
+	
+	public int escudosPorColocar() {
+		return Jugador.getJugador().escudosPorColocar();
+	}
 }

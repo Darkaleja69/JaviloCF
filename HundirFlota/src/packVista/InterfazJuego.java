@@ -244,7 +244,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getEscudo() {
 		if (Escudo == null) {
-			Escudo = new JRadioButton("Escudo");
+			Escudo = new JRadioButton("Escudo ("+GestorJuego.getMiGestorJuego().escudosPorColocar()+")");
 		}
 		return Escudo;
 	}
@@ -276,6 +276,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		
+		boolean conEscudo=false;
 		if(arg1 instanceof Integer) 
 		{	Integer x=(Integer) arg1;
 			fin = true;
@@ -330,6 +331,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				Casilla c = casillas.get(i);
 				int pos = (c.getFila() * 10) + c.getColumna();
 				boolean jug=false;
+				
 				if(arg0 instanceof Jugador) {
 					jug=true;
 				}
@@ -340,6 +342,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					if (c.getBarco().tieneEscudo())
 					{
 						lbl.setBackground(Color.white);
+						conEscudo=true;
 					}
 					else if(c.estaTocada())
 					{
@@ -370,6 +373,9 @@ public class InterfazJuego extends JFrame implements Observer {
 						lbl.setBackground(Color.cyan);
 					}
 				}
+			}
+			if(conEscudo) {
+				Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().escudosPorColocar()+")");
 			}
 		}	
 	}

@@ -55,5 +55,8 @@ public class Casilla {
 		return (!(this.barco==null));
 	}
 	
+	public boolean tieneEscudo() {
+		return this.barco.tieneEscudo();
+	}
 	
 }

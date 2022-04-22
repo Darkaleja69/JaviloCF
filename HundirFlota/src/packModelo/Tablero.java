@@ -162,7 +162,7 @@ public class Tablero {
 				Escudo esc = new Escudo();
 				b.colocarEscudo(esc);
 				
-				//añadir todas las casillas que ocupe el barco al array
+				//aï¿½adir todas las casillas que ocupe el barco al array
 				casillas = this.obtenerCasillasBarco(this.tableroJugador[pX][pY], true);
 			}
 			
@@ -172,7 +172,7 @@ public class Tablero {
 			Barco b = this.tableroCPU[pX][pY].getBarco();
 			Escudo esc = new Escudo();
 			b.colocarEscudo(esc);
-			//añadir todas las casillas que ocupe el barco al array
+			//aï¿½adir todas las casillas que ocupe el barco al array
 			casillas = this.obtenerCasillasBarco(this.tableroCPU[pX][pY], false);
 		}
 		
@@ -205,7 +205,6 @@ public class Tablero {
 		int colI=pCasilla.getColumna();
 		ArrayList<Casilla> casillasBarc=new ArrayList<Casilla>();
 		casillasBarc.add(pCasilla);
-		Casilla c=null;
 		int i=1;
 		boolean hor=false;
 		boolean sumar=false;
@@ -214,9 +213,11 @@ public class Tablero {
 		int fila=filaI;
 		int col=colI;
 		int x=0;
+		boolean restar=false;
 		
 		while(i<bar.getLongitud() && !hor) {
 			sumar=false;
+			restar=false;
 			x=i;
 			if(fila<9) {
 				if(this.getCasilla(fila+1, col, pJug).getBarco()==bar && !noMirar[fila+1][col]) {
@@ -233,13 +234,14 @@ public class Tablero {
 						casillasBarc.add(this.getCasilla(fila-1, col, pJug));
 						i++;
 						noMirar[fila-1][col]=true;
+						restar=true;
 					}
 			}
 			if(i==1) {
 				hor=true;
 			}else if(sumar) {
 						fila++;
-					}else {
+					}else if(restar) {
 						fila--;
 			}
 			System.out.println(i);
