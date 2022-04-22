@@ -11,7 +11,7 @@ public class Jugador extends Observable {
 	
 	private Jugador() {
 		lista=new ListaBarcos();
-		this.radares = 5;
+		radares = 5;
 		cantEscudos = 3;
 	}
 	
@@ -55,26 +55,31 @@ public class Jugador extends Observable {
 	}
 	
 	public void radar(int pX, int pY) {
-	if(this.quedanRadares()) {
-		this.radares --;
-		int fmax = pX +1;
-		int cmax = pY +1;
-		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-		Casilla b = null;
+		//para los turnos, que el método devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
-		for(int i = pX -1;i<=fmax;i++) {
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		if(this.quedanRadares()) {
+			radares = radares -1;
+			int fmax = pX +1;
+			int cmax = pY +1;
 			
-			for(int j = pY -1;j<=cmax;j++) {
+			Casilla c = null;
+		
+			for(int i = pX -1;i<fmax+1;i++) {
+			
+				for(int j = pY -1;j<cmax+1;j++) {
 				
-				b = Tablero.getTablero().getCasilla(i, j, false);
-				casillas.add(b);
-			}
+					c = Tablero.getTablero().getCasilla(i, j, false);
+					c.ponerRadar();
+					casillas.add(c);
+				}
 			
-		}
+			}
 		CPU.getMiCPU().enviarCasillas(casillas);
 		
-	}	
-		
+		}
+	
+		//return(casillas.size() >0);
 	}
 	
 	public boolean hayDemasiados(int pLong) {

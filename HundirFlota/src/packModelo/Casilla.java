@@ -5,12 +5,18 @@ public class Casilla {
 	private int fila;
 	private int columna;
 	private Barco barco;
+	private boolean radar;
 	
 	public Casilla(int pFila,int pColumna) {
 		fila=pFila;
 		columna=pColumna;
 		barco = null;
 		tieneBomba = false;
+		radar = false;
+	}
+	
+	public boolean getRadar() {
+		return radar;
 	}
 	
 	public int getFila() {
@@ -59,4 +65,14 @@ public class Casilla {
 		return this.barco.tieneEscudo();
 	}
 	
+	public boolean tieneRadar() {
+		return(this.radar==true);
+		
+	}
+	public void ponerRadar() {
+		this.radar = true;
+	}
+	public void quitarRadar() {
+		this.radar = false;
+	}
 }
