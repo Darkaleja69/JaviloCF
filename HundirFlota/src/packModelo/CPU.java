@@ -170,7 +170,6 @@ public class CPU extends Observable{
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null)
 			{
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
-				casillaAlerta = Tablero.getTablero().getCasilla(x, y, true);
 			}
 		}
 		
