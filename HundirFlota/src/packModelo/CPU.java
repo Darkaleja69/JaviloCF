@@ -180,8 +180,6 @@ public class CPU extends Observable{
 			y = this.sospecha.get(0).getColumna();
 			casillas = Tablero.getTablero().bombardear(x, y,true);
 			
-			casillas = Tablero.getTablero().bombardear(x, y,true);
-			
 			//Caso 2.1 se ha dado en un barco y se ha hundido
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
 			{
