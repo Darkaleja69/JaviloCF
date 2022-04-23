@@ -174,7 +174,7 @@ public class CPU extends Observable{
 		}
 		
 		//Caso 2: se tienen sospechas sobre alguna casilla
-		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha == null)
+		else
 		{
 			boolean fila;
 			while(!posible)
@@ -208,21 +208,6 @@ public class CPU extends Observable{
 			}
 			//Caso 2.3 se ha dado al agua (no ocurre nada)
 		}
-		
-		//Caso 3: se ha dado en el barco dos veces y no se ha hundido
-		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha.tieneBarco())
-		{
-			x = this.casillaAlerta.getFila() - this.casillaSospecha.getFila();
-			y = this.casillaAlerta.getColumna() - this.casillaSospecha.getColumna();
-			if(x >= 0 && y >= 0 && !Tablero.getTablero().getCasilla(x, y, true).estaTocada())
-			{
-				casillas = Tablero.getTablero().bombardear(x, y,true);
-				casillaAlerta = null;
-				casillaSospecha = null;
-			}
-		}
-		
-		Jugador.getJugador().enviarCasillas(casillas);
 	}
 	
 	private void generarSospechas(Casilla c)
