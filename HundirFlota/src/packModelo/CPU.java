@@ -183,7 +183,7 @@ public class CPU extends Observable{
 		//Caso 2: se tienen sospechas sobre alguna casilla
 		else
 		{
-			//primero se bombardea a la casilla más sospechosa
+			//se bombardea a la casilla más sospechosa
 			x = this.sospecha.get(0).getFila();
 			y = this.sospecha.get(0).getColumna();
 			casillas = Tablero.getTablero().bombardear(x, y,true);
@@ -192,7 +192,7 @@ public class CPU extends Observable{
 			//Caso 2.1 se ha dado en un barco y se ha hundido
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
 			{
-				//Caso 2.1.1 esa casilla no estaba registrada en el radar
+				//si esa casilla no estaba registrada en el radar, se han de borrar el resto de sospechas no registradas por el radar
 				if(!Tablero.getTablero().getCasilla(x, y, true).tieneRadar())
 				{
 					//borrar de "sospecha" a todas las casillas que no hayan sido detectadas por radares
@@ -208,8 +208,9 @@ public class CPU extends Observable{
 			//Caso 2.2 se ha dado en un barco y no se ha hundido
 			else if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
-				casillaSospecha = Tablero.getTablero().getCasilla(x, y, true);
+				
 			}
+			//Caso 2.3 se ha dado en agua. No hace falta ni una línea de código.
 		}
 	}
 	
