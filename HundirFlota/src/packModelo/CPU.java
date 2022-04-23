@@ -246,5 +246,8 @@ public class CPU extends Observable{
 				candidatas.remove(i);
 			}
 		}
+		
+		//por último, se indexa el ArrayList de casillas a nuestra lista de sospechas
+		this.sospecha.addAll(candidatas);
 	}
 }
