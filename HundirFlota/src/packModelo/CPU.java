@@ -226,6 +226,13 @@ public class CPU extends Observable{
 	
 	private void generarSospechas(Casilla c)
 	{
-		ArrayList
+		//primero se crea el ArrayList con las cuatro casillas que rodean a "c"
+		ArrayList<Casilla> candidatas = new ArrayList<Casilla>();
+		candidatas.add(new Casilla(c.getFila() - 1, c.getColumna()));	//norte
+		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//este
+		candidatas.add(new Casilla(c.getFila() +1, c.getColumna()));	//sur
+		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//oeste
+		
+		//ahora se filtran de forma que se eliminan las que no sean posibles
 	}
 }
