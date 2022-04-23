@@ -176,7 +176,8 @@ public class CPU extends Observable{
 		//Caso 2: se tienen sospechas sobre alguna casilla
 		else
 		{
-			Casilla cSospech = this.sospecha.get(0);
+			x = this.sospecha.get(0).getFila();
+			y = this.sospecha.get(0).getColumna();
 			casillas = Tablero.getTablero().bombardear(x, y,true);
 			
 			casillas = Tablero.getTablero().bombardear(x, y,true);
