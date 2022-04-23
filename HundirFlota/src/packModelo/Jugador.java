@@ -65,9 +65,9 @@ public class Jugador extends Observable {
 			
 			Casilla c = null;
 		
-			for(int i = pX -1;i<fmax+1;i++) {
+			for(int i = pX -1;i<=fmax;i++) {
 			
-				for(int j = pY -1;j<cmax+1;j++) {
+				for(int j = pY -1;j<=cmax;j++) {
 				
 					c = Tablero.getTablero().getCasilla(i, j, false);
 					c.ponerRadar();
@@ -75,7 +75,8 @@ public class Jugador extends Observable {
 				}
 			
 			}
-		CPU.getMiCPU().enviarCasillas(casillas);
+		
+			CPU.getMiCPU().enviarCasillas(casillas);
 		
 		}
 	

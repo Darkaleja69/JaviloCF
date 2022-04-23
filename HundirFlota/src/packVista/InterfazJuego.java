@@ -277,6 +277,8 @@ public class InterfazJuego extends JFrame implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		
 		boolean conEscudo=false;
+		boolean conRadar = false;
+		
 		if(arg1 instanceof Integer) 
 		{	Integer x=(Integer) arg1;
 			fin = true;
@@ -318,18 +320,18 @@ public class InterfazJuego extends JFrame implements Observer {
 				}
 				Label lbl = this.obtJLabel(pos, jug);
 				
-				if (c.tieneRadar()) {
+				if(c.tieneRadar()) {
 					c.quitarRadar();
 					
-					if(c.tieneBarco()) {
-						lbl.setBackground(Color.orange);
-					}
-					else {
-						lbl.setBackground(Color.green);		
+					if(!c.estaTocada()) {
+						lbl.setBackground(Color.green);	
+						if((c.tieneBarco())) {
+							lbl.setBackground(Color.DARK_GRAY);
+						}
+					
 					}
 					
 				}
-				
 				else if(c.tieneBarco())
 				{
 					if (c.getBarco().tieneEscudo())
