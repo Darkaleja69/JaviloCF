@@ -173,7 +173,7 @@ public class CPU extends Observable{
 			}
 		}
 		
-		//Caso 2: se tienen sospechas
+		//Caso 2: se tienen sospechas sobre alguna casilla
 		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha == null)
 		{
 			boolean fila;
