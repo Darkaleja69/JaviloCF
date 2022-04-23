@@ -7,8 +7,6 @@ import java.util.Random;
 public class CPU extends Observable{
 	private static CPU miCPU;
 	private ListaBarcos listaB;
-	private Casilla casillaAlerta;
-	private Casilla casillaSospecha;
 	private ArrayList<Casilla> sospecha;
 	private int cantEscudos;
 	private int radares;
