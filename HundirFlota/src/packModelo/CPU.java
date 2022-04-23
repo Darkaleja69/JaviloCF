@@ -10,6 +10,7 @@ public class CPU extends Observable{
 	private Casilla casillaAlerta;
 	private Casilla casillaSospecha;
 	private int cantEscudos;
+	private int radares;
 	
 	private CPU() 
 	{
@@ -17,6 +18,7 @@ public class CPU extends Observable{
 		casillaAlerta = null;
 		casillaSospecha = null;
 		cantEscudos = 3;
+		radares = 5;
 	}
 	
 	public static CPU getMiCPU() 
@@ -96,12 +98,45 @@ public class CPU extends Observable{
 		//CPU.getMiCPU().enviarCasillas(casillas);
 	}
 	
+	public void radar(int pX, int pY) {
+		//para los turnos, que el método devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
+		
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		if(this.quedanRadares()) {
+			radares = radares -1;
+			int fmax = pX +1;
+			int cmax = pY +1;
+					
+			Casilla c = null;
+				
+			for(int i = pX -1;i<=fmax;i++) {
+					
+				for(int j = pY -1;j<=cmax;j++) {
+						
+					c = Tablero.getTablero().getCasilla(i, j, false);
+					c.ponerRadar();
+					casillas.add(c);
+				}
+					
+			}
+				
+			CPU.getMiCPU().enviarCasillas(casillas);
+				
+		}
+			
+		//return(casillas.size() >0);
+	}
+	
 	public void anadirBarco(Barco pBarco) {
 		this.listaB.anadirBarco(pBarco);
 	}
 	
 	public boolean comprobarFin() {
 		return this.listaB.comprobarFin();
+	}
+	
+	public boolean quedanRadares() {
+		return(this.radares>=1);
 	}
 	
 	public void enviarCasillas(ArrayList<Casilla> pCasillas)
