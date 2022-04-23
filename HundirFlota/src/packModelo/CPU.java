@@ -9,11 +9,13 @@ public class CPU extends Observable{
 	private ListaBarcos listaB;
 	private Casilla casillaAlerta;
 	private Casilla casillaSospecha;
+	private ArrayList<Casilla> sospecha;
 	private int cantEscudos;
 	
 	private CPU() 
 	{
 		listaB = new ListaBarcos();
+		sospecha = new ArrayList<Casilla>();
 		casillaAlerta = null;
 		casillaSospecha = null;
 		cantEscudos = 3;
@@ -120,8 +122,8 @@ public class CPU extends Observable{
 		int y = 0;
 		Random num = new Random();
 		
-		//Caso 1: se ha hundido un barco o se ha disparado al agua
-		if(this.casillaAlerta == null || this.casillaAlerta.getBarco().estaHundido())
+		//Caso 1: no se sospecha sobre ninguna casilla
+		if(sospecha.size() == 0)
 		{
 			while(!posible) 
 			{
