@@ -192,8 +192,7 @@ public class CPU extends Observable{
 			//Caso 2.1 se ha dado en un barco y se ha hundido
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
 			{
-				casillaAlerta = null;
-				casillaSospecha = null;
+				
 			}
 			//Caso 2.2 se ha dado en un barco y no se ha hundido
 			else if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
