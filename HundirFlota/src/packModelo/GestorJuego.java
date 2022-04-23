@@ -29,9 +29,36 @@ public class GestorJuego extends Observable {
 	
 	public void colocarEscudo(int pX, int pY)
 	{
+		boolean fin = false;
+		int jugadorOCPU = 1;
+
 		if (Jugador.getJugador().escudosSuficientes())
 		{
 			Jugador.getJugador().colocarEscudo(pX, pY);
+		}
+		
+		//Turno CPU
+		Random x = new Random();
+		boolean escudo = x.nextBoolean();
+		if (escudo && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
+		{
+			CPU.getMiCPU().colocarEscudo();
+		}
+		else//Disparo CPU
+		{
+			CPU.getMiCPU().dispararInteligente();
+			if(comprobarFin(true)) 
+			{
+				fin = true;
+				jugadorOCPU=2;
+				
+			}
+		}
+		if(fin) 
+		{	
+				
+			setChanged();
+			notifyObservers(jugadorOCPU);
 		}
 	}
 	
@@ -47,15 +74,16 @@ public class GestorJuego extends Observable {
 				fin = true;
 			
 			}
-			else 
+			else //Turno CPU
 			{
 				Random x = new Random();
 				boolean escudo = x.nextBoolean();
-				if (CPU.getMiCPU().escudosSuficientes() && escudo)
+				if (escudo && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
 				{
 					CPU.getMiCPU().colocarEscudo();
 				}
-				//Disparo CPU
+				else //Disparo CPU
+				{
 				CPU.getMiCPU().dispararInteligente();
 				if(comprobarFin(true)) 
 				{
@@ -66,13 +94,14 @@ public class GestorJuego extends Observable {
 			}
 			
 		}
-			if(fin) 
-			{	
+		if(fin) 
+		{	
 				
-				setChanged();
-				notifyObservers(jugadorOCPU);
-			}
+			setChanged();
+			notifyObservers(jugadorOCPU);
 		}
+		}
+	}
 	
 	public void radar() {
 		Random num1 = new Random();	
