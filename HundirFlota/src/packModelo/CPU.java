@@ -208,7 +208,16 @@ public class CPU extends Observable{
 			//Caso 2.2 se ha dado en un barco y no se ha hundido
 			else if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
-				
+				//borrar de "sospecha" a todas las casillas que no hayan sido detectadas por radares
+				for(int i = 0; i < sospecha.size(); i++)
+				{
+					if(!sospecha.get(i).tieneRadar())
+					{
+						sospecha.remove(i);
+					}
+				}
+				//crear nuevas sospechas sobre la última casilla golpeada
+				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 			//Caso 2.3 se ha dado en agua. No hace falta ni una línea de código.
 		}
