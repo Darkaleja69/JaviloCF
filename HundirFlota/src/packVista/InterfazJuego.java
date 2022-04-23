@@ -250,7 +250,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getRadar() {
 		if (Radar == null) {
-			Radar = new JRadioButton("Radar");
+			Radar = new JRadioButton("Radar ("+GestorJuego.getMiGestorJuego().radaresPorColocar()+")");
 		}
 		return Radar;
 	}
@@ -426,6 +426,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					}
 					else if(Radar.isSelected() && Jugador.getJugador().barcosColocados()) {
 						GestorJuego.getMiGestorJuego().radar();
+						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().radaresPorColocar()+")");
 					}
 				}
 			}	

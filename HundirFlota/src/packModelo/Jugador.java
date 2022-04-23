@@ -55,7 +55,7 @@ public class Jugador extends Observable {
 	}
 	
 	public void radar(int pX, int pY) {
-		//para los turnos, que el método devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
+		//para los turnos, que el mï¿½todo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(this.quedanRadares()) {
@@ -129,5 +129,8 @@ public class Jugador extends Observable {
 		return(this.radares>=1);
 	}
 	
+	public int cantidadRadares() {
+		return this.radares;
+	}
 	
 }
