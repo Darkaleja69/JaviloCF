@@ -112,6 +112,7 @@ public class CPU extends Observable{
 	
 	public void dispararInteligente()
 	{
+
 		//Inicializaciones
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible = false;
@@ -159,7 +160,7 @@ public class CPU extends Observable{
 					x = casillaAlerta.getFila();
 					y = casillaAlerta.getColumna() - 1 + num.nextInt(2);
 				}
-				posible = (!(Tablero.getTablero().getCasilla(x, y, true).estaTocada())) && (y >= 0 && x >= 0);
+				posible = (!(Tablero.getTablero().getCasilla(x, y, true).estaTocada())) && (y >= 0 && x >= 0) && (y <= 9 && x <= 9);
 			}
 			
 			casillas = Tablero.getTablero().bombardear(x, y,true);
@@ -183,9 +184,11 @@ public class CPU extends Observable{
 		{
 			x = this.casillaAlerta.getFila() - this.casillaSospecha.getFila();
 			y = this.casillaAlerta.getColumna() - this.casillaSospecha.getColumna();
-			if(!Tablero.getTablero().getCasilla(x, y, true).estaTocada())
+			if(x >= 0 && y >= 0 && !Tablero.getTablero().getCasilla(x, y, true).estaTocada())
 			{
-				
+				casillas = Tablero.getTablero().bombardear(x, y,true);
+				casillaAlerta = null;
+				casillaSospecha = null;
 			}
 		}
 		
