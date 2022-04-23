@@ -8,6 +8,8 @@ public class CPU extends Observable{
 	private static CPU miCPU;
 	private ListaBarcos listaB;
 	private ArrayList<Casilla> sospecha;
+	private Casilla casillaSospecha;
+	private Casilla casillaAlerta;
 	private int cantEscudos;
 	private int radares;
 	
@@ -15,8 +17,6 @@ public class CPU extends Observable{
 	{
 		listaB = new ListaBarcos();
 		sospecha = new ArrayList<Casilla>();
-		casillaAlerta = null;
-		casillaSospecha = null;
 		cantEscudos = 3;
 		radares = 5;
 	}
