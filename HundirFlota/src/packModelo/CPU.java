@@ -166,19 +166,15 @@ public class CPU extends Observable{
 			}
 			casillas = Tablero.getTablero().bombardear(x, y,true);
 			
-			//Se activa casillaAlerta
+			//Si se ha golpeado un barco...
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null)
 			{
+				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 				casillaAlerta = Tablero.getTablero().getCasilla(x, y, true);
-			}
-			else
-			{
-				this.casillaAlerta = null;
-				this.casillaSospecha = null;
 			}
 		}
 		
-		//Caso 2: se ha hallado un barco por primera vez
+		//Caso 2: se tienen sospechas
 		else if(this.casillaAlerta.tieneBarco() && this.casillaSospecha == null)
 		{
 			boolean fila;
@@ -228,5 +224,10 @@ public class CPU extends Observable{
 		}
 		
 		Jugador.getJugador().enviarCasillas(casillas);
+	}
+	
+	private void generarSospechas(Casilla c)
+	{
+		
 	}
 }
