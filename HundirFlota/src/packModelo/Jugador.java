@@ -2,6 +2,7 @@ package packModelo;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Random;
 
 public class Jugador extends Observable {
 	private static Jugador miJugador;
@@ -54,12 +55,16 @@ public class Jugador extends Observable {
 		return !(casillas.size() < 1);
 	}
 	
-	public void radar(int pX, int pY) {
+	public void radar() {
 		//para los turnos, que el m�todo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(this.quedanRadares()) {
 			radares = radares -1;
+			Random num1 = new Random();	
+			Random num2 = new Random();	
+			int pX = num1.nextInt(7)+2;
+			int pY= num2.nextInt(7)+2;
 			int fmax = pX +1;
 			int cmax = pY +1;
 			

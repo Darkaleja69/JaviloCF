@@ -98,12 +98,16 @@ public class CPU extends Observable{
 		//CPU.getMiCPU().enviarCasillas(casillas);
 	}
 	
-	public void radar(int pX, int pY) {
+	public void radarCPU() {
 		//para los turnos, que el método devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(this.quedanRadares()) {
 			radares = radares -1;
+			Random num1 = new Random();	
+			Random num2 = new Random();	
+			int pX = num1.nextInt(7)+2;
+			int pY = num2.nextInt(7)+2;
 			int fmax = pX +1;
 			int cmax = pY +1;
 					
@@ -116,6 +120,9 @@ public class CPU extends Observable{
 					c = Tablero.getTablero().getCasilla(i, j, true);
 					c.ponerRadar();
 					casillas.add(c);
+					if(c.tieneBarco()) {
+						sospecha.add(c);
+					}
 				}
 					
 			}

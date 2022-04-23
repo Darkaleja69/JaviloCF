@@ -104,11 +104,8 @@ public class GestorJuego extends Observable {
 	}
 	
 	public void radar() {
-		Random num1 = new Random();	
-		Random num2 = new Random();	
-		int x = num1.nextInt(7)+2;
-		int y = num2.nextInt(7)+2;
-		Jugador.getJugador().radar(x, y);
+		
+		Jugador.getJugador().radar();
 		
 		
 		
