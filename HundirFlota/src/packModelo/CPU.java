@@ -219,7 +219,7 @@ public class CPU extends Observable{
 				//crear nuevas sospechas sobre la última casilla golpeada
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
-			//Caso 2.3 se ha dado en agua. No hace falta ni una línea de código.
+			//Caso 2.3 se ha dado en agua (no hace falta código)
 		}
 	}
 	
