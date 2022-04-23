@@ -113,7 +113,7 @@ public class CPU extends Observable{
 					
 				for(int j = pY -1;j<=cmax;j++) {
 						
-					c = Tablero.getTablero().getCasilla(i, j, false);
+					c = Tablero.getTablero().getCasilla(i, j, true);
 					c.ponerRadar();
 					casillas.add(c);
 				}
