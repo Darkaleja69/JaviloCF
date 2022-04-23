@@ -221,10 +221,11 @@ public class CPU extends Observable{
 			}
 			//Caso 2.3 se ha dado en agua (no hace falta código)
 		}
+		Jugador.getJugador().enviarCasillas(casillas);
 	}
 	
 	private void generarSospechas(Casilla c)
 	{
-		
+		ArrayList
 	}
 }
