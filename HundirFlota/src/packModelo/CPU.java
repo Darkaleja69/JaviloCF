@@ -176,22 +176,8 @@ public class CPU extends Observable{
 		//Caso 2: se tienen sospechas sobre alguna casilla
 		else
 		{
-			boolean fila;
-			while(!posible)
-			{
-				fila = num.nextBoolean();
-				if(fila)
-				{
-					x = casillaAlerta.getFila() - 1 + num.nextInt(2);
-					y = casillaAlerta.getColumna();
-				}
-				else 
-				{
-					x = casillaAlerta.getFila();
-					y = casillaAlerta.getColumna() - 1 + num.nextInt(2);
-				}
-				posible = (!(Tablero.getTablero().getCasilla(x, y, true).estaTocada())) && (y >= 0 && x >= 0) && (y <= 9 && x <= 9);
-			}
+			Casilla cSospech = this.sospecha.get(0);
+			casillas = Tablero.getTablero().bombardear(x, y,true);
 			
 			casillas = Tablero.getTablero().bombardear(x, y,true);
 			
