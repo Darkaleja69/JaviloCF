@@ -233,6 +233,18 @@ public class CPU extends Observable{
 		candidatas.add(new Casilla(c.getFila() +1, c.getColumna()));	//sur
 		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//oeste
 		
-		//ahora se filtran de forma que se eliminan las que no sean posibles
+		//ahora se eliminan las que se escapan del rango del tablero
+		//también se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
+		for(int i = 0; i < candidatas.size(); i++)
+		{
+			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() > 9 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() > 9)
+			{
+				candidatas.remove(i);
+			}
+			if(candidatas.get(i).estaTocada())
+			{
+				candidatas.remove(i);
+			}
+		}
 	}
 }
