@@ -414,7 +414,6 @@ public class InterfazJuego extends JFrame implements Observer {
 				{
 					int x = l.getCoordX();
 					int y = l.getCoordY();
-					System.out.println("escudo is selected");
 					GestorJuego.getMiGestorJuego().colocarEscudo(x,y);
 				}
 				else if(!(l.esJugador()) && Jugador.getJugador().barcosColocados())
