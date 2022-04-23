@@ -163,7 +163,7 @@ public class CPU extends Observable{
 		Random num = new Random();
 		
 		//Caso 1: no se sospecha sobre ninguna casilla
-		if(sospecha.size() == 0)
+		if(sospecha.isEmpty())
 		{
 			while(!posible) 
 			{
