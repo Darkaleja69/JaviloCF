@@ -240,9 +240,10 @@ public class CPU extends Observable{
 		{
 			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() > 8 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() > 8 || (candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido()))
 			{
+				System.out.println("fila: " + candidatas.get(i).getFila());
+				System.out.println("columna: " + candidatas.get(i).getColumna());
 				candidatas.remove(i);
 			}
-			
 		}
 		
 		//por último, se indexa el ArrayList de casillas a nuestra lista de sospechas
