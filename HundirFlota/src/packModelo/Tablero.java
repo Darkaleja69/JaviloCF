@@ -244,7 +244,6 @@ public class Tablero {
 					}else if(restar) {
 						fila--;
 			}
-			System.out.println(i);
 			if(x==i && !hor) {
 				if(fila>filaI) {
 					fila=filaI-1;
@@ -252,7 +251,6 @@ public class Tablero {
 					fila=filaI+1;
 				}
 			}
-			System.out.println("hola");
 		}
 		
 		while(i<bar.getLongitud()) {

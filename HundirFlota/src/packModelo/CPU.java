@@ -173,8 +173,8 @@ public class CPU extends Observable{
 			}
 			casillas = Tablero.getTablero().bombardear(x, y, true);
 			
-			//Si se ha golpeado un barco...
-			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null)
+			//Si se ha golpeado un barco y no se ha hundido
+			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
 			{
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
@@ -230,22 +230,19 @@ public class CPU extends Observable{
 		ArrayList<Casilla> candidatas = new ArrayList<Casilla>();
 		candidatas.add(new Casilla(c.getFila() - 1, c.getColumna()));	//norte
 		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//este
-		candidatas.add(new Casilla(c.getFila() +1, c.getColumna()));	//sur
-		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//oeste
+		candidatas.add(new Casilla(c.getFila() + 1, c.getColumna()));	//sur
+		candidatas.add(new Casilla(c.getFila(), c.getColumna() - 1));	//oeste
 		
 		//ahora se eliminan las que se escapan del rango del tablero
 		//también se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
 		//también se eliminan las que tienen barcos hundidos
 		for(int i = 0; i < candidatas.size(); i++)
 		{
-			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() > 9 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() > 9)
+			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() > 8 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() > 8 || (candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido()))
 			{
 				candidatas.remove(i);
 			}
-			if(candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido())
-			{
-				candidatas.remove(i);
-			}
+			
 		}
 		
 		//por último, se indexa el ArrayList de casillas a nuestra lista de sospechas
