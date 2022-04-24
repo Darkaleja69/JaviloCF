@@ -171,7 +171,7 @@ public class CPU extends Observable{
 				y = num.nextInt(10);
 				posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
 			}
-			casillas = Tablero.getTablero().bombardear(x, y,true);
+			casillas = Tablero.getTablero().bombardear(x, y, true);
 			
 			//Si se ha golpeado un barco...
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null)
@@ -217,7 +217,7 @@ public class CPU extends Observable{
 					}
 				}
 				//crear nuevas sospechas sobre la última casilla golpeada
-				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
+				//generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 			//Caso 2.3 se ha dado en agua (no hace falta código)
 		}
@@ -235,13 +235,14 @@ public class CPU extends Observable{
 		
 		//ahora se eliminan las que se escapan del rango del tablero
 		//también se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
+		//también se eliminan las que tienen barcos hundidos
 		for(int i = 0; i < candidatas.size(); i++)
 		{
 			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() > 9 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() > 9)
 			{
 				candidatas.remove(i);
 			}
-			if(candidatas.get(i).estaTocada())
+			if(candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido())
 			{
 				candidatas.remove(i);
 			}
