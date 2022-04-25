@@ -228,17 +228,31 @@ public class CPU extends Observable{
 	{
 		//primero se crea el ArrayList con las cuatro casillas que rodean a "c"
 		ArrayList<Casilla> candidatas = new ArrayList<Casilla>();
-		candidatas.add(Tablero.getTablero().getCasilla(c.getFila() - 1, c.getColumna(), true));	//norte
-		candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() + 1, true));	//este
-		candidatas.add(Tablero.getTablero().getCasilla(c.getFila() + 1, c.getColumna(), true));	//sur
-		candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() - 1, true));	//oeste
+		int fil = c.getFila();
+		int col = c.getColumna();
 		
-		//ahora se eliminan las que se escapan del rango del tablero
-		//también se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
+		if(fil - 1 >= 0)
+		{
+			candidatas.add(Tablero.getTablero().getCasilla(c.getFila() - 1, c.getColumna(), true));	//norte
+		}
+		if(col + 1 < 10)
+		{
+			candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() + 1, true));	//este
+		}
+		if(fil + 1 < 10)
+		{
+			candidatas.add(Tablero.getTablero().getCasilla(c.getFila() + 1, c.getColumna(), true));	//sur
+		}
+		if(col - 1 >= 0)
+		{
+			candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() - 1, true));	//oeste
+		}
+		
+		//Se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
 		//también se eliminan las que tienen barcos hundidos
 		for(int i = 0; i < candidatas.size(); i++)
 		{
-			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() == 10 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() == 10 || (candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido()))
+			if((candidatas.get(i).estaTocada()))
 			{
 				candidatas.remove(i); 
 			}
