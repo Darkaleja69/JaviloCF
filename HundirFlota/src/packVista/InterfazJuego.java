@@ -277,7 +277,6 @@ public class InterfazJuego extends JFrame implements Observer {
 	public void update(Observable arg0, Object arg1) {
 		
 		boolean conEscudo=false;
-		boolean conRadar = false;
 		
 		if(arg1 instanceof Integer) 
 		{	Integer x=(Integer) arg1;

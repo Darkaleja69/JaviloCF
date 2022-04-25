@@ -61,14 +61,13 @@ public class CPU extends Observable{
 	public void turnoCPU() {
 		//Turno CPU
         boolean fin = false;
-        int jugadorOCPU=1;
+        int jugadorOCPU = 1;
         Random z = new Random();
         int turno = z.nextInt(2)+1;
         
         if (turno == 2 && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
         {
             CPU.getMiCPU().colocarEscudo();
-
         }
         else if(turno == 3 && CPU.getMiCPU().quedanRadares()) //radar CPU
         {
@@ -86,7 +85,7 @@ public class CPU extends Observable{
             }
         }
         if(fin) 
-		{	
+		{
 			setChanged();
 			notifyObservers(jugadorOCPU);
 		}

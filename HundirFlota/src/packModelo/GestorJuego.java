@@ -44,7 +44,7 @@ public class GestorJuego extends Observable {
 	public void disparar(int pX, int pY) 
 	{
 		boolean fin = false;
-		int jugadorOCPU=1;
+		int jugadorOCPU = 1;
 		boolean disparado = Jugador.getJugador().disparar(pX, pY);
 		
 		if(disparado) {
@@ -57,6 +57,11 @@ public class GestorJuego extends Observable {
 			{
 				CPU.getMiCPU().turnoCPU();
 			}
+		}
+		if(fin) 
+		{	
+			setChanged();
+			notifyObservers(jugadorOCPU);
 		}
 	}
 	
