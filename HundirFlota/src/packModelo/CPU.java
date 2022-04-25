@@ -121,7 +121,7 @@ public class CPU extends Observable{
 					c.ponerRadar();
 					casillas.add(c);
 					if(c.tieneBarco()) {
-						sospecha.add(c);
+						sospecha.add(0, c);
 					}
 				}
 					
