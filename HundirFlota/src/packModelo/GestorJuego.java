@@ -137,8 +137,12 @@ public class GestorJuego extends Observable {
                 jugadorOCPU=2;
 
             }
-
-}
+        }
+        if(fin) 
+		{	
+			setChanged();
+			notifyObservers(jugadorOCPU);
+		}
 	}
 	
 	
