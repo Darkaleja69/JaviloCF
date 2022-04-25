@@ -38,28 +38,7 @@ public class GestorJuego extends Observable {
 		}
 		
 		//Turno CPU
-		Random x = new Random();
-		boolean escudo = x.nextBoolean();
-		if (escudo && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
-		{
-			CPU.getMiCPU().colocarEscudo();
-		}
-		else//Disparo CPU
-		{
-			CPU.getMiCPU().dispararInteligente();
-			if(comprobarFin(true)) 
-			{
-				fin = true;
-				jugadorOCPU=2;
-				
-			}
-		}
-		if(fin) 
-		{	
-				
-			setChanged();
-			notifyObservers(jugadorOCPU);
-		}
+		CPU.getMiCPU().turnoCPU();
 	}
 	
 	public void disparar(int pX, int pY) 
@@ -76,30 +55,8 @@ public class GestorJuego extends Observable {
 			}
 			else //Turno CPU
 			{
-				Random x = new Random();
-				boolean escudo = x.nextBoolean();
-				if (escudo && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
-				{
-					CPU.getMiCPU().colocarEscudo();
-				}
-				else //Disparo CPU
-				{
-				CPU.getMiCPU().dispararInteligente();
-				if(comprobarFin(true)) 
-				{
-					fin = true;
-					jugadorOCPU=2;
-					
-				}
+				CPU.getMiCPU().turnoCPU();
 			}
-			
-		}
-		if(fin) 
-		{	
-				
-			setChanged();
-			notifyObservers(jugadorOCPU);
-		}
 		}
 	}
 	
@@ -108,48 +65,12 @@ public class GestorJuego extends Observable {
 		boolean turno = Jugador.getJugador().radar();
 		
 		if(turno) {
-			this.turnoCPU();
-		}
-		
-		
-	}
-	public void turnoCPU() {
-		//Turno CPU
-        boolean fin = false;
-        int jugadorOCPU=1;
-        Random z = new Random();
-        int turno = z.nextInt(2)+1;
-        
-        if (turno == 2 && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
-        {
-            CPU.getMiCPU().colocarEscudo();
-
-        }
-        else if(turno == 3 && CPU.getMiCPU().quedanRadares()) //radar CPU
-        {
-            CPU.getMiCPU().radarCPU();
-
-        }
-        else //disparar CPU
-        {
-            CPU.getMiCPU().dispararInteligente();
-
-            if(comprobarFin(true)) 
-            {
-                fin = true;
-                jugadorOCPU=2;
-
-            }
-        }
-        if(fin) 
-		{	
-			setChanged();
-			notifyObservers(jugadorOCPU);
+			CPU.getMiCPU().turnoCPU();
 		}
 	}
 	
 	
-	private boolean comprobarFin(boolean pJug) {
+	public boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
 		if(pJug) 
 		{
