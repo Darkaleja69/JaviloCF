@@ -105,8 +105,11 @@ public class GestorJuego extends Observable {
 	
 	public void radar() {
 		
-		Jugador.getJugador().radar();
+		boolean turno = Jugador.getJugador().radar();
 		
+		if(turno) {
+			this.turnoCPU();
+		}
 		
 		
 	}

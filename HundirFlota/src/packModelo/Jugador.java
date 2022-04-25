@@ -55,12 +55,14 @@ public class Jugador extends Observable {
 		return !(casillas.size() < 1);
 	}
 	
-	public void radar() {
+	public boolean radar() {
 		//para los turnos, que el m�todo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		boolean radarizado = false;
 		if(this.quedanRadares()) {
 			radares = radares -1;
+			radarizado = true;
 			Random num1 = new Random();	
 			Random num2 = new Random();	
 			int pX = num1.nextInt(7)+2;
@@ -85,7 +87,7 @@ public class Jugador extends Observable {
 		
 		}
 	
-		//return(casillas.size() >0);
+		return(radarizado);
 	}
 	
 	public boolean hayDemasiados(int pLong) {
