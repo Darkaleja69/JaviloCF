@@ -110,6 +110,37 @@ public class GestorJuego extends Observable {
 		
 		
 	}
+	public void turnoCPU() {
+		//Turno CPU
+        boolean fin = false;
+        int jugadorOCPU=1;
+        Random z = new Random();
+        int turno = z.nextInt(2)+1;
+        
+        if (turno == 2 && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
+        {
+            CPU.getMiCPU().colocarEscudo();
+
+        }
+        else if(turno == 3 && CPU.getMiCPU().quedanRadares()) //radar CPU
+        {
+            CPU.getMiCPU().radarCPU();
+
+        }
+        else //disparar CPU
+        {
+            CPU.getMiCPU().dispararInteligente();
+
+            if(comprobarFin(true)) 
+            {
+                fin = true;
+                jugadorOCPU=2;
+
+            }
+
+}
+	}
+	
 	
 	private boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
