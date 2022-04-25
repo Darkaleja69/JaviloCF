@@ -238,10 +238,8 @@ public class CPU extends Observable{
 		//también se eliminan las que tienen barcos hundidos
 		for(int i = 0; i < candidatas.size(); i++)
 		{
-			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() > 8 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() > 8 || (candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido()))
+			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() == 10 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() == 10 || (candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido()))
 			{
-				System.out.println("fila: " + candidatas.get(i).getFila());
-				System.out.println("columna: " + candidatas.get(i).getColumna());
 				candidatas.remove(i);
 			}
 		}
