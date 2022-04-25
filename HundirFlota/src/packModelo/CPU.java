@@ -240,7 +240,7 @@ public class CPU extends Observable{
 		{
 			if(candidatas.get(i).getFila() < 0 || candidatas.get(i).getFila() == 10 || candidatas.get(i).getColumna() < 0 || candidatas.get(i).getColumna() == 10 || (candidatas.get(i).getBarco() != null && candidatas.get(i).getBarco().estaHundido()))
 			{
-				candidatas.remove(i);
+				candidatas.remove(i); 
 			}
 		}
 		
