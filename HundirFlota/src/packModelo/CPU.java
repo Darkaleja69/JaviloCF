@@ -228,12 +228,10 @@ public class CPU extends Observable{
 	{
 		//primero se crea el ArrayList con las cuatro casillas que rodean a "c"
 		ArrayList<Casilla> candidatas = new ArrayList<Casilla>();
-		candidatas.add(Tablero.getTablero().getCasilla(c.getFila() - 1, c.getColumna(), true)	//norte
-		
-		candidatas.add(new Casilla(c.getFila() - 1, c.getColumna()));	//norte
-		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//este
-		candidatas.add(new Casilla(c.getFila() + 1, c.getColumna()));	//sur
-		candidatas.add(new Casilla(c.getFila(), c.getColumna() - 1));	//oeste
+		candidatas.add(Tablero.getTablero().getCasilla(c.getFila() - 1, c.getColumna(), true));	//norte
+		candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() + 1, true));	//este
+		candidatas.add(Tablero.getTablero().getCasilla(c.getFila() + 1, c.getColumna(), true));	//sur
+		candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() - 1, true));	//oeste
 		
 		//ahora se eliminan las que se escapan del rango del tablero
 		//también se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
