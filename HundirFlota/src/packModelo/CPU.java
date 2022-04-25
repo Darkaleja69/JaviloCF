@@ -228,6 +228,8 @@ public class CPU extends Observable{
 	{
 		//primero se crea el ArrayList con las cuatro casillas que rodean a "c"
 		ArrayList<Casilla> candidatas = new ArrayList<Casilla>();
+		candidatas.add(Tablero.getTablero().getCasilla(c.getFila() - 1, c.getColumna(), true)	//norte
+		
 		candidatas.add(new Casilla(c.getFila() - 1, c.getColumna()));	//norte
 		candidatas.add(new Casilla(c.getFila(), c.getColumna() + 1));	//este
 		candidatas.add(new Casilla(c.getFila() + 1, c.getColumna()));	//sur
