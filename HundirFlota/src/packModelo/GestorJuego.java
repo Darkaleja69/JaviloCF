@@ -65,6 +65,30 @@ public class GestorJuego extends Observable {
 		}
 	}
 	
+	public void misil(int pX, int pY) 
+	{
+		boolean fin = false;
+		int jugadorOCPU = 1;
+		boolean disparado = Jugador.getJugador().disparar(pX, pY);
+		
+		if(disparado) {
+			if(comprobarFin(false)) 
+			{
+				fin = true;
+			
+			}
+			else //Turno CPU
+			{
+				CPU.getMiCPU().turnoCPU();
+			}
+		}
+		if(fin) 
+		{	
+			setChanged();
+			notifyObservers(jugadorOCPU);
+		}
+	}
+	
 	public void radar() {
 		
 		boolean turno = Jugador.getJugador().radar();
