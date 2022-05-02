@@ -69,7 +69,7 @@ public class GestorJuego extends Observable {
 	{
 		boolean fin = false;
 		int jugadorOCPU = 1;
-		boolean disparado = Jugador.getJugador().disparar(pX, pY);
+		boolean disparado = Jugador.getJugador().misil(pX, pY);
 		
 		if(disparado) {
 			if(comprobarFin(false)) 
