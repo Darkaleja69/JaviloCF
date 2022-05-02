@@ -39,6 +39,22 @@ public class Jugador extends Observable {
 		return disparado;
 	}
 	
+	public boolean misil(int pX,int pY) {
+		boolean disparado = false;
+		Casilla b = null;
+		Casilla x = Tablero.getTablero().getCasilla(pX, pY, false);
+		if(!x.estaTocada()) 
+		{
+			b = x;
+			Tablero.getTablero().bombardear(pX, pY, false);
+			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+			casillas.add(b);
+			CPU.getMiCPU().enviarCasillas(casillas);
+			disparado = true;
+		}
+		return disparado;
+	}
+	
 	public boolean colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(!hayDemasiados(pLongitud)) {
