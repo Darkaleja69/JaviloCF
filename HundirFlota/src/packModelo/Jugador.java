@@ -9,11 +9,14 @@ public class Jugador extends Observable {
 	private ListaBarcos lista;
 	private int radares;
 	private int cantEscudos;
+	private int dinero;
+	private Armamento miArmamento;
 	
 	private Jugador() {
 		lista=new ListaBarcos();
 		radares = 5;
 		cantEscudos = 3;
+		dinero=500;
 	}
 	
 	public static Jugador getJugador() {
@@ -43,14 +46,17 @@ public class Jugador extends Observable {
 		boolean disparado = false;
 		Casilla b = null;
 		Casilla x = Tablero.getTablero().getCasilla(pX, pY, false);
-		if(!x.estaTocada()) 
-		{
-			b = x;
-			Tablero.getTablero().bombardear(pX, pY, false);
-			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-			casillas.add(b);
-			CPU.getMiCPU().enviarCasillas(casillas);
-			disparado = true;
+		if(miArmamento.consultaArmamento(1,dinero)) {
+			if(!x.estaTocada()) 
+			{
+				b = x;
+				Tablero.getTablero().bombardear(pX, pY, false);
+				ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+				casillas.add(b);
+				CPU.getMiCPU().enviarCasillas(casillas);
+				disparado = true;
+				dinero=dinero-100;
+			}
 		}
 		return disparado;
 	}
@@ -131,18 +137,15 @@ public class Jugador extends Observable {
 		return 5-(this.lista.cantidadBarcos(pLong)+pLong);
 	}
 	
-	public boolean escudosSuficientes()
-	{
-		return cantEscudos > 0;
-	}
 	
 	public void colocarEscudo(int pX, int pY)
-	{
+	{	if(miArmamento.consultaArmamento(2, dinero)) {
 		cantEscudos--;
 		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(pX, pY, true);
 		Jugador.getJugador().enviarCasillas(casillas);
-		
+		dinero=dinero-50;
 	}
+}
 	
 	public int escudosPorColocar() {
 		return this.cantEscudos;
@@ -156,4 +159,7 @@ public class Jugador extends Observable {
 		return this.radares;
 	}
 	
+	public int dineroRestante() {
+		return dinero;
+	}
 }

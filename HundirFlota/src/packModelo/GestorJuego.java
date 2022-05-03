@@ -32,11 +32,7 @@ public class GestorJuego extends Observable {
 		boolean fin = false;
 		int jugadorOCPU = 1;
 
-		if (Jugador.getJugador().escudosSuficientes())
-		{
-			Jugador.getJugador().colocarEscudo(pX, pY);
-		}
-		
+		Jugador.getJugador().colocarEscudo(pX, pY);
 		//Turno CPU
 		CPU.getMiCPU().turnoCPU();
 	}
