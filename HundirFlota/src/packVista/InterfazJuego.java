@@ -97,6 +97,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		contentPane.add(getAcciones());
 		crearJLabels(getTableroJugador(),getTableroPC());
 		g.add(Vertical);
+		g.add(Horizontal);
 		g2.add(Fragata);
 		g2.add(Submarino);
 		g2.add(Portaviones);
@@ -104,6 +105,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Escudo);
 		g3.add(Disparar);
 		g3.add(Radar);
+		g3.add(Misil);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Jugador.getJugador().addObserver(this);
 		CPU.getMiCPU().addObserver(this);
