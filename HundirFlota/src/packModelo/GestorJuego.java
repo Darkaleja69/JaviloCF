@@ -123,4 +123,8 @@ public class GestorJuego extends Observable {
 	public int radaresPorColocar() {
 		return Jugador.getJugador().cantidadRadares();
 	}
+	
+	public int dineroRestanteJug() {
+		return Jugador.getJugador().dineroRestante();
+	}
 }

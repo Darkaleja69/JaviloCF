@@ -46,11 +46,9 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JRadioButton Submarino;
 	private JRadioButton Destructor;
 	private JRadioButton Fragata;
-	private JRadioButton Horizontal;
 	private ButtonGroup g =new ButtonGroup();
 	private ButtonGroup g2 =new ButtonGroup();
 	private ButtonGroup g3=new ButtonGroup();
-	private JLabel lblNewLabel;
 	private JRadioButton Disparar;
 	private ArrayList<Label> listaLJug;
 	private ArrayList<Label> listaLPC;
@@ -59,6 +57,11 @@ public class InterfazJuego extends JFrame implements Observer {
 	private boolean fin;
 	FinPartida frame2;
 	private JRadioButton Radar;
+	private JRadioButton Misil;
+	private JPanel panel;
+	private JLabel Dinero;
+	private JRadioButton Horizontal;
+	private JPanel panel_1;
 
 	/**
 	 * Launch the application.
@@ -94,7 +97,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		contentPane.add(getAcciones());
 		crearJLabels(getTableroJugador(),getTableroPC());
 		g.add(Vertical);
-		g.add(Horizontal);
 		g2.add(Fragata);
 		g2.add(Submarino);
 		g2.add(Portaviones);
@@ -141,10 +143,10 @@ public class InterfazJuego extends JFrame implements Observer {
 		if (Acciones == null) {
 			Acciones = new JPanel();
 			Acciones.setLayout(new GridLayout(2, 1, 0, 0));
-			Acciones.add(getLblNewLabel());
 			Acciones.add(getDisparar());
-			Acciones.add(getEscudo());
 			Acciones.add(getRadar());
+			Acciones.add(getMisil());
+			Acciones.add(getEscudo());
 		}
 		return Acciones;
 	}
@@ -189,8 +191,8 @@ public class InterfazJuego extends JFrame implements Observer {
 		if (Orientacion == null) {
 			Orientacion = new JPanel();
 			Orientacion.setLayout(new GridLayout(2, 1, 0, 0));
-			Orientacion.add(getVertical());
-			Orientacion.add(getHorizontal());
+			Orientacion.add(getPanel());
+			Orientacion.add(getPanel_1());
 		}
 		return Orientacion;
 	}
@@ -224,18 +226,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		}
 		return Fragata;
 	}
-	private JRadioButton getHorizontal() {
-		if (Horizontal == null) {
-			Horizontal = new JRadioButton("Horizontal");
-		}
-		return Horizontal;
-	}
-	private JLabel getLblNewLabel() {
-		if (lblNewLabel == null) {
-			lblNewLabel = new JLabel("¿Qué quieres hacer?");
-		}
-		return lblNewLabel;
-	}
 	private JRadioButton getDisparar() {
 		if (Disparar == null) {
 			Disparar = new JRadioButton("Disparar");
@@ -253,6 +243,40 @@ public class InterfazJuego extends JFrame implements Observer {
 			Radar = new JRadioButton("Radar ("+GestorJuego.getMiGestorJuego().radaresPorColocar()+")");
 		}
 		return Radar;
+	}
+	
+	private JRadioButton getMisil() {
+		if (Misil == null) {
+			Misil = new JRadioButton("Misil");
+		}
+		return Misil;
+	}
+	private JPanel getPanel() {
+		if (panel == null) {
+			panel = new JPanel();
+			panel.add(getVertical());
+			panel.add(getHorizontal());
+		}
+		return panel;
+	}
+	private JLabel getDinero() {
+		if (Dinero == null) {
+			Dinero = new JLabel("Dinero:500");
+		}
+		return Dinero;
+	}
+	private JRadioButton getHorizontal() {
+		if (Horizontal == null) {
+			Horizontal = new JRadioButton("Horizontal");
+		}
+		return Horizontal;
+	}
+	private JPanel getPanel_1() {
+		if (panel_1 == null) {
+			panel_1 = new JPanel();
+			panel_1.add(getDinero());
+		}
+		return panel_1;
 	}
 	
 	private Label obtJLabel(int pPos, boolean pJug)
@@ -423,9 +447,12 @@ public class InterfazJuego extends JFrame implements Observer {
 					{
 						GestorJuego.getMiGestorJuego().disparar(x, y);
 					}
-					else if(Radar.isSelected() && Jugador.getJugador().barcosColocados()) {
+					else if(Radar.isSelected()) {
 						GestorJuego.getMiGestorJuego().radar();
 						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().radaresPorColocar()+")");
+					}else if(Misil.isSelected()) {
+						GestorJuego.getMiGestorJuego().misil(x, y);
+						Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					}
 				}
 			}	
@@ -455,4 +482,5 @@ public class InterfazJuego extends JFrame implements Observer {
 			
 		}
 	}
+	
 }
