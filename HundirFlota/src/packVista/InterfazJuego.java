@@ -51,7 +51,6 @@ public class InterfazJuego extends JFrame implements Observer {
 	FinPartida frame2;
 	private JRadioButton Radar;
 	private JRadioButton Misil;
-	Tienda frame3;
 	private JPanel panel;
 	private JPanel posBarco;
 	private JPanel panel_1;
