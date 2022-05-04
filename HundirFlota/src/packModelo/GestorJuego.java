@@ -127,4 +127,15 @@ public class GestorJuego extends Observable {
 	public int dineroRestanteJug() {
 		return Jugador.getJugador().dineroRestante();
 	}
+	
+	public void barcosColocadosTienda() {
+		boolean colocados=true;
+
+			setChanged();
+			notifyObservers(colocados);
+	}
+	
+	public boolean barcosColocados() {
+		return Jugador.getJugador().barcosColocados();
+	}
 }
