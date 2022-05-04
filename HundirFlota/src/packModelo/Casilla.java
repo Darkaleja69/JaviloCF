@@ -59,7 +59,7 @@ public class Casilla {
 			{
 				tieneBomba = true;
 			}
-			this.barco.recibirImpacto();
+			this.barco.eliminar();
 		}
 	}
 	

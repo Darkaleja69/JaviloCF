@@ -42,6 +42,22 @@ public abstract class Barco {
 		}
 	}
 	
+	public void eliminar()
+	{
+		if (escudo == null)
+		{
+			this.vidas = 0;
+		}
+		else
+		{
+			escudo.recibirImpacto();
+			if (!escudo.funcional())
+			{
+				this.escudo = null;
+			}
+		}
+	}
+	
 	public int getLongitud()
 	{
 		return this.longitud;
