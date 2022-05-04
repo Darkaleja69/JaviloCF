@@ -54,19 +54,19 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JPanel panel;
 	private JPanel posBarco;
 	private JPanel panel_1;
-	private JPanel panel_2;
 	private JPanel panel_3;
-	private JPanel panel_4;
 	private JRadioButton Fragata;
 	private JRadioButton Destructor;
-	private JRadioButton Horizontal;
-	private JRadioButton Vertical;
-	private JRadioButton Submarino;
-	private JRadioButton Portaviones;
 	private JPanel panelTienda;
 	private JRadioButton EscudoTienda;
 	private JRadioButton MisilTienda;
 	private JLabel Dinero;
+	private JRadioButton Submarino;
+	private JRadioButton Portaviones;
+	private JRadioButton Horizontal;
+	private JRadioButton Vertical;
+	private JRadioButton ReparacionTienda;
+	private JRadioButton RepararBarco;
 
 	/**
 	 * Launch the application.
@@ -101,11 +101,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		contentPane.add(getPanel_2());
 		contentPane.add(getAcciones());
 		crearJLabels(getTableroJugador(),getTableroPC());
-		g.add(Horizontal);
-		g.add(Vertical);
 		g2.add(Fragata);
-		g2.add(Portaviones);
-		g2.add(Submarino);
 		g2.add(Destructor);
 		g3.add(Escudo);
 		g3.add(Disparar);
@@ -142,10 +138,11 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JPanel getAcciones() {
 		if (Acciones == null) {
 			Acciones = new JPanel();
-			Acciones.setLayout(new GridLayout(2, 1, 0, 0));
+			Acciones.setLayout(new GridLayout(3, 1, 0, 0));
 			Acciones.add(getDisparar());
 			Acciones.add(getRadar());
 			Acciones.add(getMisil());
+			Acciones.add(getRepararBarco());
 			Acciones.add(getEscudo());
 		}
 		return Acciones;
@@ -232,44 +229,31 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JPanel getPosBarco() {
 		if (posBarco == null) {
 			posBarco = new JPanel();
-			posBarco.setLayout(new GridLayout(0, 2, 0, 0));
+			posBarco.setLayout(new GridLayout(1, 2, 0, 0));
 			posBarco.add(getPanel_1());
-			posBarco.add(getPanel_2_1());
 			posBarco.add(getPanel_3());
-			posBarco.add(getPanel_4());
 		}
 		return posBarco;
 	}
 	private JPanel getPanel_1() {
 		if (panel_1 == null) {
 			panel_1 = new JPanel();
+			panel_1.setLayout(new GridLayout(4, 1, 0, 0));
 			panel_1.add(getFragata());
 			panel_1.add(getDestructor());
+			panel_1.add(getSubmarino());
+			panel_1.add(getPortaviones());
 		}
 		return panel_1;
-	}
-	private JPanel getPanel_2_1() {
-		if (panel_2 == null) {
-			panel_2 = new JPanel();
-			panel_2.add(getHorizontal());
-			panel_2.add(getVertical());
-		}
-		return panel_2;
 	}
 	private JPanel getPanel_3() {
 		if (panel_3 == null) {
 			panel_3 = new JPanel();
-			panel_3.add(getSubmarino());
-			panel_3.add(getPortaviones());
+			panel_3.setLayout(new GridLayout(2, 1, 0, 0));
+			panel_3.add(getHorizontal());
+			panel_3.add(getVertical());
 		}
 		return panel_3;
-	}
-	private JPanel getPanel_4() {
-		if (panel_4 == null) {
-			panel_4 = new JPanel();
-			panel_4.setLayout(new GridLayout(1, 0, 0, 0));
-		}
-		return panel_4;
 	}
 	private JRadioButton getFragata() {
 		if (Fragata == null) {
@@ -279,9 +263,22 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getDestructor() {
 		if (Destructor == null) {
-			Destructor = new JRadioButton("Destructor"+GestorJuego.getMiGestorJuego().barcosPorColocar(2)+")");
+			Destructor = new JRadioButton("Destructor ("+GestorJuego.getMiGestorJuego().barcosPorColocar(2)+")");
 		}
 		return Destructor;
+	}
+	
+	private JRadioButton getSubmarino() {
+		if (Submarino == null) {
+			Submarino = new JRadioButton("Submarino ("+GestorJuego.getMiGestorJuego().barcosPorColocar(3)+")");
+		}
+		return Submarino;
+	}
+	private JRadioButton getPortaviones() {
+		if (Portaviones == null) {
+			Portaviones = new JRadioButton("Portaviones ("+GestorJuego.getMiGestorJuego().barcosPorColocar(4)+")");
+		}
+		return Portaviones;
 	}
 	private JRadioButton getHorizontal() {
 		if (Horizontal == null) {
@@ -295,22 +292,12 @@ public class InterfazJuego extends JFrame implements Observer {
 		}
 		return Vertical;
 	}
-	private JRadioButton getSubmarino() {
-		if (Submarino == null) {
-			Submarino = new JRadioButton("Submarino"+GestorJuego.getMiGestorJuego().barcosPorColocar(3)+")");
-		}
-		return Submarino;
-	}
-	private JRadioButton getPortaviones() {
-		if (Portaviones == null) {
-			Portaviones = new JRadioButton("Portaviones"+GestorJuego.getMiGestorJuego().barcosPorColocar(4)+")");
-		}
-		return Portaviones;
-	}
+	
 	private JPanel getPanel_5() {
 		if (panelTienda == null) {
 			panelTienda = new JPanel();
-			panelTienda.setLayout(new GridLayout(3, 0, 0, 0));
+			panelTienda.setLayout(new GridLayout(4, 0, 0, 0));
+			panelTienda.add(getReparacionTienda());
 			panelTienda.add(getEscudoTienda());
 			panelTienda.add(getMisilTienda());
 			panelTienda.add(getDinero());
@@ -527,5 +514,17 @@ public class InterfazJuego extends JFrame implements Observer {
 			// TODO Auto-generated method stub
 			
 		}
+	}
+	private JRadioButton getReparacionTienda() {
+		if (ReparacionTienda == null) {
+			ReparacionTienda = new JRadioButton("Comprar Reparacion");
+		}
+		return ReparacionTienda;
+	}
+	private JRadioButton getRepararBarco() {
+		if (RepararBarco == null) {
+			RepararBarco = new JRadioButton("Reparar barco");
+		}
+		return RepararBarco;
 	}
 }
