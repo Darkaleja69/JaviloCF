@@ -50,7 +50,7 @@ public class Jugador extends Observable {
 			if(!x.estaTocada()) 
 			{
 				b = x;
-				Tablero.getTablero().bombardear(pX, pY, false);
+				Tablero.getTablero().lanzarMisil(pX, pY, false);
 				ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 				casillas.add(b);
 				CPU.getMiCPU().enviarCasillas(casillas);

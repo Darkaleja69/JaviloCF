@@ -199,6 +199,15 @@ public class Tablero {
 		return array;
 	}
 	
+	public ArrayList<Casilla> lanzarMisil(int fila, int col,boolean pJug) {
+		ArrayList<Casilla> array = new ArrayList<Casilla>();
+		Casilla pCasilla = getCasilla(fila, col,pJug);
+		pCasilla.lanzarMisil();
+		
+		array.add(pCasilla);
+		return array;
+	}
+	
 	public ArrayList<Casilla> obtenerCasillasBarco(Casilla pCasilla,boolean pJug){
 		Barco bar=pCasilla.getBarco();
 		int filaI=pCasilla.getFila();

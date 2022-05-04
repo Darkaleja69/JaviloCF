@@ -47,6 +47,22 @@ public class Casilla {
 		}
 	}
 	
+	public void lanzarMisil() 
+	{
+		if (!tieneBarco())
+		{
+			tieneBomba = true;
+		}
+		else 
+		{
+			if (!this.barco.tieneEscudo())
+			{
+				tieneBomba = true;
+			}
+			this.barco.recibirImpacto();
+		}
+	}
+	
 	public void colocarBarco(Barco pBarco) {
 		
 		barco = pBarco;
