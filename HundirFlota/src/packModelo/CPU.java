@@ -238,8 +238,13 @@ public class CPU extends Observable{
 					}
 				}
 			}
-			//Caso 2.2 se ha dado en un barco y no se ha hundido
-			else if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
+			//Caso 2.2 se ha dado en un barco que llevaba radar y no se ha hundido
+			else if(Tablero.getTablero().getCasilla(x, y, true).tieneBarco() && Tablero.getTablero().getCasilla(x, y, true).tieneRadar() && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
+			{
+				this.generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
+			}
+			//Caso 2.3 se ha dado en un barco y no se ha hundido
+			else if(Tablero.getTablero().getCasilla(x, y, true).tieneBarco() && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
 				//borrar de "sospecha" a todas las casillas que no hayan sido detectadas por radares
 				for(int i = 0; i < sospecha.size(); i++)
@@ -250,7 +255,7 @@ public class CPU extends Observable{
 					}
 				}
 				//crear nuevas sospechas sobre la última casilla golpeada
-				//generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
+				this.generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 			//Caso 2.3 se ha dado en agua (no hace falta código)
 		}
