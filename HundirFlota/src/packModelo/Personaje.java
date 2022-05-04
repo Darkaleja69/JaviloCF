@@ -15,9 +15,17 @@ public abstract class Personaje {
 	}
 	
 	//Métodos
-	
-	private void radarAleatorio() {
+	public void disparar() {
 		
+	}
+	
+	public void ponerEscudo() {
+		
+	}
+	
+	
+	public void radarAleatorio() {
+		//cRadar.radar();
 	}
 	
 	
