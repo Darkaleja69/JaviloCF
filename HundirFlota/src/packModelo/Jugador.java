@@ -17,6 +17,7 @@ public class Jugador extends Observable {
 		radares = 5;
 		cantEscudos = 3;
 		dinero=500;
+		miArmamento=new Armamento();
 	}
 	
 	public static Jugador getJugador() {
