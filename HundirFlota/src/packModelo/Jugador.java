@@ -9,6 +9,7 @@ public class Jugador extends Observable {
 	private ListaBarcos lista;
 	private int radares;
 	private int cantEscudos;
+	private int cantReparaciones;
 	private int dinero;
 	private Armamento miArmamento;
 	
@@ -163,4 +164,44 @@ public class Jugador extends Observable {
 	public int dineroRestante() {
 		return dinero;
 	}
+	
+	public void comprarReparacion()
+	{
+		int precio = Almacen.getMiAlmacen().getPrecio("Reparacion");
+		if (dinero >= precio)
+		{
+			this.cantReparaciones++;
+			dinero= dinero-precio;
+		}
+	}
+	
+	public void comprarEscudo()
+	{
+		int precio = Almacen.getMiAlmacen().getPrecio("Escudo");
+		if (dinero >= precio)
+		{
+			this.cantEscudos++;
+			dinero= dinero-precio;
+		}
+	}
+	
+	//public void comprarMisil()
+		//{
+		//int precio = Almacen.getMiAlmacen().getPrecio("Misil");
+		//if (dinero >= precio)
+		//{
+		//this.cantMisiles++;
+		//dinero= dinero-precio;
+		//}
+		//}
+	
+	//public void comprarBomba()
+	//{
+	//int precio = Almacen.getMiAlmacen().getPrecio("Bomba");
+	//if (dinero >= precio)
+	//{
+	//this.cantBombas++;
+	//dinero= dinero-precio;
+	//}
+	//}
 }
