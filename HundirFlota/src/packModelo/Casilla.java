@@ -91,4 +91,9 @@ public class Casilla {
 	public void quitarRadar() {
 		this.radar = false;
 	}
+	
+	public void reparar()
+	{
+		this.tieneBomba = false;
+	}
 }

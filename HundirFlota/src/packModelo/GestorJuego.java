@@ -138,4 +138,18 @@ public class GestorJuego extends Observable {
 	public boolean barcosColocados() {
 		return Jugador.getJugador().barcosColocados();
 	}
+	
+	public void repararBarco(int pFila, int pCol)
+	{
+		Casilla cas = Tablero.getTablero().getCasilla(pFila, pCol, true);
+		ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
+		cas.getBarco().reparar();
+		for (Casilla c: lCasillas)
+		{
+			c.reparar();
+		}
+		Jugador.getJugador().usarReparacion();
+		Jugador.getJugador().enviarCasillas(lCasillas);
+	}
+	
 }

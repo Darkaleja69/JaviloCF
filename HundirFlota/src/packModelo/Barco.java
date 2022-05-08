@@ -9,7 +9,6 @@ public abstract class Barco {
 		longitud = pLongitud;
 		vidas = pLongitud;
 		this.escudo=null;
-		
 	}
 	
 	public boolean tieneEscudo() {
@@ -61,6 +60,11 @@ public abstract class Barco {
 	public int getLongitud()
 	{
 		return this.longitud;
+	}
+	
+	public void reparar()
+	{
+		this.vidas = this.longitud;
 	}
 	
 }

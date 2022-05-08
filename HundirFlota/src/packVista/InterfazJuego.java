@@ -487,6 +487,12 @@ public class InterfazJuego extends JFrame implements Observer {
 						GestorJuego.getMiGestorJuego().misil(x, y);
 						Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					}
+					else if (RepararBarco.isSelected())
+					{
+						int x = l.getCoordX();
+						int y = l.getCoordY();
+						GestorJuego.getMiGestorJuego().repararBarco(x,y);
+					}
 				}
 			}	
 		}

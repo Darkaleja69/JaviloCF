@@ -204,4 +204,9 @@ public class Jugador extends Observable {
 	//dinero= dinero-precio;
 	//}
 	//}
+	
+	public void usarReparacion()
+	{
+		cantReparaciones--;
+	}
 }
