@@ -180,21 +180,11 @@ public class Jugador extends Observable {
 	public void comprarEscudo()
 	{
 		int precio = Almacen.getMiAlmacen().getPrecio("Escudo");
-		if (dinero >= precio)
-		{
-			this.cantEscudos++;
-			dinero= dinero-precio;
-		}
 	}
 	
 	public void comprarMisil()
 		{
-			int precio = Almacen.getMiAlmacen().getPrecio("Misil");
-			if (dinero >= precio)
-			{
-				
-				dinero= dinero-precio;
-			}
+			
 		}
 	
 	//public void comprarBomba()
