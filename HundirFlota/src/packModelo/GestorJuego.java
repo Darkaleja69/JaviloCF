@@ -141,18 +141,17 @@ public class GestorJuego extends Observable {
 	public void turnoJugador(int pOpcion,int pX,int pY) {
 		boolean fin = false;
 		int jugadorOCPU = 1;
-		if(Jugador.getJugador().turnoJugador(pOpcion, pX, pY)) {
-			
-				if(comprobarFin(false)) 
-				{	
-						setChanged();
-						notifyObservers(jugadorOCPU);
-				}else {
-					CPU.getMiCPU().turnoCPU();
+		
+		if(Jugador.getJugador().turnoJugador(pOpcion, pX, pY)) {		
+			if(comprobarFin(false)) 
+			{	
+				setChanged();
+				notifyObservers(jugadorOCPU);
+			}else {
+				CPU.getMiCPU().turnoCPU();
 				}
-				
+					
 		}
-				
 	}
 	
 	public int armasPorUsar(int pOpcion) {

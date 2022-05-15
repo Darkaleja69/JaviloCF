@@ -72,7 +72,6 @@ public class Armamento {
 				x=itr.next();
 				if(x instanceof Radar) {
 					enc=true;
-					System.out.println("Hola");
 				}
 			}
 		} else if(pOpcion==5){
@@ -135,5 +134,9 @@ public class Armamento {
 			}
 		}
 		return num;
+	}
+	
+	public boolean armamentoVacio() {
+		return armas.size()==0;
 	}
 }

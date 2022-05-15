@@ -114,6 +114,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Misil);
 		g3.add(Bomba);
 		g3.add(RecolocarRadar);
+		g3.add(RepararBarco);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Jugador.getJugador().addObserver(this);
 		CPU.getMiCPU().addObserver(this);
@@ -302,7 +303,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JLabel getAviso() {
 		if (Aviso == null) {
-			Aviso = new JLabel("¡Compre armas o use armas disponibles!");
+			Aviso = new JLabel("¡Compre armas!");
 		}
 		return Aviso;}
 	
@@ -347,6 +348,9 @@ public class InterfazJuego extends JFrame implements Observer {
 					GestorJuego.getMiGestorJuego().comprarArmamento(5);
 					Bomba.setText("Bomba ("+GestorJuego.getMiGestorJuego().armasPorUsar(5)+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
+					if(Aviso.isVisible()) {
+						Aviso.setVisible(false);
+					}
 				}
 				});
 		}
@@ -362,6 +366,9 @@ public class InterfazJuego extends JFrame implements Observer {
 					GestorJuego.getMiGestorJuego().comprarArmamento(1);
 					Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
+					if(Aviso.isVisible()) {
+						Aviso.setVisible(false);
+					}
 				}
 				});
 			
@@ -378,6 +385,9 @@ public class InterfazJuego extends JFrame implements Observer {
 					GestorJuego.getMiGestorJuego().comprarArmamento(2);
 					Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().armasPorUsar(2)+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
+					if(Aviso.isVisible()) {
+						Aviso.setVisible(false);
+					}
 				}
 				});
 		}
@@ -394,6 +404,9 @@ public class InterfazJuego extends JFrame implements Observer {
 					GestorJuego.getMiGestorJuego().comprarArmamento(3);
 					RepararBarco.setText("Reparar barco ("+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
+					if(Aviso.isVisible()) {
+						Aviso.setVisible(false);
+					}
 				}
 				});
 		
@@ -404,17 +417,17 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	public void update(Observable arg0, Object arg1) {
 		
-		boolean conEscudo=false;
-		
 		if(arg1 instanceof Integer) 
 		{	Integer x=(Integer) arg1;
 			fin = true;
 			if(x==1) {
 				frame2=new FinPartida("el Jugador");
 				frame2.setVisible(true);
-			}else {
+			}else if(x==2){
 				frame2=new FinPartida("la IA");
 				frame2.setVisible(true);
+			}else {
+				Aviso.setVisible(true);
 			}
 		}
 		//si se trata de Jugador
@@ -464,7 +477,6 @@ public class InterfazJuego extends JFrame implements Observer {
 					if (c.getBarco().tieneEscudo())
 					{
 						lbl.setBackground(Color.white);
-						conEscudo=true;
 					}
 					else if(c.estaTocada())
 					{
@@ -569,9 +581,9 @@ public class InterfazJuego extends JFrame implements Observer {
 						}else if(Misil.isSelected()) {
 							GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
 							Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
+						}else if(RecolocarRadar.isSelected()) {
+							//Código para Recolocar el radar
 						}
-	
-						Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					}
 				}
 			}
