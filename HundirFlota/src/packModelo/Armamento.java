@@ -24,7 +24,7 @@ public class Armamento {
 			}
 		}else if(pOpcion==5) { // Bomba: Coste de bomba es 0
 			posible=true;
-		}
+		}else {posible=true;}
 		return posible;
 	}
 	
@@ -67,7 +67,15 @@ public class Armamento {
 					enc=true;
 				}
 			}
-		}else if(pOpcion==5) {
+		}else if(pOpcion==4) {
+			while(itr.hasNext() && !enc) {
+				x=itr.next();
+				if(x instanceof Radar) {
+					enc=true;
+					System.out.println("Hola");
+				}
+			}
+		} else if(pOpcion==5){
 			while(itr.hasNext() && !enc) {
 				x=itr.next();
 				if(x instanceof Bomba) {
@@ -75,7 +83,10 @@ public class Armamento {
 				}
 			}
 		}
-		
+		if(!enc) {
+			x=null;
+			
+		}
 		return x;
 	}
 	

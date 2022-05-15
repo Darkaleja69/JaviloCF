@@ -105,15 +105,15 @@ public class Jugador extends Observable {
 	}
 	
 	
-	public void colocarEscudo(int pX, int pY)
+/*	public void colocarEscudo(int pX, int pY)
 	{	if(miArmamento.consultaArmamento(2, dinero)) {
 		cantEscudos--;
 		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(pX, pY, true);
 		Jugador.getJugador().enviarCasillas(casillas);
 		dinero=dinero-50;
+		}
 	}
-}
-	
+*/	
 	public int armasEnArmamento(int pOpcion) {
 		return miArmamento.armasPorUsar(pOpcion);
 	}
@@ -121,7 +121,7 @@ public class Jugador extends Observable {
 		return dinero;
 	}
 	
-	public void comprarReparacion()
+/*	public void comprarReparacion()
 	{
 		int precio = Almacen.getMiAlmacen().getPrecio("Reparacion");
 		if (dinero >= precio)
@@ -130,7 +130,7 @@ public class Jugador extends Observable {
 			dinero= dinero-precio;
 		}
 	}
-	
+*/	
 	
 	
 	//public void comprarBomba()
@@ -143,14 +143,22 @@ public class Jugador extends Observable {
 	//}
 	//}
 	
-	public void usarReparacion()
-	{
+/*	public void usarReparacion()
+	{	Casilla cas = Tablero.getTablero().getCasilla(pFila, pCol, true);
+		ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
+		cas.getBarco().reparar();
+		for (Casilla c: lCasillas)
+		{
+			c.reparar();
+		}
 		cantReparaciones--;
 	}
-	
+*/	
 	public boolean turnoJugador(int pOpcion,int pX,int pY) {
 		boolean finTurno=false;
-		if(miArmamento.buscarArma(pOpcion).realizarFuncion(pX,pY,false)) {
+		Arma miArma=miArmamento.buscarArma(pOpcion);
+		if( miArma != null) {
+			miArma.realizarFuncion(pX,pY,false);
 			finTurno=true;
 			miArmamento.retirarArma(pOpcion);
 		}
@@ -159,7 +167,9 @@ public class Jugador extends Observable {
 	
 	public void comprarArmamento(int pOpcion) {
 		if(miArmamento.consultaArmamento(pOpcion, dinero)) {
-			dinero=dinero - miArmamento.comprarArmamento(pOpcion).getCoste();
+			Arma ar=miArmamento.comprarArmamento(pOpcion);
+			dinero=dinero - ar.getCoste();
+			miArmamento.anadirArmamento(ar);
 		}
 	}
 }

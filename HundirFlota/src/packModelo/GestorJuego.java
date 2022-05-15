@@ -27,7 +27,7 @@ public class GestorJuego extends Observable {
 		}
 	}
 	
-	public void colocarEscudo(int pX, int pY)
+/*	public void colocarEscudo(int pX, int pY)
 	{
 		boolean fin = false;
 		int jugadorOCPU = 1;
@@ -36,7 +36,7 @@ public class GestorJuego extends Observable {
 		//Turno CPU
 		CPU.getMiCPU().turnoCPU();
 	}
-/*	
+	
 	public void disparar(int pX, int pY) 
 	{
 		boolean fin = false;
@@ -132,19 +132,12 @@ public class GestorJuego extends Observable {
 		return Jugador.getJugador().barcosColocados();
 	}
 	
-	public void repararBarco(int pFila, int pCol)
+/*	public void repararBarco(int pFila, int pCol)
 	{
-		Casilla cas = Tablero.getTablero().getCasilla(pFila, pCol, true);
-		ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
-		cas.getBarco().reparar();
-		for (Casilla c: lCasillas)
-		{
-			c.reparar();
-		}
-		Jugador.getJugador().usarReparacion();
+		
 		Jugador.getJugador().enviarCasillas(lCasillas);
 	}
-	
+*/	
 	public void turnoJugador(int pOpcion,int pX,int pY) {
 		boolean fin = false;
 		int jugadorOCPU = 1;
