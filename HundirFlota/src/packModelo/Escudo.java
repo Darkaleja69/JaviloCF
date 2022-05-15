@@ -1,6 +1,6 @@
 package packModelo;
 
-public class Escudo {
+public class Escudo extends Arma{
 
 	    private int impactosRestantes;
 

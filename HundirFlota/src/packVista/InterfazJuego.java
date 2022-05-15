@@ -67,6 +67,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JRadioButton Vertical;
 	private JRadioButton ReparacionTienda;
 	private JRadioButton RepararBarco;
+	private JRadioButton RecolocarRadar;
 
 	/**
 	 * Launch the application.
@@ -146,6 +147,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			Acciones.add(getMisil());
 			Acciones.add(getRepararBarco());
 			Acciones.add(getEscudo());
+			Acciones.add(getRecolocarRadar());
 		}
 		return Acciones;
 	}
@@ -323,6 +325,25 @@ public class InterfazJuego extends JFrame implements Observer {
 			Dinero = new JLabel("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 		}
 		return Dinero;
+	}
+	
+	private JRadioButton getReparacionTienda() {
+		if (ReparacionTienda == null) {
+			ReparacionTienda = new JRadioButton("Comprar Reparacion");
+		}
+		return ReparacionTienda;
+	}
+	private JRadioButton getRepararBarco() {
+		if (RepararBarco == null) {
+			RepararBarco = new JRadioButton("Reparar barco");
+		}
+		return RepararBarco;
+	}
+	private JRadioButton getRecolocarRadar() {
+		if (RecolocarRadar == null) {
+			RecolocarRadar = new JRadioButton("Recolocar Radar");
+		}
+		return RecolocarRadar;
 	}
 	
 	public void update(Observable arg0, Object arg1) {
@@ -521,16 +542,5 @@ public class InterfazJuego extends JFrame implements Observer {
 			
 		}
 	}
-	private JRadioButton getReparacionTienda() {
-		if (ReparacionTienda == null) {
-			ReparacionTienda = new JRadioButton("Comprar Reparacion");
-		}
-		return ReparacionTienda;
-	}
-	private JRadioButton getRepararBarco() {
-		if (RepararBarco == null) {
-			RepararBarco = new JRadioButton("Reparar barco");
-		}
-		return RepararBarco;
-	}
+
 }

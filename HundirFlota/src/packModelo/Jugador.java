@@ -42,6 +42,8 @@ public class Jugador extends Observable {
 			disparado = true;
 		}
 		return disparado;
+		
+		//lanzarBomba()
 	}
 	
 	public boolean misil(int pX,int pY) {
@@ -185,15 +187,15 @@ public class Jugador extends Observable {
 		}
 	}
 	
-	//public void comprarMisil()
-		//{
-		//int precio = Almacen.getMiAlmacen().getPrecio("Misil");
-		//if (dinero >= precio)
-		//{
-		//this.cantMisiles++;
-		//dinero= dinero-precio;
-		//}
-		//}
+	public void comprarMisil()
+		{
+			int precio = Almacen.getMiAlmacen().getPrecio("Misil");
+			if (dinero >= precio)
+			{
+				
+				dinero= dinero-precio;
+			}
+		}
 	
 	//public void comprarBomba()
 	//{
