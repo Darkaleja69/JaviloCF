@@ -28,43 +28,6 @@ public class Jugador extends Observable {
 		return miJugador;
 	}
 	
-	public boolean disparar(int pX,int pY) {
-		boolean disparado = false;
-		Casilla b = null;
-		Casilla x = Tablero.getTablero().getCasilla(pX, pY, false);
-		if(!x.estaTocada()) 
-		{
-			b = x;
-			Tablero.getTablero().bombardear(pX, pY, false);
-			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-			casillas.add(b);
-			CPU.getMiCPU().enviarCasillas(casillas);
-			disparado = true;
-		}
-		return disparado;
-		
-		//lanzarBomba()
-	}
-	
-	public boolean misil(int pX,int pY) {
-		boolean disparado = false;
-		Casilla b = null;
-		Casilla x = Tablero.getTablero().getCasilla(pX, pY, false);
-		if(miArmamento.consultaArmamento(1,dinero)) {
-			if(!x.estaTocada()) 
-			{
-				b = x;
-				Tablero.getTablero().lanzarMisil(pX, pY, false);
-				ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-				casillas.add(b);
-				CPU.getMiCPU().enviarCasillas(casillas);
-				disparado = true;
-				dinero=dinero-100;
-			}
-		}
-		return disparado;
-	}
-	
 	public boolean colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(!hayDemasiados(pLongitud)) {
@@ -81,7 +44,7 @@ public class Jugador extends Observable {
 		return !(casillas.size() < 1);
 	}
 	
-	public boolean radar() {
+/*	public boolean radar() {
 		//para los turnos, que el m�todo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
@@ -115,7 +78,7 @@ public class Jugador extends Observable {
 	
 		return(radarizado);
 	}
-	
+*/	
 	public boolean hayDemasiados(int pLong) {
 		return lista.hayDemasiados(pLong);
 	}
@@ -151,18 +114,9 @@ public class Jugador extends Observable {
 	}
 }
 	
-	public int escudosPorColocar() {
-		return this.cantEscudos;
+	public int armasEnArmamento(int pOpcion) {
+		return miArmamento.armasPorUsar(pOpcion);
 	}
-	
-	public boolean quedanRadares() {
-		return(this.radares>=1);
-	}
-	
-	public int cantidadRadares() {
-		return this.radares;
-	}
-	
 	public int dineroRestante() {
 		return dinero;
 	}
@@ -177,15 +131,7 @@ public class Jugador extends Observable {
 		}
 	}
 	
-	public void comprarEscudo()
-	{
-		int precio = Almacen.getMiAlmacen().getPrecio("Escudo");
-	}
 	
-	public void comprarMisil()
-		{
-			
-		}
 	
 	//public void comprarBomba()
 	//{
@@ -200,5 +146,20 @@ public class Jugador extends Observable {
 	public void usarReparacion()
 	{
 		cantReparaciones--;
+	}
+	
+	public boolean turnoJugador(int pOpcion,int pX,int pY) {
+		boolean finTurno=false;
+		if(miArmamento.buscarArma(pOpcion).realizarFuncion(pX,pY,false)) {
+			finTurno=true;
+			miArmamento.retirarArma(pOpcion);
+		}
+		return finTurno;
+	}
+	
+	public void comprarArmamento(int pOpcion) {
+		if(miArmamento.consultaArmamento(pOpcion, dinero)) {
+			dinero=dinero - miArmamento.comprarArmamento(pOpcion).getCoste();
+		}
 	}
 }

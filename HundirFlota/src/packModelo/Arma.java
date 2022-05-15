@@ -1,13 +1,15 @@
 package packModelo;
 
 public abstract class Arma {
-	protected double coste=0;
+	protected int coste=0;
 	
 	public Arma() {}
 	
-	public boolean realizarFuncion() {
+	public boolean realizarFuncion(int pX,int pY, boolean pAQuien) {
 		return true;
 	}
-	
+	public int getCoste() {
+		return coste;
+	}
 	
 }

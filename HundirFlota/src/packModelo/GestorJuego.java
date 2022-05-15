@@ -36,7 +36,7 @@ public class GestorJuego extends Observable {
 		//Turno CPU
 		CPU.getMiCPU().turnoCPU();
 	}
-	
+/*	
 	public void disparar(int pX, int pY) 
 	{
 		boolean fin = false;
@@ -84,7 +84,7 @@ public class GestorJuego extends Observable {
 			notifyObservers(jugadorOCPU);
 		}
 	}
-	
+
 	public void radar() {
 		
 		boolean turno = Jugador.getJugador().radar();
@@ -93,7 +93,7 @@ public class GestorJuego extends Observable {
 			CPU.getMiCPU().turnoCPU();
 		}
 	}
-	
+*/
 	
 	public boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
@@ -116,13 +116,6 @@ public class GestorJuego extends Observable {
 		return Jugador.getJugador().barcosPorColocar(pLong);
 	}
 	
-	public int escudosPorColocar() {
-		return Jugador.getJugador().escudosPorColocar();
-	}
-	
-	public int radaresPorColocar() {
-		return Jugador.getJugador().cantidadRadares();
-	}
 	
 	public int dineroRestanteJug() {
 		return Jugador.getJugador().dineroRestante();
@@ -151,5 +144,27 @@ public class GestorJuego extends Observable {
 		Jugador.getJugador().usarReparacion();
 		Jugador.getJugador().enviarCasillas(lCasillas);
 	}
+	
+	public void turnoJugador(int pOpcion,int pX,int pY) {
+		boolean fin = false;
+		int jugadorOCPU = 1;
+		if(Jugador.getJugador().turnoJugador(pOpcion, pX, pY)) {
+			
+				if(comprobarFin(false)) 
+				{	
+						setChanged();
+						notifyObservers(jugadorOCPU);
+				}else {
+					CPU.getMiCPU().turnoCPU();
+				}
+				
+		}
+				
+	}
+	
+	public int armasPorUsar(int pOpcion) {
+		return Jugador.getJugador().armasEnArmamento(pOpcion);
+	}
+		
 	
 }

@@ -184,20 +184,20 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getEscudo() {
 		if (Escudo == null) {
-			Escudo = new JRadioButton("Escudo ("+GestorJuego.getMiGestorJuego().escudosPorColocar()+")");
+			Escudo = new JRadioButton("Escudo ("+GestorJuego.getMiGestorJuego().armasPorUsar(2)+")");
 		}
 		return Escudo;
 	}
 	private JRadioButton getRadar() {
 		if (Radar == null) {
-			Radar = new JRadioButton("Radar ("+GestorJuego.getMiGestorJuego().radaresPorColocar()+")");
+			Radar = new JRadioButton("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 		}
 		return Radar;
 	}
 	
 	private JRadioButton getMisil() {
 		if (Misil == null) {
-			Misil = new JRadioButton("Misil");
+			Misil= new JRadioButton("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
 		}
 		return Misil;
 	}
@@ -335,7 +335,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getRepararBarco() {
 		if (RepararBarco == null) {
-			RepararBarco = new JRadioButton("Reparar barco");
+			RepararBarco = new JRadioButton("Reparar barco"+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
 		}
 		return RepararBarco;
 	}
@@ -440,9 +440,6 @@ public class InterfazJuego extends JFrame implements Observer {
 					}
 				}
 			}
-			if(conEscudo) {
-				Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().escudosPorColocar()+")");
-			}
 		}
 		
 		if(arg1 instanceof Boolean) {
@@ -489,31 +486,32 @@ public class InterfazJuego extends JFrame implements Observer {
 						GestorJuego.getMiGestorJuego().barcosColocadosTienda();
 					}
 				}
-				else if((l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados() && Escudo.isSelected())
-				{
-					int x = l.getCoordX();
-					int y = l.getCoordY();
-					GestorJuego.getMiGestorJuego().colocarEscudo(x,y);
-				}
 				else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados())
 				{	
 					int x = l.getCoordX();
 					int y = l.getCoordY();
 					if(Disparar.isSelected()) 
 					{
-						GestorJuego.getMiGestorJuego().disparar(x, y);
+						GestorJuego.getMiGestorJuego().turnoJugador(5,x, y);
 					}
 					else if(Radar.isSelected()) {
-						GestorJuego.getMiGestorJuego().radar();
-						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().radaresPorColocar()+")");
+						GestorJuego.getMiGestorJuego().turnoJugador(4,x,y);
+						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 					}else if(Misil.isSelected()) {
-						GestorJuego.getMiGestorJuego().misil(x, y);
-						Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
+						GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
+						Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
 					}
-					else if (RepararBarco.isSelected())
-					{
-						GestorJuego.getMiGestorJuego().repararBarco(x,y);
+					else if (RepararBarco.isSelected()){
+						
+						GestorJuego.getMiGestorJuego().turnoJugador(3,x,y);
+						RepararBarco.setText("Reparar barco ("+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
+						
+					}else if(Escudo.isSelected()) {
+						
+						GestorJuego.getMiGestorJuego().turnoJugador(2,x,y);
+						Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().armasPorUsar(2)+")");
 					}
+					Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 				}
 			}	
 		}

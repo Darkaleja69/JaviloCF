@@ -21,11 +21,17 @@ public class Armamento {
 			if(pDinero>=50) {
 				posible=true;
 			}
+		}else if(pOpcion==4) { //Radar
+			if(pDinero>=75) {
+				posible=true;
+			}
+		}else if(pOpcion==5) { // Bomba: Coste de bomba es 0
+			posible=true;
 		}
 		return posible;
 	}
 	
-	public Arma comprarArmamento(String pTipo) {
+	public Arma comprarArmamento(int pTipo) {
 		return FactoriaArmas.getMiFactoria().crearArma(pTipo);
 	}
 	
@@ -33,26 +39,100 @@ public class Armamento {
 		armas.add(pArma);
 	}
 	
-	public boolean buscarArma(Arma pArma) {
+	public void retirarArma(int pOpcion) {
+		armas.remove(buscarArma(pOpcion));
+	}
+	
+	public Arma buscarArma(int pOpcion) {
 		Iterator<Arma> itr=this.getIterator();
 		Arma x=null;
 		boolean enc=false;
 		String nombre=null;
-		if(pArma instanceof Escudo) {
-			nombre="Escudo";
-		}else if(pArma instanceof Bomba) {
-			
-		}
-		while(itr.hasNext() && !enc) {
-			x=itr.next();
-			if(x.equals(pArma)) {
-				enc=true;
+		if(pOpcion==1) { // Misil
+			while(itr.hasNext() && !enc) {
+				x=itr.next();
+				if(x instanceof Misil) {
+					enc=true;
+					
+				}
+			}
+		}else if(pOpcion == 2) { // Escudo
+			while(itr.hasNext() && !enc) {
+				x=itr.next();
+				if(x instanceof Escudo) {
+					enc=true;
+				}
+			}
+		}else if(pOpcion==3) { //Reparacion
+			while(itr.hasNext() && !enc) {
+				x=itr.next();
+				if(x instanceof Reparacion) {
+					enc=true;
+				}
+			}
+		}else if(pOpcion==4){
+			while(itr.hasNext() && !enc) {
+				x=itr.next();
+				if(x instanceof Radar) {
+					enc=true;
+				}
+			}
+		} else if(pOpcion==5) {
+			while(itr.hasNext() && !enc) {
+				x=itr.next();
+				if(x instanceof Bomba) {
+					enc=true;
+				}
 			}
 		}
-		return enc;
+		
+		return x;
 	}
 	
 	private Iterator<Arma> getIterator(){
 		return armas.iterator();
+	}
+	
+	public int armasPorUsar(int pOpcion) {
+		int num=0;
+		Iterator<Arma> itr=this.getIterator();
+		Arma x=null;
+		if(pOpcion==1) {
+			while(itr.hasNext()) {
+				x=itr.next();
+				if(x instanceof Misil) {
+					num++;
+				}
+			}
+		}else if(pOpcion==2) {
+			while(itr.hasNext()) {
+				x=itr.next();
+				if(x instanceof Escudo) {
+					num++;
+				}
+			}
+		}else if(pOpcion==3) {
+			while(itr.hasNext()) {
+				x=itr.next();
+				if(x instanceof Reparacion) {
+					num++;
+				}
+			}
+		}else if(pOpcion==4) {
+			while(itr.hasNext()) {
+				x=itr.next();
+				if(x instanceof Radar) {
+					num++;
+				}
+			}
+		}else if(pOpcion==5) {
+			while(itr.hasNext()) {
+				x=itr.next();
+				if(x instanceof Bomba) {
+					num++;
+				}
+			}
+		}
+		return num;
 	}
 }
