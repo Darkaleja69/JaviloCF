@@ -165,6 +165,10 @@ public class GestorJuego extends Observable {
 	public int armasPorUsar(int pOpcion) {
 		return Jugador.getJugador().armasEnArmamento(pOpcion);
 	}
+	
+	public void comprarArmamento(int pOpcion) {
+		Jugador.getJugador().comprarArmamento(pOpcion);
+	}
 		
 	
 }

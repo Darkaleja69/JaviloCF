@@ -33,4 +33,6 @@ public class Radar extends Arma{
 				
 			return(true);
 	}
+	
+	public void recolocar() {}
 }

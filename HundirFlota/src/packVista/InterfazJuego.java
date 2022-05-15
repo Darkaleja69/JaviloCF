@@ -30,6 +30,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JRadioButton;
+import javax.swing.JButton;
 
 public class InterfazJuego extends JFrame implements Observer {
 	
@@ -58,16 +59,17 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JRadioButton Fragata;
 	private JRadioButton Destructor;
 	private JPanel panelTienda;
-	private JRadioButton EscudoTienda;
-	private JRadioButton MisilTienda;
 	private JLabel Dinero;
 	private JRadioButton Submarino;
 	private JRadioButton Portaviones;
 	private JRadioButton Horizontal;
 	private JRadioButton Vertical;
-	private JRadioButton ReparacionTienda;
 	private JRadioButton RepararBarco;
 	private JRadioButton RecolocarRadar;
+	private JButton ComprarBomba;
+	private JButton ComprarMisil;
+	private JButton ComprarEscudo;
+	private JButton ComprarReparacionBarco;
 
 	/**
 	 * Launch the application.
@@ -110,8 +112,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(Disparar);
 		g3.add(Radar);
 		g3.add(Misil);
-		g4.add(MisilTienda);
-		g4.add(EscudoTienda);
 		GestorJuego.getMiGestorJuego().addObserver(this);
 		Jugador.getJugador().addObserver(this);
 		CPU.getMiCPU().addObserver(this);
@@ -301,37 +301,19 @@ public class InterfazJuego extends JFrame implements Observer {
 		if (panelTienda == null) {
 			panelTienda = new JPanel();
 			panelTienda.setLayout(new GridLayout(4, 0, 0, 0));
-			panelTienda.add(getReparacionTienda());
-			panelTienda.add(getEscudoTienda());
-			panelTienda.add(getMisilTienda());
+			panelTienda.add(getComprarBomba());
+			panelTienda.add(getComprarMisil());
+			panelTienda.add(getComprarEscudo());
+			panelTienda.add(getComprarReparacionBarco());
 			panelTienda.add(getDinero());
 		}
 		return panelTienda;
-	}
-	private JRadioButton getEscudoTienda() {
-		if (EscudoTienda == null) {
-			EscudoTienda = new JRadioButton("Comprar Escudo");
-		}
-		return EscudoTienda;
-	}
-	private JRadioButton getMisilTienda() {
-		if (MisilTienda == null) {
-			MisilTienda = new JRadioButton("Comprar misil");
-		}
-		return MisilTienda;
 	}
 	private JLabel getDinero() {
 		if (Dinero == null) {
 			Dinero = new JLabel("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 		}
 		return Dinero;
-	}
-	
-	private JRadioButton getReparacionTienda() {
-		if (ReparacionTienda == null) {
-			ReparacionTienda = new JRadioButton("Comprar Reparacion");
-		}
-		return ReparacionTienda;
 	}
 	private JRadioButton getRepararBarco() {
 		if (RepararBarco == null) {
@@ -344,6 +326,36 @@ public class InterfazJuego extends JFrame implements Observer {
 			RecolocarRadar = new JRadioButton("Recolocar Radar");
 		}
 		return RecolocarRadar;
+	}
+	private JButton getComprarBomba() {
+		if (ComprarBomba == null) {
+			ComprarBomba = new JButton("Comprar Bomba");
+			ComprarBomba.addMouseListener(getControler());
+		}
+		return ComprarBomba;
+	}
+	private JButton getComprarMisil() {
+		if (ComprarMisil == null) {
+			ComprarMisil = new JButton("Comprar misil");
+			ComprarMisil.addMouseListener(getControler());
+		}
+		return ComprarMisil;
+	}
+	private JButton getComprarEscudo() {
+		if (ComprarEscudo == null) {
+			ComprarEscudo = new JButton("Comprar Escudo");
+			ComprarEscudo.addMouseListener(getControler());
+		}
+		
+		return ComprarEscudo;
+	}
+	private JButton getComprarReparacionBarco() {
+		if (ComprarReparacionBarco == null) {
+			ComprarReparacionBarco = new JButton("Comprar Reparacion Barco");
+			ComprarReparacionBarco.addMouseListener(getControler());
+		}
+		
+		return ComprarReparacionBarco;
 	}
 	
 	public void update(Observable arg0, Object arg1) {
@@ -457,63 +469,76 @@ public class InterfazJuego extends JFrame implements Observer {
 			
 			if(!fin) 
 			{
-				Label l = (Label) e.getSource();
-				if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) 
-				{
-					int x = l.getCoordX();
-					int y = l.getCoordY();
-					int longitud;
-					
-					if(Fragata.isSelected())
+				if(!(e.getSource() instanceof JButton)) {
+					Label l = (Label) e.getSource();
+					if(!(GestorJuego.getMiGestorJuego().barcosColocados()) && l.esJugador()) 
 					{
-						longitud = 1;
+						int x = l.getCoordX();
+						int y = l.getCoordY();
+						int longitud;
+						
+						if(Fragata.isSelected())
+						{
+							longitud = 1;
+						}
+						else if(Destructor.isSelected())
+						{
+							longitud = 2;
+						}
+						else if(Submarino.isSelected())
+						{
+							longitud = 3;
+						}
+						else
+						{
+							longitud = 4;
+						}
+						
+						GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
+						if(GestorJuego.getMiGestorJuego().barcosColocados()) {
+							GestorJuego.getMiGestorJuego().barcosColocadosTienda();
+						}
 					}
-					else if(Destructor.isSelected())
-					{
-						longitud = 2;
+					else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados())
+					{	
+						int x = l.getCoordX();
+						int y = l.getCoordY();
+						if(Disparar.isSelected()) 
+						{
+							GestorJuego.getMiGestorJuego().turnoJugador(5,x, y);
+						}
+						else if(Radar.isSelected()) {
+							GestorJuego.getMiGestorJuego().turnoJugador(4,x,y);
+							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+						}else if(Misil.isSelected()) {
+							GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
+							Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
+						}
+						else if (RepararBarco.isSelected()){
+							
+							GestorJuego.getMiGestorJuego().turnoJugador(3,x,y);
+							RepararBarco.setText("Reparar barco ("+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
+							
+						}else if(Escudo.isSelected()) {
+							
+							GestorJuego.getMiGestorJuego().turnoJugador(2,x,y);
+							Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().armasPorUsar(2)+")");
+						}
+						Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					}
-					else if(Submarino.isSelected())
-					{
-						longitud = 3;
-					}
-					else
-					{
-						longitud = 4;
-					}
-					
-					GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
-					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
-						GestorJuego.getMiGestorJuego().barcosColocadosTienda();
+				}else{
+					JButton b=(JButton) e.getSource();
+					if(b.equals(ComprarMisil)) {
+						GestorJuego.getMiGestorJuego().comprarArmamento(1);
+					}else if(b.equals(ComprarEscudo)) {
+						GestorJuego.getMiGestorJuego().comprarArmamento(2);
+					}else if(b.equals(ComprarReparacionBarco)) {
+						GestorJuego.getMiGestorJuego().comprarArmamento(3);
+					}else if(b.equals(ComprarBomba)) {
+						GestorJuego.getMiGestorJuego().comprarArmamento(5);
 					}
 				}
-				else if(!(l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados())
-				{	
-					int x = l.getCoordX();
-					int y = l.getCoordY();
-					if(Disparar.isSelected()) 
-					{
-						GestorJuego.getMiGestorJuego().turnoJugador(5,x, y);
-					}
-					else if(Radar.isSelected()) {
-						GestorJuego.getMiGestorJuego().turnoJugador(4,x,y);
-						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
-					}else if(Misil.isSelected()) {
-						GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
-						Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
-					}
-					else if (RepararBarco.isSelected()){
-						
-						GestorJuego.getMiGestorJuego().turnoJugador(3,x,y);
-						RepararBarco.setText("Reparar barco ("+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
-						
-					}else if(Escudo.isSelected()) {
-						
-						GestorJuego.getMiGestorJuego().turnoJugador(2,x,y);
-						Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().armasPorUsar(2)+")");
-					}
-					Dinero.setText("Dinero: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
-				}
-			}	
+			}
 		}
 
 		@Override
@@ -540,5 +565,6 @@ public class InterfazJuego extends JFrame implements Observer {
 			
 		}
 	}
+
 
 }

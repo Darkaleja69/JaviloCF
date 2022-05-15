@@ -8,6 +8,7 @@ public class Armamento {
 	
 	public Armamento() {
 		armas=new ArrayList<Arma>();
+		armas.add(new Radar());
 	}
 	
 	
@@ -19,10 +20,6 @@ public class Armamento {
 			}
 		}else if(pOpcion==2 || pOpcion==3) { //escudo y reparacion de barco
 			if(pDinero>=50) {
-				posible=true;
-			}
-		}else if(pOpcion==4) { //Radar
-			if(pDinero>=75) {
 				posible=true;
 			}
 		}else if(pOpcion==5) { // Bomba: Coste de bomba es 0
@@ -70,14 +67,7 @@ public class Armamento {
 					enc=true;
 				}
 			}
-		}else if(pOpcion==4){
-			while(itr.hasNext() && !enc) {
-				x=itr.next();
-				if(x instanceof Radar) {
-					enc=true;
-				}
-			}
-		} else if(pOpcion==5) {
+		}else if(pOpcion==5) {
 			while(itr.hasNext() && !enc) {
 				x=itr.next();
 				if(x instanceof Bomba) {
