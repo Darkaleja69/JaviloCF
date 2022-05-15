@@ -489,8 +489,6 @@ public class InterfazJuego extends JFrame implements Observer {
 					}
 					else if (RepararBarco.isSelected())
 					{
-						int x = l.getCoordX();
-						int y = l.getCoordY();
 						GestorJuego.getMiGestorJuego().repararBarco(x,y);
 					}
 				}
