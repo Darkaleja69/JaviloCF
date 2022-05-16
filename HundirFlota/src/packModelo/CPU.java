@@ -8,8 +8,9 @@ public class CPU extends Observable{
 	private static CPU miCPU;
 	private ListaBarcos listaB;
 	private ArrayList<Casilla> sospecha;
-	private Casilla casillaSospecha;
-	private Casilla casillaAlerta;
+	private ArrayList<Casilla> noDisparar;
+	//private Casilla casillaSospecha;
+	//private Casilla casillaAlerta;
 	private int cantEscudos;
 	private int radares;
 	
@@ -17,6 +18,7 @@ public class CPU extends Observable{
 	{
 		listaB = new ListaBarcos();
 		sospecha = new ArrayList<Casilla>();
+		noDisparar = new ArrayList<Casilla>();
 		cantEscudos = 3;
 		radares = 5;
 	}
@@ -202,7 +204,7 @@ public class CPU extends Observable{
 			{
 				x = num.nextInt(10);
 				y = num.nextInt(10);
-				posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
+				posible =(!(Tablero.getTablero().getCasilla(x, y, true).estaTocada()) && true);
 			}
 			casillas = Tablero.getTablero().bombardear(x, y, true);
 			
