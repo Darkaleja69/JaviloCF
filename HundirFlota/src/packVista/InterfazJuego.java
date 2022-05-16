@@ -556,7 +556,8 @@ public class InterfazJuego extends JFrame implements Observer {
 						if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 							GestorJuego.getMiGestorJuego().barcosColocadosTienda();
 						}
-					}else if((l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados()) {
+					}
+					else if((l.esJugador()) && GestorJuego.getMiGestorJuego().barcosColocados()) {
 						int x = l.getCoordX();
 						int y = l.getCoordY();
 						if(Escudo.isSelected()) {
@@ -580,21 +581,26 @@ public class InterfazJuego extends JFrame implements Observer {
 						else if(Radar.isSelected()) {
 							GestorJuego.getMiGestorJuego().turnoJugador(4,x,y);
 							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
-						}else if(Misil.isSelected()) {
+						}
+						else if(Misil.isSelected()) {
 							GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
 							Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
-						}else if(RecolocarRadar.isSelected()) {
-							//Código para Recolocar el radar
+							
+						}
+					}
+					
+				else {
+					if(GestorJuego.getMiGestorJuego().barcosColocados() ) {
+						if(Jugador.getJugador().armasEnArmamento(4) > 0){
+									
 						}
 					}
 				}
-				else {
-					
-					
-				}
 			}
 		}
-
+	}
+					
+				
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub

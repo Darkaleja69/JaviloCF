@@ -14,9 +14,10 @@ public class Radar extends Arma{
 	
 	public boolean realizarFuncion(int pX,int pY, boolean pAQuien) {
 		//para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
-		
-			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+			boolean sig = true;
+			if 
 			
+			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 			int x = r.getFila();
 			int y = r.getColumna();
 			int fmax = x +1;
@@ -38,7 +39,7 @@ public class Radar extends Arma{
 				
 			CPU.getMiCPU().enviarCasillas(casillas);
 				
-			return(true);
+			return(sig);
 	}
 	
 	public void recolocar() {
