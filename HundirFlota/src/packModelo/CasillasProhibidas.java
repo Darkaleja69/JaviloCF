@@ -19,7 +19,7 @@ public class CasillasProhibidas {
 		
 	}
 	
-	public boolean estaProhibida()
+	public boolean estaProhibida(int x, int y)
 	{
 		boolean prohibida = false;
 		

@@ -204,7 +204,7 @@ public class CPU extends Observable{
 			{
 				x = num.nextInt(10);
 				y = num.nextInt(10);
-				posible =(!(Tablero.getTablero().getCasilla(x, y, true).estaTocada()) && !this.prohibidas.estaProhibida()); //es posible si no está tocada y no está prohibida
+				posible =(!(Tablero.getTablero().getCasilla(x, y, true).estaTocada()) && !this.prohibidas.estaProhibida(x, y)); //es posible si no está tocada y no está prohibida
 			}
 			casillas = Tablero.getTablero().bombardear(x, y, true);
 			
