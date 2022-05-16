@@ -64,7 +64,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JRadioButton Horizontal;
 	private JRadioButton Vertical;
 	private JRadioButton RepararBarco;
-	private JRadioButton RecolocarRadar;
+	private JButton RecolocarRadar;
 	private JButton ComprarBomba;
 	private JButton ComprarMisil;
 	private JButton ComprarEscudo;
@@ -587,6 +587,10 @@ public class InterfazJuego extends JFrame implements Observer {
 							//Código para Recolocar el radar
 						}
 					}
+				}
+				else {
+					
+					
 				}
 			}
 		}

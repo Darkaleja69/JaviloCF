@@ -120,6 +120,9 @@ public class Jugador extends Observable {
 	public int dineroRestante() {
 		return dinero;
 	}
+	public int radaresDisponibles() {
+		return(radares);
+	}
 	
 /*	public void comprarReparacion()
 	{

@@ -11,5 +11,8 @@ public abstract class Arma {
 	public int getCoste() {
 		return coste;
 	}
+	public void usado() {
+		coste --;
+	}
 	
 }
