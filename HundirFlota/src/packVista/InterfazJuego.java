@@ -419,11 +419,13 @@ public class InterfazJuego extends JFrame implements Observer {
 		
 		if(arg1 instanceof Integer) 
 		{	Integer x=(Integer) arg1;
-			fin = true;
+			
 			if(x==1) {
+				fin = true;
 				frame2=new FinPartida("el Jugador");
 				frame2.setVisible(true);
 			}else if(x==2){
+				fin = true;
 				frame2=new FinPartida("la IA");
 				frame2.setVisible(true);
 			}else {

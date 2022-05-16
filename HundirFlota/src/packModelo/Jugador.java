@@ -173,4 +173,8 @@ public class Jugador extends Observable {
 		}
 	}
 	
+	public boolean armamentoVacio() {
+		return miArmamento.armamentoVacio();
+	}
+	
 }
