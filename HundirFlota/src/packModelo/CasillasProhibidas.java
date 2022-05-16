@@ -32,7 +32,7 @@ public class CasillasProhibidas {
 						{
 							if(k >= 0 && k < 10 && l >= 0 && l < 10)
 							{
-								this.lista.add(Tablero.getTablero().getCasilla(i, l, true));
+								this.lista.add(Tablero.getTablero().getCasilla(k, l, true));
 							}
 						}
 					}

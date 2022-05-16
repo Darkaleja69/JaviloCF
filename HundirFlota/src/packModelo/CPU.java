@@ -195,7 +195,16 @@ public class CPU extends Observable{
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
+		//Se prohiben las casillas que estén al lado de un barco hundido
 		this.prohibidas.prohibir();
+		//Se eliminan las sospechas que estén prohibidas
+		for(int i = 0; i < this.sospecha.size(); i++)
+		{
+			if(this.prohibidas.estaProhibida(this.sospecha.get(i).getFila(), this.sospecha.get(i).getColumna()))
+			{
+				this.sospecha.remove(i);
+			}
+		}
 		
 		//Caso 1: no se sospecha sobre ninguna casilla
 		if(sospecha.isEmpty())
