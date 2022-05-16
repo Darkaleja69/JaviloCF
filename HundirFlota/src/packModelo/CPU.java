@@ -189,13 +189,13 @@ public class CPU extends Observable{
 	
 	public void dispararInteligente()
 	{
-
 		//Inicializaciones
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible = false;
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
+		this.prohibidas.prohibir();
 		
 		//Caso 1: no se sospecha sobre ninguna casilla
 		if(sospecha.isEmpty())
