@@ -9,6 +9,7 @@ public class CasillasProhibidas {
 	
 	//C
 	
+	
 	//M
 
 }
