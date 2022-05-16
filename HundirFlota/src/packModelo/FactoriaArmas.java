@@ -22,6 +22,7 @@ public class FactoriaArmas {
 		}
 		else if(pTipo==3) {
 			nuevaArma=new Reparacion();
+			
 		}
 		else if(pTipo==4) {
 			nuevaArma=new Radar();

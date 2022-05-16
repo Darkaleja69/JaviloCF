@@ -18,18 +18,37 @@ public class Armamento {
 			if(pDinero>=100) {
 				posible=true;
 			}
-		}else if(pOpcion==2 || pOpcion==3) { //escudo y reparacion de barco
+		}else if(pOpcion==2) { //escudo y reparacion de barco
 			if(pDinero>=50) {
+				posible=true;
+			}
+		}else if(pOpcion==3) { //escudo y reparacion de barco
+			if(pDinero>=25) {
 				posible=true;
 			}
 		}else if(pOpcion==5) { // Bomba: Coste de bomba es 0
 			posible=true;
-		}else {posible=true;}
+			
+		}else {
+			posible=true;
+			}
+		
 		return posible;
 	}
 	
 	public Arma comprarArmamento(int pTipo) {
-		return FactoriaArmas.getMiFactoria().crearArma(pTipo);
+		Reparacion x=(Reparacion) buscarArma(3);
+		if(pTipo==3) {
+			if(x==null) {
+				return FactoriaArmas.getMiFactoria().crearArma(pTipo);
+			}else {
+				x.sumarCasilla();
+			}
+		}else {
+			return FactoriaArmas.getMiFactoria().crearArma(pTipo);
+		}
+		return x;
+		
 	}
 	
 	public void anadirArmamento(Arma pArma) {
@@ -44,7 +63,6 @@ public class Armamento {
 		Iterator<Arma> itr=this.getIterator();
 		Arma x=null;
 		boolean enc=false;
-		String nombre=null;
 		if(pOpcion==1) { // Misil
 			while(itr.hasNext() && !enc) {
 				x=itr.next();
@@ -94,6 +112,7 @@ public class Armamento {
 	}
 	
 	public int armasPorUsar(int pOpcion) {
+		boolean enc=false;
 		int num=0;
 		Iterator<Arma> itr=this.getIterator();
 		Arma x=null;
@@ -112,10 +131,11 @@ public class Armamento {
 				}
 			}
 		}else if(pOpcion==3) {
-			while(itr.hasNext()) {
+			while(itr.hasNext() && !enc) {
 				x=itr.next();
 				if(x instanceof Reparacion) {
-					num++;
+					enc=true;
+					return ((Reparacion) x).getCasillas();
 				}
 			}
 		}else if(pOpcion==4) {
