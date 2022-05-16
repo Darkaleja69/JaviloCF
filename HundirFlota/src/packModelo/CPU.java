@@ -11,8 +11,8 @@ public class CPU extends Observable{
 	private CasillasProhibidas prohibidas;
 	//private Casilla casillaSospecha;
 	//private Casilla casillaAlerta;
-	private int cantEscudos;
 	private int radares;
+	private int cantEscudos;
 	
 	private CPU() 
 	{

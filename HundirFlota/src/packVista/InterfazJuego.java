@@ -332,9 +332,9 @@ public class InterfazJuego extends JFrame implements Observer {
 		}
 		return RepararBarco;
 	}
-	private JRadioButton getRecolocarRadar() {
+	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
-			RecolocarRadar = new JRadioButton("Recolocar Radar");
+			RecolocarRadar = new JButton("Recolocar Radar");
 		}
 		return RecolocarRadar;
 	}
@@ -435,6 +435,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		//si se trata de Jugador
 		if((arg0 instanceof Jugador || arg0 instanceof GestorJuego || arg0 instanceof CPU) && !(arg1 instanceof Integer) && !(arg1 instanceof Boolean))
 		{
+			
 			ArrayList<Casilla> casillas = (ArrayList<Casilla>) arg1;
 			if(casillas.size()>0) {
 				if((casillas.size()>1 || !casillas.get(0).estaTocada())) {
@@ -580,7 +581,7 @@ public class InterfazJuego extends JFrame implements Observer {
 						}
 						else if(Radar.isSelected()) {
 							GestorJuego.getMiGestorJuego().turnoJugador(4,x,y);
-							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+							
 						}
 						else if(Misil.isSelected()) {
 							GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
@@ -592,7 +593,9 @@ public class InterfazJuego extends JFrame implements Observer {
 				else {
 					if(GestorJuego.getMiGestorJuego().barcosColocados() ) {
 						if(Jugador.getJugador().armasEnArmamento(4) > 0){
-									
+							GestorJuego.getMiGestorJuego().turnoJugador(4, -1, -1);	
+							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+							
 						}
 					}
 				}

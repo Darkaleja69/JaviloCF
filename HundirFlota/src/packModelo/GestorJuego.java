@@ -142,15 +142,21 @@ public class GestorJuego extends Observable {
 		boolean fin = false;
 		int jugadorOCPU = 1;
 		if(!(Jugador.getJugador().armamentoVacio())) {
-			if(Jugador.getJugador().turnoJugador(pOpcion, pX, pY)) {		
-				if(comprobarFin(false)) 
-				{	
-					setChanged();
-					notifyObservers(jugadorOCPU);
-				}else {
-					CPU.getMiCPU().turnoCPU();
-					}
+			if(pX <0 && pY <0) {
+				
+				
+			}
+			else {
+				if(Jugador.getJugador().turnoJugador(pOpcion, pX, pY)) {		
+					if(comprobarFin(false)) 
+					{	
+						setChanged();
+						notifyObservers(jugadorOCPU);
+					}else {
+						CPU.getMiCPU().turnoCPU();
+						}
 						
+				}
 			}
 		}else {
 			jugadorOCPU=3;
