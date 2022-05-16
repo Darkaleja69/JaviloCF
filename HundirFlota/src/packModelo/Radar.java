@@ -7,7 +7,7 @@ public class Radar extends Arma{
 	private Casilla r;
 	
 	public Radar () {
-		recolocar();
+		r = null;
 		super.coste = Jugador.getJugador().radaresDisponibles();
 		
 	}
@@ -16,7 +16,7 @@ public class Radar extends Arma{
 		//para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 			boolean sig = true;
 			if(pX < 0 && pY < 0) { //se quiere recolocar el radar
-				
+				r = recolocar();
 			}
 			else {//se quiere activar el radar
 				ArrayList<Casilla> casillas = new ArrayList<Casilla>();
@@ -46,13 +46,14 @@ public class Radar extends Arma{
 			return(sig);
 	}
 	
-	public void recolocar() {
-		super.coste --;
+	public Casilla recolocar() {
+		super.usado();
 		Random num1 = new Random();	
 		Random num2 = new Random();	
 		int x = num1.nextInt(7)+2;
 		int y= num2.nextInt(7)+2;
-	    this.r = new Casilla(x,y);
+	    Casilla c = new Casilla(x,y);
+	    return(c);
 		
 	}
 }
