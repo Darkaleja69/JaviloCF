@@ -396,7 +396,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getComprarReparacionBarco() {
 		if (ComprarReparacionBarco == null) {
-			ComprarReparacionBarco = new JButton("Comprar Reparacion Barco");
+			ComprarReparacionBarco = new JButton("Comprar Reparacion para 1 casilla");
 			ComprarReparacionBarco.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {

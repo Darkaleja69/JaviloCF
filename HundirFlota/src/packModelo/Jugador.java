@@ -161,9 +161,10 @@ public class Jugador extends Observable {
 		boolean finTurno=false;
 			Arma miArma=miArmamento.buscarArma(pOpcion);
 			if( miArma != null) {
-				miArma.realizarFuncion(pX,pY,false);
-				finTurno=true;
-				miArmamento.retirarArma(pOpcion);
+				if(miArma.realizarFuncion(pX,pY,false)) {
+					finTurno=true;
+					miArmamento.retirarArma(pOpcion);
+				}
 			}
 		return finTurno;
 	}
