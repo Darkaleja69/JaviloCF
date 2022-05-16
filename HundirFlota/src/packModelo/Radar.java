@@ -8,7 +8,7 @@ public class Radar extends Arma{
 	
 	public Radar () {
 		r = null;
-		super.coste = Jugador.getJugador().radaresDisponibles();
+		super.coste = 10;
 		
 	}
 	

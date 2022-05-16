@@ -15,7 +15,7 @@ public class Jugador extends Observable {
 	
 	private Jugador() {
 		lista=new ListaBarcos();
-		radares = 5;
+		radares = 1;
 		cantEscudos = 3;
 		dinero=500;
 		miArmamento=new Armamento();
