@@ -17,6 +17,7 @@ public class CPU extends Observable{
 	private CPU() 
 	{
 		listaB = new ListaBarcos();
+		miArmamento = new Armamento();
 		sospecha = new ArrayList<Casilla>();
 		prohibidas = new CasillasProhibidas();
 		cantEscudos = 3;
@@ -62,11 +63,12 @@ public class CPU extends Observable{
 	}
 	
 	public void turnoCPU() {
-		//Primero compramos una bomba
+		//Realizamos inicializaciones varias
+		boolean fin = false;
+		int jugadorOCPU = 1;
 		this.miArmamento.anadirArmamento(miArmamento.comprarArmamento(5));
+		
 		//Decidimos la acción que vamos a realizar
-        boolean fin = false;
-        int jugadorOCPU = 1;
         Random z = new Random();
         int turno = z.nextInt(2)+1;
         
