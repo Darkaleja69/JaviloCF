@@ -32,12 +32,12 @@ public class GestorJuego extends Observable {
 	}
 	
 	public int barcosPorColocar(int pLong) {
-		return ListaJugadores.getMiListaJug().obtenerJugador().barcosPorColocar(pLong);
+		return ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).barcosPorColocar(pLong);
 	}
 	
 	
 	public int dineroRestanteJug() {
-		return ListaJugadores.getMiListaJug().obtenerJugador().dineroRestante();
+		return ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).dineroRestante();
 	}
 	
 	public void barcosColocadosTienda() {
@@ -48,7 +48,7 @@ public class GestorJuego extends Observable {
 	}
 	
 	public boolean barcosColocados() {
-		return ListaJugadores.getMiListaJug().obtenerJugador().barcosColocados();
+		return ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).barcosColocados();
 	}
 
 	public void jugarTurno(int pOpcion,int pX,int pY) {
@@ -60,11 +60,11 @@ public class GestorJuego extends Observable {
 	}
 	
 	public int armasPorUsar(int pOpcion) {
-		return ListaJugadores.getMiListaJug().obtenerJugador().armasEnArmamento(pOpcion);
+		return ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).armasEnArmamento(pOpcion);
 	}
 	
 	public void comprarArmamento(int pOpcion) {
-		ListaJugadores.getMiListaJug().obtenerJugador().comprarArmamento(pOpcion);
+		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).comprarArmamento(pOpcion);
 	}
 		
 	

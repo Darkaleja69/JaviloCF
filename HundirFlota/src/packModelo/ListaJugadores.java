@@ -61,12 +61,10 @@ public class ListaJugadores extends Observable{
 		}
 	}
 	
-	public Jugador obtenerJugador() {
-		return listaJ.get(1);
-	}
-	
-	public Jugador obtenerCPU() {
+	public Jugador obtenerJugadorOCPU(int pIndice) {
+		if(pIndice==0) {
 		return listaJ.get(0);
+		}else return listaJ.get(1);
 	}
 	
 	public boolean comprobarFin(boolean pJug) {
