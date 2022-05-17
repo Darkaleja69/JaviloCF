@@ -16,6 +16,7 @@ import packModelo.CPU;
 import packModelo.Casilla;
 import packModelo.GestorJuego;
 import packModelo.Jugador;
+import packModelo.ListaJugadores;
 import packModelo.Tablero;
 
 import java.awt.GridLayout;
@@ -116,8 +117,8 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(RecolocarRadar);
 		g3.add(RepararBarco);
 		GestorJuego.getMiGestorJuego().addObserver(this);
-		Jugador.getJugador().addObserver(this);
-		CPU.getMiCPU().addObserver(this);
+		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).addObserver(this);
+		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).addObserver(this);
 		panelTienda.setVisible(false);
 		Aviso.setVisible(false);
 		fin = false;
@@ -571,10 +572,10 @@ public class InterfazJuego extends JFrame implements Observer {
 						int y = l.getCoordY();
 						if(Escudo.isSelected()) {
 						
-							GestorJuego.getMiGestorJuego().turnoJugador(2,x,y);
+							GestorJuego.getMiGestorJuego().jugarTurno(2, x, y);
 							Escudo.setText("Escudo ("+GestorJuego.getMiGestorJuego().armasPorUsar(2)+")");
 						}else if(RepararBarco.isSelected()) {
-								GestorJuego.getMiGestorJuego().turnoJugador(3,x,y);
+							GestorJuego.getMiGestorJuego().jugarTurno(3, x, y);
 								RepararBarco.setText("Reparar barco ("+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
 						}
 					}
@@ -584,15 +585,15 @@ public class InterfazJuego extends JFrame implements Observer {
 						int y = l.getCoordY();
 						if(Bomba.isSelected()) 
 						{
-							GestorJuego.getMiGestorJuego().turnoJugador(5,x, y);
+							GestorJuego.getMiGestorJuego().jugarTurno(5,x, y);
 							Bomba.setText("Bomba ("+GestorJuego.getMiGestorJuego().armasPorUsar(5)+")");
 						}
 						else if(Radar.isSelected()) {
-							GestorJuego.getMiGestorJuego().turnoJugador(4,x,y);
+							GestorJuego.getMiGestorJuego().jugarTurno(4,x,y);
 							
 						}
 						else if(Misil.isSelected()) {
-							GestorJuego.getMiGestorJuego().turnoJugador(1,x,y);
+							GestorJuego.getMiGestorJuego().jugarTurno(1,x,y);
 							Misil.setText("Misil ("+GestorJuego.getMiGestorJuego().armasPorUsar(1)+")");
 							
 						}
@@ -601,7 +602,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				else {
 					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 						
-						GestorJuego.getMiGestorJuego().turnoJugador(4, -1, -1);	
+						GestorJuego.getMiGestorJuego().jugarTurno(4, -1, -1);	
 						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 							
 						}
@@ -609,31 +610,31 @@ public class InterfazJuego extends JFrame implements Observer {
 				}
 			}
 		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 					
 				
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-	}
 }
