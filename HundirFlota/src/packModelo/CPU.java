@@ -85,6 +85,7 @@ public class CPU extends Jugador{
 				this.dinero -= 50;
 			}
 		}
+		System.out.println(this.dinero);
 		
 		//Decidimos la accion que vamos a realizar
         int turno = z.nextInt(2)+1;
@@ -141,28 +142,12 @@ public class CPU extends Jugador{
 	}
 	
 	public void radarCPU() {
-		
-		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		Arma a = this.miArmamento.buscarArma(4);
 		this.miArmamento.retirarArma(4);
 		a.realizarFuncion(-1, -1, true);
 		a.realizarFuncion(0, 0, true);
-		
-		for(int i = pX -1;i<=fmax;i++) {
-				
-			for(int j = pY -1;j<=cmax;j++) {
-					
-				c = Tablero.getTablero().getCasilla(i, j, true);
-				c.ponerRadar();
-				casillas.add(c);
-				if(c.tieneBarco()) {
-					sospecha.add(0, c);
-				}
-			}
-				
-		}		
-		this.enviarCasillas(casillas);
 	}
+	
 	
 	public void anadirBarco(Barco pBarco) {
 		this.listaB.anadirBarco(pBarco);
@@ -267,6 +252,10 @@ public class CPU extends Jugador{
 		}
 		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 	}
+	public void anadirSospechas(ArrayList<Casilla> pSospechas)
+	{
+		this.sospecha.addAll(pSospechas);
+	}
 	
 	private void generarSospechas(Casilla c)
 	{
@@ -302,7 +291,7 @@ public class CPU extends Jugador{
 			}
 		}
 		
-		//por �ltimo, se indexa el ArrayList de casillas a nuestra lista de sospechas
+		//por ultimo, se indexa el ArrayList de casillas a nuestra lista de sospechas
 		this.sospecha.addAll(candidatas);
 	}
 }

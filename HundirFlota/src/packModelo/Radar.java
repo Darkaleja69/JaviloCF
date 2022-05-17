@@ -14,35 +14,36 @@ public class Radar extends Arma{
 	}
 	
 	public boolean realizarFuncion(int pX,int pY, boolean pAQuien) {
-        //para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
-            boolean sig = false;
-            ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-            if(pX < 0 && pY < 0 || r==null) { //se quiere recolocar el radar
-                radares --;
-                r = recolocar(pAQuien);
-                casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
-            }
-            else{//se quiere activar el radar
-                sig = true;
-                casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
-                ArrayList<Casilla> sospechas = new ArrayList<Casilla>();
-                for(Casilla c : casillas)
-                {
-                    if(c.tieneBarco() && !c.estaTocada() && !c.getBarco().estaHundido())
-                    {
-                        sospechas.add(c);
-                    }
-                }
-                CPU cpu = (CPU) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
-                cpu.anadirSospechas(sospechas);
-            }
-            if(pAQuien) {
-                ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
-            }else {
-                ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
-            }
-            return(true);
-    }
+		//para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
+			boolean sig = false;
+			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+			if(pX < 0 && pY < 0 || r==null) { //se quiere recolocar el radar
+				radares --;
+				r = recolocar(pAQuien);
+				casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
+			}
+			else{//se quiere activar el radar
+				sig = true;
+				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
+				ArrayList<Casilla> sospechas = new ArrayList<Casilla>();
+				for(Casilla c : casillas)
+				{
+					if(c.tieneBarco() && !c.estaTocada() && !c.getBarco().estaHundido())
+					{
+						sospechas.add(c);
+					}
+				}
+				CPU cpu = (CPU) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
+				cpu.anadirSospechas(sospechas);
+			}
+			if(pAQuien) {
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
+			}else {
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
+			}
+			return(true);
+	}
+>>>>>>> branch 'master' of https://github.com/Darkaleja69/JaviloCF.git
 	
 	public Casilla recolocar(boolean pAquien) {
 		if(r != null) {
