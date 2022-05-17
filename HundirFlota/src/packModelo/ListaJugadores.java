@@ -11,6 +11,7 @@ public class ListaJugadores extends Observable{
 	public ListaJugadores() {
 		listaJ=new ArrayList<Jugador>();
 		turno=1;
+		inicializarLista();
 	}
 	
 	public static ListaJugadores getMiListaJug() {
@@ -23,7 +24,7 @@ public class ListaJugadores extends Observable{
 		return (this.obtenerJugadorOCPU(0));
 	}
 	
-	public void inicializarLista() {
+	private void inicializarLista() {
 		listaJ.add(new CPU());
 		listaJ.add(new Jugador());
 	}

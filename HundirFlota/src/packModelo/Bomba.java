@@ -11,7 +11,7 @@ public class Bomba extends Arma {
 	public boolean realizarFuncion(int pX,int pY,boolean pAQuien) {
 		boolean disparado = false;
 		Casilla b = null;
-		Casilla x = Tablero.getTablero().getCasilla(pX, pY, pAQuien);
+		Casilla x = Tablero.getTablero().getCasilla(pX, pY, !pAQuien);
 		if(!x.estaTocada()) 
 		{
 			b = x;
@@ -20,9 +20,9 @@ public class Bomba extends Arma {
 			casillas.add(b);
 			disparado = true;
 			if(pAQuien) {
-				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 			}else {
-			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
 			}
 		}
 		return disparado;

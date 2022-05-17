@@ -55,10 +55,6 @@ public class GestorJuego extends Observable {
 		ListaJugadores.getMiListaJug().realizarTurno(pOpcion, pX, pY);
 	}
 	
-	public void realizarTurno(int pOpcion,int pX,int pY) {
-		ListaJugadores.getMiListaJug().realizarTurno(pOpcion, pX, pY);
-	}
-	
 	public int armasPorUsar(int pOpcion) {
 		return ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).armasEnArmamento(pOpcion);
 	}
