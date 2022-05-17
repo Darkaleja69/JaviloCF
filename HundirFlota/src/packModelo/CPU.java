@@ -72,7 +72,27 @@ public class CPU extends Observable{
 		//Si se tiene dinero, se decide el tipo de armas que se van a comprar al inicio de la partida
 		while(this.dinero > 0)
 		{
-			int adquisicion = z.nextInt();
+			int adquisicion = z.nextInt(3) + 1;
+			if(adquisicion == 1 && this.dinero >= 100)
+			{//misil
+				this.miArmamento.anadirArmamento(this.miArmamento.comprarArmamento(1));
+				this.dinero -= 100;
+			}
+			else if(adquisicion == 2 && this.dinero >= 50)
+			{//escudo
+				this.miArmamento.anadirArmamento(this.miArmamento.comprarArmamento(2));
+				this.dinero -= 50;
+			}
+			else if(adquisicion == 3 && this.dinero >= 50)
+			{//escudo
+				this.miArmamento.anadirArmamento(this.miArmamento.comprarArmamento(3));
+				this.dinero -= 50;
+			}
+			else if(adquisicion == 4 && this.dinero >= 50)
+			{//escudo
+				this.miArmamento.anadirArmamento(this.miArmamento.comprarArmamento(3));
+				this.dinero -= 50;
+			}
 		}
 		
 		//Decidimos la acción que vamos a realizar
