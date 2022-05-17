@@ -122,8 +122,7 @@ public class CPU extends Jugador{
         }
         else if(turno == 4 && this.miArmamento.armasPorUsar(3) > 0) //reparar
         {
-            this.radarCPU();
-
+            
         }
         else //disparar (de forma inteligente) CPU
         {
