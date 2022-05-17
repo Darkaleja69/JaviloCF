@@ -192,18 +192,21 @@ public class Tablero {
 	public boolean radarUsado( boolean esJug) {
 		Casilla c = this.buscarRadar(esJug);
 		int cont = 0;
-		int fil = c.getFila();
-		int col = c.getColumna();
-		
-		for(int i=fil-1; i<=fil+1; i++) {
-			for(int j =col-1; j<=col+1 ; j++) {
-				if(Tablero.getTablero().getCasilla(i, j, esJug).getRadar()>0) {
-					cont = cont + 1;
+		if(c != null) {
+			int fil = c.getFila();
+			int col = c.getColumna();
+			
+			for(int i=fil-1; i<=fil+1; i++) {
+				for(int j =col-1; j<=col+1 ; j++) {
+					if(Tablero.getTablero().getCasilla(i, j, esJug).getRadar()>0) {
+						cont = cont + 1;
+						
+					}
 					
 				}
-				
 			}
 		}
+		
 		return(cont==9);
 		
 		
