@@ -259,7 +259,7 @@ public class CPU extends Observable{
 					//borrar de "sospecha" a todas las casillas que no hayan sido detectadas por radares
 					for(int i = 0; i < sospecha.size(); i++)
 					{
-						if(!sospecha.get(i).tieneRadar())
+						if(!(sospecha.get(i).getRadar() == 1))
 						{
 							sospecha.remove(i);
 						}
