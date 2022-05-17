@@ -93,7 +93,7 @@ public class CPU extends Jugador{
         {
             this.colocarEscudo();
         }
-        else if(turno == 3 && this.quedanRadares()) //radar CPU
+        else if(turno == 3 && this.miArmamento.armasPorUsar(4)) //radar CPU
         {
             this.radarCPU();
 
