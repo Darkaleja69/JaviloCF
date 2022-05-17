@@ -25,8 +25,6 @@ public class Radar extends Arma{
 			else{//se quiere activar el radar
 				sig = true;
 				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
-				CPU c = (CPU) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
-				c.anadirSospechas(casillas);
 			}
 			if(pAQuien) {
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
