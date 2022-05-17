@@ -69,10 +69,11 @@ public class ListaBarcos {
 		return barcos;
 	}
 	
-	public boolean barcoReparable(int pHeridas)
+	public Barco barcoReparable(int pHeridas)
 	{
 		
 		
-		return true;
+		
+		return;
 	}
 }
