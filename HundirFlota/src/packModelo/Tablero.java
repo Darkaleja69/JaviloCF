@@ -189,6 +189,26 @@ public class Tablero {
 		}
 		
 	}
+	public Casilla buscarRadar(boolean esJug) {
+		Casilla c;
+		boolean encontrado = false;
+		int i = 0;
+		int j = 0;
+		while(i<=10 && !encontrado){
+			i ++;
+			while(j<=10 && !encontrado) {
+				j++;
+				if(this.getCasilla(i, j, esJug).getRadar()==2) {
+					encontrado = true;
+				}
+				
+			}
+		}
+		if(!encontrado) {
+			c = null;
+		}
+		return c;
+	}
 	public ArrayList<Casilla> colocarRadar(int pFila, int pCol, boolean pJug) {
 		ArrayList<Casilla> array = new ArrayList<Casilla>();
 		Casilla r = getCasilla(pFila, pCol, pJug);
@@ -198,25 +218,25 @@ public class Tablero {
 	}
 	public ArrayList<Casilla> detectar(int fila, int col,boolean pJug) {
 		ArrayList<Casilla> array = new ArrayList<Casilla>();
-		int fmax = x +1;
-		int cmax = y +1;
+		int fmax = fila +1;
+		int cmax = col +1;
 		
 				
 		Casilla c = null;
 			
-		for(int i = x -1;i<=fmax;i++) {	
+		for(int i = fila -1;i<=fmax;i++) {	
 			
-			for(int j = y -1;j<=cmax;j++) {
-					
-				c = Tablero.getTablero().getCasilla(i, j, pAQuien);
-				c.ponerRadar();
-				casillas.add(c);
+			for(int j = col -1;j<=cmax;j++) {	
+				c = Tablero.getTablero().getCasilla(i, j, pJug);
+				if(i != fila && j != col) {
+					c.ponerRadar();
+				}
+				array.add(c);
 			}
-				
+			
 		}
 			
-		CPU.getMiCPU().enviarCasillas(casillas);
-	}
+		
 		return array;
 	}
 	

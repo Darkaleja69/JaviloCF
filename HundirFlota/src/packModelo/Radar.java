@@ -19,6 +19,7 @@ public class Radar extends Arma{
 			boolean sig = false;
 			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 			if(pX < 0 && pY < 0 || r==null) { //se quiere recolocar el radar
+				radares --;
 				r = recolocar();
 				casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
 			}
@@ -31,7 +32,10 @@ public class Radar extends Arma{
 	}
 	
 	public Casilla recolocar() {
-		super.usado();
+		if(r != null) {
+			
+			
+		}
 		Random num1 = new Random();	
 		Random num2 = new Random();	
 		int x = num1.nextInt(7)+2;
