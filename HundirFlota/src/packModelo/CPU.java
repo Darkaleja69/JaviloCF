@@ -60,7 +60,7 @@ public class CPU extends Observable{
 	}
 	
 	public void turnoCPU() {
-		//Primero compramos bombas
+		//Primero compramos una bomba
 		this.miArmamento.comprarArmamento(5);
 		//Decidimos la acción que vamos a realizar
         boolean fin = false;
@@ -93,22 +93,6 @@ public class CPU extends Observable{
 			notifyObservers(jugadorOCPU);
 		}
 	}
-	
-	/*public void disparar(){
-		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-		boolean posible=false;
-		int x = 0;
-		int y = 0;
-		Random num = new Random();
-		while(!posible) 
-		{
-			x = num.nextInt(10);
-			y = num.nextInt(10);
-			posible =!(Tablero.getTablero().getCasilla(x, y, true).estaTocada());
-		}
-		casillas = Tablero.getTablero().bombardear(x, y,true);
-		Jugador.getJugador().enviarCasillas(casillas);
-	}*/
 	
 	public void colocarEscudo()
 	{
