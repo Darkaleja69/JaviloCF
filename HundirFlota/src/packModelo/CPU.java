@@ -124,6 +124,15 @@ public class CPU extends Jugador{
         {
             Casilla c = Tablero.getTablero().buscarCasillaBarco(this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)));
             ArrayList<Casilla> array = Tablero.getTablero().obtenerCasillasBarco(c, false);
+            for(Casilla cas : array)
+            {
+            	if(cas.estaTocada())
+            	{
+            		Arma ar = this.miArmamento.buscarArma(3);
+            		ar.realizarFuncion(cas.getFila(), cas.getColumna(), false);
+            		break;
+            	}
+            }
         }
         else //disparar (de forma inteligente) CPU
         {
