@@ -211,8 +211,14 @@ public class CPU extends Jugador{
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 		}
-		
-		//Caso 2: se tienen sospechas sobre alguna casilla
+		//Caso 2: se ha adivinado la posición de un barco gracias al radar y además se tienen misiles --> se aprovecha el misil
+		if(sospecha.get(0).detectado() && this.miArmamento.armasPorUsar(1) > 0)
+		{
+			Casilla cS = sospecha.get(0);
+			this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
+			this.miArmamento.retirarArma(1);
+		}
+		//Caso 3: se tienen sospechas sobre alguna casilla
 		else
 		{
 			//se bombardea a la casilla mas sospechosa
