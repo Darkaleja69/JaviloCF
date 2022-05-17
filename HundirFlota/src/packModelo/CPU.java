@@ -10,6 +10,7 @@ public class CPU extends Observable{
 	private ArrayList<Casilla> sospecha;
 	private CasillasProhibidas prohibidas;
 	private Armamento miArmamento;
+	private int dinero;
 	private int radares;
 	private int cantEscudos;
 	
@@ -20,6 +21,7 @@ public class CPU extends Observable{
 		prohibidas = new CasillasProhibidas();
 		cantEscudos = 3;
 		radares = 5;
+		dinero = 500;
 	}
 	
 	public static CPU getMiCPU() 
