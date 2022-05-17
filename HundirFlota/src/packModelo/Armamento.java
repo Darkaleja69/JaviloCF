@@ -5,10 +5,12 @@ import java.util.Iterator;
 
 public class Armamento {
 	private ArrayList<Arma> armas;
+	private int radares;
 	
-	public Armamento() {
+	public Armamento(int pRadares) {
 		armas=new ArrayList<Arma>();
-		armas.add(new Radar());
+		radares = 5;
+		armas.add(new Radar(radares));
 	}
 	
 	
@@ -26,6 +28,12 @@ public class Armamento {
 			if(pDinero>=25) {
 				posible=true;
 			}
+		}else if(pOpcion==4) { //escudo y reparacion de barco
+			Radar a = (Radar) buscarArma(4);
+			if(a.cantRadares()>0) {
+				posible = true;
+			}
+			
 		}else if(pOpcion==5) { // Bomba: Coste de bomba es 0
 			posible=true;
 			

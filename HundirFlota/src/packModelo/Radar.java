@@ -5,44 +5,28 @@ import java.util.Random;
 
 public class Radar extends Arma{
 	private Casilla r;
+	private int radares; 
 	
-	public Radar () {
+	public Radar (int pRadares) {
 		r = null;
-		super.coste = 10;
+		radares = pRadares;
+		super.coste = 100;
 		
 	}
 	
 	public boolean realizarFuncion(int pX,int pY, boolean pAQuien) {
 		//para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
-			boolean sig = true;
-			if(pX < 0 && pY < 0) { //se quiere recolocar el radar
+			boolean sig = false;
+			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+			if(pX < 0 && pY < 0 || r==null) { //se quiere recolocar el radar
 				r = recolocar();
+				casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
 			}
-			else {//se quiere activar el radar
-				ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-				int x = r.getFila();
-				int y = r.getColumna();
-				int fmax = x +1;
-				int cmax = y +1;
-				
-						
-				Casilla c = null;
-					
-				for(int i = x -1;i<=fmax;i++) {	
-					
-					for(int j = y -1;j<=cmax;j++) {
-							
-						c = Tablero.getTablero().getCasilla(i, j, false);
-						c.ponerRadar();
-						casillas.add(c);
-					}
-						
-				}
-					
-				CPU.getMiCPU().enviarCasillas(casillas);
+			else{//se quiere activar el radar
+				sig = true;
+				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
 			}
-			
-				
+			CPU.getMiCPU().enviarCasillas(casillas);
 			return(sig);
 	}
 	
@@ -55,5 +39,11 @@ public class Radar extends Arma{
 	    Casilla c = new Casilla(x,y);
 	    return(c);
 		
+	}
+	public Casilla getRadar() {
+		return r;
+	}
+	public int cantRadares() {
+		return radares;
 	}
 }
