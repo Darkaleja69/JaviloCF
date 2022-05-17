@@ -337,15 +337,10 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
-			String r = "";
-			if(Tablero.getTablero().radarUsado(true)) {
-				r = "radar utilizado";
-			}
-			RecolocarRadar = new JButton("Recolocar Radar " + r);
+			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 			
 		}
 		
-
 		return RecolocarRadar;
 	}
 	private JButton getComprarRadar() {
