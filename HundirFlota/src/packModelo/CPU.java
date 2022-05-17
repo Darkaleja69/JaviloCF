@@ -142,7 +142,6 @@ public class CPU extends Jugador{
 	}
 	
 	public void radarCPU() {
-		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		Arma a = this.miArmamento.buscarArma(4);
 		this.miArmamento.retirarArma(4);
