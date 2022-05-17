@@ -71,9 +71,16 @@ public class ListaBarcos {
 	
 	public Barco barcoReparable(int pHeridas)
 	{
+		Barco h = null;
+		for(Barco b : this.lista)
+		{
+			if(b.diferenciaLongitudVidas() < pHeridas)
+			{
+				h = b;
+				break;
+			}
+		}
 		
-		
-		
-		return;
+		return h;
 	}
 }
