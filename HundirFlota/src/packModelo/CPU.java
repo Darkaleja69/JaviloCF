@@ -215,7 +215,7 @@ public class CPU extends Jugador{
 		//Caso 2: se tienen sospechas sobre alguna casilla
 		else
 		{
-			//se bombardea a la casilla m�s sospechosa
+			//se bombardea a la casilla mas sospechosa
 			x = this.sospecha.get(0).getFila();
 			y = this.sospecha.get(0).getColumna();
 			casillas = Tablero.getTablero().bombardear(x, y,true);
