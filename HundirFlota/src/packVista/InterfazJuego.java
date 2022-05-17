@@ -340,7 +340,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					GestorJuego.getMiGestorJuego().comprarArmamento(5);
 				}
-			}
+			});
 		
 		}
 		
