@@ -141,38 +141,33 @@ public class CPU extends Jugador{
 	}
 	
 	public void radarCPU() {
-		//para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-		if(this.quedanRadares()) {
-			radares = radares -1;
-			Random num1 = new Random();	
-			Random num2 = new Random();	
-			int pX = num1.nextInt(7)+2;
-			int pY = num2.nextInt(7)+2;
-			int fmax = pX +1;
-			int cmax = pY +1;
-					
-			Casilla c = null;
+		radares = radares -1;
+		Random num1 = new Random();	
+		Random num2 = new Random();	
+		int pX = num1.nextInt(7)+2;
+		int pY = num2.nextInt(7)+2;
+		int fmax = pX +1;
+		int cmax = pY +1;
 				
-			for(int i = pX -1;i<=fmax;i++) {
+		Casilla c = null;
+			
+		for(int i = pX -1;i<=fmax;i++) {
+				
+			for(int j = pY -1;j<=cmax;j++) {
 					
-				for(int j = pY -1;j<=cmax;j++) {
-						
-					c = Tablero.getTablero().getCasilla(i, j, true);
-					c.ponerRadar();
-					casillas.add(c);
-					if(c.tieneBarco()) {
-						sospecha.add(0, c);
-					}
+				c = Tablero.getTablero().getCasilla(i, j, true);
+				c.ponerRadar();
+				casillas.add(c);
+				if(c.tieneBarco()) {
+					sospecha.add(0, c);
 				}
-					
 			}
 				
-			this.enviarCasillas(casillas);
+		}		
+		this.enviarCasillas(casillas);
 				
-		}
-			
 		//return(casillas.size() >0);
 	}
 	
