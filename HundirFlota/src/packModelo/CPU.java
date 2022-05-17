@@ -148,21 +148,6 @@ public class CPU extends Jugador{
 		this.miArmamento.retirarArma(4);
 		a.realizarFuncion(-1, -1, true);
 		a.realizarFuncion(0, 0, true);
-		
-		for(int i = pX -1;i<=fmax;i++) {
-				
-			for(int j = pY -1;j<=cmax;j++) {
-					
-				c = Tablero.getTablero().getCasilla(i, j, true);
-				c.ponerRadar();
-				casillas.add(c);
-				if(c.tieneBarco()) {
-					sospecha.add(0, c);
-				}
-			}
-				
-		}		
-		this.enviarCasillas(casillas);
 	}
 	
 	
@@ -268,6 +253,10 @@ public class CPU extends Jugador{
 			//Caso 2.3 se ha dado en agua (no hace falta c�digo)
 		}
 		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
+	}
+	public void anadirSospechas(ArrayList<Casilla> pSospechas)
+	{
+		this.sospecha.addAll(pSospechas);
 	}
 	
 	private void generarSospechas(Casilla c)
