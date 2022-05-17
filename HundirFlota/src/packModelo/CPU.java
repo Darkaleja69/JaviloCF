@@ -11,7 +11,6 @@ public class CPU extends Jugador{
 	private Armamento miArmamento;
 	private int dinero;
 	private int radares;
-	private int cantEscudos;
 	
 	public CPU()
 	{
@@ -19,15 +18,8 @@ public class CPU extends Jugador{
 		miArmamento = new Armamento();
 		sospecha = new ArrayList<Casilla>();
 		prohibidas = new CasillasProhibidas();
-		cantEscudos = 3;
 		radares = 5;
 		dinero = 500;
-	}
-	
-	
-	public boolean escudosSuficientes()
-	{
-		return cantEscudos > 0;
 	}
 
 	public Barco colocarBarco(int pLongitud) 
