@@ -147,7 +147,7 @@ public class CPU extends Jugador{
 		this.miArmamento.retirarArma(4);
 		a.realizarFuncion(-1, -1, false);
 		a.realizarFuncion(0, 0, false);
-		
+		/*
 		for(int i = pX -1;i<=fmax;i++) {
 				
 			for(int j = pY -1;j<=cmax;j++) {
@@ -160,7 +160,7 @@ public class CPU extends Jugador{
 				}
 			}
 				
-		}		
+		}		*/
 		this.enviarCasillas(casillas);
 				
 		//return(casillas.size() >0);
