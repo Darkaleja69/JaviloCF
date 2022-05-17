@@ -146,7 +146,7 @@ public class CPU extends Jugador{
 		Arma a = this.miArmamento.buscarArma(4);
 		this.miArmamento.retirarArma(4);
 		a.realizarFuncion(-1, -1, false);
-		
+		a.realizarFuncion(0, 0, false);
 		
 		for(int i = pX -1;i<=fmax;i++) {
 				
