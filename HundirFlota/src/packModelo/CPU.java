@@ -69,7 +69,7 @@ public class CPU extends Observable{
 		Random z = new Random();
 		this.miArmamento.anadirArmamento(miArmamento.comprarArmamento(5));
 		
-		//Si se tiene dinero, se decide el tipo de armas que se van a comprar al inicio de la partida
+		//Si se tiene dinero, se lo funde en armas aleatoriamente
 		while(this.dinero > 0)
 		{
 			int adquisicion = z.nextInt(3) + 1;
