@@ -472,7 +472,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				}
 				Label lbl = this.obtJLabel(pos, jug);
 				
-				if(c.tieneRadar()) {
+				if(c.getRadar()>0) {
 					c.quitarRadar();
 					
 					if(!c.estaTocada()) {
