@@ -55,7 +55,7 @@ public class Radar extends Arma{
             int y= num2.nextInt(7)+2;
             c = new Casilla(x,y);
             c.ponerRadar();
-            radares --;
+            usarRadar();
         }
 
         return(c);
@@ -63,6 +63,13 @@ public class Radar extends Arma{
     }
     public Casilla getRadar() {
         return r;
+        
+    }
+    public void comprarRadar() {
+    	this.radares ++;
+    }
+    public void usarRadar() {
+    	this.radares --;
     }
     public int cantRadares() {
         return radares;

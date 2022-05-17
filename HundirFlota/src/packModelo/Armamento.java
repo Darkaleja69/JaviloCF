@@ -5,11 +5,10 @@ import java.util.Iterator;
 
 public class Armamento {
 	private ArrayList<Arma> armas;
-	private int radares;
+	
 	
 	public Armamento() {
 		armas=new ArrayList<Arma>();
-		radares = 5;
 		armas.add(new Radar());
 	}
 	
@@ -52,6 +51,10 @@ public class Armamento {
 			}
 			
 		}
+		else if(pTipo == 4) {
+			Radar r = (Radar) this.buscarArma(4);
+			r.comprarRadar();
+		}
 		else {
 			return FactoriaArmas.getMiFactoria().crearArma(pTipo);
 		}
@@ -64,6 +67,13 @@ public class Armamento {
 	}
 	
 	public void retirarArma(int pOpcion) {
+		if(pOpcion == 4) {
+			Radar r = (Radar) this.buscarArma(4);
+			r.usarRadar();
+		}
+		else {
+			
+		}
 		armas.remove(buscarArma(pOpcion));
 	}
 	
