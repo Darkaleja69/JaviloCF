@@ -488,7 +488,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				int pos = (c.getFila() * 10) + c.getColumna();
 				boolean jug=false;
 				
-				if(arg0 instanceof Jugador) {
+				if(!(arg0 instanceof CPU)) {
 					jug=true;
 				}
 				Label lbl = this.obtJLabel(pos, jug);
