@@ -141,7 +141,7 @@ public class CPU extends Jugador{
 	}
 	
 	public void radarCPU() {
-		//para los turnos, que el m�todo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
+		//para los turnos, que el metodo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(this.quedanRadares()) {
