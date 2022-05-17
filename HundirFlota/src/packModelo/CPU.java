@@ -13,7 +13,7 @@ public class CPU extends Observable{
 	private int radares;
 	private int cantEscudos;
 	
-	public CPU() 
+	public CPU()
 	{
 		listaB = new ListaBarcos();
 		miArmamento = new Armamento();
