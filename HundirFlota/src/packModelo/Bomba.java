@@ -20,9 +20,9 @@ public class Bomba extends Arma {
 			casillas.add(b);
 			disparado = true;
 			if(pAQuien) {
-				Jugador.getJugador().enviarCasillas(casillas);
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
 			}else {
-			CPU.getMiCPU().enviarCasillas(casillas);
+			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 			}
 		}
 		return disparado;
