@@ -5,7 +5,6 @@ import java.util.Observable;
 import java.util.Random;
 
 public class CPU extends Observable{
-	private static CPU miCPU;
 	private ListaBarcos listaB;
 	private ArrayList<Casilla> sospecha;
 	private CasillasProhibidas prohibidas;
@@ -14,7 +13,7 @@ public class CPU extends Observable{
 	private int radares;
 	private int cantEscudos;
 	
-	private CPU() 
+	public CPU() 
 	{
 		listaB = new ListaBarcos();
 		miArmamento = new Armamento();
@@ -25,14 +24,6 @@ public class CPU extends Observable{
 		dinero = 500;
 	}
 	
-	public static CPU getMiCPU() 
-	{
-		if (miCPU == null) 
-		{
-			miCPU = new CPU();
-		}
-		return miCPU;
-	}
 	
 	public boolean escudosSuficientes()
 	{
