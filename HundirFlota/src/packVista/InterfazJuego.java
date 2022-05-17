@@ -337,7 +337,11 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
-			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+			String r = "";
+			if(Tablero.getTablero().radarUsado(true)) {
+				r = "radar utilizado";
+			}
+			RecolocarRadar = new JButton("Recolocar Radar " + r);
 			
 		}
 		
@@ -352,7 +356,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					GestorJuego.getMiGestorJuego().comprarArmamento(4);
-					Bomba.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+					RecolocarRadar.setText("RecolocarRadar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					if(Aviso.isVisible()) {
 						Aviso.setVisible(false);
