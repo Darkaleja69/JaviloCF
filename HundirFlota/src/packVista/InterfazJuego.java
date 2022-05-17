@@ -473,7 +473,6 @@ public class InterfazJuego extends JFrame implements Observer {
 				Label lbl = this.obtJLabel(pos, jug);
 				
 				if(c.getRadar()>0) {
-					c.quitarRadar();
 					
 					if(!c.estaTocada()) {
 						lbl.setBackground(Color.green);	
@@ -600,10 +599,10 @@ public class InterfazJuego extends JFrame implements Observer {
 					}
 					
 				else {
-					if(GestorJuego.getMiGestorJuego().barcosColocados() ) {
-						if(Jugador.getJugador().armasEnArmamento(4) > 0){
-							GestorJuego.getMiGestorJuego().turnoJugador(4, -1, -1);	
-							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
+						
+						GestorJuego.getMiGestorJuego().turnoJugador(4, -1, -1);	
+						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 							
 						}
 					}

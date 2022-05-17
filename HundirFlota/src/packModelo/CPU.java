@@ -91,16 +91,16 @@ public class CPU extends Jugador{
         
         if (turno == 2 && this.miArmamento.armasPorUsar(2) > 0) //poner escudo CPU
         {
-            CPU.getMiCPU().colocarEscudo();
+            this.colocarEscudo();
         }
-        else if(turno == 3 && CPU.getMiCPU().quedanRadares()) //radar CPU
+        else if(turno == 3 && this.quedanRadares()) //radar CPU
         {
-            CPU.getMiCPU().radarCPU();
+            this.radarCPU();
 
         }
         else //disparar CPU
         {
-            CPU.getMiCPU().dispararInteligente();
+            this.dispararInteligente();
 
             if(GestorJuego.getMiGestorJuego().comprobarFin(true)) 
             {
@@ -170,7 +170,7 @@ public class CPU extends Jugador{
 					
 			}
 				
-			CPU.getMiCPU().enviarCasillas(casillas);
+			this.enviarCasillas(casillas);
 				
 		}
 			
@@ -258,7 +258,7 @@ public class CPU extends Jugador{
 				}
 			}
 			//Caso 2.2 se ha dado en un barco que llevaba radar y no se ha hundido
-			else if(Tablero.getTablero().getCasilla(x, y, true).tieneBarco() && Tablero.getTablero().getCasilla(x, y, true).tieneRadar() && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
+			else if(Tablero.getTablero().getCasilla(x, y, true).tieneBarco() && Tablero.getTablero().getCasilla(x, y, true).getRadar() == 1 && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
 				this.generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
