@@ -21,91 +21,10 @@ public class GestorJuego extends Observable {
 	//Metodos
 	public void colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud)
 	{
-		if(Jugador.getJugador().colocarBarcos(pHorizontal, pX, pY, pLongitud))
-		{
-			CPU.getMiCPU().colocarBarco(pLongitud);
-		}
+		ListaJugadores.getMiListaJug().colocarBarcos(pHorizontal, pX, pY, pLongitud);
 	}
-	
-/*	public void colocarEscudo(int pX, int pY)
-	{
-		boolean fin = false;
-		int jugadorOCPU = 1;
-
-		Jugador.getJugador().colocarEscudo(pX, pY);
-		//Turno CPU
-		CPU.getMiCPU().turnoCPU();
-	}
-	
-	public void disparar(int pX, int pY) 
-	{
-		boolean fin = false;
-		int jugadorOCPU = 1;
-		boolean disparado = Jugador.getJugador().disparar(pX, pY);
-		
-		if(disparado) {
-			if(comprobarFin(false)) 
-			{
-				fin = true;
-			
-			}
-			else //Turno CPU
-			{
-				CPU.getMiCPU().turnoCPU();
-			}
-		}
-		if(fin) 
-		{	
-			setChanged();
-			notifyObservers(jugadorOCPU);
-		}
-	}
-	
-	public void misil(int pX, int pY) 
-	{
-		boolean fin = false;
-		int jugadorOCPU = 1;
-		boolean disparado = Jugador.getJugador().misil(pX, pY);
-		
-		if(disparado) {
-			if(comprobarFin(false)) 
-			{
-				fin = true;
-			
-			}
-			else //Turno CPU
-			{
-				CPU.getMiCPU().turnoCPU();
-			}
-		}
-		if(fin) 
-		{	
-			setChanged();
-			notifyObservers(jugadorOCPU);
-		}
-	}
-
-	public void radar() {
-		
-		boolean turno = Jugador.getJugador().radar();
-		
-		if(turno) {
-			CPU.getMiCPU().turnoCPU();
-		}
-	}
-*/
-	
 	public boolean comprobarFin(boolean pJug) {
-		boolean fin=true;
-		if(pJug) 
-		{
-			fin=Jugador.getJugador().comprobarFin();
-		}
-		else 
-		{
-			fin=CPU.getMiCPU().comprobarFin();
-		}
-		return fin;
+		return ListaJugadores.getMiListaJug().comprobarFin(pJug);
 	}
 	
 	public ArrayList<Casilla> marcarBarcoHundido(Casilla pCasilla,boolean pJug) {
@@ -113,12 +32,12 @@ public class GestorJuego extends Observable {
 	}
 	
 	public int barcosPorColocar(int pLong) {
-		return Jugador.getJugador().barcosPorColocar(pLong);
+		return ListaJugadores.getMiListaJug().obtenerJugador().barcosPorColocar(pLong);
 	}
 	
 	
 	public int dineroRestanteJug() {
-		return Jugador.getJugador().dineroRestante();
+		return ListaJugadores.getMiListaJug().obtenerJugador().dineroRestante();
 	}
 	
 	public void barcosColocadosTienda() {
@@ -129,48 +48,23 @@ public class GestorJuego extends Observable {
 	}
 	
 	public boolean barcosColocados() {
-		return Jugador.getJugador().barcosColocados();
+		return ListaJugadores.getMiListaJug().obtenerJugador().barcosColocados();
+	}
+
+	public void jugarTurno(int pOpcion,int pX,int pY) {
+		ListaJugadores.getMiListaJug().realizarTurno(pOpcion, pX, pY);
 	}
 	
-/*	public void repararBarco(int pFila, int pCol)
-	{
-		
-		Jugador.getJugador().enviarCasillas(lCasillas);
-	}
-*/	
-	public void turnoJugador(int pOpcion,int pX,int pY) {
-		boolean fin = false;
-		int jugadorOCPU = 1;
-		if(!(Jugador.getJugador().armamentoVacio())) {
-			if(pX <0 && pY <0) {
-				
-				
-			}
-			else {
-				if(Jugador.getJugador().turnoJugador(pOpcion, pX, pY)) {		
-					if(comprobarFin(false)) 
-					{	
-						setChanged();
-						notifyObservers(jugadorOCPU);
-					}else {
-						CPU.getMiCPU().turnoCPU();
-						}
-						
-				}
-			}
-		}else {
-			jugadorOCPU=3;
-			setChanged();
-			notifyObservers(jugadorOCPU);
-		}
+	public void realizarTurno(int pOpcion,int pX,int pY) {
+		ListaJugadores.getMiListaJug().realizarTurno(pOpcion, pX, pY);
 	}
 	
 	public int armasPorUsar(int pOpcion) {
-		return Jugador.getJugador().armasEnArmamento(pOpcion);
+		return ListaJugadores.getMiListaJug().obtenerJugador().armasEnArmamento(pOpcion);
 	}
 	
 	public void comprarArmamento(int pOpcion) {
-		Jugador.getJugador().comprarArmamento(pOpcion);
+		ListaJugadores.getMiListaJug().obtenerJugador().comprarArmamento(pOpcion);
 	}
 		
 	
