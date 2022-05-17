@@ -98,7 +98,7 @@ public class CPU extends Observable{
 		//Decidimos la acción que vamos a realizar
         int turno = z.nextInt(2)+1;
         
-        if (turno == 2 && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
+        if (turno == 2 && this.miArmamento.armasPorUsar(2) > 0) //poner escudo CPU
         {
             CPU.getMiCPU().colocarEscudo();
         }
@@ -126,7 +126,7 @@ public class CPU extends Observable{
 	
 	public void colocarEscudo()
 	{
-		cantEscudos--;
+		this.miArmamento.retirarArma(2);
 		
 		//Decidir a que barco colocarle el escudo
 		ArrayList<Barco> barcos = this.listaB.barcosSinHundir();
@@ -144,6 +144,7 @@ public class CPU extends Observable{
 		Casilla c = Tablero.getTablero().buscarCasillaBarco(barc);
 		int x = c.getFila();
 		int y = c.getColumna();
+		
 		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(x, y, false);
 		//CPU.getMiCPU().enviarCasillas(casillas);
 	}
