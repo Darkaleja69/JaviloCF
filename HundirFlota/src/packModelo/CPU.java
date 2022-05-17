@@ -9,8 +9,6 @@ public class CPU extends Observable{
 	private ListaBarcos listaB;
 	private ArrayList<Casilla> sospecha;
 	private CasillasProhibidas prohibidas;
-	//private Casilla casillaSospecha;
-	//private Casilla casillaAlerta;
 	private int radares;
 	private int cantEscudos;
 	
