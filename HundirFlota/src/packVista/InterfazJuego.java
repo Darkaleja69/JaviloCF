@@ -70,6 +70,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JButton ComprarMisil;
 	private JButton ComprarEscudo;
 	private JButton ComprarReparacionBarco;
+	private JButton ComprarRadar;
 	private JRadioButton Bomba;
 	private JLabel Aviso;
 
@@ -316,6 +317,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			panelTienda.add(getComprarMisil());
 			panelTienda.add(getComprarEscudo());
 			panelTienda.add(getComprarReparacionBarco());
+			panelTienda.add(getComprarRadar());
 			panelTienda.add(getAviso());
 			panelTienda.add(getDinero());
 		}
@@ -339,7 +341,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			RecolocarRadar.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					GestorJuego.getMiGestorJuego().comprarArmamento(5);
+					GestorJuego.getMiGestorJuego().comprarArmamento(4);
 				}
 			});
 		
@@ -347,6 +349,24 @@ public class InterfazJuego extends JFrame implements Observer {
 		
 
 		return RecolocarRadar;
+	}
+	private JButton getComprarRadar() {
+		if (ComprarBomba == null) {
+			ComprarBomba = new JButton("Comprar Bomba");
+			ComprarBomba.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					GestorJuego.getMiGestorJuego().comprarArmamento(5);
+					Bomba.setText("Bomba ("+GestorJuego.getMiGestorJuego().armasPorUsar(5)+")");
+					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
+					if(Aviso.isVisible()) {
+						Aviso.setVisible(false);
+					}
+				}
+				});
+		}
+		return ComprarRadar;
 	}
 	private JButton getComprarBomba() {
 		if (ComprarBomba == null) {
