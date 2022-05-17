@@ -61,7 +61,7 @@ public class CPU extends Observable{
 	
 	public void turnoCPU() {
 		//Primero compramos una bomba
-		this.miArmamento.comprarArmamento(5);
+		this.miArmamento.anadirArmamento(miArmamento.comprarArmamento(5));
 		//Decidimos la acción que vamos a realizar
         boolean fin = false;
         int jugadorOCPU = 1;
