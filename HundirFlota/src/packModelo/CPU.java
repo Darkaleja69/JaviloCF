@@ -258,7 +258,7 @@ public class CPU extends Jugador{
 				}
 			}
 			//Caso 2.2 se ha dado en un barco que llevaba radar y no se ha hundido
-			else if(Tablero.getTablero().getCasilla(x, y, true).tieneBarco() && Tablero.getTablero().getCasilla(x, y, true).tieneRadar() && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
+			else if(Tablero.getTablero().getCasilla(x, y, true).tieneBarco() && Tablero.getTablero().getCasilla(x, y, true).getRadar() == 1 && !(Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido()))
 			{
 				this.generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
