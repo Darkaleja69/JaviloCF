@@ -126,6 +126,7 @@ public class CPU extends Observable{
 	
 	public void colocarEscudo()
 	{
+		Arma a = this.miArmamento.buscarArma(2);
 		this.miArmamento.retirarArma(2);
 		
 		//Decidir a que barco colocarle el escudo
