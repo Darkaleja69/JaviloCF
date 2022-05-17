@@ -489,18 +489,16 @@ public class InterfazJuego extends JFrame implements Observer {
 				
 				if(c.getRadar()>0) {
 					if(c.getRadar()==2) {
-						
+						lbl.setBackground(Color.orange);
 					}
 					else {
+						if(!c.estaTocada()) {
+							lbl.setBackground(Color.pink);	
+							if((c.tieneBarco())) {
+								lbl.setBackground(Color.magenta);
+							}
 						
-					}
-					
-					if(!c.estaTocada()) {
-						lbl.setBackground(Color.green);	
-						if((c.tieneBarco())) {
-							lbl.setBackground(Color.DARK_GRAY);
 						}
-					
 					}
 					
 				}
