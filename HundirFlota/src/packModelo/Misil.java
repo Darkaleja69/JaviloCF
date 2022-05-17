@@ -23,7 +23,7 @@ public class Misil extends Arma{
 				if(pAQuien) {
 					ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
 				}else {
-				CPU.getMiCPU().enviarCasillas(casillas);
+					ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 				}	
 			}
 		
