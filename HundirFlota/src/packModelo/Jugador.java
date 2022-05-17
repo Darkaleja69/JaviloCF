@@ -36,6 +36,9 @@ public class Jugador extends Observable {
 		notifyObservers(casillas);
 		return !(casillas.size() < 1);
 	}
+	public Arma obtenerArma(int pOpcion) {
+		return (this.miArmamento.buscarArma(pOpcion));
+	}
 		
 	public boolean hayDemasiados(int pLong) {
 		return lista.hayDemasiados(pLong);

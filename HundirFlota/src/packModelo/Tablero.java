@@ -189,25 +189,37 @@ public class Tablero {
 		}
 		
 	}
-	public Casilla buscarRadar(boolean esJug) {
-		Casilla c=null;
-		boolean encontrado = false;
-		int i = 0;
-		int j = 0;
-		while(i<=10 && !encontrado){
-			i ++;
-			while(j<=10 && !encontrado) {
-				j++;
-				if(this.getCasilla(i, j, esJug).getRadar()==2) {
-					encontrado = true;
-					c = this.getCasilla(i, j, esJug);
+	public boolean radarUsado( boolean esJug) {
+		Casilla c = this.buscarRadar(esJug);
+		int cont = 0;
+		int fil = c.getFila();
+		int col = c.getColumna();
+		
+		for(int i=fil-1; i<=fil+1; i++) {
+			for(int j =col-1; j<=col+1 ; j++) {
+				if(Tablero.getTablero().getCasilla(i, j, esJug).getRadar()>0) {
+					cont = cont + 1;
+					
 				}
 				
 			}
 		}
-		if(!encontrado) {
-			c = null;
+		return(cont==9);
+		
+		
+	}
+	public Casilla buscarRadar(boolean esJug) {
+		Casilla c;
+		if(esJug) {
+			 
+			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).obtenerArma(3);
+			c = r.getRadar();
 		}
+		else {
+			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).obtenerArma(3);
+			c = r.getRadar();
+		}
+		
 		return c;
 	}
 	public ArrayList<Casilla> colocarRadar(int pFila, int pCol, boolean pJug) {
@@ -229,9 +241,7 @@ public class Tablero {
 			
 			for(int j = col -1;j<=cmax;j++) {	
 				c = Tablero.getTablero().getCasilla(i, j, pJug);
-				if(i != fila && j != col) {
-					c.detectar();;
-				}
+				c.detectar();;
 				array.add(c);
 			}
 			
