@@ -62,6 +62,7 @@ public class CPU extends Observable{
 	public void turnoCPU() {
 		//Primero compramos bombas
 		this.miArmamento.comprarArmamento(5);
+		//Decidimos la acción que vamos a realizar
         boolean fin = false;
         int jugadorOCPU = 1;
         Random z = new Random();
