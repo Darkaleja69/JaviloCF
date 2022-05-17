@@ -27,7 +27,7 @@ public class Radar extends Arma{
 				sig = true;
 				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
 			}
-			CPU.getMiCPU().enviarCasillas(casillas);
+			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 			return(sig);
 	}
 	
