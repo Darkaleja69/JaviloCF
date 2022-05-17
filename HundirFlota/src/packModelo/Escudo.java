@@ -25,8 +25,8 @@ public class Escudo extends Arma{
 	    
 	    @Override
 	    public boolean realizarFuncion(int pX,int pY,boolean pAQuien) {
-			ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(pX, pY, !pAQuien);
-			if(pAQuien)
+			ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(pX, pY, pAQuien);
+			if(!pAQuien)
 			{
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
 			}
