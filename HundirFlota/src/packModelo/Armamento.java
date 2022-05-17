@@ -52,7 +52,16 @@ public class Armamento {
 			}else {
 				x.sumarCasilla();
 			}
-		}else {
+		
+				
+		
+		}
+		else if(pTipo == 4) {
+			Radar r = (Radar) buscarArma(4);
+			
+			
+		}
+		else {
 			return FactoriaArmas.getMiFactoria().crearArma(pTipo);
 		}
 		return x;

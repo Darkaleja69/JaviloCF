@@ -230,7 +230,7 @@ public class Tablero {
 			for(int j = col -1;j<=cmax;j++) {	
 				c = Tablero.getTablero().getCasilla(i, j, pJug);
 				if(i != fila && j != col) {
-					c.ponerRadar();
+					c.detectar();;
 				}
 				array.add(c);
 			}

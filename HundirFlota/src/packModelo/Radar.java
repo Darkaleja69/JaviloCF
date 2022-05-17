@@ -9,7 +9,7 @@ public class Radar extends Arma{
 	
 	public Radar () {
 		r = null;
-		radares = 5;
+		radares = 1;
 		super.coste = 100;
 		
 	}
@@ -27,7 +27,11 @@ public class Radar extends Arma{
 				sig = true;
 				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
 			}
-			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
+			if(pAQuien) {
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
+			}else {
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
+			}
 			return(sig);
 	}
 	
