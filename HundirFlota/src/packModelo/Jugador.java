@@ -148,13 +148,16 @@ public class Jugador extends Observable {
 	
 /*	public void usarReparacion()
 	{	Casilla cas = Tablero.getTablero().getCasilla(pFila, pCol, true);
-		ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
-		cas.getBarco().reparar();
-		for (Casilla c: lCasillas)
+		if (cas.tieneBarco())
 		{
-			c.reparar();
+			ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
+			cas.getBarco().reparar();
+			for (Casilla c: lCasillas)
+			{
+				c.reparar();
+			}
+			cantReparaciones--;
 		}
-		cantReparaciones--;
 	}
 */	
 	public boolean turnoJugador(int pOpcion,int pX,int pY) {
