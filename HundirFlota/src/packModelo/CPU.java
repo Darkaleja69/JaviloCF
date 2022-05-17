@@ -98,7 +98,7 @@ public class CPU extends Jugador{
             this.radarCPU();
 
         }
-        else //disparar CPU
+        else //disparar (de forma inteligente) CPU
         {
             this.dispararInteligente();
 
