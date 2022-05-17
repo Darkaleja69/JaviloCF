@@ -351,14 +351,14 @@ public class InterfazJuego extends JFrame implements Observer {
 		return RecolocarRadar;
 	}
 	private JButton getComprarRadar() {
-		if (ComprarBomba == null) {
-			ComprarBomba = new JButton("Comprar Bomba");
-			ComprarBomba.addActionListener(new ActionListener(){
+		if (ComprarRadar == null) {
+			ComprarRadar = new JButton("Comprar Radar");
+			ComprarRadar.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
-					GestorJuego.getMiGestorJuego().comprarArmamento(5);
-					Bomba.setText("Bomba ("+GestorJuego.getMiGestorJuego().armasPorUsar(5)+")");
+					GestorJuego.getMiGestorJuego().comprarArmamento(4);
+					Bomba.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					if(Aviso.isVisible()) {
 						Aviso.setVisible(false);
