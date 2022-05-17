@@ -5,7 +5,6 @@ import java.util.Observable;
 import java.util.Random;
 
 public class Jugador extends Observable {
-	private static Jugador miJugador;
 	private ListaBarcos lista;
 	private int radares;
 	private int cantEscudos;
@@ -13,7 +12,7 @@ public class Jugador extends Observable {
 	private int dinero;
 	private Armamento miArmamento;
 	
-	private Jugador() {
+	public Jugador() {
 		lista=new ListaBarcos();
 		radares = 1;
 		cantEscudos = 3;
@@ -21,12 +20,6 @@ public class Jugador extends Observable {
 		miArmamento=new Armamento();
 	}
 	
-	public static Jugador getJugador() {
-		if(miJugador==null) {
-			miJugador=new Jugador();
-		}
-		return miJugador;
-	}
 	
 	public boolean colocarBarcos(boolean pHorizontal, int pX, int pY, int pLongitud){
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
