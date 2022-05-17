@@ -29,11 +29,9 @@ public class Armamento {
 				posible=true;
 			}
 		}else if(pOpcion==4) { //escudo y reparacion de barco
-			Radar a = (Radar) buscarArma(4);
-			if(a.cantRadares()>0) {
+			if(pDinero >= 100) {
 				posible = true;
-			}
-			
+		}
 		}else if(pOpcion==5) { // Bomba: Coste de bomba es 0
 			posible=true;
 			
