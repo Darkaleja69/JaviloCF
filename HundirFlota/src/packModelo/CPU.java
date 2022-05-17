@@ -174,9 +174,9 @@ public class CPU extends Jugador{
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
-		//Se prohiben las casillas que est�n al lado de un barco hundido
+		//Se prohiben las casillas que estan al lado de un barco hundido
 		this.prohibidas.prohibir();
-		//Se eliminan las sospechas que est�n prohibidas
+		//Se eliminan las sospechas que estan prohibidas
 		for(int i = 0; i < this.sospecha.size(); i++)
 		{
 			if(this.prohibidas.estaProhibida(this.sospecha.get(i).getFila(), this.sospecha.get(i).getColumna()))
