@@ -343,7 +343,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
-						GestorJuego.getMiGestorJuego().jugarTurno(4, -1, -1);
+						GestorJuego.getMiGestorJuego().jugarTurno(4, 20, 20);
 						RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 						if(Aviso.isVisible()) {
 							Aviso.setVisible(false);
