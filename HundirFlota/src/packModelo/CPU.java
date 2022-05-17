@@ -87,13 +87,40 @@ public class CPU extends Jugador{
 		}
 		
 		//Decidimos la accion que vamos a realizar
-        int turno = z.nextInt(2)+1;
+        int turno = z.nextInt(3)+1;
         
-        if (turno == 2 && this.miArmamento.armasPorUsar(2) > 0) //poner escudo CPU
-        {
-            this.colocarEscudo();
-        }
+	    if (turno == 2 && this.miArmamento.armasPorUsar(2) > 0) //poner escudo CPU
+	    {
+        	Arma a = this.miArmamento.buscarArma(2);
+    		this.miArmamento.retirarArma(2);
+    		
+    		//Decidir a que barco colocarle el escudo
+    		ArrayList<Barco> barcos = this.listaB.barcosSinHundir();
+    		
+    		Barco barc=null;
+    		for (Barco b: barcos)
+    		{
+    			if (!b.tieneEscudo())
+    			{
+    				barc = b;
+    				break;
+    			}
+    		}
+    		
+    		Casilla c = Tablero.getTablero().buscarCasillaBarco(barc);
+    		int x = c.getFila();
+    		int y = c.getColumna();
+    		
+    		a.realizarFuncion(x, y, true);
+	    }
         else if(turno == 3 && this.miArmamento.armasPorUsar(4) > 0) //radar CPU
+        {
+    		Arma a = this.miArmamento.buscarArma(4);
+    		this.miArmamento.retirarArma(4);
+    		a.realizarFuncion(-1, -1, true);
+    		a.realizarFuncion(0, 0, true);
+        }
+        else if(turno == 4 && this.miArmamento.armasPorUsar(3) > 0) //reparar
         {
             this.radarCPU();
 
@@ -117,34 +144,11 @@ public class CPU extends Jugador{
 	
 	public void colocarEscudo()
 	{
-		Arma a = this.miArmamento.buscarArma(2);
-		this.miArmamento.retirarArma(2);
 		
-		//Decidir a que barco colocarle el escudo
-		ArrayList<Barco> barcos = this.listaB.barcosSinHundir();
-		
-		Barco barc=null;
-		for (Barco b: barcos)
-		{
-			if (!b.tieneEscudo())
-			{
-				barc = b;
-				break;
-			}
-		}
-		
-		Casilla c = Tablero.getTablero().buscarCasillaBarco(barc);
-		int x = c.getFila();
-		int y = c.getColumna();
-		
-		a.realizarFuncion(x, y, true);
 	}
 	
 	public void radarCPU() {
-		Arma a = this.miArmamento.buscarArma(4);
-		this.miArmamento.retirarArma(4);
-		a.realizarFuncion(-1, -1, true);
-		a.realizarFuncion(0, 0, true);
+
 	}
 	
 	
