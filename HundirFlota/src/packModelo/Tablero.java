@@ -190,7 +190,7 @@ public class Tablero {
 		
 	}
 	public Casilla buscarRadar(boolean esJug) {
-		Casilla c;
+		Casilla c=null;
 		boolean encontrado = false;
 		int i = 0;
 		int j = 0;

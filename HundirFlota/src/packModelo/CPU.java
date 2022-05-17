@@ -95,7 +95,7 @@ public class CPU extends Observable{
 			}
 		}
 		
-		//Decidimos la acción que vamos a realizar
+		//Decidimos la acciï¿½n que vamos a realizar
         int turno = z.nextInt(2)+1;
         
         if (turno == 2 && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
@@ -149,7 +149,7 @@ public class CPU extends Observable{
 	}
 	
 	public void radarCPU() {
-		//para los turnos, que el método devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
+		//para los turnos, que el mï¿½todo devuelva un booleano para saber si ha funcionado y q haga la CPU su movimiento
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		if(this.quedanRadares()) {
@@ -210,9 +210,9 @@ public class CPU extends Observable{
 		int x = 0;
 		int y = 0;
 		Random num = new Random();
-		//Se prohiben las casillas que estén al lado de un barco hundido
+		//Se prohiben las casillas que estï¿½n al lado de un barco hundido
 		this.prohibidas.prohibir();
-		//Se eliminan las sospechas que estén prohibidas
+		//Se eliminan las sospechas que estï¿½n prohibidas
 		for(int i = 0; i < this.sospecha.size(); i++)
 		{
 			if(this.prohibidas.estaProhibida(this.sospecha.get(i).getFila(), this.sospecha.get(i).getColumna()))
@@ -228,7 +228,7 @@ public class CPU extends Observable{
 			{
 				x = num.nextInt(10);
 				y = num.nextInt(10);
-				posible =(!(Tablero.getTablero().getCasilla(x, y, true).estaTocada()) && !this.prohibidas.estaProhibida(x, y)); //es posible si no está tocada y no está prohibida
+				posible =(!(Tablero.getTablero().getCasilla(x, y, true).estaTocada()) && !this.prohibidas.estaProhibida(x, y)); //es posible si no estï¿½ tocada y no estï¿½ prohibida
 			}
 			casillas = Tablero.getTablero().bombardear(x, y, true);
 			
@@ -242,7 +242,7 @@ public class CPU extends Observable{
 		//Caso 2: se tienen sospechas sobre alguna casilla
 		else
 		{
-			//se bombardea a la casilla más sospechosa
+			//se bombardea a la casilla mï¿½s sospechosa
 			x = this.sospecha.get(0).getFila();
 			y = this.sospecha.get(0).getColumna();
 			casillas = Tablero.getTablero().bombardear(x, y,true);
@@ -280,10 +280,10 @@ public class CPU extends Observable{
 						sospecha.remove(i);
 					}
 				}
-				//crear nuevas sospechas sobre la última casilla golpeada
+				//crear nuevas sospechas sobre la ï¿½ltima casilla golpeada
 				this.generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
-			//Caso 2.3 se ha dado en agua (no hace falta código)
+			//Caso 2.3 se ha dado en agua (no hace falta cï¿½digo)
 		}
 		Jugador.getJugador().enviarCasillas(casillas);
 	}
@@ -312,8 +312,8 @@ public class CPU extends Observable{
 			candidatas.add(Tablero.getTablero().getCasilla(c.getFila(), c.getColumna() - 1, true));	//oeste
 		}
 		
-		//Se eliminan las que se habían bombardeado en un turno anterior (PROVISIONAL)
-		//también se eliminan las que tienen barcos hundidos
+		//Se eliminan las que se habï¿½an bombardeado en un turno anterior (PROVISIONAL)
+		//tambiï¿½n se eliminan las que tienen barcos hundidos
 		for(int i = 0; i < candidatas.size(); i++)
 		{
 			if((candidatas.get(i).estaTocada()))
@@ -322,7 +322,7 @@ public class CPU extends Observable{
 			}
 		}
 		
-		//por último, se indexa el ArrayList de casillas a nuestra lista de sospechas
+		//por ï¿½ltimo, se indexa el ArrayList de casillas a nuestra lista de sospechas
 		this.sospecha.addAll(candidatas);
 	}
 }

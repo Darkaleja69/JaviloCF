@@ -7,9 +7,9 @@ public class Radar extends Arma{
 	private Casilla r;
 	private int radares; 
 	
-	public Radar (int pRadares) {
+	public Radar () {
 		r = null;
-		radares = pRadares;
+		radares = 5;
 		super.coste = 100;
 		
 	}
