@@ -488,6 +488,12 @@ public class InterfazJuego extends JFrame implements Observer {
 				Label lbl = this.obtJLabel(pos, jug);
 				
 				if(c.getRadar()>0) {
+					if(c.getRadar()==2) {
+						
+					}
+					else {
+						
+					}
 					
 					if(!c.estaTocada()) {
 						lbl.setBackground(Color.green);	
