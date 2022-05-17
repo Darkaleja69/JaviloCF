@@ -91,16 +91,16 @@ public class CPU extends Jugador{
         
         if (turno == 2 && this.miArmamento.armasPorUsar(2) > 0) //poner escudo CPU
         {
-            CPU.getMiCPU().colocarEscudo();
+            this.colocarEscudo();
         }
-        else if(turno == 3 && CPU.getMiCPU().quedanRadares()) //radar CPU
+        else if(turno == 3 && this.quedanRadares()) //radar CPU
         {
-            CPU.getMiCPU().radarCPU();
+            this.radarCPU();
 
         }
         else //disparar CPU
         {
-            CPU.getMiCPU().dispararInteligente();
+            this.dispararInteligente();
 
             if(GestorJuego.getMiGestorJuego().comprobarFin(true)) 
             {
@@ -170,7 +170,7 @@ public class CPU extends Jugador{
 					
 			}
 				
-			CPU.getMiCPU().enviarCasillas(casillas);
+			this.enviarCasillas(casillas);
 				
 		}
 			
