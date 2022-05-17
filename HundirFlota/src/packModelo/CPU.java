@@ -143,16 +143,12 @@ public class CPU extends Jugador{
 	public void radarCPU() {
 		
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
-		radares = radares -1;
-		Random num1 = new Random();	
-		Random num2 = new Random();	
-		int pX = num1.nextInt(7)+2;
-		int pY = num2.nextInt(7)+2;
-		int fmax = pX +1;
-		int cmax = pY +1;
-				
+		Radar a = (Radar) this.miArmamento.buscarArma(4);
+		this.miArmamento.retirarArma(4);
+		Casilla c = a.recolocar(false);
+		a.realizarFuncion(c.getFila(), c.getColumna(), false);
 		Casilla c = null;
-			
+		
 		for(int i = pX -1;i<=fmax;i++) {
 				
 			for(int j = pY -1;j<=cmax;j++) {

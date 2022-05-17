@@ -11,7 +11,6 @@ public class Radar extends Arma{
 		r = null;
 		radares = 1;
 		super.coste = 100;
-		
 	}
 	
 	public boolean realizarFuncion(int pX,int pY, boolean pAQuien) {
