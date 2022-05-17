@@ -338,9 +338,22 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
 			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
-			
+			RecolocarRadar.addActionListener(new ActionListener(){
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					// TODO Auto-generated method stub
+					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
+						GestorJuego.getMiGestorJuego().jugarTurno(4, -1, -1);
+						RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+						if(Aviso.isVisible()) {
+							Aviso.setVisible(false);
+						}
+					}
+					
+					
+				}
+				});
 		}
-		
 		return RecolocarRadar;
 	}
 	private JButton getComprarRadar() {
@@ -616,14 +629,6 @@ public class InterfazJuego extends JFrame implements Observer {
 						}
 					}
 					
-				else {
-					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
-						
-						GestorJuego.getMiGestorJuego().jugarTurno(4, -1, -1);	
-						Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
-							
-						}
-					}
 				}
 			}
 		}
