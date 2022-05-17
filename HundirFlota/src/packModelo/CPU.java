@@ -145,8 +145,8 @@ public class CPU extends Jugador{
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		Arma a = this.miArmamento.buscarArma(4);
 		this.miArmamento.retirarArma(4);
-		a.realizarFuncion(-1, -1, false);
-		a.realizarFuncion(0, 0, false);
+		a.realizarFuncion(-1, -1, true);
+		a.realizarFuncion(0, 0, true);
 		
 		for(int i = pX -1;i<=fmax;i++) {
 				
@@ -162,8 +162,6 @@ public class CPU extends Jugador{
 				
 		}		
 		this.enviarCasillas(casillas);
-				
-		//return(casillas.size() >0);
 	}
 	
 	public void anadirBarco(Barco pBarco) {
