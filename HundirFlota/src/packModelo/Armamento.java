@@ -20,15 +20,15 @@ public class Armamento {
 			if(pDinero>=100) {
 				posible=true;
 			}
-		}else if(pOpcion==2) { //escudo y reparacion de barco
+		}else if(pOpcion==2) {
 			if(pDinero>=50) {
 				posible=true;
 			}
-		}else if(pOpcion==3) { //escudo y reparacion de barco
+		}else if(pOpcion==3) { 
 			if(pDinero>=25) {
 				posible=true;
 			}
-		}else if(pOpcion==4) { //escudo y reparacion de barco
+		}else if(pOpcion==4) { 
 			if(pDinero >= 100) {
 				posible = true;
 		}

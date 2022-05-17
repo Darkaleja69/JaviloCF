@@ -69,16 +69,10 @@ public class ListaBarcos {
 		return barcos;
 	}
 	
-	public int barcoHerido()
+	public boolean barcoReparable(int pHeridas)
 	{
-		ArrayList<Barco> barcos = new ArrayList<Barco>();
-		for (Barco b: this.lista)
-		{
-			if (!b.estaHundido())
-			{
-				barcos.add(b);
-			}
-		}
-		return barcos;
+		
+		
+		return true;
 	}
 }

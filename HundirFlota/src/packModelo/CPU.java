@@ -120,7 +120,7 @@ public class CPU extends Jugador{
     		a.realizarFuncion(-1, -1, true);
     		a.realizarFuncion(0, 0, true);
         }
-        else if(turno == 4 && this.miArmamento.armasPorUsar(3) > this.listaB.barcoHerido()) //reparar
+        else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3))) //reparar
         {
             
         }
