@@ -25,6 +25,16 @@ public class Radar extends Arma{
 			else{//se quiere activar el radar
 				sig = true;
 				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
+				ArrayList<Casilla> sospechas = new ArrayList<Casilla>();
+				for(Casilla c : casillas)
+				{
+					if(c.tieneBarco() && !c.estaTocada() && !c.getBarco().estaHundido())
+					{
+						sospechas.add(c);
+					}
+				}
+				CPU cpu = (CPU) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
+				cpu.anadirSospechas(sospechas);
 			}
 			if(pAQuien) {
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
