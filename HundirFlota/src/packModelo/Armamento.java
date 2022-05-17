@@ -7,10 +7,10 @@ public class Armamento {
 	private ArrayList<Arma> armas;
 	private int radares;
 	
-	public Armamento(int pRadares) {
+	public Armamento() {
 		armas=new ArrayList<Arma>();
 		radares = 5;
-		armas.add(new Radar(radares));
+		armas.add(new Radar());
 	}
 	
 	
