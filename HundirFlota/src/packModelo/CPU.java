@@ -66,10 +66,16 @@ public class CPU extends Observable{
 		//Realizamos inicializaciones varias
 		boolean fin = false;
 		int jugadorOCPU = 1;
+		Random z = new Random();
 		this.miArmamento.anadirArmamento(miArmamento.comprarArmamento(5));
 		
+		//Si se tiene dinero, se decide el tipo de armas que se van a comprar al inicio de la partida
+		while(this.dinero > 0)
+		{
+			int adquisicion = z.nextInt();
+		}
+		
 		//Decidimos la acción que vamos a realizar
-        Random z = new Random();
         int turno = z.nextInt(2)+1;
         
         if (turno == 2 && CPU.getMiCPU().escudosSuficientes()) //poner escudo CPU
