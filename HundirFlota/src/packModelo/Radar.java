@@ -43,7 +43,6 @@ public class Radar extends Arma{
 			}
 			return(true);
 	}
->>>>>>> branch 'master' of https://github.com/Darkaleja69/JaviloCF.git
 	
 	public Casilla recolocar(boolean pAquien) {
 		if(r != null) {
