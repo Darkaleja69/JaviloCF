@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
-public class CPU extends Observable{
+public class CPU extends Jugador{
 	private ListaBarcos listaB;
 	private ArrayList<Casilla> sospecha;
 	private CasillasProhibidas prohibidas;
