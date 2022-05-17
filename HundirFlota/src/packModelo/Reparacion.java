@@ -24,7 +24,7 @@ public class Reparacion extends Arma{
 			casillas=casillas-lCasillas.size();
 			listo=true;
 		}
-		Jugador.getJugador().enviarCasillas(lCasillas);
+		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
 		return listo;
 	}
 	
