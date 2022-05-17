@@ -15,14 +15,14 @@ public class Bomba extends Arma {
 		if(!x.estaTocada()) 
 		{
 			b = x;
-			Tablero.getTablero().bombardear(pX, pY, !pAQuien);
+			Tablero.getTablero().bombardear(pX, pY, pAQuien);
 			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 			casillas.add(b);
 			disparado = true;
 			if(pAQuien) {
-				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
-			}else {
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
+			}else {
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 			}
 		}
 		return disparado;
