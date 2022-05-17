@@ -254,7 +254,7 @@ public class CPU extends Observable{
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
 			{
 				//si esa casilla no estaba registrada en el radar, se han de borrar el resto de sospechas no registradas por el radar
-				if(!Tablero.getTablero().getCasilla(x, y, true).tieneRadar())
+				if(!(Tablero.getTablero().getCasilla(x, y, true).getRadar() == 1))
 				{
 					//borrar de "sospecha" a todas las casillas que no hayan sido detectadas por radares
 					for(int i = 0; i < sospecha.size(); i++)
