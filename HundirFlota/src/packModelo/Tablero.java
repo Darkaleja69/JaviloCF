@@ -200,6 +200,7 @@ public class Tablero {
 				j++;
 				if(this.getCasilla(i, j, esJug).getRadar()==2) {
 					encontrado = true;
+					c = this.getCasilla(i, j, esJug);
 				}
 				
 			}

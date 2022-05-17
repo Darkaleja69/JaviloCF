@@ -20,7 +20,7 @@ public class Radar extends Arma{
 			ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 			if(pX < 0 && pY < 0 || r==null) { //se quiere recolocar el radar
 				radares --;
-				r = recolocar();
+				r = recolocar(pAQuien);
 				casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
 			}
 			else{//se quiere activar el radar
@@ -31,10 +31,9 @@ public class Radar extends Arma{
 			return(sig);
 	}
 	
-	public Casilla recolocar() {
+	public Casilla recolocar(boolean pAquien) {
 		if(r != null) {
-			
-			
+			Tablero.getTablero().getCasilla(radares, radares, pAquien).detectar();
 		}
 		Random num1 = new Random();	
 		Random num2 = new Random();	
