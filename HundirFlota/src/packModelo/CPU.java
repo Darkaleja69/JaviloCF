@@ -137,8 +137,7 @@ public class CPU extends Jugador{
 		int x = c.getFila();
 		int y = c.getColumna();
 		
-		ArrayList<Casilla> casillas = Tablero.getTablero().colocarEscudo(x, y, false);
-		//CPU.getMiCPU().enviarCasillas(casillas);
+		a.realizarFuncion(x, y, true);
 	}
 	
 	public void radarCPU() {
