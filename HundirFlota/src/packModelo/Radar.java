@@ -24,7 +24,7 @@ public class Radar extends Arma{
 			}
 			else{//se quiere activar el radar
 				sig = true;
-				casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
+				casillas = Tablero.getTablero().detectar(r.getFila(), r.getColumna(), pAQuien);
 				ArrayList<Casilla> sospechas = new ArrayList<Casilla>();
 				for(Casilla c : casillas)
 				{
