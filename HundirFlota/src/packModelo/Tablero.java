@@ -189,6 +189,36 @@ public class Tablero {
 		}
 		
 	}
+	public ArrayList<Casilla> colocarRadar(int pFila, int pCol, boolean pJug) {
+		ArrayList<Casilla> array = new ArrayList<Casilla>();
+		Casilla r = getCasilla(pFila, pCol, pJug);
+		r.ponerRadar();
+		array.add(r);
+		return array;
+	}
+	public ArrayList<Casilla> detectar(int fila, int col,boolean pJug) {
+		ArrayList<Casilla> array = new ArrayList<Casilla>();
+		int fmax = x +1;
+		int cmax = y +1;
+		
+				
+		Casilla c = null;
+			
+		for(int i = x -1;i<=fmax;i++) {	
+			
+			for(int j = y -1;j<=cmax;j++) {
+					
+				c = Tablero.getTablero().getCasilla(i, j, pAQuien);
+				c.ponerRadar();
+				casillas.add(c);
+			}
+				
+		}
+			
+		CPU.getMiCPU().enviarCasillas(casillas);
+	}
+		return array;
+	}
 	
 	public ArrayList<Casilla> bombardear(int fila, int col,boolean pJug) {
 		ArrayList<Casilla> array = new ArrayList<Casilla>();
