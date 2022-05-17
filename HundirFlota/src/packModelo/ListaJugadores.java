@@ -65,6 +65,10 @@ public class ListaJugadores extends Observable{
 		return listaJ.get(1);
 	}
 	
+	public Jugador obtenerCPU() {
+		return listaJ.get(0);
+	}
+	
 	public boolean comprobarFin(boolean pJug) {
 		boolean fin=true;
 		if(pJug) 

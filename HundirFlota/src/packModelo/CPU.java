@@ -278,7 +278,7 @@ public class CPU extends Jugador{
 			}
 			//Caso 2.3 se ha dado en agua (no hace falta c�digo)
 		}
-		Jugador.getJugador().enviarCasillas(casillas);
+		ListaJugadores.getMiListaJug().obtenerJugador().enviarCasillas(casillas);
 	}
 	
 	private void generarSospechas(Casilla c)
