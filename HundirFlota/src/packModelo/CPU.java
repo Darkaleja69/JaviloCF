@@ -91,7 +91,7 @@ public class CPU extends Observable{
 		}
 	}
 	
-	public void disparar(){
+	/*public void disparar(){
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible=false;
 		int x = 0;
@@ -105,7 +105,7 @@ public class CPU extends Observable{
 		}
 		casillas = Tablero.getTablero().bombardear(x, y,true);
 		Jugador.getJugador().enviarCasillas(casillas);
-	}
+	}*/
 	
 	public void colocarEscudo()
 	{
