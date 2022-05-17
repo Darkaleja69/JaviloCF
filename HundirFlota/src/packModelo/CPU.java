@@ -85,6 +85,7 @@ public class CPU extends Jugador{
 				this.dinero -= 50;
 			}
 		}
+		System.out.println(this.dinero);
 		
 		//Decidimos la accion que vamos a realizar
         int turno = z.nextInt(2)+1;
@@ -163,6 +164,7 @@ public class CPU extends Jugador{
 		}		
 		this.enviarCasillas(casillas);
 	}
+	
 	
 	public void anadirBarco(Barco pBarco) {
 		this.listaB.anadirBarco(pBarco);
@@ -302,7 +304,7 @@ public class CPU extends Jugador{
 			}
 		}
 		
-		//por �ltimo, se indexa el ArrayList de casillas a nuestra lista de sospechas
+		//por ultimo, se indexa el ArrayList de casillas a nuestra lista de sospechas
 		this.sospecha.addAll(candidatas);
 	}
 }

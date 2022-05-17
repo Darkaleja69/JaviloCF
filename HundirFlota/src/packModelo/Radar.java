@@ -31,7 +31,7 @@ public class Radar extends Arma{
 			}else {
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
 			}
-			return(sig);
+			return(true);
 	}
 	
 	public Casilla recolocar(boolean pAquien) {
