@@ -125,6 +125,10 @@ public class CPU extends Jugador{
             		break;
             	}
             }
+            for(int i = 0; i < array.size(); i++)
+            {
+            	this.miArmamento.retirarArma(3);
+            }
         }
         else //disparar (de forma inteligente) CPU
         {
