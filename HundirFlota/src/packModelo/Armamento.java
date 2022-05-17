@@ -52,13 +52,6 @@ public class Armamento {
 			}else {
 				x.sumarCasilla();
 			}
-		
-				
-		
-		}
-		else if(pTipo == 4) {
-			Radar r = (Radar) buscarArma(4);
-			
 			
 		}
 		else {
