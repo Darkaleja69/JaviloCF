@@ -78,7 +78,7 @@ public class Jugador extends Observable {
 	public boolean turnoJugador(int pOpcion,int pX,int pY) {
 		boolean finTurno=false;
 			Arma miArma=miArmamento.buscarArma(pOpcion);
-			if( miArma != null) {
+			if( miArma != null && miArmamento.armasPorUsar(pOpcion)>0) {
 				if(miArma.realizarFuncion(pX,pY,false)) {
 					finTurno=true;
 					miArmamento.retirarArma(pOpcion);
