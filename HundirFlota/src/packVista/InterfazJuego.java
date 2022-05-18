@@ -73,7 +73,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JButton ComprarRadar;
 	private JRadioButton Bomba;
 	private JLabel Aviso;
-	private JRadioButton ColocarBarcosAuto;
+	private JButton ColocarBarcosAuto;
 
 	/**
 	 * Launch the application.
@@ -110,7 +110,6 @@ public class InterfazJuego extends JFrame implements Observer {
 		crearJLabels(getTableroJugador(),getTableroPC());
 		g.add(Vertical);
 		g.add(Horizontal);
-		g.add(ColocarBarcosAuto);
 		g2.add(Fragata);
 		g2.add(Destructor);
 		g2.add(Submarino);
@@ -195,7 +194,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getRadar() {
 		if (Radar == null) {
-			Radar = new JRadioButton("Radar");
+			Radar = new JRadioButton("Radar no disponible");
 		}
 		return Radar;
 	}
@@ -344,9 +343,20 @@ public class InterfazJuego extends JFrame implements Observer {
 	
 	
 	
-	private JRadioButton getColocarBarcosAuto() {
+	private JButton getColocarBarcosAuto() {
 	if (ColocarBarcosAuto == null) {
-		ColocarBarcosAuto = new JRadioButton("ColocarBarcosAuto");
+		ColocarBarcosAuto = new JButton("ColocarBarcosAuto");
+		ColocarBarcosAuto.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+					GestorJuego.getMiGestorJuego().colocarBarcosAuto();
+					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
+						GestorJuego.getMiGestorJuego().barcosColocadosTienda();
+					}
+			}
+			});
 	}
 	return ColocarBarcosAuto;
 	}
@@ -363,7 +373,9 @@ public class InterfazJuego extends JFrame implements Observer {
 						if(Aviso.isVisible()) {
 							Aviso.setVisible(false);
 						}
+						if(GestorJuego.getMiGestorJuego().armasPorUsar(4)/2==0){
 						Radar.setText("Radar disponible");
+						}
 					}
 					
 					
@@ -632,16 +644,9 @@ public class InterfazJuego extends JFrame implements Observer {
 						{
 							longitud = 3;
 						}
-						else if(Portaviones.isSelected())
+						else
 						{
 							longitud = 4;
-						}else if(ColocarBarcosAuto.isSelected()) {
-							GestorJuego.getMiGestorJuego().colocarBarcosAuto();
-						}
-							
-			
-						if(!(ColocarBarcosAuto.isSelected())) {
-							GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
 						}
 						if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 							GestorJuego.getMiGestorJuego().barcosColocadosTienda();
