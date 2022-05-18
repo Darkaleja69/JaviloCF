@@ -189,12 +189,12 @@ public class Tablero {
 		}
 		
 	}
-	public boolean radarUsado( boolean esJug) {
-		Casilla c = this.buscarRadar(esJug);
+	public boolean radarUsado(Casilla radar, boolean esJug) {
+		
 		int cont = 0;
-		if(c != null) {
-			int fil = c.getFila();
-			int col = c.getColumna();
+		if(radar != null) {
+			int fil = radar.getFila();
+			int col = radar.getColumna();
 			
 			for(int i=fil-1; i<=fil+1; i++) {
 				for(int j =col-1; j<=col+1 ; j++) {
