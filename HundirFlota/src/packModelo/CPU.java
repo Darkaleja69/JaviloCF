@@ -183,7 +183,6 @@ public class CPU extends Jugador{
 	public void dispararInteligente()
 	{
 		//Inicializaciones
-		System.out.println(this.miArmamento.armasPorUsar(1));
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible = false;
 		int x = 0;
