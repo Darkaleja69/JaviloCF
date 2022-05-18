@@ -9,7 +9,7 @@ public class Radar extends Arma{
 
     public Radar () {
         r = null;
-        radares = 1;
+        radares = 2;
         super.coste = 100;
     }
 
@@ -42,7 +42,6 @@ public class Radar extends Arma{
             
             if(sig || (recolocar && !sig)) {
             	if(!(pAQuien)) {
-            		System.out.println(casillas.size());
                     ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
                 }
             }

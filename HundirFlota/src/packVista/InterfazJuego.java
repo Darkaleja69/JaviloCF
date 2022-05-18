@@ -340,17 +340,18 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
-			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)/2+")");
 			RecolocarRadar.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 						GestorJuego.getMiGestorJuego().jugarTurno(4, 200, 200);
-						RecolocarRadar.setText("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+						RecolocarRadar.setText("Recolocar Radar ("+(GestorJuego.getMiGestorJuego().armasPorUsar(4))/2+")");
 						if(Aviso.isVisible()) {
 							Aviso.setVisible(false);
 						}
+						Radar.setText("Radar disponible");
 					}
 					
 					
@@ -367,7 +368,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					GestorJuego.getMiGestorJuego().comprarArmamento(4);
-					RecolocarRadar.setText("RecolocarRadar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+					RecolocarRadar.setText("RecolocarRadar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)/2+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					if(Aviso.isVisible()) {
 						Aviso.setVisible(false);
@@ -653,7 +654,6 @@ public class InterfazJuego extends JFrame implements Observer {
 						else if(Radar.isSelected()) {
 							GestorJuego.getMiGestorJuego().jugarTurno(4,x,y);
 							Radar.setText("Radar utilizado");
-							
 						}
 						else if(Misil.isSelected()) {
 							GestorJuego.getMiGestorJuego().jugarTurno(1,x,y);
