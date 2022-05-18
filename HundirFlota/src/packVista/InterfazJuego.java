@@ -360,7 +360,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getComprarRadar() {
 		if (ComprarRadar == null) {
-			ComprarRadar = new JButton("Comprar Radar");
+			ComprarRadar = new JButton("Comprar Radar : 100");
 			ComprarRadar.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
@@ -378,7 +378,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getComprarBomba() {
 		if (ComprarBomba == null) {
-			ComprarBomba = new JButton("Comprar Bomba");
+			ComprarBomba = new JButton("Comprar Bomba: 0");
 			ComprarBomba.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
@@ -396,7 +396,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getComprarMisil() {
 		if (ComprarMisil == null) {
-			ComprarMisil = new JButton("Comprar misil");
+			ComprarMisil = new JButton("Comprar misil: 100");
 			ComprarMisil.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
@@ -415,7 +415,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getComprarEscudo() {
 		if (ComprarEscudo == null) {
-			ComprarEscudo = new JButton("Comprar Escudo");
+			ComprarEscudo = new JButton("Comprar Escudo: 50");
 			ComprarEscudo.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
@@ -434,7 +434,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JButton getComprarReparacionBarco() {
 		if (ComprarReparacionBarco == null) {
-			ComprarReparacionBarco = new JButton("Comprar Reparacion para 1 casilla");
+			ComprarReparacionBarco = new JButton("Comprar Reparacion para 1 casilla: 50");
 			ComprarReparacionBarco.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
