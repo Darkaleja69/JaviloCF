@@ -513,7 +513,8 @@ public class InterfazJuego extends JFrame implements Observer {
                                     lbl.setBackground(Color.blue);
                                 }
 
-                            } 
+                            }
+                         Tablero.getTablero().quitarRadar(c, jug, 2);
                         }
                         else {
                             if(!c.estaTocada()) {
