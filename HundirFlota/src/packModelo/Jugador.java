@@ -56,6 +56,8 @@ public class Jugador extends Observable {
 					horizontal = num.nextBoolean();
 					posible = Tablero.getTablero().todoValido(x, y, i, true, horizontal);
 				}
+				CPU maquina =(CPU)ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
+				maquina.colocarBarco(i);
 				casillas.addAll(Tablero.getTablero().colocarBarco(bar, x, y,i,horizontal,true));
 			}
 			casillasBarcoFin.addAll(casillas);
