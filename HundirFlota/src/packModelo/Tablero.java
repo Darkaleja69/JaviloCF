@@ -190,7 +190,7 @@ public class Tablero {
 		
 	}
 	public boolean radarUsado(Casilla radar, boolean esJug) {
-		
+		Casilla c;
 		int cont = 0;
 		if(radar != null) {
 			int fil = radar.getFila();
@@ -198,7 +198,8 @@ public class Tablero {
 			
 			for(int i=fil-1; i<=fil+1; i++) {
 				for(int j =col-1; j<=col+1 ; j++) {
-					if(Tablero.getTablero().getCasilla(i, j, esJug).getRadar()>0) {
+					c = Tablero.getTablero().getCasilla(i, j, esJug);
+					if(c.getRadar()>=1) {
 						cont ++;
 						
 					}
