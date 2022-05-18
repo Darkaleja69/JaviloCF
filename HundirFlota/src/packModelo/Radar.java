@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Radar extends Arma{
     private Casilla r;
-    private int radares; 
+    private int radares;
 
     public Radar () {
         r = null;
@@ -22,9 +22,10 @@ public class Radar extends Arma{
                 if(radares>=1) {
                     if(r != null) {
                     	Casilla c = r;
-                    	c.quitarRadar(3);
-                    	Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAQuien).quitarRadar(0);
-                    	casillas.add(c);
+                    	c.quitarRadar(0);
+                    	ArrayList<Casilla> quitarRadar = Tablero.getTablero().borrarRadares(c);
+                    	//casillas.add(c);
+                    	casillas.addAll(quitarRadar);
                     }
                 	r = recolocar(pAQuien);
                     recolocar = true;
