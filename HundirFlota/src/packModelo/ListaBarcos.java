@@ -80,4 +80,18 @@ public class ListaBarcos {
 		}
 		return posible;
 	}
+	
+	public Barco getBarcoReparar(int pReparaciones)
+	{
+		boolean posible = false;
+		Barco h = null;
+		int i = 0;
+		while(i < this.lista.size() && !posible)
+		{
+			Barco b = this.lista.get(i);
+			posible = pReparaciones >= b.getLongitud();
+			h = b;
+		}
+		return h;
+	}
 }
