@@ -219,7 +219,7 @@ public class CPU extends Jugador{
 			}
 		}
 		//Caso 2: se ha adivinado la posicion de un barco gracias al radar y ademas se tienen misiles --> se aprovecha el misil
-		else if(sospecha.get(0).detectado() && this.miArmamento.armasPorUsar(1) > 0)
+		else if(sospecha.get(0).detectado() && sospecha.get(0).tieneBarco() && this.miArmamento.armasPorUsar(1) > 0)
 		{
 			System.out.println(sospecha.get(0).tieneBarco());
 			Casilla cS = sospecha.get(0);
