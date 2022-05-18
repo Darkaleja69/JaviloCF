@@ -218,9 +218,10 @@ public class CPU extends Jugador{
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 		}
-		//Caso 2: se ha adivinado la posici�n de un barco gracias al radar y adem�s se tienen misiles --> se aprovecha el misil
+		//Caso 2: se ha adivinado la posicion de un barco gracias al radar y ademas se tienen misiles --> se aprovecha el misil
 		else if(sospecha.get(0).detectado() && this.miArmamento.armasPorUsar(1) > 0)
 		{
+			System.out.println(sospecha.get(0).tieneBarco());
 			Casilla cS = sospecha.get(0);
 			this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
 			this.miArmamento.retirarArma(1);
