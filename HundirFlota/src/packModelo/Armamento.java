@@ -75,9 +75,8 @@ public class Armamento {
 			r.usarRadar();
 		}
 		else {
-			
+			armas.remove(buscarArma(pOpcion));
 		}
-		armas.remove(buscarArma(pOpcion));
 	}
 	
 	public Arma buscarArma(int pOpcion) {
