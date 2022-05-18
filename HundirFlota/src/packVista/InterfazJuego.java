@@ -107,6 +107,8 @@ public class InterfazJuego extends JFrame implements Observer {
 		contentPane.add(getPanel_2());
 		contentPane.add(getAcciones());
 		crearJLabels(getTableroJugador(),getTableroPC());
+		g.add(Vertical);
+		g.add(Horizontal);
 		g2.add(Fragata);
 		g2.add(Destructor);
 		g2.add(Submarino);
