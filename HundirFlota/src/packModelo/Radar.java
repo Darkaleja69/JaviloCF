@@ -21,9 +21,10 @@ public class Radar extends Arma{
             if((pX > 10 && pY > 10 )) { //se quiere recolocar el radar
                 if(radares>0) {
                     if(r != null) {
-                    	r.quitarRadar(3);
+                    	Casilla c = Tablero.getTablero().buscarRadar(pAQuien);
+                    	c.quitarRadar(3);
                     	Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAQuien).quitarRadar(0);
-                    	casillas.add(r);
+                    	casillas.add(c);
                     }
                 	r = recolocar(pAQuien);
                     recolocar = true;

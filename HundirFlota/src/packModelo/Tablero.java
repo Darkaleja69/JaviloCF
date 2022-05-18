@@ -214,7 +214,6 @@ public class Tablero {
 	public Casilla buscarRadar(boolean esJug) {
 		Casilla c;
 		if(esJug) {
-			 
 			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).obtenerArma(3);
 			c = r.getRadar();
 		}
