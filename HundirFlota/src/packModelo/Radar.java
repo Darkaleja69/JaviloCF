@@ -47,7 +47,7 @@ public class Radar extends Arma{
         Casilla c = null;
     	if(radares > 0){
     		if(r != null) {
-                Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAquien).detectar();
+                Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAquien).quitarRadar();
             }
             Random num1 = new Random();
             Random num2 = new Random();
