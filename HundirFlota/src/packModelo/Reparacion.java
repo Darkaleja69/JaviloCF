@@ -24,13 +24,6 @@ public class Reparacion extends Arma{
 		{
 			cas = Tablero.getTablero().getCasilla(pX, pY, false);
 			lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, false);
-			for(Casilla c : lCasillas)
-			{
-				if(c.estaTocada())
-				{
-					enviarCPU.add(c);
-				}
-			}
 		}
 			if(casillas >=lCasillas.size()) {
 				cas.getBarco().reparar();
@@ -43,7 +36,7 @@ public class Reparacion extends Arma{
 				listo=true;
 			}
 			if(pAQuien) {
-				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(enviarCPU);
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(lCasillas);
 			}else{
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
 			}
