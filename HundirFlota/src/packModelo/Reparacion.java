@@ -34,7 +34,11 @@ public class Reparacion extends Arma{
 				casillas=casillas-lCasillas.size();
 				listo=true;
 			}
-			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
+			if(pAQuien) {
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(lCasillas);
+			}else{
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
+			}
 			return listo;
 		}
 	
