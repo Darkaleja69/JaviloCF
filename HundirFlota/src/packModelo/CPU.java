@@ -203,7 +203,8 @@ public class CPU extends Jugador{
 				y = num.nextInt(10);
 				posible =(!(Tablero.getTablero().getCasilla(x, y, true).estaTocada()) && !this.prohibidas.estaProhibida(x, y)); //es posible si no est� tocada y no est� prohibida
 			}
-			casillas = Tablero.getTablero().bombardear(x, y, true);
+			Arma b = this.miArmamento.buscarArma(5);
+			b.realizarFuncion(x, y, true);
 			
 			//Si se ha golpeado un barco y no se ha hundido
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
