@@ -343,7 +343,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
-						GestorJuego.getMiGestorJuego().jugarTurno(4, 20, 20);
+						GestorJuego.getMiGestorJuego().jugarTurno(4, 200, 200);
 						
 						if(Aviso.isVisible()) {
 							Aviso.setVisible(false);
@@ -512,6 +512,7 @@ public class InterfazJuego extends JFrame implements Observer {
 						
 						}
 					}
+					Tablero.getTablero().quitarRadar(c, jug);
 					
 				}
 				else if(c.tieneBarco())
@@ -620,6 +621,7 @@ public class InterfazJuego extends JFrame implements Observer {
 						}
 						else if(Radar.isSelected()) {
 							GestorJuego.getMiGestorJuego().jugarTurno(4,x,y);
+							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 							
 						}
 						else if(Misil.isSelected()) {

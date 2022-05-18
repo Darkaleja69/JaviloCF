@@ -26,10 +26,10 @@ public class Radar extends Arma{
                 casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
             }
             else{//se quiere activar el radar
-                if(Tablero.getTablero().radarUsado(pAQuien)){
-                	sig = true;
-                    casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
-                }
+                
+               	sig = true;
+               	casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
+                
             }
             
             if(sig || (recolocar && !sig)) {

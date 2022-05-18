@@ -5,7 +5,9 @@ import java.util.Iterator;
 
 public class Armamento {
 	private ArrayList<Arma> armas;
-	
+		
+		
+		
 	
 	public Armamento() {
 		armas=new ArrayList<Arma>();
@@ -43,6 +45,7 @@ public class Armamento {
 	
 	public Arma comprarArmamento(int pTipo) {
 		Reparacion x=(Reparacion) buscarArma(3);
+		Radar y = (Radar) buscarArma(4);
 		if(pTipo==3) {
 			if(x==null) {
 				return FactoriaArmas.getMiFactoria().crearArma(pTipo);
@@ -52,8 +55,8 @@ public class Armamento {
 			
 		}
 		else if(pTipo == 4) {
-			Radar r = (Radar) this.buscarArma(4);
-			r.comprarRadar();
+			y.comprarRadar();
+			return y;
 		}
 		else {
 			return FactoriaArmas.getMiFactoria().crearArma(pTipo);
@@ -160,7 +163,7 @@ public class Armamento {
 			while(itr.hasNext()) {
 				x=itr.next();
 				if(x instanceof Radar) {
-					num++;
+					num = ((Radar) x).cantRadares();
 				}
 			}
 		}else if(pOpcion==5) {
@@ -177,4 +180,5 @@ public class Armamento {
 	public boolean armamentoVacio() {
 		return armas.size()==0;
 	}
+	
 }
