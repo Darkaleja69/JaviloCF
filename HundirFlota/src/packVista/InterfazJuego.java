@@ -506,7 +506,10 @@ public class InterfazJuego extends JFrame implements Observer {
 					else if(c.getRadar()==3) {
 						lbl.setBackground(Color.cyan);
 						if(c.estaTocada()) {
-							lbl.setBackground(Color.red);
+							lbl.setBackground(Color.blue);
+							if(c.tieneBarco()) {
+								lbl.setBackground(Color.red);
+							}
 						}
 						else if(c.tieneEscudo()) {
 							lbl.setBackground(Color.white);
@@ -631,7 +634,7 @@ public class InterfazJuego extends JFrame implements Observer {
 						}
 						else if(Radar.isSelected()) {
 							GestorJuego.getMiGestorJuego().jugarTurno(4,x,y);
-							Radar.setText("Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+							Radar.setText("Radar utilizado");
 							
 						}
 						else if(Misil.isSelected()) {
