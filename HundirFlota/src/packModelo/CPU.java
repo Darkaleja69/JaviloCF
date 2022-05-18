@@ -205,6 +205,7 @@ public class CPU extends Jugador{
 			}
 			Arma b = this.miArmamento.buscarArma(5);
 			b.realizarFuncion(x, y, true);
+			this.miArmamento.retirarArma(5);
 			
 			//Si se ha golpeado un barco y no se ha hundido
 			if(Tablero.getTablero().getCasilla(x, y, true).getBarco() != null && !Tablero.getTablero().getCasilla(x, y, true).getBarco().estaHundido())
@@ -225,7 +226,9 @@ public class CPU extends Jugador{
 			//se bombardea a la casilla mas sospechosa
 			x = this.sospecha.get(0).getFila();
 			y = this.sospecha.get(0).getColumna();
-			casillas = Tablero.getTablero().bombardear(x, y,true);
+			Arma b = this.miArmamento.buscarArma(5);
+			b.realizarFuncion(x, y, true);
+			this.miArmamento.retirarArma(5);
 			sospecha.remove(0);
 			
 			//Caso 2.1 se ha dado en un barco y se ha hundido
