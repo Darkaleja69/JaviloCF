@@ -99,7 +99,7 @@ public class Jugador extends Observable {
 			}
 			else if(pOpcion == 5) {
 				int cant = 10;
-				for(int i = 0; i<cant+1; i++) {
+				for(int i = 1; i<cant; i++) {
 					ar = miArmamento.comprarArmamento(5);
 					miArmamento.anadirArmamento(ar);
 				}
