@@ -85,6 +85,7 @@ public class Jugador extends Observable {
 				}
 			}
 		return finTurno;
+		
 	}
 	
 	public void comprarArmamento(int pOpcion) {

@@ -120,6 +120,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(RecolocarRadar);
 		g3.add(RepararBarco);
 		GestorJuego.getMiGestorJuego().addObserver(this);
+		ListaJugadores.getMiListaJug().addObserver(this);
 		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).addObserver(this);
 		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).addObserver(this);
 		panelTienda.setVisible(false);
