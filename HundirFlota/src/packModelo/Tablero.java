@@ -388,14 +388,14 @@ public class Tablero {
 		}
 		return c;
 	}
-	public void quitarRadar(Casilla c , boolean esJug) {
+	public void quitarRadar(Casilla c , boolean esJug, int pRadar) {
 		int x = c.getFila();
 		int y = c.getColumna();
 		if(esJug) {
-			Tablero.getTablero().tableroCPU[x][y].quitarRadar();
+			Tablero.getTablero().tableroCPU[x][y].quitarRadar(pRadar);
 		}
 		else {
-			Tablero.getTablero().tableroJugador[x][y].quitarRadar();
+			Tablero.getTablero().tableroJugador[x][y].quitarRadar(pRadar);
 		}
 		
 		

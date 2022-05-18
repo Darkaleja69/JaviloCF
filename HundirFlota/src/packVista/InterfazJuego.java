@@ -344,7 +344,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					// TODO Auto-generated method stub
 					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 						GestorJuego.getMiGestorJuego().jugarTurno(4, 200, 200);
-						
+						RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
 						if(Aviso.isVisible()) {
 							Aviso.setVisible(false);
 						}
@@ -503,6 +503,16 @@ public class InterfazJuego extends JFrame implements Observer {
 					if(c.getRadar()==2) {
 						lbl.setBackground(Color.orange);
 					}
+					else if(c.getRadar()==3) {
+						lbl.setBackground(Color.cyan);
+						if(c.estaTocada()) {
+							lbl.setBackground(Color.red);
+						}
+						else if(c.tieneEscudo()) {
+							lbl.setBackground(Color.white);
+							
+						}
+					}
 					else if(c.getRadar()==1) {
 						if(!c.estaTocada()) {
 							lbl.setBackground(Color.pink);	
@@ -512,7 +522,7 @@ public class InterfazJuego extends JFrame implements Observer {
 						
 						}
 					}
-					Tablero.getTablero().quitarRadar(c, jug);
+					Tablero.getTablero().quitarRadar(c, jug,0);
 					
 				}
 				else if(c.tieneBarco())

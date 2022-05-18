@@ -95,8 +95,8 @@ public class Casilla {
 	public void ponerRadar() {
 		radar = 2;
 	}
-	public void quitarRadar() {
-		radar = 0;
+	public void quitarRadar(int pRadar) {
+		radar = pRadar;
 	}
 	
 	public void reparar()

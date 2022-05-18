@@ -20,16 +20,22 @@ public class Radar extends Arma{
             ArrayList<Casilla> casillas = new ArrayList<Casilla>();
             if((pX > 10 && pY > 10 )) { //se quiere recolocar el radar
                 if(radares>0) {
-                    r = recolocar(pAQuien);
+                    if(r != null) {
+                    	r.quitarRadar(3);
+                    	Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAQuien).quitarRadar(0);
+                    	casillas.add(r);
+                    }
+                	r = recolocar(pAQuien);
                     recolocar = true;
+                    Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
+                    casillas.add(r); 
                 }
-                casillas = Tablero.getTablero().colocarRadar(r.getFila(), r.getColumna(), pAQuien);
             }
             else{//se quiere activar el radar
-                
-               	sig = true;
-               	casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
-                
+                if(r!=null) {
+                	sig = true;
+                   	casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
+                }
             }
             
             if(sig || (recolocar && !sig)) {
@@ -45,18 +51,13 @@ public class Radar extends Arma{
 
     public Casilla recolocar(boolean pAquien) {
         Casilla c = null;
-    	if(radares > 0){
-    		if(r != null) {
-                Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAquien).quitarRadar();
-            }
-            Random num1 = new Random();
-            Random num2 = new Random();
-            int x = num1.nextInt(7)+2;
-            int y= num2.nextInt(7)+2;
-            c = new Casilla(x,y);
-            c.ponerRadar();
-            usarRadar();
-        }
+    	Random num1 = new Random();
+    	Random num2 = new Random();
+    	int x = num1.nextInt(7)+2;
+    	int y= num2.nextInt(7)+2;
+    	c = new Casilla(x,y);
+    	c.ponerRadar();
+    	usarRadar();
 
         return(c);
 
