@@ -14,7 +14,7 @@ public class Reparacion extends Arma{
 		boolean listo=false;
 		Casilla cas;
 		ArrayList <Casilla> lCasillas;
-		if(pAQuien)
+		if(!pAQuien)
 		{
 			cas = Tablero.getTablero().getCasilla(pX, pY, true);
 			lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
