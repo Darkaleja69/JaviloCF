@@ -69,18 +69,16 @@ public class ListaBarcos {
 		return barcos;
 	}
 	
-	public Barco barcoReparable(int pReparaciones)
+	public boolean barcoReparable(int pReparaciones)
 	{
-		Barco h = null;
-		for(Barco b : this.lista)
+		boolean posible = false;
+		int i = 0;
+		while(i < this.lista.size() && !posible)
 		{
-			if(b.diferenciaLongitudVidas() < pReparaciones)
-			{
-				h = b;
-				break;
-			}
+			Barco b = this.lista.get(i);
+			posible = pReparaciones >= b.diferenciaLongitudVidas();
 		}
 		
-		return h;
+		return posible;
 	}
 }
