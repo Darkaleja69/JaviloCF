@@ -20,9 +20,6 @@ public class ListaJugadores extends Observable{
 		}
 		return miListaJug;
 	}
-	public Jugador getCPU() {
-		return (this.obtenerJugadorOCPU(0));
-	}
 	
 	private void inicializarLista() {
 		listaJ.add(new CPU());
