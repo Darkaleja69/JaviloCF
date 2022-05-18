@@ -56,7 +56,10 @@ public class Radar extends Arma{
     	Random num2 = new Random();
     	int x = num1.nextInt(7)+2;
     	int y= num2.nextInt(7)+2;
-    	c = new Casilla(x,y);
+    	c=Tablero.getTablero().getCasilla(x, y, pAquien);
+		if(pAquien) {
+		   System.out.println(c.getFila()); 		
+		    	}
     	c.ponerRadar();
     	usarRadar();
 
