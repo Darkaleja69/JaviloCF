@@ -107,10 +107,20 @@ public class CPU extends Jugador{
 	    }
         else if(turno == 3 && this.miArmamento.armasPorUsar(4) > 0) //radar CPU
         {
-    		Arma a = this.miArmamento.buscarArma(4);
-    		this.miArmamento.retirarArma(4);
-    		a.realizarFuncion(200, 200, true);
-    		a.realizarFuncion(0, 0, true);
+        	Arma miArma=miArmamento.buscarArma(4);
+			if( miArma != null) {
+				if(miArma.realizarFuncion(200,200,true)) {
+					miArmamento.retirarArma(4);
+				}
+			}
+			Arma x=miArmamento.buscarArma(4);
+			if( x != null) {
+				if(x.realizarFuncion(5,5,true)) {
+					miArmamento.retirarArma(4);
+				}
+			}
+			
+			
         }
         else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)) != null) //reparar
         {

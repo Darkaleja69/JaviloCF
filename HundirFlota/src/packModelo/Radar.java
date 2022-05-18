@@ -40,9 +40,7 @@ public class Radar extends Arma{
             }
             
             if(sig || (recolocar && !sig)) {
-            	if(pAQuien) {
-                    ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
-                }else {
+            	if(!(pAQuien)) {
                     ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
                 }
             }
