@@ -30,7 +30,9 @@ public class Escudo extends Arma{
 			{
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
 			}
-
+			if(casillas.size()==0) {
+				return false;
+			}
 			return true;
 	    }
 
