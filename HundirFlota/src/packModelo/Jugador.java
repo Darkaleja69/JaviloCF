@@ -7,15 +7,12 @@ import java.util.Random;
 public class Jugador extends Observable {
 	private ListaBarcos lista;
 	private int radares;
-	private int cantEscudos;
-	private int cantReparaciones;
 	private int dinero;
 	private Armamento miArmamento;
 	
 	public Jugador() {
 		lista=new ListaBarcos();
 		radares = 1;
-		cantEscudos = 3;
 		dinero=500;
 		miArmamento=new Armamento();
 	}
