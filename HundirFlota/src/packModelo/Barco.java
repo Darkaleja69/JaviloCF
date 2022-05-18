@@ -67,9 +67,4 @@ public abstract class Barco {
 		this.vidas = this.longitud;
 	}
 	
-	public int diferenciaLongitudVidas()
-	{
-		return this.longitud - this.vidas;
-	}
-	
 }
