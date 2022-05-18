@@ -109,8 +109,8 @@ public class CPU extends Jugador{
         {
     		Arma a = this.miArmamento.buscarArma(4);
     		this.miArmamento.retirarArma(4);
-    		a.realizarFuncion(-1, -1, true);
-    		a.realizarFuncion(0, 0, true);
+    		//a.realizarFuncion(-1, -1, true);
+    		//a.realizarFuncion(0, 0, true);
         }
         else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)) != null) //reparar
         {
@@ -212,7 +212,7 @@ public class CPU extends Jugador{
 			}
 		}
 		//Caso 2: se ha adivinado la posición de un barco gracias al radar y además se tienen misiles --> se aprovecha el misil
-		if(sospecha.get(0).detectado() && this.miArmamento.armasPorUsar(1) > 0)
+		else if(sospecha.get(0).detectado() && this.miArmamento.armasPorUsar(1) > 0)
 		{
 			Casilla cS = sospecha.get(0);
 			this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
