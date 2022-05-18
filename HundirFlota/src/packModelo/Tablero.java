@@ -388,6 +388,7 @@ public class Tablero {
 		}
 		return c;
 	}
+	
 	public void quitarRadar(Casilla c , boolean esJug, int pRadar) {
 		int x = c.getFila();
 		int y = c.getColumna();
