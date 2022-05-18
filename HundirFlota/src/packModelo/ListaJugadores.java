@@ -8,7 +8,7 @@ public class ListaJugadores extends Observable{
 	private ArrayList<Jugador> listaJ;
 	private int turno;
 	
-	public ListaJugadores() {
+	private ListaJugadores() {
 		listaJ=new ArrayList<Jugador>();
 		turno=1;
 		inicializarLista();
