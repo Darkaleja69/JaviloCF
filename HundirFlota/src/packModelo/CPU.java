@@ -70,7 +70,6 @@ public class CPU extends Jugador{
 			{//escudo
 				this.miArmamento.anadirArmamento(this.miArmamento.comprarArmamento(3));
 				this.dinero -= 50;
-				System.out.println("reparacion");
 			}
 			else if(adquisicion == 4 && this.dinero >= 50)
 			{//escudo
