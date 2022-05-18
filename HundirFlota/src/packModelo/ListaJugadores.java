@@ -54,14 +54,6 @@ public class ListaJugadores extends Observable{
 		}
 	}
 	
-	public Jugador aQuienLeToca() {
-		if(turno % 2 == 0) {
-			return listaJ.get(0);
-		}else {
-			return listaJ.get(1);
-		}
-	}
-	
 	public Jugador obtenerJugadorOCPU(int pIndice) {
 		if(pIndice==0) {
 		return listaJ.get(0);
