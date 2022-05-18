@@ -94,6 +94,7 @@ public class CPU extends Jugador{
     		{
     			if (!b.tieneEscudo())
     			{
+    				
     				barc = b;
     				break;
     			}
@@ -124,21 +125,15 @@ public class CPU extends Jugador{
         }
         else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3))) //reparar
         {
-            //Casilla c = Tablero.getTablero().buscarCasillaBarco(this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)));
-            //ArrayList<Casilla> array = Tablero.getTablero().obtenerCasillasBarco(c, false);
-            /*for(Casilla cas : array)
-            {
-            	if(cas.estaTocada())
-            	{
-            		Arma ar = this.miArmamento.buscarArma(3);
-            		ar.realizarFuncion(cas.getFila(), cas.getColumna(), false);
-            		break;
-            	}
-            }
-            for(int i = 0; i < array.size(); i++)
-            {
-            	this.miArmamento.retirarArma(3);
-            }*/
+        	Barco b = this.listaB.getBarcoReparar(this.miArmamento.armasPorUsar(3));
+        	Casilla c = Tablero.getTablero().buscarCasillaBarco(b);
+        	Arma a = this.miArmamento.buscarArma(3);
+
+        	a.realizarFuncion(c.getFila(), c.getColumna(), true);
+        	for(int i = 0; i < b.getLongitud(); i++)
+        	{
+        		this.miArmamento.retirarArma(3);
+        	}
         }
         else //disparar (de forma inteligente) CPU
         {
@@ -223,11 +218,11 @@ public class CPU extends Jugador{
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 		}
-		//Caso 2: se ha adivinado la posiciï¿½n de un barco gracias al radar y ademï¿½s se tienen misiles --> se aprovecha el misil
-		else if(sospecha.get(0).detectado() && this.miArmamento.armasPorUsar(1) > 0)
+		//Caso 2: se sospecha sobre la posición de un barco y además se tienen misiles
+		else if(this.miArmamento.armasPorUsar(1) > 0)
 		{
 			Casilla cS = sospecha.get(0);
-			this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
+			Boolean v = this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
 			this.miArmamento.retirarArma(1);
 		}
 		//Caso 3: se tienen sospechas sobre alguna casilla
@@ -282,7 +277,13 @@ public class CPU extends Jugador{
 	}
 	public void anadirSospechas(ArrayList<Casilla> pSospechas)
 	{
-		this.sospecha.addAll(pSospechas);
+		for(Casilla c : pSospechas)
+		{
+			if(c.tieneBarco())
+			{
+				this.sospecha.add(0, c);
+			}
+		}
 	}
 	
 	private void generarSospechas(Casilla c)

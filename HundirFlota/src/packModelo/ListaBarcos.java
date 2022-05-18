@@ -76,8 +76,24 @@ public class ListaBarcos {
 		while(i < this.lista.size() && !posible)
 		{
 			Barco b = this.lista.get(i);
-			posible = pReparaciones >= b.diferenciaLongitudVidas();
+			posible = (pReparaciones >= b.getLongitud()) && b.estaRoto();
+			i++;
 		}
 		return posible;
+	}
+	
+	public Barco getBarcoReparar(int pReparaciones)
+	{
+		boolean posible = false;
+		Barco h = null;
+		int i = 0;
+		while(i < this.lista.size() && !posible)
+		{
+			Barco b = this.lista.get(i);
+			posible = pReparaciones >= b.getLongitud() && b.estaRoto();
+			h = b;
+			i++;
+		}
+		return h;
 	}
 }

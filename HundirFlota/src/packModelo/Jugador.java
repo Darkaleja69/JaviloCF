@@ -36,6 +36,37 @@ public class Jugador extends Observable {
 		notifyObservers(casillas);
 		return !(casillas.size() < 1);
 	}
+	
+	public boolean colocarBarcosAleatorio() {
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		ArrayList<Casilla> casillasBarcoFin=new ArrayList<Casilla>();		
+		for(int i=1;i<5;i++) {
+			while(!(lista.hayDemasiados(i))) {
+				boolean horizontal=false;
+				int x = 0;
+				int y = 0;
+				Random num = new Random();
+				boolean posible = false;
+				Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(i);
+				lista.anadirBarco(bar);
+				while(!posible) 
+				{
+					x = num.nextInt(10);
+					y = num.nextInt(10);
+					horizontal = num.nextBoolean();
+					posible = Tablero.getTablero().todoValido(x, y, i, true, horizontal);
+				}
+				CPU maquina =(CPU)ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
+				maquina.colocarBarco(i);
+				casillas.addAll(Tablero.getTablero().colocarBarco(bar, x, y,i,horizontal,true));
+			}
+			casillasBarcoFin.addAll(casillas);
+		}
+		
+		setChanged();
+		notifyObservers(casillasBarcoFin);
+		return !(casillasBarcoFin.size() < 1);
+		}
 	public Arma obtenerArma(int pOpcion) {
 		return (this.miArmamento.buscarArma(pOpcion));
 	}
@@ -85,6 +116,7 @@ public class Jugador extends Observable {
 				}
 			}
 		return finTurno;
+		
 	}
 	
 	public void comprarArmamento(int pOpcion) {
@@ -94,19 +126,19 @@ public class Jugador extends Observable {
 				Radar r=(Radar) miArmamento.buscarArma(4);
 				dinero=dinero - r.getCoste();
 				r.comprarRadar();
-				
-				
+				r.comprarRadar();	
 			}
 			else if(pOpcion == 5) {
 				int cant = 10;
-				for(int i = 1; i<cant; i++) {
+				for(int i = 1; i<=cant; i++) {
 					ar = miArmamento.comprarArmamento(5);
 					miArmamento.anadirArmamento(ar);
 				}
+			}else {
+				ar=miArmamento.comprarArmamento(pOpcion);
+				dinero=dinero - ar.getCoste();
+				miArmamento.anadirArmamento(ar);
 			}
-			ar=miArmamento.comprarArmamento(pOpcion);
-			dinero=dinero - ar.getCoste();
-			miArmamento.anadirArmamento(ar);
 		}
 	}
 	

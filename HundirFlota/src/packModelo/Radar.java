@@ -5,11 +5,11 @@ import java.util.Random;
 
 public class Radar extends Arma{
     private Casilla r;
-    private int radares; 
+    private int radares;
 
     public Radar () {
         r = null;
-        radares = 1;
+        radares = 2;
         super.coste = 100;
     }
 
@@ -22,9 +22,10 @@ public class Radar extends Arma{
                 if(radares>=1) {
                     if(r != null) {
                     	Casilla c = r;
-                    	c.quitarRadar(3);
-                    	Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAQuien).quitarRadar(1);
-                    	casillas.add(c);
+                    	c.quitarRadar(0);
+                    	ArrayList<Casilla> quitarRadar = Tablero.getTablero().borrarRadares(c);
+                    	//casillas.add(c);
+                    	casillas.addAll(quitarRadar);
                     }
                 	r = recolocar(pAQuien);
                     recolocar = true;
@@ -43,6 +44,11 @@ public class Radar extends Arma{
             	if(!(pAQuien)) {
                     ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
                 }
+            	else
+            	{
+            		CPU cpu = (CPU ) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
+            		cpu.anadirSospechas(casillas);
+            	}
             }
             
             return(sig);
@@ -55,9 +61,6 @@ public class Radar extends Arma{
     	int x = num1.nextInt(7)+2;
     	int y= num2.nextInt(7)+2;
     	c=Tablero.getTablero().getCasilla(x, y, pAquien);
-		if(pAquien) {
-		   System.out.println(c.getFila()); 		
-		    	}
     	c.ponerRadar();
     	usarRadar();
 

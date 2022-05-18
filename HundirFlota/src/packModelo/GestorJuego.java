@@ -23,6 +23,10 @@ public class GestorJuego extends Observable {
 	{
 		ListaJugadores.getMiListaJug().colocarBarcos(pHorizontal, pX, pY, pLongitud);
 	}
+	
+	public void colocarBarcosAuto() {
+		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).colocarBarcosAleatorio();
+	}
 	public boolean comprobarFin(boolean pJug) {
 		return ListaJugadores.getMiListaJug().comprobarFin(pJug);
 	}

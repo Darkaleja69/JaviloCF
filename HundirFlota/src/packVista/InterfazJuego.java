@@ -73,6 +73,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JButton ComprarRadar;
 	private JRadioButton Bomba;
 	private JLabel Aviso;
+	private JButton ColocarBarcosAuto;
 
 	/**
 	 * Launch the application.
@@ -120,6 +121,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		g3.add(RecolocarRadar);
 		g3.add(RepararBarco);
 		GestorJuego.getMiGestorJuego().addObserver(this);
+		ListaJugadores.getMiListaJug().addObserver(this);
 		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).addObserver(this);
 		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).addObserver(this);
 		panelTienda.setVisible(false);
@@ -192,7 +194,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	}
 	private JRadioButton getRadar() {
 		if (Radar == null) {
-			Radar = new JRadioButton("Radar");
+			Radar = new JRadioButton("Radar no disponible");
 		}
 		return Radar;
 	}
@@ -265,6 +267,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			panel_3.setLayout(new GridLayout(2, 1, 0, 0));
 			panel_3.add(getHorizontal());
 			panel_3.add(getVertical());
+			panel_3.add(getColocarBarcosAuto());
 		}
 		return panel_3;
 	}
@@ -337,18 +340,41 @@ public class InterfazJuego extends JFrame implements Observer {
 		}
 		return RepararBarco;
 	}
+	
+	
+	
+	private JButton getColocarBarcosAuto() {
+	if (ColocarBarcosAuto == null) {
+		ColocarBarcosAuto = new JButton("ColocarBarcosAuto");
+		ColocarBarcosAuto.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+					GestorJuego.getMiGestorJuego().colocarBarcosAuto();
+					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
+						GestorJuego.getMiGestorJuego().barcosColocadosTienda();
+					}
+			}
+			});
+	}
+	return ColocarBarcosAuto;
+	}
 	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
-			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+			RecolocarRadar = new JButton("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)/2+")");
 			RecolocarRadar.addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 						GestorJuego.getMiGestorJuego().jugarTurno(4, 200, 200);
-						RecolocarRadar.setText("Recolocar Radar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+						RecolocarRadar.setText("Recolocar Radar ("+(GestorJuego.getMiGestorJuego().armasPorUsar(4))/2+")");
 						if(Aviso.isVisible()) {
 							Aviso.setVisible(false);
+						}
+						if(GestorJuego.getMiGestorJuego().armasPorUsar(4)/2==0){
+						Radar.setText("Radar disponible");
 						}
 					}
 					
@@ -366,7 +392,7 @@ public class InterfazJuego extends JFrame implements Observer {
 				public void actionPerformed(ActionEvent arg0) {
 					// TODO Auto-generated method stub
 					GestorJuego.getMiGestorJuego().comprarArmamento(4);
-					RecolocarRadar.setText("RecolocarRadar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)+")");
+					RecolocarRadar.setText("RecolocarRadar ("+GestorJuego.getMiGestorJuego().armasPorUsar(4)/2+")");
 					Dinero.setText("Dinero Jugador: "+GestorJuego.getMiGestorJuego().dineroRestanteJug());
 					if(Aviso.isVisible()) {
 						Aviso.setVisible(false);
@@ -604,7 +630,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					{
 						int x = l.getCoordX();
 						int y = l.getCoordY();
-						int longitud;
+						int longitud=0;
 						
 						if(Fragata.isSelected())
 						{
@@ -622,7 +648,6 @@ public class InterfazJuego extends JFrame implements Observer {
 						{
 							longitud = 4;
 						}
-						
 						GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
 						if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 							GestorJuego.getMiGestorJuego().barcosColocadosTienda();
@@ -652,7 +677,6 @@ public class InterfazJuego extends JFrame implements Observer {
 						else if(Radar.isSelected()) {
 							GestorJuego.getMiGestorJuego().jugarTurno(4,x,y);
 							Radar.setText("Radar utilizado");
-							
 						}
 						else if(Misil.isSelected()) {
 							GestorJuego.getMiGestorJuego().jugarTurno(1,x,y);
@@ -689,6 +713,5 @@ public class InterfazJuego extends JFrame implements Observer {
 			
 		}
 	}
-					
-				
+
 }

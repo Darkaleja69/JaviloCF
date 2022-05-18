@@ -388,6 +388,7 @@ public class Tablero {
 		}
 		return c;
 	}
+	
 	public void quitarRadar(Casilla c , boolean esJug, int pRadar) {
 		int x = c.getFila();
 		int y = c.getColumna();
@@ -397,8 +398,20 @@ public class Tablero {
 		else {
 			Tablero.getTablero().tableroJugador[x][y].quitarRadar(pRadar);
 		}
-		
-		
+	}
+	
+	public ArrayList<Casilla> borrarRadares(Casilla pR)
+	{
+		ArrayList<Casilla> array = new ArrayList<Casilla>();
+		for(int i = pR.getFila() -1; i <= pR.getFila() + 1; i++)
+		{
+			for(int j = pR.getColumna() -1; j <= pR.getColumna() + 1; j++)
+			{
+				this.tableroCPU[i][j].quitarRadar(0);
+				array.add(this.tableroCPU[i][j]);
+			}
+		}
+		return array;
 	}
 	
 
