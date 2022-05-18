@@ -73,6 +73,7 @@ public class InterfazJuego extends JFrame implements Observer {
 	private JButton ComprarRadar;
 	private JRadioButton Bomba;
 	private JLabel Aviso;
+	private JRadioButton ColocarBarcosAuto;
 
 	/**
 	 * Launch the application.
@@ -109,6 +110,7 @@ public class InterfazJuego extends JFrame implements Observer {
 		crearJLabels(getTableroJugador(),getTableroPC());
 		g.add(Vertical);
 		g.add(Horizontal);
+		g.add(ColocarBarcosAuto);
 		g2.add(Fragata);
 		g2.add(Destructor);
 		g2.add(Submarino);
@@ -266,6 +268,7 @@ public class InterfazJuego extends JFrame implements Observer {
 			panel_3.setLayout(new GridLayout(2, 1, 0, 0));
 			panel_3.add(getHorizontal());
 			panel_3.add(getVertical());
+			panel_3.add(getColocarBarcosAuto());
 		}
 		return panel_3;
 	}
@@ -337,6 +340,15 @@ public class InterfazJuego extends JFrame implements Observer {
 			RepararBarco = new JRadioButton("Reparar barco ("+GestorJuego.getMiGestorJuego().armasPorUsar(3)+")");
 		}
 		return RepararBarco;
+	}
+	
+	
+	
+	private JRadioButton getColocarBarcosAuto() {
+	if (ColocarBarcosAuto == null) {
+		ColocarBarcosAuto = new JRadioButton("ColocarBarcosAuto");
+	}
+	return ColocarBarcosAuto;
 	}
 	private JButton getRecolocarRadar() {
 		if (RecolocarRadar == null) {
@@ -606,7 +618,7 @@ public class InterfazJuego extends JFrame implements Observer {
 					{
 						int x = l.getCoordX();
 						int y = l.getCoordY();
-						int longitud;
+						int longitud=0;
 						
 						if(Fragata.isSelected())
 						{
@@ -620,12 +632,17 @@ public class InterfazJuego extends JFrame implements Observer {
 						{
 							longitud = 3;
 						}
-						else
+						else if(Portaviones.isSelected())
 						{
 							longitud = 4;
+						}else if(ColocarBarcosAuto.isSelected()) {
+							GestorJuego.getMiGestorJuego().colocarBarcosAuto();
 						}
-						
-						GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
+							
+			
+						if(!(ColocarBarcosAuto.isSelected())) {
+							GestorJuego.getMiGestorJuego().colocarBarcos(Horizontal.isSelected(), x, y, longitud);
+						}
 						if(GestorJuego.getMiGestorJuego().barcosColocados()) {
 							GestorJuego.getMiGestorJuego().barcosColocadosTienda();
 						}
@@ -690,6 +707,5 @@ public class InterfazJuego extends JFrame implements Observer {
 			
 		}
 	}
-					
-				
+
 }

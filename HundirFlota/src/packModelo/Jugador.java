@@ -36,6 +36,35 @@ public class Jugador extends Observable {
 		notifyObservers(casillas);
 		return !(casillas.size() < 1);
 	}
+	
+	public boolean colocarBarcosAleatorio() {
+		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
+		ArrayList<Casilla> casillasBarcoFin=new ArrayList<Casilla>();		
+		for(int i=1;i<5;i++) {
+			while(!(lista.hayDemasiados(i))) {
+				boolean horizontal=false;
+				int x = 0;
+				int y = 0;
+				Random num = new Random();
+				boolean posible = false;
+				Barco bar = FactoryBarcos.getMiFactoryBarcos().crearBarco(i);
+				lista.anadirBarco(bar);
+				while(!posible) 
+				{
+					x = num.nextInt(10);
+					y = num.nextInt(10);
+					horizontal = num.nextBoolean();
+					posible = Tablero.getTablero().todoValido(x, y, i, true, horizontal);
+				}
+				casillas.addAll(Tablero.getTablero().colocarBarco(bar, x, y,i,horizontal,true));
+			}
+			casillasBarcoFin.addAll(casillas);
+		}
+		
+		setChanged();
+		notifyObservers(casillasBarcoFin);
+		return !(casillasBarcoFin.size() < 1);
+		}
 	public Arma obtenerArma(int pOpcion) {
 		return (this.miArmamento.buscarArma(pOpcion));
 	}
