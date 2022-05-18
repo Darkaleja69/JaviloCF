@@ -67,4 +67,9 @@ public abstract class Barco {
 		this.vidas = this.longitud;
 	}
 	
+	public boolean estaRoto()
+	{
+		return this.longitud - this.vidas != 0;
+	}
+	
 }
