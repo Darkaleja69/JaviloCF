@@ -152,15 +152,6 @@ public class CPU extends Jugador{
 		}
 	}
 	
-	public void colocarEscudo()
-	{
-		
-	}
-	
-	public void radarCPU() {
-
-	}
-	
 	
 	public void anadirBarco(Barco pBarco) {
 		this.listaB.anadirBarco(pBarco);
