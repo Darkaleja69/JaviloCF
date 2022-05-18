@@ -14,6 +14,7 @@ public class Reparacion extends Arma{
 		boolean listo=false;
 		Casilla cas;
 		ArrayList <Casilla> lCasillas;
+		ArrayList <Casilla> enviarCPU = new ArrayList<Casilla>();
 		if(!pAQuien)
 		{
 			cas = Tablero.getTablero().getCasilla(pX, pY, true);
@@ -23,6 +24,13 @@ public class Reparacion extends Arma{
 		{
 			cas = Tablero.getTablero().getCasilla(pX, pY, false);
 			lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, false);
+			for(Casilla c : lCasillas)
+			{
+				if(c.estaTocada())
+				{
+					enviarCPU.add(c);
+				}
+			}
 		}
 			if(casillas >=lCasillas.size()) {
 				cas.getBarco().reparar();
@@ -35,7 +43,7 @@ public class Reparacion extends Arma{
 				listo=true;
 			}
 			if(pAQuien) {
-				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(lCasillas);
+				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(enviarCPU);
 			}else{
 				ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
 			}

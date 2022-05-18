@@ -183,6 +183,7 @@ public class CPU extends Jugador{
 	public void dispararInteligente()
 	{
 		//Inicializaciones
+		System.out.println(this.miArmamento.armasPorUsar(1));
 		ArrayList<Casilla> casillas = new ArrayList<Casilla>();
 		boolean posible = false;
 		int x = 0;
@@ -218,12 +219,11 @@ public class CPU extends Jugador{
 				generarSospechas(Tablero.getTablero().getCasilla(x, y, true));
 			}
 		}
-		//Caso 2: se ha adivinado la posicion de un barco gracias al radar y ademas se tienen misiles --> se aprovecha el misil
-		else if(sospecha.get(0).detectado() && sospecha.get(0).tieneBarco() && this.miArmamento.armasPorUsar(1) > 0)
+		//Caso 2: se sospecha sobre la posición de un barco y además se tienen misiles
+		else if(this.miArmamento.armasPorUsar(1) > 0)
 		{
-			System.out.println(sospecha.get(0).tieneBarco());
 			Casilla cS = sospecha.get(0);
-			this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
+			Boolean v = this.miArmamento.buscarArma(1).realizarFuncion(cS.getFila(), cS.getColumna(), true);
 			this.miArmamento.retirarArma(1);
 		}
 		//Caso 3: se tienen sospechas sobre alguna casilla
@@ -278,7 +278,13 @@ public class CPU extends Jugador{
 	}
 	public void anadirSospechas(ArrayList<Casilla> pSospechas)
 	{
-		this.sospecha.addAll(pSospechas);
+		for(Casilla c : pSospechas)
+		{
+			if(c.tieneBarco())
+			{
+				this.sospecha.add(0, c);
+			}
+		}
 	}
 	
 	private void generarSospechas(Casilla c)

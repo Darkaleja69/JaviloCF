@@ -44,6 +44,12 @@ public class Radar extends Arma{
             	if(!(pAQuien)) {
                     ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
                 }
+            	else
+            	{
+            		CPU cpu = (CPU ) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
+            		cpu.anadirSospechas(casillas);
+            		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
+            	}
             }
             
             return(sig);
