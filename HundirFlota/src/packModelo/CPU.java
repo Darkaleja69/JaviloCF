@@ -114,7 +114,6 @@ public class CPU extends Jugador{
         }
         else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)) != null) //reparar
         {
-        	System.out.println("reparacion 2");
             Casilla c = Tablero.getTablero().buscarCasillaBarco(this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)));
             ArrayList<Casilla> array = Tablero.getTablero().obtenerCasillasBarco(c, false);
             for(Casilla cas : array)
