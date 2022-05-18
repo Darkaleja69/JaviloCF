@@ -122,11 +122,11 @@ public class CPU extends Jugador{
 			
 			
         }
-        else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)) != null) //reparar
+        else if(turno == 4 && this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3))) //reparar
         {
-            Casilla c = Tablero.getTablero().buscarCasillaBarco(this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)));
-            ArrayList<Casilla> array = Tablero.getTablero().obtenerCasillasBarco(c, false);
-            for(Casilla cas : array)
+            //Casilla c = Tablero.getTablero().buscarCasillaBarco(this.listaB.barcoReparable(this.miArmamento.armasPorUsar(3)));
+            //ArrayList<Casilla> array = Tablero.getTablero().obtenerCasillasBarco(c, false);
+            /*for(Casilla cas : array)
             {
             	if(cas.estaTocada())
             	{
@@ -138,7 +138,7 @@ public class CPU extends Jugador{
             for(int i = 0; i < array.size(); i++)
             {
             	this.miArmamento.retirarArma(3);
-            }
+            }*/
         }
         else //disparar (de forma inteligente) CPU
         {
