@@ -23,7 +23,7 @@ public class Radar extends Arma{
                     if(r != null) {
                     	Casilla c = r;
                     	c.quitarRadar(3);
-                    	Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAQuien).quitarRadar(0);
+                    	Tablero.getTablero().getCasilla(r.getFila(), r.getColumna(), pAQuien).quitarRadar(1);
                     	casillas.add(c);
                     }
                 	r = recolocar(pAQuien);
