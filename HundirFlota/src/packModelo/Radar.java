@@ -32,10 +32,10 @@ public class Radar extends Arma{
                 }
             }
             else{//se quiere activar el radar
-                if(r!=null) {
-                	sig = true;
-                   	casillas = Tablero.getTablero().detectar(pX, pY, pAQuien);
-                }
+                
+               	sig = true;
+               	casillas = Tablero.getTablero().detectar(r.getFila(), r.getColumna(), pAQuien);
+                
             }
             
             if(sig || (recolocar && !sig)) {
