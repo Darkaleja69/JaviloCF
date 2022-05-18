@@ -19,7 +19,7 @@ public class Radar extends Arma{
             boolean recolocar = false;
             ArrayList<Casilla> casillas = new ArrayList<Casilla>();
             if((pX > 10 && pY > 10 )) { //se quiere recolocar el radar
-                if(radares>0) {
+                if(radares>=1) {
                     if(r != null) {
                     	Casilla c = r;
                     	c.quitarRadar(3);
