@@ -88,11 +88,23 @@ public class Jugador extends Observable {
 	}
 	
 	public void comprarArmamento(int pOpcion) {
+		Arma ar;
 		if(miArmamento.consultaArmamento(pOpcion, dinero)) {
 			if(pOpcion==4) {
-				Arma ar=miArmamento.comprarArmamento(4);
+				Radar r=(Radar) miArmamento.buscarArma(4);
+				dinero=dinero - r.getCoste();
+				r.comprarRadar();
+				
+				
 			}
-			Arma ar=miArmamento.comprarArmamento(pOpcion);
+			else if(pOpcion == 5) {
+				int cant = 10;
+				for(int i = 0; i<cant+1; i++) {
+					ar = miArmamento.comprarArmamento(5);
+					miArmamento.anadirArmamento(ar);
+				}
+			}
+			ar=miArmamento.comprarArmamento(pOpcion);
 			dinero=dinero - ar.getCoste();
 			miArmamento.anadirArmamento(ar);
 		}
