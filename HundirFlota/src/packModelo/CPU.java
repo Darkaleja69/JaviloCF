@@ -79,7 +79,7 @@ public class CPU extends Jugador{
 		}
 		
 		//Decidimos la accion que vamos a realizar
-        int turno = z.nextInt(3)+1;
+        int turno = z.nextInt(4)+1;
         
 	    if (turno == 2 && this.miArmamento.armasPorUsar(2) > 0) //poner escudo CPU
 	    {
