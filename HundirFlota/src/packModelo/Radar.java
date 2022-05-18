@@ -48,7 +48,6 @@ public class Radar extends Arma{
             	{
             		CPU cpu = (CPU ) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0);
             		cpu.anadirSospechas(casillas);
-            		ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(casillas);
             	}
             }
             
