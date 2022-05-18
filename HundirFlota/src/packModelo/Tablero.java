@@ -199,7 +199,7 @@ public class Tablero {
 			for(int i=fil-1; i<=fil+1; i++) {
 				for(int j =col-1; j<=col+1 ; j++) {
 					if(Tablero.getTablero().getCasilla(i, j, esJug).getRadar()>0) {
-						cont = cont + 1;
+						cont ++;
 						
 					}
 					
