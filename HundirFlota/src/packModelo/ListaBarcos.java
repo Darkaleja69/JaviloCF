@@ -78,7 +78,6 @@ public class ListaBarcos {
 			Barco b = this.lista.get(i);
 			posible = pReparaciones >= b.diferenciaLongitudVidas();
 		}
-		System.out.println(posible);
 		return posible;
 	}
 }
