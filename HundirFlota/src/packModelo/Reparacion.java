@@ -12,28 +12,18 @@ public class Reparacion extends Arma{
 	@Override
 	public boolean realizarFuncion(int pX,int pY, boolean pAQuien) {
 		boolean listo=false;
+		Casilla cas;
+		ArrayList <Casilla> lCasillas;
 		if(pAQuien)
 		{
-			Casilla cas = Tablero.getTablero().getCasilla(pX, pY, true);
-			ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
-			if(casillas >=lCasillas.size()) {
-				cas.getBarco().reparar();
-				for (Casilla c: lCasillas)
-				{
-					c.reparar();
-					
-				}
-				casillas=casillas-lCasillas.size();
-				listo=true;
-			}
-			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
-			return listo;
+			cas = Tablero.getTablero().getCasilla(pX, pY, true);
+			lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, true);
 		}
 		else
 		{
-			Casilla cas = Tablero.getTablero().getCasilla(pX, pY, false);
-			System.out.println(cas.tieneBarco());
-			ArrayList <Casilla> lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, false);
+			cas = Tablero.getTablero().getCasilla(pX, pY, false);
+			lCasillas = Tablero.getTablero().obtenerCasillasBarco(cas, false);
+		}
 			if(casillas >=lCasillas.size()) {
 				cas.getBarco().reparar();
 				for (Casilla c: lCasillas)
@@ -47,8 +37,6 @@ public class Reparacion extends Arma{
 			ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).enviarCasillas(lCasillas);
 			return listo;
 		}
-		
-	}
 	
 	public void sumarCasilla() {
 		
