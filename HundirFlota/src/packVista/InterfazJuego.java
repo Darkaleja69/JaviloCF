@@ -502,22 +502,47 @@ public class InterfazJuego extends JFrame implements Observer {
 				Label lbl = this.obtJLabel(pos, jug);
 				
 				if(c.getRadar()>=1) {
-					if(c.getRadar()==2) {
-						lbl.setBackground(Color.orange);
-					}
-					
-					else if(c.getRadar()==1 || c.getRadar()==3) {
-						if(!c.estaTocada()) {
-							lbl.setBackground(Color.pink);	
-							if((c.tieneBarco())) {
-								lbl.setBackground(Color.magenta);
-							}
-						
-						}
-					}
-					Tablero.getTablero().quitarRadar(c, jug,0);
-					
-				}
+                    if(c.getRadar()==2) {
+                        lbl.setBackground(Color.orange);
+                    }
+                    else if(c.getRadar()==3) {
+                        if(!Tablero.getTablero().radarUsado(c, jug)) {
+                            if(!c.estaTocada()) {
+                                lbl.setBackground(Color.cyan);
+                                if((c.tieneBarco())) {
+                                    lbl.setBackground(Color.blue);
+                                }
+
+                            } 
+                        }
+                        else {
+                            if(!c.estaTocada()) {
+                                lbl.setBackground(Color.pink);
+                                if((c.tieneBarco())) {
+                                    lbl.setBackground(Color.magenta);
+                                }
+
+                            } 
+                        }
+                        if(!c.estaTocada()) {
+                            lbl.setBackground(Color.pink);
+                            if((c.tieneBarco())) {
+                                lbl.setBackground(Color.magenta);
+                            }
+
+                        } 
+
+                    }
+                    else if(c.getRadar()==1) {
+                        if(!c.estaTocada()) {
+                            lbl.setBackground(Color.pink);
+                            if((c.tieneBarco())) {
+                                lbl.setBackground(Color.magenta);
+                            }
+
+                        }
+                    }
+                    Tablero.getTablero().quitarRadar(c, jug,0);}
 				else if(c.tieneBarco())
 				{
 					if (c.getBarco().tieneEscudo())
