@@ -69,12 +69,12 @@ public class ListaBarcos {
 		return barcos;
 	}
 	
-	public Barco barcoReparable(int pHeridas)
+	public Barco barcoReparable(int pReparaciones)
 	{
 		Barco h = null;
 		for(Barco b : this.lista)
 		{
-			if(b.diferenciaLongitudVidas() < pHeridas)
+			if(b.diferenciaLongitudVidas() < pReparaciones)
 			{
 				h = b;
 				break;
