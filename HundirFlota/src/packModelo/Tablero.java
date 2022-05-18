@@ -214,11 +214,11 @@ public class Tablero {
 	public Casilla buscarRadar(boolean esJug) {
 		Casilla c;
 		if(esJug) {
-			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).obtenerArma(3);
+			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).obtenerArma(4);
 			c = r.getRadar();
 		}
 		else {
-			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).obtenerArma(3);
+			Radar r = (Radar) ListaJugadores.getMiListaJug().obtenerJugadorOCPU(1).obtenerArma(4);
 			c = r.getRadar();
 		}
 		
