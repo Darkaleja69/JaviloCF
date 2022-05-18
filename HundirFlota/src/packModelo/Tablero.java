@@ -390,7 +390,7 @@ public class Tablero {
 	public void quitarRadar(Casilla c , boolean esJug, int pRadar) {
 		int x = c.getFila();
 		int y = c.getColumna();
-		if(esJug) {
+		if(!esJug) {
 			Tablero.getTablero().tableroCPU[x][y].quitarRadar(pRadar);
 		}
 		else {
