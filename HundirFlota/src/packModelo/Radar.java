@@ -54,7 +54,7 @@ public class Radar extends Arma{
             return(sig);
     }
 
-    public Casilla recolocar(boolean pAquien) {
+    private Casilla recolocar(boolean pAquien) {
         Casilla c = null;
     	Random num1 = new Random();
     	Random num2 = new Random();
