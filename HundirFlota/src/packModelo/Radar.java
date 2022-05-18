@@ -41,6 +41,7 @@ public class Radar extends Arma{
             
             if(sig || (recolocar && !sig)) {
             	if(!(pAQuien)) {
+            		System.out.println(casillas.size());
                     ListaJugadores.getMiListaJug().obtenerJugadorOCPU(0).enviarCasillas(casillas);
                 }
             }
@@ -55,9 +56,6 @@ public class Radar extends Arma{
     	int x = num1.nextInt(7)+2;
     	int y= num2.nextInt(7)+2;
     	c=Tablero.getTablero().getCasilla(x, y, pAquien);
-		if(pAquien) {
-		   System.out.println(c.getFila()); 		
-		    	}
     	c.ponerRadar();
     	usarRadar();
 

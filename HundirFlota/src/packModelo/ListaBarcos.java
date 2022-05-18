@@ -79,7 +79,6 @@ public class ListaBarcos {
 			posible = (pReparaciones >= b.getLongitud()) && b.estaRoto();
 			i++;
 		}
-		System.out.println(posible);
 		return posible;
 	}
 	

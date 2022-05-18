@@ -128,7 +128,7 @@ public class CPU extends Jugador{
         	Barco b = this.listaB.getBarcoReparar(this.miArmamento.armasPorUsar(3));
         	Casilla c = Tablero.getTablero().buscarCasillaBarco(b);
         	Arma a = this.miArmamento.buscarArma(3);
-        	System.out.println("x = "+ c.getFila() + " y = " + c.getColumna());
+
         	a.realizarFuncion(c.getFila(), c.getColumna(), true);
         	for(int i = 0; i < b.getLongitud(); i++)
         	{
